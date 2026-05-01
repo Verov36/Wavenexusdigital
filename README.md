@@ -1,1 +1,11 @@
-# repo-template
+
+  # WaveNexus Digital
+
+  This is a code bundle for WaveNexus Digital. The original project is available at https://www.figma.com/design/QAtuWUxwTpqyeWZvUDorDe/WaveNexus-Digital.
+
+  ## Running the code
+
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  
