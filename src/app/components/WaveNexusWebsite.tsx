@@ -6,11 +6,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  Star,
   ShieldCheck,
-  LayoutDashboard,
-  Workflow,
-  BadgeDollarSign,
   MessageSquare,
   Menu,
   X,
@@ -21,6 +17,8 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "sonner";
 import logoImage from "../../imports/WaveNexus_digital_branding_emblem.png";
+import heroImage1 from "../../imports/ChatGPT_Image_May_4,_2026,_04_01_02_PM_(1).png";
+import heroImage2 from "../../imports/ChatGPT_Image_May_4,_2026,_04_01_02_PM_(4).png";
 import { COMPANY_INFO, services, pricing, retainers, process, portfolio, faqs } from "../lib/constants";
 import { handleSmoothScroll } from "../lib/utils/scroll";
 import { trackEvent } from "../lib/analytics";
@@ -111,14 +109,14 @@ ${formData.message}
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 text-slate-900" itemScope itemType="https://schema.org/LocalBusiness">
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-amber-50/30 to-orange-50/20 text-slate-900" itemScope itemType="https://schema.org/LocalBusiness">
       <div className="absolute inset-0 -z-10 overflow-hidden" style={{ contain: 'layout style paint' }}>
-        <div className="absolute left-[-10%] top-0 h-[32rem] w-[32rem] rounded-full bg-gradient-to-br from-amber-400/40 to-orange-500/30 blur-3xl" />
-        <div className="absolute right-[-5%] top-24 h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-cyan-400/50 to-blue-600/40 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-gradient-to-br from-blue-500/35 to-cyan-500/40 blur-3xl" />
+        <div className="absolute left-[-10%] top-0 h-[32rem] w-[32rem] rounded-full bg-gradient-to-br from-amber-300/20 to-orange-400/15 blur-3xl" />
+        <div className="absolute right-[-5%] top-24 h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-cyan-300/15 to-blue-400/10 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-gradient-to-br from-amber-400/15 to-orange-300/20 blur-3xl" />
       </div>
 
-      <header className="sticky top-0 z-40 border-b-2 border-blue-200 bg-gradient-to-r from-white via-blue-50/30 to-white backdrop-blur-xl shadow-md" role="banner">
+      <header className="sticky top-0 z-40 border-b-2 border-stone-200 bg-white/95 backdrop-blur-xl shadow-sm" role="banner">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
           <div className="flex items-center gap-3">
             <img src={logoImage} alt={COMPANY_INFO.name} className="h-12 w-12" loading="eager" />
@@ -157,7 +155,7 @@ ${formData.message}
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 backdrop-blur-xl">
+          <div className="md:hidden border-t-2 border-stone-200 bg-white/98 backdrop-blur-xl">
             <nav className="flex flex-col gap-4 px-6 py-6 text-slate-700 font-semibold">
               <a href="#services" onClick={(e) => handleScroll(e, "#services")} className="transition hover:text-cyan-600">Services</a>
               <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="transition hover:text-cyan-600">Pricing</a>
@@ -229,63 +227,31 @@ ${formData.message}
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative space-y-6"
           >
-            <Card className="overflow-hidden rounded-[2rem] border-2 border-blue-200 bg-white shadow-2xl shadow-blue-900/10">
-              <CardContent className="p-0">
-                <div className="border-b-2 border-blue-200 bg-gradient-to-r from-blue-100 to-cyan-100 p-4">
-                  <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-rose-500 shadow-lg" />
-                    <div className="h-3 w-3 rounded-full bg-amber-500 shadow-lg" />
-                    <div className="h-3 w-3 rounded-full bg-emerald-500 shadow-lg" />
-                  </div>
-                </div>
-                <div className="grid gap-6 p-6 md:grid-cols-2">
-                  <div className="rounded-3xl border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-6 shadow-lg">
-                    <p className="mb-3 text-sm font-bold uppercase tracking-wider text-cyan-600">Lead Snapshot</p>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-4xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">+38%</p>
-                        <p className="text-sm font-semibold text-slate-600">Demo increase in inquiries</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="rounded-2xl border border-cyan-200 bg-gradient-to-br from-cyan-50 to-blue-50 p-4 shadow-md">
-                          <LayoutDashboard className="mb-2 h-5 w-5 text-cyan-600" />
-                          <p className="text-sm font-bold text-slate-700">Faster UX</p>
-                        </div>
-                        <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-4 shadow-md">
-                          <Workflow className="mb-2 h-5 w-5 text-amber-600" />
-                          <p className="text-sm font-bold text-slate-700">Clear funnel</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="rounded-3xl border-2 border-cyan-200 bg-gradient-to-br from-cyan-50 via-blue-50 to-amber-50 p-6 shadow-lg">
-                    <p className="mb-2 text-sm font-bold uppercase tracking-wider text-cyan-700">Why businesses choose us</p>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-md">
-                        <Star className="mt-0.5 h-5 w-5 text-amber-500" />
-                        <div>
-                          <p className="font-bold text-slate-900">Premium look, practical results</p>
-                          <p className="text-sm font-medium text-slate-600">We blend modern design with real business goals.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-md">
-                        <BadgeDollarSign className="mt-0.5 h-5 w-5 text-cyan-600" />
-                        <div>
-                          <p className="font-bold text-slate-900">Built for conversions</p>
-                          <p className="text-sm font-medium text-slate-600">Pages are designed to turn traffic into calls, forms, and bookings.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Main Hero Image */}
+            <div className="overflow-hidden rounded-[2rem] shadow-2xl">
+              <img
+                src={heroImage1}
+                alt="WaveNexus Digital Invest - Helping local businesses grow online"
+                className="w-full h-auto"
+                loading="eager"
+              />
+            </div>
+
+            {/* Secondary SEO Image */}
+            <div className="overflow-hidden rounded-[2rem] shadow-xl">
+              <img
+                src={heroImage2}
+                alt="Stronger SEO, Higher Rankings, More Growth"
+                className="w-full h-auto"
+                loading="eager"
+              />
+            </div>
           </motion.div>
         </section>
 
-        <section className="border-y-2 border-blue-200 bg-gradient-to-r from-blue-100 via-cyan-100 to-blue-100">
+        <section className="border-y-2 border-stone-200 bg-gradient-to-r from-stone-100/50 via-amber-50/30 to-stone-100/50">
           <div className="mx-auto grid max-w-7xl gap-6 px-6 py-10 text-center text-sm font-bold uppercase tracking-wider text-slate-800 sm:grid-cols-3 lg:px-8">
             <div className="flex items-center justify-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-cyan-600" />
@@ -316,7 +282,7 @@ ${formData.message}
               const Icon = service.icon;
               return (
                 <motion.div key={service.title} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} transition={{ delay: idx * 0.05 }}>
-                  <Card className="h-full rounded-[1.75rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg shadow-blue-200/50 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-400">
+                  <Card className="h-full rounded-[1.75rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg shadow-stone-200/50 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-400">
                     <CardContent className="p-6">
                       <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/40">
                         <Icon className="h-7 w-7 text-white" />
@@ -334,7 +300,7 @@ ${formData.message}
         <section className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-4">
             {process.map((step, idx) => (
-              <Card key={step.title} className="rounded-[1.75rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg hover:shadow-xl hover:border-cyan-400 transition-all">
+              <Card key={step.title} className="rounded-[1.75rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg hover:shadow-xl hover:border-cyan-400 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 font-black text-xl text-white shadow-lg shadow-cyan-500/50">
                     {idx + 1}
@@ -360,7 +326,7 @@ ${formData.message}
             {pricing.map((tier) => (
               <Card
                 key={tier.name}
-                className={`rounded-[2rem] border-2 ${tier.featured ? "border-amber-500 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 shadow-2xl shadow-amber-500/50 scale-105" : "border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg"}`}
+                className={`rounded-[2rem] border-2 ${tier.featured ? "border-amber-500 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 shadow-2xl shadow-amber-500/50 scale-105" : "border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg"}`}
               >
                 <CardContent className="p-8">
                   {tier.featured && (
@@ -396,7 +362,7 @@ ${formData.message}
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {retainers.map((item) => (
-              <Card key={item.title} className="rounded-[1.75rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg hover:shadow-xl hover:border-cyan-400 transition-all">
+              <Card key={item.title} className="rounded-[1.75rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg hover:shadow-xl hover:border-cyan-400 transition-all">
                 <CardContent className="p-7">
                   <p className="text-xs font-black uppercase tracking-wider text-cyan-600">Monthly Service</p>
                   <h3 className="mt-3 text-xl font-black text-slate-900">{item.title}</h3>
@@ -443,7 +409,7 @@ ${formData.message}
                     className="block h-full"
                     onClick={() => trackEvent("click", "Portfolio", item.name)}
                   >
-                    <Card className="h-full rounded-[1.75rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg transition-all hover:shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-400 hover:-translate-y-1 cursor-pointer">
+                    <Card className="h-full rounded-[1.75rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg transition-all hover:shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-400 hover:-translate-y-1 cursor-pointer">
                       <CardContent className="p-7">
                         <p className="text-xs font-black uppercase tracking-wider text-cyan-600">{item.category}</p>
                         <h3 className="mt-3 text-xl font-black text-slate-900">{item.name}</h3>
@@ -453,7 +419,7 @@ ${formData.message}
                     </Card>
                   </a>
                 ) : (
-                  <Card className="h-full rounded-[1.75rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-lg transition-all hover:shadow-xl hover:border-cyan-400">
+                  <Card className="h-full rounded-[1.75rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-lg transition-all hover:shadow-xl hover:border-cyan-400">
                     <CardContent className="p-7">
                       <p className="text-xs font-black uppercase tracking-wider text-cyan-600">{item.category}</p>
                       <h3 className="mt-3 text-xl font-black text-slate-900">{item.name}</h3>
@@ -474,7 +440,7 @@ ${formData.message}
 
           <div className="mt-12 space-y-5">
             {faqs.map((item) => (
-              <Card key={item.q} className="rounded-[1.5rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-md hover:shadow-lg hover:border-cyan-400 transition-all">
+              <Card key={item.q} className="rounded-[1.5rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-md hover:shadow-lg hover:border-cyan-400 transition-all">
                 <CardContent className="p-7">
                   <h3 className="text-lg font-black text-slate-900">{item.q}</h3>
                   <p className="mt-3 font-semibold text-slate-600 leading-relaxed">{item.a}</p>
@@ -494,19 +460,19 @@ ${formData.message}
               </p>
 
               <div className="mt-10 space-y-5 text-slate-700">
-                <div className="flex items-center gap-4 rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-4 shadow-md">
+                <div className="flex items-center gap-4 rounded-2xl border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 p-4 shadow-md">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/40">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g, '')}`} className="font-bold text-lg hover:text-cyan-600 transition">{COMPANY_INFO.phone}</a>
                 </div>
-                <div className="flex items-center gap-4 rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-4 shadow-md">
+                <div className="flex items-center gap-4 rounded-2xl border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 p-4 shadow-md">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/40">
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <a href={`mailto:${COMPANY_INFO.email}`} className="font-bold hover:text-cyan-600 transition break-all">{COMPANY_INFO.email}</a>
                 </div>
-                <div className="flex items-center gap-4 rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-4 shadow-md">
+                <div className="flex items-center gap-4 rounded-2xl border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 p-4 shadow-md">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/40">
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
@@ -515,7 +481,7 @@ ${formData.message}
               </div>
             </div>
 
-            <Card className="rounded-[2rem] border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 shadow-2xl">
+            <Card className="rounded-[2rem] border-2 border-stone-200 bg-gradient-to-br from-white to-stone-50 shadow-2xl">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="grid gap-5">
                   <Input
@@ -523,7 +489,7 @@ ${formData.message}
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your name"
-                    className="h-14 rounded-2xl border-2 border-blue-200 bg-blue-50/50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
+                    className="h-14 rounded-2xl border-2 border-stone-200 bg-stone-50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
                   />
                   <Input
                     name="email"
@@ -531,21 +497,21 @@ ${formData.message}
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Business email"
-                    className="h-14 rounded-2xl border-2 border-blue-200 bg-blue-50/50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
+                    className="h-14 rounded-2xl border-2 border-stone-200 bg-stone-50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
                   />
                   <Input
                     name="business"
                     value={formData.business}
                     onChange={handleInputChange}
                     placeholder="Business name"
-                    className="h-14 rounded-2xl border-2 border-blue-200 bg-blue-50/50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
+                    className="h-14 rounded-2xl border-2 border-stone-200 bg-stone-50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
                   />
                   <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Tell us about your project"
-                    className="min-h-[160px] rounded-2xl border-2 border-blue-200 bg-blue-50/50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
+                    className="min-h-[160px] rounded-2xl border-2 border-stone-200 bg-stone-50 text-slate-900 font-semibold placeholder:text-slate-500 focus:border-cyan-500 focus:bg-white"
                   />
                   <Button
                     type="submit"
@@ -560,7 +526,7 @@ ${formData.message}
         </section>
       </main>
 
-      <footer className="border-t-2 border-blue-200 bg-gradient-to-br from-blue-100 to-cyan-100">
+      <footer className="border-t-2 border-stone-200 bg-gradient-to-br from-stone-100 to-amber-50/40">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-10 text-sm md:flex-row md:items-center md:justify-between lg:px-8">
           <div>
             <p className="text-lg font-black bg-gradient-to-r from-amber-600 to-cyan-600 bg-clip-text text-transparent">{COMPANY_INFO.name}</p>
