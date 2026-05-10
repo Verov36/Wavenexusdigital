@@ -247,51 +247,51 @@ ${formData.message}
         <section id="home" className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDEzNGg3LjlsLjUuNXYuNWgtOXYtMWguNnptLTEgMGgtOXYxaDl2LTF6bS0xMCAwSDEydjFoMTN2LTF6bS0xNCAwSDNNMSAxMy4zdi0xLjZoMXYxLjZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-10"></div>
 
-          <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 lg:py-24 lg:px-8">
+            <div className="grid gap-8 lg:gap-12 lg:grid-cols-2 items-center">
               <motion.div initial="hidden" animate="show" variants={fadeUp}>
-                <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 border border-blue-400/30 px-4 py-2 text-sm font-bold text-blue-100 mb-6">
-                  <Award className="h-4 w-4" />
+                <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 border border-blue-400/30 px-3 py-1.5 text-xs sm:text-sm font-bold text-blue-100 mb-4 sm:mb-6">
+                  <Award className="h-3 w-3 sm:h-4 sm:w-4" />
                   Veteran-Owned & Operated
                 </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight mb-4 sm:mb-6">
                   Digital Solutions That Drive Real Results
                 </h1>
-                <p className="text-xl text-blue-100 leading-relaxed mb-8 max-w-2xl">
+                <p className="text-base sm:text-lg lg:text-xl text-blue-100 leading-relaxed mb-6 sm:mb-8">
                   We build modern websites, optimize for search engines, and create digital strategies that help businesses grow. Professional service with military precision.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Button
                     size="lg"
                     onClick={(e) => {
                       e.preventDefault();
                       handleScroll(e as any, "#services");
                     }}
-                    className="bg-white text-blue-900 font-bold text-lg px-8 hover:bg-blue-50 shadow-xl hover:scale-105 transition-all"
+                    className="w-full sm:w-auto bg-white text-blue-900 font-bold text-base sm:text-lg px-6 sm:px-8 py-6 hover:bg-blue-50 shadow-xl hover:scale-105 transition-all"
                   >
-                    View Our Services <ArrowRight className="ml-2 h-5 w-5" />
+                    View Our Services <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </Button>
-                  <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
+                  <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                     <Button
                       size="lg"
-                      className="w-full sm:w-auto bg-transparent border-2 border-white text-white font-bold text-lg px-8 hover:bg-white hover:text-blue-900 shadow-xl hover:scale-105 transition-all"
+                      className="w-full bg-transparent border-2 border-white text-white font-bold text-base sm:text-lg px-6 sm:px-8 py-6 hover:bg-white hover:text-blue-900 shadow-xl hover:scale-105 transition-all"
                     >
                       Get Started Today
                     </Button>
                   </a>
                 </div>
-                <div className="mt-12 grid grid-cols-3 gap-6 text-white">
+                <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 text-white">
                   <div>
-                    <div className="text-3xl font-black text-blue-300">100+</div>
-                    <div className="text-sm font-medium text-blue-200">Projects Completed</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-blue-300">100+</div>
+                    <div className="text-xs sm:text-sm font-medium text-blue-200">Projects Completed</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-black text-blue-300">98%</div>
-                    <div className="text-sm font-medium text-blue-200">Client Satisfaction</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-blue-300">98%</div>
+                    <div className="text-xs sm:text-sm font-medium text-blue-200">Client Satisfaction</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-black text-blue-300">24/7</div>
-                    <div className="text-sm font-medium text-blue-200">Support Available</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-blue-300">24/7</div>
+                    <div className="text-xs sm:text-sm font-medium text-blue-200">Support Available</div>
                   </div>
                 </div>
               </motion.div>
@@ -300,9 +300,9 @@ ${formData.message}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative"
+                className="relative mt-8 lg:mt-0"
               >
-                <Slider {...carouselSettings} className="rounded-2xl overflow-hidden shadow-2xl">
+                <Slider {...carouselSettings} className="rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl">
                   <div>
                     <img src={heroImage1} alt="Professional Web Design Services" className="w-full h-auto" />
                   </div>
@@ -322,19 +322,19 @@ ${formData.message}
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Our Services</p>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+        <section id="services" className="py-12 sm:py-16 lg:py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-blue-600 mb-2 sm:mb-3">Our Services</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4 lg:mb-6 px-4">
                 Complete Digital Solutions for Your Business
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto px-4">
                 From initial concept to ongoing growth, we provide everything you need to succeed online.
               </p>
             </motion.div>
 
-            <div className="space-y-16">
+            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
               {services.map((service, idx) => {
                 const Icon = service.icon;
                 return (
@@ -342,40 +342,40 @@ ${formData.message}
                     key={service.title}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-50px" }}
                     variants={fadeUp}
                     transition={{ delay: idx * 0.1 }}
                   >
                     <Card className="overflow-hidden border-2 border-slate-200 hover:border-blue-300 shadow-lg hover:shadow-2xl transition-all">
                       <CardContent className="p-0">
                         <div className="grid lg:grid-cols-2 gap-0">
-                          <div className="p-8 lg:p-12 bg-gradient-to-br from-slate-50 to-blue-50/30">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg mb-6">
-                              <Icon className="h-8 w-8 text-white" />
+                          <div className="p-6 sm:p-8 lg:p-12 bg-gradient-to-br from-slate-50 to-blue-50/30">
+                            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg mb-4 sm:mb-6">
+                              <Icon className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-white" />
                             </div>
-                            <h3 className="text-3xl font-black text-slate-900 mb-4">{service.title}</h3>
-                            <p className="text-lg text-slate-700 mb-8 leading-relaxed">{service.description}</p>
+                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mb-3 sm:mb-4">{service.title}</h3>
+                            <p className="text-base sm:text-lg text-slate-700 mb-6 sm:mb-8 leading-relaxed">{service.description}</p>
 
-                            <div className="space-y-3">
+                            <div className="space-y-2 sm:space-y-3">
                               {service.features.map((feature) => (
-                                <div key={feature} className="flex items-start gap-3">
-                                  <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                  <span className="text-slate-700 font-medium">{feature}</span>
+                                <div key={feature} className="flex items-start gap-2 sm:gap-3">
+                                  <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                                  <span className="text-sm sm:text-base text-slate-700 font-medium">{feature}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
 
-                          <div className="p-8 lg:p-12 bg-white">
-                            <h4 className="text-2xl font-black text-slate-900 mb-6">Pricing Options</h4>
-                            <div className="space-y-6">
+                          <div className="p-6 sm:p-8 lg:p-12 bg-white border-t-2 lg:border-t-0 lg:border-l-2 border-slate-100">
+                            <h4 className="text-xl sm:text-2xl font-black text-slate-900 mb-4 sm:mb-6">Pricing Options</h4>
+                            <div className="space-y-4 sm:space-y-6">
                               {service.pricing.map((price) => (
-                                <div key={price.tier} className="border-l-4 border-blue-600 pl-6 py-2">
-                                  <div className="flex items-baseline justify-between mb-2">
-                                    <h5 className="text-lg font-black text-slate-900">{price.tier}</h5>
-                                    <span className="text-2xl font-black text-blue-600">{price.price}</span>
+                                <div key={price.tier} className="border-l-4 border-blue-600 pl-4 sm:pl-6 py-2">
+                                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2 mb-1 sm:mb-2">
+                                    <h5 className="text-base sm:text-lg font-black text-slate-900">{price.tier}</h5>
+                                    <span className="text-xl sm:text-2xl font-black text-blue-600">{price.price}</span>
                                   </div>
-                                  <p className="text-slate-600 font-medium">{price.desc}</p>
+                                  <p className="text-sm sm:text-base text-slate-600 font-medium">{price.desc}</p>
                                 </div>
                               ))}
                             </div>
@@ -387,9 +387,9 @@ ${formData.message}
                                   description: "Scroll to the contact form to get started.",
                                 });
                               }}
-                              className="w-full mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg py-6 hover:shadow-xl hover:scale-105 transition-all"
+                              className="w-full mt-6 sm:mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-base sm:text-lg py-5 sm:py-6 hover:shadow-xl hover:scale-105 transition-all"
                             >
-                              Get Started <ChevronRight className="ml-2 h-5 w-5" />
+                              Get Started <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                             </Button>
                           </div>
                         </div>
@@ -403,30 +403,30 @@ ${formData.message}
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-sm font-black uppercase tracking-wider text-blue-300 mb-3">About WaveNexus Digital</p>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+        <section id="about" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-blue-300 mb-2 sm:mb-3">About WaveNexus Digital</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 sm:mb-4 lg:mb-6 px-4">
                 Built on Discipline. Driven by Results.
               </h2>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-blue-100 max-w-3xl mx-auto px-4">
                 Founded by a Marine Corps veteran with a mission to deliver excellence in every project.
               </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
               <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
                 <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 h-full">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-                      <Target className="h-8 w-8 text-blue-300" />
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-black text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <Target className="h-6 w-6 sm:h-8 sm:w-8 text-blue-300" />
                       Our Mission
                     </h3>
-                    <p className="text-lg text-blue-100 leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg text-blue-100 leading-relaxed mb-4 sm:mb-6">
                       Founded by a <span className="font-black text-white">Marine Corps veteran</span>, WaveNexus Digital Invest brings military discipline and a mission-first mindset to every project. We know what it means to execute under pressure, adapt on the fly, and deliver results that matter.
                     </p>
-                    <p className="text-lg text-blue-100 leading-relaxed">
+                    <p className="text-base sm:text-lg text-blue-100 leading-relaxed">
                       We don't just build websites — we engineer digital ecosystems designed to convert visitors into customers. Every line of code, every design choice, and every strategy is backed by data, tested for performance, and optimized for growth.
                     </p>
                   </CardContent>
@@ -435,38 +435,38 @@ ${formData.message}
 
               <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}>
                 <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 h-full">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-                      <Zap className="h-8 w-8 text-blue-300" />
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-black text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                      <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-blue-300" />
                       Our Process
                     </h3>
-                    <div className="space-y-6">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center font-black text-xl">1</div>
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500 flex items-center justify-center font-black text-lg sm:text-xl">1</div>
                         <div>
-                          <h4 className="font-black text-white mb-1">Listen</h4>
-                          <p className="text-blue-100">We take time to understand your business, goals, and challenges.</p>
+                          <h4 className="font-black text-white mb-1 text-sm sm:text-base">Listen</h4>
+                          <p className="text-blue-100 text-sm sm:text-base">We take time to understand your business, goals, and challenges.</p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center font-black text-xl">2</div>
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500 flex items-center justify-center font-black text-lg sm:text-xl">2</div>
                         <div>
-                          <h4 className="font-black text-white mb-1">Strategize</h4>
-                          <p className="text-blue-100">We craft a customized plan tailored to your unique needs.</p>
+                          <h4 className="font-black text-white mb-1 text-sm sm:text-base">Strategize</h4>
+                          <p className="text-blue-100 text-sm sm:text-base">We craft a customized plan tailored to your unique needs.</p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center font-black text-xl">3</div>
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500 flex items-center justify-center font-black text-lg sm:text-xl">3</div>
                         <div>
-                          <h4 className="font-black text-white mb-1">Execute</h4>
-                          <p className="text-blue-100">We build, launch, and optimize with precision.</p>
+                          <h4 className="font-black text-white mb-1 text-sm sm:text-base">Execute</h4>
+                          <p className="text-blue-100 text-sm sm:text-base">We build, launch, and optimize with precision.</p>
                         </div>
                       </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center font-black text-xl">4</div>
+                      <div className="flex gap-3 sm:gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-blue-500 flex items-center justify-center font-black text-lg sm:text-xl">4</div>
                         <div>
-                          <h4 className="font-black text-white mb-1">Support</h4>
-                          <p className="text-blue-100">We don't disappear after launch — we're with you for the long haul.</p>
+                          <h4 className="font-black text-white mb-1 text-sm sm:text-base">Support</h4>
+                          <p className="text-blue-100 text-sm sm:text-base">We don't disappear after launch — we're with you for the long haul.</p>
                         </div>
                       </div>
                     </div>
@@ -477,23 +477,23 @@ ${formData.message}
 
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.3 }}>
               <Card className="bg-gradient-to-r from-blue-600/20 to-indigo-600/20 backdrop-blur-lg border-2 border-blue-400/30">
-                <CardContent className="p-8 text-center">
-                  <p className="text-2xl font-black text-white leading-relaxed max-w-4xl mx-auto">
+                <CardContent className="p-6 sm:p-8 text-center">
+                  <p className="text-base sm:text-xl lg:text-2xl font-black text-white leading-relaxed max-w-4xl mx-auto">
                     "Whether you're a small business looking to establish your online presence or a growing company ready to dominate your market, we bring the same commitment we learned in service: <span className="text-blue-300">Never leave a mission incomplete.</span>"
                   </p>
                 </CardContent>
               </Card>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.4 }} className="mt-16">
-              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.4 }} className="mt-8 sm:mt-12 lg:mt-16">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-2xl mx-auto">
                 <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 overflow-hidden">
-                  <CardContent className="p-4">
+                  <CardContent className="p-3 sm:p-4">
                     <img src={veteranImage1} alt="Veteran Owned Business" className="w-full h-auto" />
                   </CardContent>
                 </Card>
                 <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 overflow-hidden">
-                  <CardContent className="p-4">
+                  <CardContent className="p-3 sm:p-4">
                     <img src={veteranImage2} alt="Marine Corps Leadership" className="w-full h-auto" />
                   </CardContent>
                 </Card>
@@ -503,19 +503,19 @@ ${formData.message}
         </section>
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Our Work</p>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+        <section id="portfolio" className="py-12 sm:py-16 lg:py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-blue-600 mb-2 sm:mb-3">Our Work</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4 lg:mb-6 px-4">
                 Real Projects. Real Results.
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto px-4">
                 See how we've helped businesses like yours establish their digital presence and drive growth.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
               {portfolio.map((item, idx) => (
                 <motion.div
                   key={item.name}
@@ -534,28 +534,28 @@ ${formData.message}
                       className="block h-full group"
                     >
                       <Card className="h-full border-2 border-slate-200 hover:border-blue-400 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
-                        <CardContent className="p-8">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg mb-4">
-                            <Globe className="h-6 w-6 text-white" />
+                        <CardContent className="p-4 sm:p-6 lg:p-8">
+                          <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg mb-3 sm:mb-4">
+                            <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                           </div>
-                          <p className="text-xs font-black uppercase tracking-wider text-blue-600 mb-2">{item.category}</p>
-                          <h3 className="text-xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition">{item.name}</h3>
-                          <p className="text-slate-600 font-medium leading-relaxed mb-4">{item.text}</p>
-                          <div className="flex items-center text-blue-600 font-bold group-hover:gap-2 transition-all">
-                            View Project <ChevronRight className="h-5 w-5" />
+                          <p className="text-xs font-black uppercase tracking-wider text-blue-600 mb-1 sm:mb-2">{item.category}</p>
+                          <h3 className="text-base sm:text-lg lg:text-xl font-black text-slate-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition">{item.name}</h3>
+                          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed mb-3 sm:mb-4">{item.text}</p>
+                          <div className="flex items-center text-sm sm:text-base text-blue-600 font-bold group-hover:gap-2 transition-all">
+                            View Project <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                           </div>
                         </CardContent>
                       </Card>
                     </a>
                   ) : (
                     <Card className="h-full border-2 border-slate-200 shadow-lg">
-                      <CardContent className="p-8">
-                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-slate-400 to-slate-600 shadow-lg mb-4">
-                          <Globe className="h-6 w-6 text-white" />
+                      <CardContent className="p-4 sm:p-6 lg:p-8">
+                        <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-slate-400 to-slate-600 shadow-lg mb-3 sm:mb-4">
+                          <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
-                        <p className="text-xs font-black uppercase tracking-wider text-slate-500 mb-2">{item.category}</p>
-                        <h3 className="text-xl font-black text-slate-900 mb-3">{item.name}</h3>
-                        <p className="text-slate-600 font-medium leading-relaxed">{item.text}</p>
+                        <p className="text-xs font-black uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">{item.category}</p>
+                        <h3 className="text-base sm:text-lg lg:text-xl font-black text-slate-900 mb-2 sm:mb-3">{item.name}</h3>
+                        <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">{item.text}</p>
                       </CardContent>
                     </Card>
                   )}
@@ -563,22 +563,22 @@ ${formData.message}
               ))}
             </div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="grid md:grid-cols-2 gap-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               <Card className="border-2 border-slate-200 overflow-hidden">
                 <CardContent className="p-0">
                   <img src={keywordsImage} alt="Keyword Optimization Results" className="w-full h-auto" />
-                  <div className="p-6">
-                    <h3 className="text-xl font-black text-slate-900 mb-2">Keyword Optimization</h3>
-                    <p className="text-slate-600 font-medium">Strategic keyword targeting that drives qualified traffic and increases conversions.</p>
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2">Keyword Optimization</h3>
+                    <p className="text-sm sm:text-base text-slate-600 font-medium">Strategic keyword targeting that drives qualified traffic and increases conversions.</p>
                   </div>
                 </CardContent>
               </Card>
               <Card className="border-2 border-slate-200 overflow-hidden">
                 <CardContent className="p-0">
                   <img src={conversionImage} alt="Conversion Results" className="w-full h-auto" />
-                  <div className="p-6">
-                    <h3 className="text-xl font-black text-slate-900 mb-2">Measurable Growth</h3>
-                    <p className="text-slate-600 font-medium">Data-driven strategies that deliver real ROI and business growth.</p>
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2">Measurable Growth</h3>
+                    <p className="text-sm sm:text-base text-slate-600 font-medium">Data-driven strategies that deliver real ROI and business growth.</p>
                   </div>
                 </CardContent>
               </Card>
@@ -587,29 +587,29 @@ ${formData.message}
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-24 bg-gradient-to-br from-slate-50 to-blue-50/30">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-16">
-              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Get In Touch</p>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+        <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50/30">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-blue-600 mb-2 sm:mb-3">Get In Touch</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3 sm:mb-4 lg:mb-6 px-4">
                 Let's Start Your Project
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto px-4">
                 Ready to take your business to the next level? Get in touch today for a free consultation.
               </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
               <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-                <div className="space-y-8">
+                <div className="space-y-4 sm:space-y-6 lg:space-y-8">
                   <Card className="border-2 border-slate-200 hover:border-blue-300 shadow-lg transition-all">
-                    <CardContent className="p-6 flex items-center gap-4">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
-                        <Phone className="h-7 w-7 text-white" />
+                    <CardContent className="p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
+                        <Phone className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-500 mb-1">Call Us</p>
-                        <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g, '')}`} className="text-xl font-black text-slate-900 hover:text-blue-600 transition">
+                        <p className="text-xs sm:text-sm font-bold text-slate-500 mb-0.5 sm:mb-1">Call Us</p>
+                        <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g, '')}`} className="text-base sm:text-lg lg:text-xl font-black text-slate-900 hover:text-blue-600 transition">
                           {COMPANY_INFO.phone}
                         </a>
                       </div>
@@ -617,13 +617,13 @@ ${formData.message}
                   </Card>
 
                   <Card className="border-2 border-slate-200 hover:border-blue-300 shadow-lg transition-all">
-                    <CardContent className="p-6 flex items-center gap-4">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
-                        <Mail className="h-7 w-7 text-white" />
+                    <CardContent className="p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
+                        <Mail className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-white" />
                       </div>
-                      <div>
-                        <p className="text-sm font-bold text-slate-500 mb-1">Email Us</p>
-                        <a href={`mailto:${COMPANY_INFO.email}`} className="text-lg font-black text-slate-900 hover:text-blue-600 transition break-all">
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-bold text-slate-500 mb-0.5 sm:mb-1">Email Us</p>
+                        <a href={`mailto:${COMPANY_INFO.email}`} className="text-sm sm:text-base lg:text-lg font-black text-slate-900 hover:text-blue-600 transition break-all">
                           {COMPANY_INFO.email}
                         </a>
                       </div>
@@ -631,24 +631,24 @@ ${formData.message}
                   </Card>
 
                   <Card className="border-2 border-slate-200 hover:border-blue-300 shadow-lg transition-all">
-                    <CardContent className="p-6 flex items-center gap-4">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
-                        <MapPin className="h-7 w-7 text-white" />
+                    <CardContent className="p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg">
+                        <MapPin className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-500 mb-1">Location</p>
-                        <p className="text-xl font-black text-slate-900">{COMPANY_INFO.location}</p>
+                        <p className="text-xs sm:text-sm font-bold text-slate-500 mb-0.5 sm:mb-1">Location</p>
+                        <p className="text-base sm:text-lg lg:text-xl font-black text-slate-900">{COMPANY_INFO.location}</p>
                       </div>
                     </CardContent>
                   </Card>
 
                   <Card className="border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
-                    <CardContent className="p-8 text-center">
-                      <Users className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                      <h3 className="text-2xl font-black text-slate-900 mb-3">Ready to Get Started?</h3>
-                      <p className="text-slate-600 font-medium mb-6">Schedule a free consultation to discuss your project.</p>
+                    <CardContent className="p-6 sm:p-8 text-center">
+                      <Users className="h-10 w-10 sm:h-12 sm:w-12 text-blue-600 mx-auto mb-3 sm:mb-4" />
+                      <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 sm:mb-3">Ready to Get Started?</h3>
+                      <p className="text-sm sm:text-base text-slate-600 font-medium mb-4 sm:mb-6">Schedule a free consultation to discuss your project.</p>
                       <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
-                        <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg py-6 hover:shadow-xl hover:scale-105 transition-all">
+                        <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-base sm:text-lg py-5 sm:py-6 hover:shadow-xl hover:scale-105 transition-all">
                           Book Free Consultation
                         </Button>
                       </a>
@@ -659,55 +659,55 @@ ${formData.message}
 
               <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}>
                 <Card className="border-2 border-slate-200 shadow-2xl">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-black text-slate-900 mb-6">Send Us a Message</h3>
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                  <CardContent className="p-6 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-4 sm:mb-6">Send Us a Message</h3>
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                       <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Your Name</label>
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-2">Your Name</label>
                         <Input
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
                           placeholder="John Doe"
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 font-medium"
+                          className="h-11 sm:h-12 border-2 border-slate-200 focus:border-blue-500 font-medium text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-2">Email Address</label>
                         <Input
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="john@example.com"
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 font-medium"
+                          className="h-11 sm:h-12 border-2 border-slate-200 focus:border-blue-500 font-medium text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Business Name</label>
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-2">Business Name</label>
                         <Input
                           name="business"
                           value={formData.business}
                           onChange={handleInputChange}
                           placeholder="Your Business"
-                          className="h-12 border-2 border-slate-200 focus:border-blue-500 font-medium"
+                          className="h-11 sm:h-12 border-2 border-slate-200 focus:border-blue-500 font-medium text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Project Details</label>
+                        <label className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-2">Project Details</label>
                         <Textarea
                           name="message"
                           value={formData.message}
                           onChange={handleInputChange}
                           placeholder="Tell us about your project..."
-                          className="min-h-[150px] border-2 border-slate-200 focus:border-blue-500 font-medium"
+                          className="min-h-[120px] sm:min-h-[150px] border-2 border-slate-200 focus:border-blue-500 font-medium text-sm sm:text-base"
                         />
                       </div>
                       <Button
                         type="submit"
-                        className="w-full h-14 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-black text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+                        className="w-full h-12 sm:h-14 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-black text-base sm:text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
                       >
-                        Send Message <ArrowRight className="ml-2 h-5 w-5" />
+                        Send Message <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                       </Button>
                     </form>
                   </CardContent>
@@ -719,22 +719,22 @@ ${formData.message}
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+      <footer className="bg-slate-900 text-white py-8 sm:py-10 lg:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <img src={logoImage} alt={COMPANY_INFO.name} className="h-12 w-12" />
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <img src={logoImage} alt={COMPANY_INFO.name} className="h-10 w-10 sm:h-12 sm:w-12" />
                 <div>
-                  <p className="text-xl font-black">{COMPANY_INFO.name}</p>
-                  <p className="text-sm text-blue-300">{COMPANY_INFO.tagline}</p>
+                  <p className="text-lg sm:text-xl font-black">{COMPANY_INFO.name}</p>
+                  <p className="text-xs sm:text-sm text-blue-300">{COMPANY_INFO.tagline}</p>
                 </div>
               </div>
-              <p className="text-blue-200 font-medium max-w-md">
+              <p className="text-sm sm:text-base text-blue-200 font-medium max-w-md">
                 Professional digital solutions built with military precision. Helping businesses grow online.
               </p>
             </div>
-            <div className="flex flex-wrap gap-6 font-bold md:justify-end">
+            <div className="flex flex-wrap gap-4 sm:gap-6 text-sm sm:text-base font-bold md:justify-end">
               <a href="#home" onClick={(e) => handleScroll(e, "#home")} className="hover:text-blue-400 transition">Home</a>
               <a href="#services" onClick={(e) => handleScroll(e, "#services")} className="hover:text-blue-400 transition">Services</a>
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="hover:text-blue-400 transition">About</a>
@@ -742,8 +742,8 @@ ${formData.message}
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="hover:text-blue-400 transition">Contact</a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-slate-700 text-center">
-            <p className="text-sm text-blue-200">© 2026 {COMPANY_INFO.name}. All rights reserved.</p>
+          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-slate-700 text-center">
+            <p className="text-xs sm:text-sm text-blue-200">© 2026 {COMPANY_INFO.name}. All rights reserved.</p>
           </div>
         </div>
       </footer>
