@@ -5,7 +5,7 @@ export function scrollToSection(id: string) {
   if (element) {
     // Get header height for offset calculation
     const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : 0;
+    const headerHeight = header ? header.offsetHeight : 80;
 
     // Calculate position with header offset
     const elementPosition = element.getBoundingClientRect().top;
@@ -24,14 +24,16 @@ export function handleSmoothScroll(
   callback?: () => void
 ) {
   e.preventDefault();
+  e.stopPropagation();
 
   // Close mobile menu first if callback provided
   if (callback) {
     callback();
-  }
-
-  // Small delay to let menu close animation complete
-  setTimeout(() => {
+    // Small delay to let menu close animation complete
+    setTimeout(() => {
+      scrollToSection(id);
+    }, 150);
+  } else {
     scrollToSection(id);
-  }, 100);
+  }
 }

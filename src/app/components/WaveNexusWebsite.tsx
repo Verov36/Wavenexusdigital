@@ -49,7 +49,21 @@ export default function WaveNexusWebsite() {
   });
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    handleSmoothScroll(e, id, () => setMobileMenuOpen(false));
+    e.preventDefault();
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        const element = document.querySelector(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 150);
+    } else {
+      const element = document.querySelector(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -211,7 +225,7 @@ ${formData.message}
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-50 scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
               <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">About WaveNexus Digital</p>
@@ -365,7 +379,7 @@ ${formData.message}
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-white scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
               <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Pricing</p>
@@ -629,7 +643,7 @@ ${formData.message}
         </section>
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <section id="portfolio" className="py-16 sm:py-20 lg:py-24 bg-slate-50 scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
               <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Our Work</p>
@@ -679,7 +693,7 @@ ${formData.message}
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
               <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Get In Touch</p>
