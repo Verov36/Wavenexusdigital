@@ -72,11 +72,37 @@ export function setMetadata() {
   }
   linkCanonical.setAttribute("href", metadata.canonical);
 
-  // Set viewport
+  // Set viewport - optimized for mobile
   const metaViewport = document.querySelector('meta[name="viewport"]');
   if (metaViewport) {
-    metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0, viewport-fit=cover");
+    metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover");
   }
+
+  // Add mobile-specific meta tags
+  let metaFormatDetection = document.querySelector('meta[name="format-detection"]');
+  if (!metaFormatDetection) {
+    metaFormatDetection = document.createElement("meta");
+    metaFormatDetection.setAttribute("name", "format-detection");
+    document.head.appendChild(metaFormatDetection);
+  }
+  metaFormatDetection.setAttribute("content", "telephone=yes");
+
+  // iOS-specific optimizations
+  let metaAppleMobileWebAppCapable = document.querySelector('meta[name="apple-mobile-web-app-capable"]');
+  if (!metaAppleMobileWebAppCapable) {
+    metaAppleMobileWebAppCapable = document.createElement("meta");
+    metaAppleMobileWebAppCapable.setAttribute("name", "apple-mobile-web-app-capable");
+    document.head.appendChild(metaAppleMobileWebAppCapable);
+  }
+  metaAppleMobileWebAppCapable.setAttribute("content", "yes");
+
+  let metaAppleMobileWebAppStatusBarStyle = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+  if (!metaAppleMobileWebAppStatusBarStyle) {
+    metaAppleMobileWebAppStatusBarStyle = document.createElement("meta");
+    metaAppleMobileWebAppStatusBarStyle.setAttribute("name", "apple-mobile-web-app-status-bar-style");
+    document.head.appendChild(metaAppleMobileWebAppStatusBarStyle);
+  }
+  metaAppleMobileWebAppStatusBarStyle.setAttribute("content", "black-translucent");
 
   // Open Graph tags
   const ogTags = [

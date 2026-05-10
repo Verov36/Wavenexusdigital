@@ -115,6 +115,8 @@ ${formData.message}
     autoplaySpeed: 5000,
     fade: true,
     pauseOnHover: true,
+    arrows: false,
+    adaptiveHeight: true,
   };
 
   const services = [
@@ -193,7 +195,7 @@ ${formData.message}
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" itemScope itemType="https://schema.org/LocalBusiness">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 w-full overflow-x-hidden" itemScope itemType="https://schema.org/LocalBusiness">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm" role="banner">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
