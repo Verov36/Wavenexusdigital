@@ -26,7 +26,7 @@ import { toast } from "sonner";
 import logoImage from "../../imports/WaveNexus_digital_branding_emblem.png";
 import veteranImage1 from "../../imports/1st_vet_image.png";
 import veteranImage2 from "../../imports/2nd_vet_logo.png";
-import { COMPANY_INFO } from "../lib/constants";
+import { COMPANY_INFO, portfolio } from "../lib/constants";
 import { handleSmoothScroll } from "../lib/utils/scroll";
 import { trackEvent } from "../lib/analytics";
 
@@ -108,6 +108,7 @@ ${formData.message}
             <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700 hover:text-blue-600 transition">About</a>
               <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="text-slate-700 hover:text-blue-600 transition">Pricing</a>
+              <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700 hover:text-blue-600 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700 hover:text-blue-600 transition">Contact</a>
             </nav>
 
@@ -127,6 +128,7 @@ ${formData.message}
               <nav className="flex flex-col gap-4 font-semibold">
                 <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700">About</a>
                 <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="text-slate-700">Pricing</a>
+                <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700">Portfolio</a>
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
                 <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
@@ -626,8 +628,58 @@ ${formData.message}
           </div>
         </section>
 
+        {/* Portfolio Section */}
+        <section id="portfolio" className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
+              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Our Work</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
+                Featured Projects
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                Real businesses we've helped establish their digital presence and drive growth.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {portfolio.slice(0, 2).map((item, idx) => (
+                <motion.div
+                  key={item.name}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeUp}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <a
+                    href={item.url || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("click", "Portfolio", item.name)}
+                    className="block h-full group"
+                  >
+                    <Card className="h-full border-2 border-slate-200 hover:border-blue-400 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1">
+                      <CardContent className="p-8">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg mb-6">
+                          <Globe className="h-7 w-7 text-white" />
+                        </div>
+                        <p className="text-xs font-black uppercase tracking-wider text-blue-600 mb-3">{item.category}</p>
+                        <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition">{item.name}</h3>
+                        <p className="text-slate-600 font-medium leading-relaxed mb-6">{item.text}</p>
+                        <div className="flex items-center text-blue-600 font-bold group-hover:gap-2 transition-all">
+                          View Project <ArrowRight className="h-5 w-5 ml-1" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
-        <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
               <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Get In Touch</p>
@@ -777,6 +829,7 @@ ${formData.message}
             <div className="flex flex-wrap gap-6 font-bold md:justify-end">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="hover:text-blue-400 transition">About</a>
               <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="hover:text-blue-400 transition">Pricing</a>
+              <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="hover:text-blue-400 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="hover:text-blue-400 transition">Contact</a>
             </div>
           </div>
