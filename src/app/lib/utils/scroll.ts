@@ -3,7 +3,18 @@
 export function scrollToSection(id: string) {
   const element = document.querySelector(id);
   if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Get header height for offset calculation
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    // Calculate position with header offset
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
   }
 }
 
@@ -13,8 +24,14 @@ export function handleSmoothScroll(
   callback?: () => void
 ) {
   e.preventDefault();
-  scrollToSection(id);
+
+  // Close mobile menu first if callback provided
   if (callback) {
     callback();
   }
+
+  // Small delay to let menu close animation complete
+  setTimeout(() => {
+    scrollToSection(id);
+  }, 100);
 }
