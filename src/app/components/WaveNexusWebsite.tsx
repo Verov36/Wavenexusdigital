@@ -128,7 +128,7 @@ ${formData.message}
 
             <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-                Free Consultation
+                Free Audit
               </Button>
             </a>
 
@@ -146,7 +146,7 @@ ${formData.message}
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
                 <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                    Free Consultation
+                    Free Audit
                   </Button>
                 </a>
               </nav>
@@ -751,7 +751,7 @@ ${formData.message}
                   <Card className="border-2 border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100">
                     <CardContent className="p-6 text-center">
                       <Award className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-                      <h3 className="text-xl font-black text-slate-900 mb-2">Book a Free Consultation</h3>
+                      <h3 className="text-xl font-black text-slate-900 mb-2">Book a Free Audit</h3>
                       <p className="text-sm text-slate-600 mb-4">Let's discuss your project in detail</p>
                       <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
                         <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">
