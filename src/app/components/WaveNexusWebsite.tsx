@@ -126,7 +126,7 @@ ${formData.message}
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700 hover:text-blue-600 transition">Contact</a>
             </nav>
 
-            <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex">
+            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                 Free Audit
               </Button>
@@ -144,7 +144,7 @@ ${formData.message}
                 <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="text-slate-700">Pricing</a>
                 <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700">Portfolio</a>
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
-                <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
+                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                     Free Audit
                   </Button>
@@ -751,11 +751,11 @@ ${formData.message}
                   <Card className="border-2 border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100">
                     <CardContent className="p-6 text-center">
                       <Award className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-                      <h3 className="text-xl font-black text-slate-900 mb-2">Book a Free Audit</h3>
-                      <p className="text-sm text-slate-600 mb-4">Let's discuss your project in detail</p>
-                      <a href={COMPANY_INFO.calendarLink} target="_blank" rel="noopener noreferrer">
+                      <h3 className="text-xl font-black text-slate-900 mb-2">Get Your Free Audit</h3>
+                      <p className="text-sm text-slate-600 mb-4">Complete our intake form to get started</p>
+                      <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
                         <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">
-                          Schedule Now
+                          Start Now
                         </Button>
                       </a>
                     </CardContent>
