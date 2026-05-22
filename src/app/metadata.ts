@@ -1,22 +1,22 @@
 export const metadata = {
-  title: "WaveNexus Digital Invest | Modern Web Design & SEO Services",
-  description: "WaveNexus Digital Invest creates clean, modern websites and growth systems optimized for SEO and AI search engines. We help businesses get more leads, stronger branding, and better visibility online.",
-  keywords: "web design, SEO, digital marketing, AI optimization, branding, website development, local SEO, website design services, professional web design, mobile responsive websites, conversion optimization",
+  title: "Website Development Hampton Roads VA | Website Developers Suffolk, Virginia Beach, Chesapeake | WaveNexus Digital",
+  description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development services for businesses in Southeast Virginia. Custom web development, SEO optimization, and digital solutions.",
+  keywords: "website developers Hampton Roads, website development Virginia Beach, web developers Suffolk VA, website development Chesapeake, website developers Newport News, Hampton Roads web development, Suffolk website design, Virginia Beach web developers, Chesapeake website development, Newport News web design, local website developers, website development near me, professional website developers, custom website development, web development services, business website development, responsive web development, SEO website development, affordable website development Virginia",
   author: "WaveNexus Digital Invest",
   canonical: typeof window !== "undefined" ? window.location.origin : "https://wavenexusdigitalinvest.com",
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   language: "en-US",
   openGraph: {
-    title: "WaveNexus Digital Invest | Modern Web Design & SEO Services",
-    description: "Professional web design, SEO, and digital marketing services for local businesses.",
+    title: "Website Development Hampton Roads VA | Suffolk, Virginia Beach, Chesapeake | WaveNexus Digital",
+    description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development and digital solutions for Southeast Virginia businesses.",
     type: "website",
     siteName: "WaveNexus Digital Invest",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaveNexus Digital Invest | Modern Web Design & SEO Services",
-    description: "Professional web design, SEO, and digital marketing services for local businesses.",
+    title: "Website Development Hampton Roads VA | Suffolk, Virginia Beach, Chesapeake",
+    description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development and digital solutions.",
   },
 };
 

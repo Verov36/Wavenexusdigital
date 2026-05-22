@@ -5,27 +5,65 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": COMPANY_INFO.name,
-  "description": "Professional web design, SEO, and digital marketing services for local businesses",
+  "description": "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, Newport News VA. Professional website development, web design, SEO, and digital solutions for Southeast Virginia businesses.",
   "url": typeof window !== "undefined" ? window.location.origin : "",
   "telephone": COMPANY_INFO.phone,
   "email": COMPANY_INFO.email,
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "US",
-    "addressRegion": COMPANY_INFO.location
+    "addressRegion": "Virginia",
+    "addressLocality": "Hampton Roads"
   },
   "sameAs": [],
   "priceRange": "$$",
-  "areaServed": {
-    "@type": "Country",
-    "name": "United States"
-  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Suffolk",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Virginia Beach",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Chesapeake",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Newport News",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Hampton",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Norfolk",
+      "addressRegion": "VA"
+    },
+    {
+      "@type": "City",
+      "name": "Portsmouth",
+      "addressRegion": "VA"
+    }
+  ],
   "serviceType": [
+    "Website Development",
+    "Web Development Services",
+    "Custom Website Development",
     "Web Design",
     "SEO Services",
     "Digital Marketing",
-    "Branding",
-    "Website Development"
+    "Web Application Development",
+    "Responsive Web Development",
+    "Branding"
   ]
 };
 
@@ -34,7 +72,7 @@ export const websiteSchema = {
   "@type": "WebSite",
   "name": COMPANY_INFO.name,
   "url": typeof window !== "undefined" ? window.location.origin : "",
-  "description": "Modern websites and digital growth systems optimized for SEO and AI search engines",
+  "description": "Professional website development services and custom web development solutions. Expert website developers creating modern websites optimized for SEO and AI search engines",
   "publisher": {
     "@type": "Organization",
     "name": COMPANY_INFO.name
@@ -45,16 +83,35 @@ export const serviceSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Website Design",
+    "serviceType": "Website Development",
     "provider": {
       "@type": "ProfessionalService",
       "name": COMPANY_INFO.name
     },
-    "description": "Modern, mobile-first websites built to convert visitors into leads and customers",
-    "areaServed": {
-      "@type": "Country",
-      "name": "United States"
-    }
+    "description": "Local website development services in Hampton Roads VA. Professional website developers serving Suffolk, Virginia Beach, Chesapeake, Newport News. Custom website development, web applications, and responsive web design.",
+    "areaServed": [
+      { "@type": "City", "name": "Suffolk", "addressRegion": "VA" },
+      { "@type": "City", "name": "Virginia Beach", "addressRegion": "VA" },
+      { "@type": "City", "name": "Chesapeake", "addressRegion": "VA" },
+      { "@type": "City", "name": "Newport News", "addressRegion": "VA" },
+      { "@type": "City", "name": "Hampton", "addressRegion": "VA" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Custom Web Development",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": COMPANY_INFO.name
+    },
+    "description": "Custom web development and web application development for Hampton Roads businesses. Local website developers in Suffolk, Virginia Beach, Chesapeake creating scalable web solutions.",
+    "areaServed": [
+      { "@type": "City", "name": "Suffolk", "addressRegion": "VA" },
+      { "@type": "City", "name": "Virginia Beach", "addressRegion": "VA" },
+      { "@type": "City", "name": "Chesapeake", "addressRegion": "VA" },
+      { "@type": "City", "name": "Newport News", "addressRegion": "VA" }
+    ]
   },
   {
     "@context": "https://schema.org",
@@ -64,7 +121,7 @@ export const serviceSchemas = [
       "@type": "ProfessionalService",
       "name": COMPANY_INFO.name
     },
-    "description": "Strong on-page structure, local SEO foundations, and AI-optimized content for better visibility",
+    "description": "SEO-optimized website development with strong on-page structure, local SEO foundations, and AI-optimized content for better visibility",
     "areaServed": {
       "@type": "Country",
       "name": "United States"
@@ -78,7 +135,7 @@ export const serviceSchemas = [
       "@type": "ProfessionalService",
       "name": COMPANY_INFO.name
     },
-    "description": "Clean visual identity systems that make your business look premium and trustworthy",
+    "description": "Professional branding and visual identity systems integrated with custom website development",
     "areaServed": {
       "@type": "Country",
       "name": "United States"

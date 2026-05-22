@@ -111,10 +111,16 @@ ${formData.message}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <img src={logoImage} alt={COMPANY_INFO.name} className="h-10 w-10" />
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0">
+                <img
+                  src={logoImage}
+                  alt={COMPANY_INFO.name}
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <div>
-                <p className="text-base font-bold text-slate-900">{COMPANY_INFO.name}</p>
+                <p className="text-sm font-bold text-slate-900 leading-tight">{COMPANY_INFO.name}</p>
                 <p className="text-xs text-slate-600 hidden sm:block">{COMPANY_INFO.tagline}</p>
               </div>
             </div>
@@ -170,11 +176,11 @@ ${formData.message}
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-                  Digital Solutions Built with Military Precision
+                  Hampton Roads Website Development Built with Military Precision
                 </h1>
 
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
-                  WaveNexus Digital Invest brings the same discipline and mission-first mindset from the Marine Corps to your digital success. We build websites, optimize for search, and create strategies that deliver real results.
+                  Local website developers serving Suffolk, Virginia Beach, Chesapeake, Newport News, and Hampton Roads VA. Marine Corps veteran-owned bringing military discipline to your digital success. Custom website development, SEO optimization, and web solutions for Southeast Virginia businesses.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -233,7 +239,7 @@ ${formData.message}
                 Founded by a Marine. Built on Discipline.
               </h2>
               <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                Our mission is simple: deliver exceptional digital solutions with the same commitment we learned in service.
+                Serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News with exceptional website development and digital solutions built on Marine Corps values.
               </p>
             </motion.div>
 
@@ -395,26 +401,26 @@ ${formData.message}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-16">
               <h3 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
                 <Globe className="h-8 w-8 text-blue-600" />
-                Website Design & Development
+                Professional Website Development Services
               </h3>
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all">
                   <CardContent className="p-8">
                     <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Starter</div>
                     <div className="text-4xl font-black text-slate-900 mb-2">$1,000 - $1,500</div>
-                    <p className="text-slate-600 mb-6">Perfect for small businesses getting started online</p>
+                    <p className="text-slate-600 mb-6">Professional website development for small businesses</p>
                     <ul className="space-y-3 mb-8">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">5-page professional website</span>
+                        <span className="text-sm text-slate-700">Custom 5-page website development</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Mobile responsive design</span>
+                        <span className="text-sm text-slate-700">Mobile responsive web design</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Basic SEO optimization</span>
+                        <span className="text-sm text-slate-700">SEO-optimized development</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -444,15 +450,15 @@ ${formData.message}
                   <CardContent className="p-8">
                     <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Growth</div>
                     <div className="text-4xl font-black text-slate-900 mb-2">$1,599 - $2,199</div>
-                    <p className="text-slate-600 mb-6">For businesses ready to scale their online presence</p>
+                    <p className="text-slate-600 mb-6">Advanced website development to scale your business</p>
                     <ul className="space-y-3 mb-8">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">10-page custom website</span>
+                        <span className="text-sm text-slate-700">Custom 10-page website development</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Content management system</span>
+                        <span className="text-sm text-slate-700">Content management system integration</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -460,11 +466,11 @@ ${formData.message}
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Blog integration</span>
+                        <span className="text-sm text-slate-700">Blog development & integration</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Analytics setup</span>
+                        <span className="text-sm text-slate-700">Analytics & tracking setup</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -487,27 +493,27 @@ ${formData.message}
                   <CardContent className="p-8">
                     <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Premium</div>
                     <div className="text-4xl font-black text-slate-900 mb-2">$2,999</div>
-                    <p className="text-slate-600 mb-6">Enterprise solution with custom features</p>
+                    <p className="text-slate-600 mb-6">Enterprise website development with custom features</p>
                     <ul className="space-y-3 mb-8">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Unlimited pages</span>
+                        <span className="text-sm text-slate-700">Unlimited page development</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom functionality</span>
+                        <span className="text-sm text-slate-700">Custom web application features</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">E-commerce integration</span>
+                        <span className="text-sm text-slate-700">E-commerce development & integration</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Priority support</span>
+                        <span className="text-sm text-slate-700">Dedicated developer support</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom timeline</span>
+                        <span className="text-sm text-slate-700">Custom development timeline</span>
                       </li>
                     </ul>
                     <Button
@@ -615,7 +621,7 @@ ${formData.message}
                   <CardContent className="p-6">
                     <Palette className="h-8 w-8 text-blue-600 mb-3" />
                     <h4 className="font-black text-slate-900 mb-2">Branding & Logo Design</h4>
-                    <p className="text-2xl font-black text-blue-600 mb-3">$800 - $4,000</p>
+                    <p className="text-2xl font-black text-blue-600 mb-3">$150 - $600</p>
                     <p className="text-sm text-slate-600">Professional brand identity and logo packages</p>
                   </CardContent>
                 </Card>
@@ -692,6 +698,97 @@ ${formData.message}
           </div>
         </section>
 
+        {/* Service Area Section */}
+        <section id="service-area" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-blue-900 via-slate-900 to-blue-900 text-white scroll-mt-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
+              <p className="text-sm font-black uppercase tracking-wider text-blue-300 mb-3">Service Area</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+                Serving Hampton Roads & Southeast Virginia
+              </h2>
+              <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+                Proudly serving local businesses throughout Hampton Roads with professional website development and digital solutions.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-12 mb-12">
+              <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+                <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 h-full">
+                  <CardContent className="p-8">
+                    <MapPin className="h-10 w-10 text-blue-300 mb-4" />
+                    <h3 className="text-2xl font-black text-white mb-6">Cities We Serve</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <h4 className="font-bold text-blue-300 mb-2">Primary Areas:</h4>
+                        <ul className="space-y-2 text-blue-100">
+                          <li>• Suffolk, VA</li>
+                          <li>• Virginia Beach, VA</li>
+                          <li>• Chesapeake, VA</li>
+                          <li>• Newport News, VA</li>
+                          <li>• Hampton, VA</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-blue-300 mb-2">Extended Areas:</h4>
+                        <ul className="space-y-2 text-blue-100">
+                          <li>• Norfolk, VA</li>
+                          <li>• Portsmouth, VA</li>
+                          <li>• York County, VA</li>
+                          <li>• Isle of Wight, VA</li>
+                          <li>• Williamsburg, VA</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}>
+                <Card className="bg-white/10 backdrop-blur-lg border-2 border-white/20 h-full">
+                  <CardContent className="p-8">
+                    <Phone className="h-10 w-10 text-blue-300 mb-4" />
+                    <h3 className="text-2xl font-black text-white mb-6">Local Contact Information</h3>
+                    <div className="space-y-6">
+                      <div>
+                        <p className="text-sm font-bold text-blue-300 mb-2">Phone</p>
+                        <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g, '')}`} className="text-xl font-black text-white hover:text-blue-300 transition">
+                          {COMPANY_INFO.phone}
+                        </a>
+                        <p className="text-sm text-blue-200 mt-1">Call or text for immediate assistance</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-blue-300 mb-2">Email</p>
+                        <a href={`mailto:${COMPANY_INFO.email}`} className="text-lg font-black text-white hover:text-blue-300 transition break-all">
+                          {COMPANY_INFO.email}
+                        </a>
+                        <p className="text-sm text-blue-200 mt-1">We respond within 24 hours</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-blue-300 mb-2">Serving</p>
+                        <p className="text-lg font-black text-white">Hampton Roads & Southeast Virginia</p>
+                        <p className="text-sm text-blue-200 mt-1">Proudly veteran-owned and locally operated</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.3 }} className="text-center">
+              <Card className="bg-gradient-to-r from-blue-600/20 to-indigo-600/20 backdrop-blur-lg border-2 border-blue-400/30 inline-block">
+                <CardContent className="p-6">
+                  <p className="text-lg font-bold text-white mb-4">
+                    <span className="text-blue-300">Local Website Developers</span> Committed to Hampton Roads Businesses
+                  </p>
+                  <p className="text-blue-100 max-w-2xl">
+                    As a veteran-owned business based in the Hampton Roads area, we understand the unique needs of local businesses in Suffolk, Virginia Beach, Chesapeake, Newport News, and surrounding communities. We provide personalized website development services with the dedication and discipline of the Marine Corps.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-white scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -742,8 +839,9 @@ ${formData.message}
                         <MapPin className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-500 mb-1">Location</p>
+                        <p className="text-sm font-bold text-slate-500 mb-1">Serving</p>
                         <p className="text-lg font-black text-slate-900">{COMPANY_INFO.location}</p>
+                        <p className="text-xs text-slate-600 mt-1">Suffolk, Virginia Beach, Chesapeake, Newport News</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -830,14 +928,14 @@ ${formData.message}
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img src={logoImage} alt={COMPANY_INFO.name} className="h-10 w-10" />
+                <img src={logoImage} alt={COMPANY_INFO.name} className="h-10 w-auto object-contain" />
                 <div>
                   <p className="text-xl font-black">{COMPANY_INFO.name}</p>
                   <p className="text-sm text-blue-300">{COMPANY_INFO.tagline}</p>
                 </div>
               </div>
               <p className="text-blue-200 max-w-md">
-                Veteran-owned digital solutions built with military precision. Helping businesses succeed online.
+                Veteran-owned website development and digital solutions built with military precision. Professional website developers helping businesses succeed online.
               </p>
             </div>
             <div className="flex flex-wrap gap-6 font-bold md:justify-end">

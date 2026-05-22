@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
   tagline: "Where Digital Meets Momentum",
   phone: "(910) 915-2221",
   email: "chris.repstein@wavenexusdigitalinvest.com",
-  location: "United States",
+  location: "Hampton Roads, Virginia",
   calendarLink: "https://calendar.app.google/95MNpjJrbGjj6qco6",
 };
 
