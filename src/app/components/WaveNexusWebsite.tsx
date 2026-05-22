@@ -112,7 +112,7 @@ ${formData.message}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0">
                 <img
                   src={logoImage}
                   alt={COMPANY_INFO.name}
