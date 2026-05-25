@@ -164,8 +164,8 @@ ${formData.message}
       <main>
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1760540257641-536ac2c633d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')] bg-cover bg-center opacity-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')] bg-cover bg-center opacity-75"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900/60"></div>
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
             <div className="max-w-3xl">
@@ -290,97 +290,118 @@ ${formData.message}
               </motion.div>
             </div>
 
-            {/* Our Values */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <h3 className="text-2xl font-black text-slate-900 mb-8 text-center">Our Core Values</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                      <Target className="h-7 w-7 text-white" />
-                    </div>
-                    <h4 className="font-black text-slate-900 mb-2">Mission-Focused</h4>
-                    <p className="text-sm text-slate-600">Every project gets our full commitment until completion</p>
-                  </CardContent>
-                </Card>
+            {/* Our Values & Process - With Strategic Background */}
+            <div className="relative mt-16 py-16 overflow-hidden rounded-2xl">
+              {/* Background Image with Parallax Effect */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.4 }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: "url('https://images.unsplash.com/photo-1524146128017-b9dd0bfd2778?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')"
+                }}
+              />
 
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                      <Users className="h-7 w-7 text-white" />
-                    </div>
-                    <h4 className="font-black text-slate-900 mb-2">Client-First</h4>
-                    <p className="text-sm text-slate-600">Your success is our success, period</p>
-                  </CardContent>
-                </Card>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-slate-50/70"></div>
 
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                      <Zap className="h-7 w-7 text-white" />
-                    </div>
-                    <h4 className="font-black text-slate-900 mb-2">Results-Driven</h4>
-                    <p className="text-sm text-slate-600">Data and performance guide every decision</p>
-                  </CardContent>
-                </Card>
+              {/* Content */}
+              <div className="relative">
+                {/* Our Values */}
+                <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+                  <h3 className="text-2xl font-black text-slate-900 mb-8 text-center">Our Core Values</h3>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all bg-white/95 backdrop-blur-sm">
+                      <CardContent className="p-6 text-center">
+                        <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                          <Target className="h-7 w-7 text-white" />
+                        </div>
+                        <h4 className="font-black text-slate-900 mb-2">Mission-Focused</h4>
+                        <p className="text-sm text-slate-600">Every project gets our full commitment until completion</p>
+                      </CardContent>
+                    </Card>
 
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-6 text-center">
-                    <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                      <Award className="h-7 w-7 text-white" />
+                    <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all bg-white/95 backdrop-blur-sm">
+                      <CardContent className="p-6 text-center">
+                        <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                          <Users className="h-7 w-7 text-white" />
+                        </div>
+                        <h4 className="font-black text-slate-900 mb-2">Client-First</h4>
+                        <p className="text-sm text-slate-600">Your success is our success, period</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all bg-white/95 backdrop-blur-sm">
+                      <CardContent className="p-6 text-center">
+                        <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                          <Zap className="h-7 w-7 text-white" />
+                        </div>
+                        <h4 className="font-black text-slate-900 mb-2">Results-Driven</h4>
+                        <p className="text-sm text-slate-600">Data and performance guide every decision</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all bg-white/95 backdrop-blur-sm">
+                      <CardContent className="p-6 text-center">
+                        <div className="mx-auto w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                          <Award className="h-7 w-7 text-white" />
+                        </div>
+                        <h4 className="font-black text-slate-900 mb-2">Excellence</h4>
+                        <p className="text-sm text-slate-600">We hold ourselves to the highest standards</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </motion.div>
+
+                {/* Our Process */}
+                <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-16">
+                  <h3 className="text-2xl font-black text-slate-900 mb-8 text-center">How We Work</h3>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="relative bg-white/95 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-200">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">1</div>
+                        <div>
+                          <h4 className="font-black text-slate-900 mb-2">Listen</h4>
+                          <p className="text-sm text-slate-600">We take time to understand your business, goals, and challenges</p>
+                        </div>
+                      </div>
                     </div>
-                    <h4 className="font-black text-slate-900 mb-2">Excellence</h4>
-                    <p className="text-sm text-slate-600">We hold ourselves to the highest standards</p>
-                  </CardContent>
-                </Card>
+
+                    <div className="relative bg-white/95 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-200">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">2</div>
+                        <div>
+                          <h4 className="font-black text-slate-900 mb-2">Strategize</h4>
+                          <p className="text-sm text-slate-600">We craft a customized plan tailored to your unique needs</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="relative bg-white/95 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-200">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">3</div>
+                        <div>
+                          <h4 className="font-black text-slate-900 mb-2">Execute</h4>
+                          <p className="text-sm text-slate-600">We build, launch, and optimize with precision</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="relative bg-white/95 backdrop-blur-sm p-6 rounded-xl border-2 border-slate-200">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">4</div>
+                        <div>
+                          <h4 className="font-black text-slate-900 mb-2">Support</h4>
+                          <p className="text-sm text-slate-600">We're with you for the long haul, ensuring continued success</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-
-            {/* Our Process */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-16">
-              <h3 className="text-2xl font-black text-slate-900 mb-8 text-center">How We Work</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="relative">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">1</div>
-                    <div>
-                      <h4 className="font-black text-slate-900 mb-2">Listen</h4>
-                      <p className="text-sm text-slate-600">We take time to understand your business, goals, and challenges</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">2</div>
-                    <div>
-                      <h4 className="font-black text-slate-900 mb-2">Strategize</h4>
-                      <p className="text-sm text-slate-600">We craft a customized plan tailored to your unique needs</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">3</div>
-                    <div>
-                      <h4 className="font-black text-slate-900 mb-2">Execute</h4>
-                      <p className="text-sm text-slate-600">We build, launch, and optimize with precision</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-black text-xl text-white">4</div>
-                    <div>
-                      <h4 className="font-black text-slate-900 mb-2">Support</h4>
-                      <p className="text-sm text-slate-600">We're with you for the long haul, ensuring continued success</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -410,25 +431,25 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$1,000 - $1,500</div>
                     <p className="text-slate-600 mb-6">Professional website development for small businesses</p>
                     <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom 5-page website development</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Custom 5-page website development</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Mobile responsive web design</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Mobile responsive web design</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">SEO-optimized development</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">SEO-optimized development</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Contact form integration</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Contact form integration</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">2 weeks delivery</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">2 weeks delivery</span>
                       </li>
                     </ul>
                     <Button
@@ -452,29 +473,29 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$1,599 - $2,199</div>
                     <p className="text-slate-600 mb-6">Advanced website development to scale your business</p>
                     <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom 10-page website development</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Custom 10-page website development</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Content management system integration</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Content management system integration</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Advanced SEO & AI optimization</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Advanced SEO & AI optimization</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Blog development & integration</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Blog development & integration</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Analytics & tracking setup</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Analytics & tracking setup</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">3 weeks delivery</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">3 weeks delivery</span>
                       </li>
                     </ul>
                     <Button
@@ -495,25 +516,25 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$2,999</div>
                     <p className="text-slate-600 mb-6">Enterprise website development with custom features</p>
                     <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Unlimited page development</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Unlimited page development</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom web application features</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Custom web application features</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">E-commerce development & integration</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">E-commerce development & integration</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Dedicated developer support</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Dedicated developer support</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Custom development timeline</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Custom development timeline</span>
                       </li>
                     </ul>
                     <Button
@@ -543,17 +564,17 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$250/mo</div>
                     <p className="text-slate-600 mb-6">Essential SEO for local businesses</p>
                     <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Keyword research</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Keyword research</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">On-page optimization</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">On-page optimization</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Monthly reporting</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Monthly reporting</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -565,21 +586,21 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$450/mo</div>
                     <p className="text-slate-600 mb-6">Comprehensive SEO & content strategy</p>
                     <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Everything in Basic</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Everything in Basic</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Content creation (4 posts/mo)</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Content creation (4 posts/mo)</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Technical SEO audit</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Technical SEO audit</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Local SEO optimization</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Local SEO optimization</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -591,21 +612,21 @@ ${formData.message}
                     <div className="text-4xl font-black text-slate-900 mb-2">$650/mo</div>
                     <p className="text-slate-600 mb-6">Full-service SEO & AI strategy</p>
                     <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Everything in Advanced</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Everything in Advanced</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">AI search optimization</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">AI search optimization</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Competitor analysis</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Competitor analysis</span>
                       </li>
-                      <li className="flex items-start gap-2">
+                      <li className="flex items-start gap-3">
                         <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">Priority support</span>
+                        <span className="text-sm text-slate-700 text-left flex-1">Priority support</span>
                       </li>
                     </ul>
                   </CardContent>
