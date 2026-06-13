@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import {
-  CheckCircle2,
   ArrowRight,
   Phone,
   Mail,
@@ -11,10 +10,9 @@ import {
   Users,
   Zap,
   Award,
-  TrendingUp,
   Globe,
-  Search,
-  Palette,
+  BookOpen,
+  Calendar,
   Menu,
   X,
 } from "lucide-react";
@@ -127,7 +125,7 @@ ${formData.message}
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700 hover:text-blue-600 transition">About</a>
-              <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="text-slate-700 hover:text-blue-600 transition">Pricing</a>
+              <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="text-slate-700 hover:text-blue-600 transition">Blog</a>
               <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700 hover:text-blue-600 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700 hover:text-blue-600 transition">Contact</a>
             </nav>
@@ -147,7 +145,7 @@ ${formData.message}
             <div className="md:hidden py-4 border-t border-slate-200">
               <nav className="flex flex-col gap-4 font-semibold">
                 <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700">About</a>
-                <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="text-slate-700">Pricing</a>
+                <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="text-slate-700">Blog</a>
                 <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700">Portfolio</a>
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
                 <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
@@ -198,12 +196,12 @@ ${formData.message}
                     size="lg"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleScroll(e as any, "#pricing");
+                      handleScroll(e as any, "#blog");
                     }}
                     variant="outline"
                     className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold text-lg px-8"
                   >
-                    View Pricing
+                    Read Our Blog
                   </Button>
                 </div>
 
@@ -405,266 +403,111 @@ ${formData.message}
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-white scroll-mt-20">
+        {/* Blog Section */}
+        <section id="blog" className="py-16 sm:py-20 lg:py-24 bg-white scroll-mt-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-12">
-              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Pricing</p>
+              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Insights & Resources</p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-                Clear, Transparent Pricing
+                Digital Marketing Insights for Hampton Roads Businesses
               </h2>
               <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                No hidden fees, no surprises. Choose the package that fits your business needs.
+                Practical tips on website development, local SEO, and digital strategy from a veteran-owned perspective.
               </p>
             </motion.div>
 
-            {/* Website Design Packages */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-              <h3 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
-                <Globe className="h-8 w-8 text-blue-600" />
-                Professional Website Development Services
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all">
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Starter</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$1,000 - $1,500</div>
-                    <p className="text-slate-600 mb-6">Professional website development for small businesses</p>
-                    <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Custom 5-page website development</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Mobile responsive web design</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">SEO-optimized development</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Contact form integration</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">2 weeks delivery</span>
-                      </li>
-                    </ul>
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleScroll(e as any, "#contact");
-                      }}
-                      className="w-full bg-blue-600 hover:bg-blue-700"
-                    >
-                      Get Started
-                    </Button>
-                  </CardContent>
-                </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  category: "Local SEO",
+                  date: "June 10, 2026",
+                  title: "Why Hampton Roads Businesses Need Hyper-Local SEO in 2026",
+                  excerpt: "With more consumers searching for services 'near me,' local SEO has never been more critical for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News. Here's how to dominate your local market.",
+                  readTime: "5 min read",
+                },
+                {
+                  category: "Website Development",
+                  date: "May 28, 2026",
+                  title: "5 Signs Your Business Website Is Costing You Customers",
+                  excerpt: "A slow, outdated, or poorly designed website can silently drain leads from your business. Discover the top warning signs and what modern website development can do to turn things around.",
+                  readTime: "4 min read",
+                },
+                {
+                  category: "Veteran Business",
+                  date: "May 15, 2026",
+                  title: "Military Discipline and the Digital Marketing Mindset",
+                  excerpt: "The values learned in the Marine Corps — mission focus, adaptability, and executing under pressure — translate directly into building successful digital strategies for small businesses.",
+                  readTime: "6 min read",
+                },
+                {
+                  category: "Web Design",
+                  date: "April 30, 2026",
+                  title: "Mobile-First Design: Why 70% of Your Visitors Are on Their Phones",
+                  excerpt: "If your website isn't optimized for mobile, you're losing more than half your potential customers. We break down what mobile-first website development means and why it matters for your bottom line.",
+                  readTime: "4 min read",
+                },
+                {
+                  category: "AI & SEO",
+                  date: "April 14, 2026",
+                  title: "How AI Search Is Changing SEO for Local Service Businesses",
+                  excerpt: "Google's AI Overviews and tools like ChatGPT are reshaping how people find businesses online. Learn how to optimize your website to appear in AI-driven search results and stay ahead of the competition.",
+                  readTime: "7 min read",
+                },
+                {
+                  category: "Digital Strategy",
+                  date: "March 28, 2026",
+                  title: "Building a Digital Presence from Scratch: A Step-by-Step Guide for Small Businesses",
+                  excerpt: "Whether you're launching a new business in Hampton Roads or modernizing an established one, this guide walks you through every step of building a strong, lead-generating digital presence.",
+                  readTime: "8 min read",
+                },
+              ].map((post, idx) => (
+                <motion.div
+                  key={post.title}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={fadeUp}
+                  transition={{ delay: (idx % 3) * 0.1 }}
+                >
+                  <Card className="h-full border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all group cursor-pointer">
+                    <CardContent className="p-6 flex flex-col h-full">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                          {post.category}
+                        </span>
+                        <div className="flex items-center gap-1 text-xs text-slate-400">
+                          <Calendar className="h-3.5 w-3.5" />
+                          <span>{post.date}</span>
+                        </div>
+                      </div>
+                      <h3 className="font-black text-slate-900 mb-3 group-hover:text-blue-600 transition leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed flex-1 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                        <span className="text-xs text-slate-400 flex items-center gap-1">
+                          <BookOpen className="h-3.5 w-3.5" />
+                          {post.readTime}
+                        </span>
+                        <span className="text-sm font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">
+                          Read More <ArrowRight className="h-4 w-4" />
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
 
-                <Card className="border-2 border-blue-600 shadow-xl relative">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <span className="bg-blue-600 text-white text-xs font-black uppercase px-4 py-1 rounded-full">Most Popular</span>
-                  </div>
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Growth</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$1,599 - $2,199</div>
-                    <p className="text-slate-600 mb-6">Advanced website development to scale your business</p>
-                    <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Custom 10-page website development</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Content management system integration</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Advanced SEO & AI optimization</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Blog development & integration</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Analytics & tracking setup</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">3 weeks delivery</span>
-                      </li>
-                    </ul>
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleScroll(e as any, "#contact");
-                      }}
-                      className="w-full bg-blue-600 hover:bg-blue-700"
-                    >
-                      Get Started
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all">
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Premium</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$2,999</div>
-                    <p className="text-slate-600 mb-6">Enterprise website development with custom features</p>
-                    <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Unlimited page development</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Custom web application features</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">E-commerce development & integration</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Dedicated developer support</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Custom development timeline</span>
-                      </li>
-                    </ul>
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleScroll(e as any, "#contact");
-                      }}
-                      className="w-full bg-blue-600 hover:bg-blue-700"
-                    >
-                      Get Started
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-
-            {/* SEO & Marketing Services */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-16">
-              <h3 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
-                <Search className="h-8 w-8 text-blue-600" />
-                SEO & AI Optimization
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Basic</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$250/mo</div>
-                    <p className="text-slate-600 mb-6">Essential SEO for local businesses</p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Keyword research</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">On-page optimization</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Monthly reporting</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Advanced</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$450/mo</div>
-                    <p className="text-slate-600 mb-6">Comprehensive SEO & content strategy</p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Everything in Basic</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Content creation (4 posts/mo)</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Technical SEO audit</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Local SEO optimization</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-slate-200 hover:border-blue-400 transition-all">
-                  <CardContent className="p-8">
-                    <div className="text-sm font-black uppercase tracking-wider text-blue-600 mb-2">Enterprise</div>
-                    <div className="text-4xl font-black text-slate-900 mb-2">$650/mo</div>
-                    <p className="text-slate-600 mb-6">Full-service SEO & AI strategy</p>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Everything in Advanced</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">AI search optimization</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Competitor analysis</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700 text-left flex-1">Priority support</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-
-            {/* Additional Services */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <h3 className="text-2xl font-black text-slate-900 mb-8">Additional Services</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card className="border-2 border-slate-200">
-                  <CardContent className="p-6">
-                    <Palette className="h-8 w-8 text-blue-600 mb-3" />
-                    <h4 className="font-black text-slate-900 mb-2">Branding & Logo Design</h4>
-                    <p className="text-2xl font-black text-blue-600 mb-3">$150 - $600</p>
-                    <p className="text-sm text-slate-600">Professional brand identity and logo packages</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-slate-200">
-                  <CardContent className="p-6">
-                    <TrendingUp className="h-8 w-8 text-blue-600 mb-3" />
-                    <h4 className="font-black text-slate-900 mb-2">Social Media Management</h4>
-                    <p className="text-2xl font-black text-blue-600 mb-3">$300 - $1,000/mo</p>
-                    <p className="text-sm text-slate-600">Full social media strategy and management</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-slate-200">
-                  <CardContent className="p-6">
-                    <Globe className="h-8 w-8 text-blue-600 mb-3" />
-                    <h4 className="font-black text-slate-900 mb-2">Website Maintenance</h4>
-                    <p className="text-2xl font-black text-blue-600 mb-3">$150 - $500/mo</p>
-                    <p className="text-sm text-slate-600">Keep your site updated, secure, and running smoothly</p>
-                  </CardContent>
-                </Card>
-              </div>
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
+              <p className="text-slate-600 mb-4">Want personalized digital marketing advice for your Hampton Roads business?</p>
+              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
+                  Get Your Free Audit <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
             </motion.div>
           </div>
         </section>
@@ -683,7 +526,7 @@ ${formData.message}
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {portfolio.slice(0, 2).map((item, idx) => (
+              {portfolio.filter(p => p.name !== "Dizon Digital Media").map((item, idx) => (
                 <motion.div
                   key={item.name}
                   initial="hidden"
@@ -961,7 +804,7 @@ ${formData.message}
             </div>
             <div className="flex flex-wrap gap-6 font-bold md:justify-end">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="hover:text-blue-400 transition">About</a>
-              <a href="#pricing" onClick={(e) => handleScroll(e, "#pricing")} className="hover:text-blue-400 transition">Pricing</a>
+              <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="hover:text-blue-400 transition">Blog</a>
               <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="hover:text-blue-400 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="hover:text-blue-400 transition">Contact</a>
             </div>
