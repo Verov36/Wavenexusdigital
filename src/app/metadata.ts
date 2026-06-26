@@ -1,143 +1,200 @@
+// Hampton Roads, VA geo coordinates (Suffolk area)
+const GEO_LATITUDE = "36.7282";
+const GEO_LONGITUDE = "-76.5836";
+const BASE_URL = typeof window !== "undefined" ? window.location.origin : "https://wavenexusdigitalinvest.com";
+
 export const metadata = {
-  title: "Website Development Hampton Roads VA | Website Developers Suffolk, Virginia Beach, Chesapeake | WaveNexus Digital",
-  description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development services for businesses in Southeast Virginia. Custom web development, SEO optimization, and digital solutions.",
-  keywords: "website developers Hampton Roads, website development Virginia Beach, web developers Suffolk VA, website development Chesapeake, website developers Newport News, Hampton Roads web development, Suffolk website design, Virginia Beach web developers, Chesapeake website development, Newport News web design, local website developers, website development near me, professional website developers, custom website development, web development services, business website development, responsive web development, SEO website development, affordable website development Virginia",
+  // Lead with "near me" — Google treats this as proximity intent, not a keyword
+  title: "Web Developer Near Me | Local Website Designer Hampton Roads VA | WaveNexus Digital Invest",
+
+  // Answer-ready: direct answer in first 40-60 words (AI citation best practice)
+  description: "WaveNexus Digital Invest is a veteran-owned local web designer and digital marketing team near you in Hampton Roads, VA. We build websites that bring in leads, run local SEO, and offer AI search optimization for Suffolk, Virginia Beach, Chesapeake, and Newport News businesses. Also makers of Nexus Field field service software.",
+
+  keywords: [
+    // Primary "near me" intent queries
+    "web developer near me",
+    "best web developer near me",
+    "website designer near me",
+    "local website designer near me",
+    "local marketing team near me",
+    "digital marketing near me",
+    "web design near me",
+    "SEO company near me",
+    "local SEO company near me",
+    "website design company near me",
+    "web development company near me",
+    "affordable web designer near me",
+    "small business web designer near me",
+    "branding company near me",
+    "logo designer near me",
+    "social media management near me",
+    // Hampton Roads geo
+    "web developer Hampton Roads",
+    "local website designer Hampton Roads VA",
+    "web design Hampton Roads",
+    "digital marketing Hampton Roads VA",
+    "SEO company Hampton Roads",
+    "local marketing team Hampton Roads",
+    "website development Hampton Roads",
+    "marketing agency Hampton Roads Virginia",
+    // Virginia Beach
+    "web developer Virginia Beach VA",
+    "website designer Virginia Beach",
+    "local web design Virginia Beach",
+    "digital marketing Virginia Beach",
+    "SEO services Virginia Beach VA",
+    // Suffolk
+    "web developer Suffolk VA",
+    "website designer Suffolk Virginia",
+    "web design Suffolk VA",
+    // Chesapeake
+    "web developer Chesapeake VA",
+    "website designer Chesapeake Virginia",
+    "digital marketing Chesapeake VA",
+    // Newport News
+    "web developer Newport News VA",
+    "website design Newport News Virginia",
+    // Norfolk
+    "web developer Norfolk VA",
+    "website designer Norfolk Virginia",
+    // Veteran angle
+    "veteran owned web design company Virginia",
+    "veteran owned digital marketing agency Hampton Roads",
+    "marine corps veteran owned business Virginia",
+    // AI SEO — growing query category
+    "AI SEO optimization Hampton Roads",
+    "GEO optimization Virginia",
+    "Google AI Overview optimization",
+    "ChatGPT SEO optimization",
+    "AI search optimization near me",
+    // Nexus Field
+    "field service management software",
+    "field service app",
+    "HVAC job tracking software",
+    "parts inventory field service app",
+    "field service software for plumbers",
+    "field service management app Virginia",
+    "Nexus Field app",
+    "technician management software",
+  ].join(", "),
+
   author: "WaveNexus Digital Invest",
-  canonical: typeof window !== "undefined" ? window.location.origin : "https://wavenexusdigitalinvest.com",
+  canonical: BASE_URL,
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   language: "en-US",
+
   openGraph: {
-    title: "Website Development Hampton Roads VA | Suffolk, Virginia Beach, Chesapeake | WaveNexus Digital",
-    description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development and digital solutions for Southeast Virginia businesses.",
+    title: "Web Developer Near Me | Local Website Designer Hampton Roads VA | WaveNexus Digital",
+    description: "Veteran-owned local web design and digital marketing team in Hampton Roads, VA. Custom websites, local SEO, AI SEO optimization, branding — and makers of Nexus Field field service software.",
     type: "website",
     siteName: "WaveNexus Digital Invest",
     locale: "en_US",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Website Development Hampton Roads VA | Suffolk, Virginia Beach, Chesapeake",
-    description: "Local website developers serving Hampton Roads, Suffolk, Virginia Beach, Chesapeake, and Newport News VA. Professional website development and digital solutions.",
+    title: "Local Web Designer & Digital Marketing | Hampton Roads VA | WaveNexus Digital",
+    description: "Veteran-owned web design, local SEO, AI SEO, and digital marketing serving Hampton Roads VA. Also makers of Nexus Field field service management software.",
+  },
+
+  geo: {
+    region: "US-VA",
+    placename: "Hampton Roads, Virginia",
+    latitude: GEO_LATITUDE,
+    longitude: GEO_LONGITUDE,
+    icbm: `${GEO_LATITUDE}, ${GEO_LONGITUDE}`,
   },
 };
 
 export function setMetadata() {
-  // Set document title
   document.title = metadata.title;
 
-  // Set meta description
-  let metaDescription = document.querySelector('meta[name="description"]');
-  if (!metaDescription) {
-    metaDescription = document.createElement("meta");
-    metaDescription.setAttribute("name", "description");
-    document.head.appendChild(metaDescription);
-  }
-  metaDescription.setAttribute("content", metadata.description);
+  const head = document.head;
 
-  // Set meta keywords
-  let metaKeywords = document.querySelector('meta[name="keywords"]');
-  if (!metaKeywords) {
-    metaKeywords = document.createElement("meta");
-    metaKeywords.setAttribute("name", "keywords");
-    document.head.appendChild(metaKeywords);
-  }
-  metaKeywords.setAttribute("content", metadata.keywords);
+  const setOrCreate = (selector: string, attrKey: string, attrVal: string, contentVal: string) => {
+    let el = document.querySelector(selector) as HTMLMetaElement | null;
+    if (!el) {
+      el = document.createElement("meta") as HTMLMetaElement;
+      el.setAttribute(attrKey, attrVal);
+      head.appendChild(el);
+    }
+    el.setAttribute("content", contentVal);
+  };
 
-  // Set meta author
-  let metaAuthor = document.querySelector('meta[name="author"]');
-  if (!metaAuthor) {
-    metaAuthor = document.createElement("meta");
-    metaAuthor.setAttribute("name", "author");
-    document.head.appendChild(metaAuthor);
-  }
-  metaAuthor.setAttribute("content", metadata.author);
+  // Core meta
+  setOrCreate('meta[name="description"]', "name", "description", metadata.description);
+  setOrCreate('meta[name="keywords"]', "name", "keywords", metadata.keywords);
+  setOrCreate('meta[name="author"]', "name", "author", metadata.author);
+  setOrCreate('meta[name="robots"]', "name", "robots", metadata.robots);
 
-  // Set robots meta
-  let metaRobots = document.querySelector('meta[name="robots"]');
-  if (!metaRobots) {
-    metaRobots = document.createElement("meta");
-    metaRobots.setAttribute("name", "robots");
-    document.head.appendChild(metaRobots);
-  }
-  metaRobots.setAttribute("content", metadata.robots);
+  // Geo meta tags — local SEO signal for geo-targeted search
+  setOrCreate('meta[name="geo.region"]', "name", "geo.region", metadata.geo.region);
+  setOrCreate('meta[name="geo.placename"]', "name", "geo.placename", metadata.geo.placename);
+  setOrCreate('meta[name="geo.position"]', "name", "geo.position", `${metadata.geo.latitude};${metadata.geo.longitude}`);
+  setOrCreate('meta[name="ICBM"]', "name", "ICBM", metadata.geo.icbm);
 
-  // Set language
+  // Mobile
+  setOrCreate('meta[name="format-detection"]', "name", "format-detection", "telephone=yes");
+  setOrCreate('meta[name="apple-mobile-web-app-capable"]', "name", "apple-mobile-web-app-capable", "yes");
+  setOrCreate('meta[name="apple-mobile-web-app-status-bar-style"]', "name", "apple-mobile-web-app-status-bar-style", "black-translucent");
+
+  // Language / locale
   document.documentElement.setAttribute("lang", "en");
+  setOrCreate('meta[name="language"]', "name", "language", "English");
+  setOrCreate('meta[http-equiv="content-language"]', "http-equiv", "content-language", "en-us");
 
-  // Set canonical URL
+  // Canonical
   let linkCanonical = document.querySelector('link[rel="canonical"]');
   if (!linkCanonical) {
     linkCanonical = document.createElement("link");
     linkCanonical.setAttribute("rel", "canonical");
-    document.head.appendChild(linkCanonical);
+    head.appendChild(linkCanonical);
   }
   linkCanonical.setAttribute("href", metadata.canonical);
 
-  // Set viewport - optimized for mobile
+  // Viewport
   const metaViewport = document.querySelector('meta[name="viewport"]');
   if (metaViewport) {
     metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover");
   }
 
-  // Add mobile-specific meta tags
-  let metaFormatDetection = document.querySelector('meta[name="format-detection"]');
-  if (!metaFormatDetection) {
-    metaFormatDetection = document.createElement("meta");
-    metaFormatDetection.setAttribute("name", "format-detection");
-    document.head.appendChild(metaFormatDetection);
-  }
-  metaFormatDetection.setAttribute("content", "telephone=yes");
-
-  // iOS-specific optimizations
-  let metaAppleMobileWebAppCapable = document.querySelector('meta[name="apple-mobile-web-app-capable"]');
-  if (!metaAppleMobileWebAppCapable) {
-    metaAppleMobileWebAppCapable = document.createElement("meta");
-    metaAppleMobileWebAppCapable.setAttribute("name", "apple-mobile-web-app-capable");
-    document.head.appendChild(metaAppleMobileWebAppCapable);
-  }
-  metaAppleMobileWebAppCapable.setAttribute("content", "yes");
-
-  let metaAppleMobileWebAppStatusBarStyle = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
-  if (!metaAppleMobileWebAppStatusBarStyle) {
-    metaAppleMobileWebAppStatusBarStyle = document.createElement("meta");
-    metaAppleMobileWebAppStatusBarStyle.setAttribute("name", "apple-mobile-web-app-status-bar-style");
-    document.head.appendChild(metaAppleMobileWebAppStatusBarStyle);
-  }
-  metaAppleMobileWebAppStatusBarStyle.setAttribute("content", "black-translucent");
-
-  // Open Graph tags
-  const ogTags = [
+  // Open Graph
+  [
     { property: "og:title", content: metadata.openGraph.title },
     { property: "og:description", content: metadata.openGraph.description },
     { property: "og:type", content: metadata.openGraph.type },
     { property: "og:site_name", content: metadata.openGraph.siteName },
     { property: "og:locale", content: metadata.openGraph.locale },
     { property: "og:url", content: metadata.canonical },
-  ];
-
-  ogTags.forEach(({ property, content }) => {
+  ].forEach(({ property, content }) => {
     let tag = document.querySelector(`meta[property="${property}"]`);
     if (!tag) {
       tag = document.createElement("meta");
       tag.setAttribute("property", property);
-      document.head.appendChild(tag);
+      head.appendChild(tag);
     }
     tag.setAttribute("content", content);
   });
 
-  // Twitter Card tags
-  const twitterTags = [
+  // Twitter
+  [
     { name: "twitter:card", content: metadata.twitter.card },
     { name: "twitter:title", content: metadata.twitter.title },
     { name: "twitter:description", content: metadata.twitter.description },
-  ];
-
-  twitterTags.forEach(({ name, content }) => {
+  ].forEach(({ name, content }) => {
     let tag = document.querySelector(`meta[name="${name}"]`);
     if (!tag) {
       tag = document.createElement("meta");
       tag.setAttribute("name", name);
-      document.head.appendChild(tag);
+      head.appendChild(tag);
     }
     tag.setAttribute("content", content);
   });
+}
+
+// Per-page title/description updater — call in each page's useEffect
+export function setPageMeta(title: string, description: string) {
+  document.title = `${title} | WaveNexus Digital Invest`;
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc) desc.setAttribute("content", description);
 }

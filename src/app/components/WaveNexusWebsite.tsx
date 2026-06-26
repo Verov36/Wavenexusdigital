@@ -15,6 +15,14 @@ import {
   Calendar,
   Menu,
   X,
+  Package,
+  Truck,
+  Camera,
+  ClipboardList,
+  Wrench,
+  SlidersHorizontal,
+  CheckCircle2,
+  LayoutDashboard,
 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
@@ -125,6 +133,7 @@ ${formData.message}
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700 hover:text-blue-600 transition">About</a>
+              <a href="#products" onClick={(e) => handleScroll(e, "#products")} className="text-slate-700 hover:text-blue-600 transition">Products</a>
               <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="text-slate-700 hover:text-blue-600 transition">Blog</a>
               <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700 hover:text-blue-600 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700 hover:text-blue-600 transition">Contact</a>
@@ -145,6 +154,7 @@ ${formData.message}
             <div className="md:hidden py-4 border-t border-slate-200">
               <nav className="flex flex-col gap-4 font-semibold">
                 <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="text-slate-700">About</a>
+                <a href="#products" onClick={(e) => handleScroll(e, "#products")} className="text-slate-700">Products</a>
                 <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="text-slate-700">Blog</a>
                 <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700">Portfolio</a>
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
@@ -174,11 +184,11 @@ ${formData.message}
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-                  Hampton Roads Website Development Built with Military Precision
+                  Digital Agency & Field Service Software — Built with Military Precision
                 </h1>
 
                 <p className="text-xl text-blue-100 leading-relaxed mb-8">
-                  Local website developers serving Suffolk, Virginia Beach, Chesapeake, Newport News, and Hampton Roads VA. Marine Corps veteran-owned bringing military discipline to your digital success. Custom website development, SEO optimization, and web solutions for Southeast Virginia businesses.
+                  Veteran-owned and Hampton Roads-based. We build high-performance websites, drive local SEO growth, and develop real-world SaaS tools — including <span className="font-bold text-white">Nexus Field</span>, a field service management app built around the customer and your team.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -186,22 +196,22 @@ ${formData.message}
                     size="lg"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleScroll(e as any, "#about");
+                      handleScroll(e as any, "#products");
                     }}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8"
                   >
-                    Learn Our Story <ArrowRight className="ml-2 h-5 w-5" />
+                    See Nexus Field <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                   <Button
                     size="lg"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleScroll(e as any, "#blog");
+                      handleScroll(e as any, "#about");
                     }}
                     variant="outline"
                     className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold text-lg px-8"
                   >
-                    Read Our Blog
+                    Learn Our Story
                   </Button>
                 </div>
 
@@ -400,6 +410,180 @@ ${formData.message}
                 </motion.div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Nexus Field Products Section */}
+        <section id="products" className="py-16 sm:py-20 lg:py-24 bg-slate-900 text-white scroll-mt-20 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            {/* Header */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
+                <LayoutDashboard className="h-4 w-4 text-blue-300" />
+                <span className="text-sm font-bold text-blue-200">SaaS Product — Now Available</span>
+              </div>
+              <p className="text-sm font-black uppercase tracking-wider text-blue-400 mb-3">Our Software</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+                Introducing <span className="text-blue-400">Nexus Field</span>
+              </h2>
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+                A real-world field service management app built from the ground up around one principle: your customer comes first. Everything else — parts, jobs, photos, surveys — flows from that.
+              </p>
+            </motion.div>
+
+            {/* Who it's for strip */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="flex flex-wrap justify-center gap-3 mb-16">
+              {["HVAC", "Plumbing", "Electrical", "Landscaping", "General Contracting", "Appliance Repair", "Security Systems", "Pest Control"].map((industry) => (
+                <span key={industry} className="bg-white/10 border border-white/20 text-slate-200 text-sm font-semibold px-4 py-1.5 rounded-full">
+                  {industry}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Feature Spotlight — Parts Inventory (hero feature) */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+              <div className="relative rounded-2xl border-2 border-blue-500/40 bg-gradient-to-br from-blue-900/60 to-slate-800/80 p-8 sm:p-12 overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+                <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 rounded-full px-3 py-1 mb-5">
+                      <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      <span className="text-xs font-bold text-green-300 uppercase tracking-wider">Included Free</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 flex items-start gap-3">
+                      <Package className="h-8 w-8 text-blue-400 flex-shrink-0 mt-0.5" />
+                      Parts Inventory Management
+                    </h3>
+                    <p className="text-slate-300 leading-relaxed mb-6">
+                      Most field service apps charge extra for inventory. Nexus Field ships it free. Track every part across your warehouse and every truck in your fleet — then see exactly which technician used what on each job.
+                    </p>
+                    <ul className="space-y-3">
+                      {[
+                        { icon: Package, text: "Full warehouse parts tracking — quantities, locations, reorder alerts" },
+                        { icon: Truck, text: "Per-truck inventory — know what's stocked on every vehicle in real time" },
+                        { icon: Users, text: "Technician assignment — trucks assigned to techs, parts usage tied to jobs" },
+                        { icon: ClipboardList, text: "Job-level parts log — see exactly what was pulled for every work order" },
+                      ].map(({ icon: Icon, text }) => (
+                        <li key={text} className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-7 h-7 bg-blue-600/30 rounded-lg flex items-center justify-center mt-0.5">
+                            <Icon className="h-4 w-4 text-blue-300" />
+                          </div>
+                          <span className="text-sm text-slate-300 leading-snug">{text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { label: "Warehouse", value: "∞ SKUs", sub: "Unlimited parts catalog" },
+                      { label: "Fleet", value: "All Trucks", sub: "Per-vehicle inventory" },
+                      { label: "Techs", value: "Assigned", sub: "Truck-to-tech mapping" },
+                      { label: "Cost", value: "$0", sub: "Included in every plan" },
+                    ].map((stat) => (
+                      <div key={stat.label} className="bg-slate-800/80 border border-white/10 rounded-xl p-5 text-center">
+                        <p className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">{stat.label}</p>
+                        <p className="text-2xl font-black text-white mb-1">{stat.value}</p>
+                        <p className="text-xs text-slate-400">{stat.sub}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Other Features Grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+              {[
+                {
+                  icon: ClipboardList,
+                  title: "Job Tracking & Notes",
+                  description: "Every job gets a complete record — status updates, technician notes, customer details, and a full activity timeline. Nothing falls through the cracks.",
+                  badge: null,
+                },
+                {
+                  icon: Camera,
+                  title: "Photo Database",
+                  description: "Built-in photo capture tied directly to each job. Before/after photos, damage documentation, and completed work — all organized and searchable by job or customer.",
+                  badge: null,
+                },
+                {
+                  icon: ClipboardList,
+                  title: "Survey & Inspection Tools",
+                  description: "When a job requires a site survey or inspection form, it's built right into the workflow. Techs complete it on-site, customers sign off, data stays in the system.",
+                  badge: null,
+                },
+                {
+                  icon: SlidersHorizontal,
+                  title: "Built to Suit — In Real Time",
+                  description: "Your business isn't generic and your software shouldn't be either. Nexus Field adapts to your workflows in real time — no waiting for a dev cycle to get the features you need.",
+                  badge: "Custom",
+                },
+                {
+                  icon: Wrench,
+                  title: "Technician Management",
+                  description: "Assign jobs, track progress, manage truck assignments, and get a clear picture of what every tech is working on — from dispatch through completion.",
+                  badge: null,
+                },
+                {
+                  icon: Users,
+                  title: "Customer-First Architecture",
+                  description: "Every feature flows from the customer record outward. Full history, job logs, photos, and notes are always one click away — before you even pick up the phone.",
+                  badge: null,
+                },
+              ].map((feature, idx) => (
+                <motion.div
+                  key={feature.title}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-30px" }}
+                  variants={fadeUp}
+                  transition={{ delay: (idx % 3) * 0.08 }}
+                >
+                  <Card className="h-full bg-slate-800/60 border-2 border-white/10 hover:border-blue-500/50 transition-all group">
+                    <CardContent className="p-6 flex flex-col h-full">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center border border-blue-500/30">
+                          <feature.icon className="h-6 w-6 text-blue-400" />
+                        </div>
+                        {feature.badge && (
+                          <span className="text-xs font-black uppercase tracking-wider bg-blue-600/30 border border-blue-400/40 text-blue-300 px-2 py-0.5 rounded-full">
+                            {feature.badge}
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="font-black text-white mb-2 group-hover:text-blue-300 transition">{feature.title}</h4>
+                      <p className="text-sm text-slate-400 leading-relaxed">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center">
+              <div className="inline-block bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border-2 border-blue-400/30 rounded-2xl px-8 py-10 max-w-2xl">
+                <CheckCircle2 className="h-10 w-10 text-blue-400 mx-auto mb-4" />
+                <h3 className="text-2xl font-black text-white mb-3">Ready to See Nexus Field in Action?</h3>
+                <p className="text-slate-300 mb-6">
+                  Get a personalized walkthrough tailored to your business. No canned demos — we show you exactly how Nexus Field fits your operation.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
+                      Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </a>
+                  <Button
+                    variant="outline"
+                    onClick={(e) => { e.preventDefault(); handleScroll(e as any, "#contact"); }}
+                    className="border-2 border-white/30 bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold px-8"
+                  >
+                    Contact Us
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -804,6 +988,7 @@ ${formData.message}
             </div>
             <div className="flex flex-wrap gap-6 font-bold md:justify-end">
               <a href="#about" onClick={(e) => handleScroll(e, "#about")} className="hover:text-blue-400 transition">About</a>
+              <a href="#products" onClick={(e) => handleScroll(e, "#products")} className="hover:text-blue-400 transition">Products</a>
               <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="hover:text-blue-400 transition">Blog</a>
               <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="hover:text-blue-400 transition">Portfolio</a>
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="hover:text-blue-400 transition">Contact</a>
