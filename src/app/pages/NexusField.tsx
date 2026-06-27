@@ -127,12 +127,30 @@ export default function NexusField() {
             </div>
 
             {/* Industry pills */}
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2 mb-12">
               {industries.map((i) => (
                 <span key={i} className="bg-white/10 border border-white/20 text-slate-300 text-sm font-semibold px-4 py-1.5 rounded-full">
                   {i}
                 </span>
               ))}
+            </div>
+
+            {/* Hero split photos */}
+            <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              <div className="rounded-2xl overflow-hidden shadow-xl sm:col-span-2">
+                <img
+                  src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Field service manager reviewing jobs on tablet"
+                  className="w-full h-56 object-cover"
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1657664066042-c59e5f84b7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Field service technician on the job"
+                  className="w-full h-56 object-cover object-top"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -301,6 +319,22 @@ export default function NexusField() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center">
             <Shield className="h-12 w-12 text-blue-400 mx-auto mb-6" />
+            <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1676210133055-eab6ef033ce3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Plumber working on the job"
+                  className="w-full h-44 object-cover"
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1568918460973-fe7f54f82482?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Person reviewing job on tablet"
+                  className="w-full h-44 object-cover"
+                />
+              </div>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
               Made by someone who gets it
             </h2>

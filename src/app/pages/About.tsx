@@ -135,9 +135,23 @@ export default function About() {
       {/* How We Work */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl font-black text-slate-900 mb-4">How We Work</h2>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+              <h2 className="text-3xl font-black text-slate-900 mb-4">How We Work</h2>
+              <p className="text-slate-600 leading-relaxed">
+                We keep the process simple and transparent. You should always know what's happening, what's next, and who to call if you have a question.
+              </p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.15 }}>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1758876022088-2d46af5635c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Team collaborating on a client project"
+                  className="w-full h-56 object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[

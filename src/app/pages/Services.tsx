@@ -15,6 +15,20 @@ const fadeUp = {
 };
 const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 
+const serviceImages: Record<string, string> = {
+  "Website Development": "https://images.unsplash.com/photo-1603195827187-459ab02554a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  "SEO & AI Search Optimization": "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  "Branding & Logo Design": "https://images.unsplash.com/photo-1762784574847-16c5100cd1ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  "Social Media Management": "https://images.unsplash.com/photo-1521633286323-05b17f47cb74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+};
+
+const serviceImageAlts: Record<string, string> = {
+  "Website Development": "Web designer and client reviewing website together",
+  "SEO & AI Search Optimization": "Business owner reviewing SEO analytics on tablet",
+  "Branding & Logo Design": "Designer working on brand identity",
+  "Social Media Management": "Person managing social media on tablet",
+};
+
 const services = [
   {
     icon: Globe,
@@ -214,8 +228,17 @@ export default function Services() {
                   </Link>
                 </div>
 
-                {/* Right — outcome cards */}
+                {/* Right — image + outcome cards */}
                 <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
+                  {serviceImages[service.label] && (
+                    <div className="rounded-2xl overflow-hidden shadow-lg mb-5">
+                      <img
+                        src={serviceImages[service.label]}
+                        alt={serviceImageAlts[service.label]}
+                        className="w-full h-52 object-cover"
+                      />
+                    </div>
+                  )}
                   <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-4">
                     {service.results.map((result) => (
                       <motion.div key={result.heading} variants={fadeUp}>

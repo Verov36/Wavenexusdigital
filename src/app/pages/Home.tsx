@@ -148,9 +148,16 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-4 bg-white/5 border border-white/10 rounded-xl p-5 text-center">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Built For</p>
-                <div className="flex flex-wrap justify-center gap-2 mt-2">
+              <div className="mt-4 rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1640622300362-573446a17973?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Field service technician using tablet on the job"
+                  className="w-full h-48 object-cover"
+                />
+              </div>
+              <div className="mt-4 bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Built For</p>
+                <div className="flex flex-wrap justify-center gap-2">
                   {["HVAC", "Plumbing", "Electrical", "Landscaping", "Contracting"].map((i) => (
                     <span key={i} className="text-xs bg-white/10 text-slate-300 px-3 py-1 rounded-full font-semibold">{i}</span>
                   ))}
@@ -164,13 +171,27 @@ export default function Home() {
       {/* Agency Services Preview */}
       <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Digital Agency</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">What We Do for Local Businesses</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              We're not a big agency. We work with a small number of clients so we can actually pay attention to each one.
-            </p>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-14 items-center mb-16">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Digital Agency</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">What We Do for Local Businesses</h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                We're not a big agency. We work with a small number of clients so we can actually pay attention to each one.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                Most of our clients are local service businesses and small companies in Hampton Roads who needed a real website, better Google visibility, or both — and got tired of being treated like a number.
+              </p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.15 }}>
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Team working on web design and digital marketing"
+                  className="w-full h-72 object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {[
