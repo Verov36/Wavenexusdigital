@@ -111,6 +111,24 @@ export function setMetadata() {
 
   const head = document.head;
 
+  // Nuke every robots/noindex tag the platform may have injected — all variants
+  [
+    'meta[name="robots"]',
+    'meta[name="ROBOTS"]',
+    'meta[name="Robots"]',
+    'meta[http-equiv="X-Robots-Tag"]',
+    'meta[content*="noindex"]',
+    'meta[content*="nofollow"]',
+  ].forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el) => el.remove());
+  });
+
+  // Now write a clean robots tag — index, follow
+  const robotsMeta = document.createElement("meta");
+  robotsMeta.setAttribute("name", "robots");
+  robotsMeta.setAttribute("content", metadata.robots);
+  head.appendChild(robotsMeta);
+
   const setOrCreate = (selector: string, attrKey: string, attrVal: string, contentVal: string) => {
     let el = document.querySelector(selector) as HTMLMetaElement | null;
     if (!el) {
@@ -125,7 +143,6 @@ export function setMetadata() {
   setOrCreate('meta[name="description"]', "name", "description", metadata.description);
   setOrCreate('meta[name="keywords"]', "name", "keywords", metadata.keywords);
   setOrCreate('meta[name="author"]', "name", "author", metadata.author);
-  setOrCreate('meta[name="robots"]', "name", "robots", metadata.robots);
 
   // Geo meta tags — local SEO signal for geo-targeted search
   setOrCreate('meta[name="geo.region"]', "name", "geo.region", metadata.geo.region);
