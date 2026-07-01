@@ -1,242 +1,125 @@
+import { useEffect } from "react";
 import { motion } from "motion/react";
-import { BookOpen, Calendar, ArrowRight } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
+import { ArrowRight, BookOpen, Calendar } from "lucide-react";
+import { setPageMeta } from "../metadata";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
+const stagger = { show: { transition: { staggerChildren: 0.07 } } };
 
 const posts = [
-  {
-    category: "Local SEO",
-    date: "June 10, 2026",
-    title: "Why Hampton Roads Businesses Need Hyper-Local SEO in 2026",
-    excerpt:
-      "With more consumers searching for services 'near me,' local SEO has never been more critical for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News. Here's how to dominate your local market.",
-    readTime: "5 min read",
-    featured: true,
-  },
-  {
-    category: "Field Service Tech",
-    date: "June 2, 2026",
-    title: "Why Your Field Service Team Is Losing Money on Untracked Parts",
-    excerpt:
-      "Most field service businesses have no idea how many parts walk off trucks with no job record attached. We break down how parts tracking software pays for itself — and why we built it into Nexus Field for free.",
-    readTime: "6 min read",
-    featured: true,
-  },
-  {
-    category: "Website Development",
-    date: "May 28, 2026",
-    title: "5 Signs Your Business Website Is Costing You Customers",
-    excerpt:
-      "A slow, outdated, or poorly designed website can silently drain leads from your business. Discover the top warning signs and what modern website development can do to turn things around.",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
-    category: "Veteran Business",
-    date: "May 15, 2026",
-    title: "Military Discipline and the Digital Marketing Mindset",
-    excerpt:
-      "The values learned in the Marine Corps — mission focus, adaptability, and executing under pressure — translate directly into building successful digital strategies for small businesses.",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    category: "Field Service Tech",
-    date: "May 5, 2026",
-    title: "What to Look for in a Field Service App (And What Most Get Wrong)",
-    excerpt:
-      "There are dozens of field service management apps on the market. Most are bloated, overpriced, or built by people who've never dispatched a tech. Here's what actually matters.",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    category: "Web Design",
-    date: "April 30, 2026",
-    title: "Mobile-First Design: Why 70% of Your Visitors Are on Their Phones",
-    excerpt:
-      "If your website isn't optimized for mobile, you're losing more than half your potential customers. We break down what mobile-first website development means and why it matters for your bottom line.",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
-    category: "AI & SEO",
-    date: "April 14, 2026",
-    title: "How AI Search Is Changing SEO for Local Service Businesses",
-    excerpt:
-      "Google's AI Overviews and tools like ChatGPT are reshaping how people find businesses online. Learn how to optimize your website to appear in AI-driven search results and stay ahead of the competition.",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    category: "Digital Strategy",
-    date: "March 28, 2026",
-    title: "Building a Digital Presence from Scratch: A Step-by-Step Guide",
-    excerpt:
-      "Whether you're launching a new business in Hampton Roads or modernizing an established one, this guide walks you through every step of building a strong, lead-generating digital presence.",
-    readTime: "8 min read",
-    featured: false,
-  },
-  {
-    category: "Google & Local Search",
-    date: "June 18, 2026",
-    title: "Your Google Business Profile Is Free Real Estate — Are You Using It?",
-    excerpt:
-      "Most local businesses set up their Google Business Profile once and forget about it. That's a mistake. An optimized profile can put you at the top of local search results without spending a dollar on ads. Here's exactly what to do.",
-    readTime: "5 min read",
-    featured: false,
-  },
-  {
-    category: "Reputation & Reviews",
-    date: "June 5, 2026",
-    title: "How to Get More Google Reviews (And Why They Matter More Than You Think)",
-    excerpt:
-      "For local service businesses, Google reviews are one of the most powerful things you can have — and one of the easiest to neglect. We break down a simple system for getting reviews consistently without it feeling awkward or pushy.",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
-    category: "Copywriting",
-    date: "May 20, 2026",
-    title: "Your Website Looks Great. But Does It Say the Right Things?",
-    excerpt:
-      "A well-designed website with weak copy still loses customers. Most small business sites tell visitors what they do but never explain why it matters or why they should call today. Here's how to fix the words on your site without hiring a copywriter.",
-    readTime: "6 min read",
-    featured: false,
-  },
+  { category: "Local SEO", date: "Jun 18, 2026", title: "Your Google Business Profile Is Free Real Estate — Are You Using It?", excerpt: "Most local businesses set up their Google Business Profile once and forget about it. An optimized profile can put you at the top of local search results without spending a dollar on ads.", readTime: "5 min", featured: true },
+  { category: "Field Service Tech", date: "Jun 2, 2026", title: "Why Your Field Service Team Is Losing Money on Untracked Parts", excerpt: "Most field service businesses have a parts problem they don't fully see. Parts leave trucks without a job record. Warehouse stock disappears. The numbers don't add up and nobody knows why.", readTime: "6 min", featured: true },
+  { category: "Website Development", date: "May 28, 2026", title: "5 Signs Your Business Website Is Costing You Customers", excerpt: "A slow, outdated, or poorly designed website can silently drain leads. Here are the top warning signs and what modern web design can do to turn things around.", readTime: "4 min", featured: false },
+  { category: "Veteran Business", date: "May 15, 2026", title: "Military Discipline and the Digital Marketing Mindset", excerpt: "Mission focus, adaptability, and executing under pressure — the values from the Marine Corps translate directly into building successful digital strategies for small businesses.", readTime: "6 min", featured: false },
+  { category: "Field Service Tech", date: "May 5, 2026", title: "What to Look for in a Field Service App (And What Most Get Wrong)", excerpt: "There are dozens of field service management apps on the market. Most are bloated, overpriced, or built by people who've never dispatched a tech. Here's what actually matters.", readTime: "7 min", featured: false },
+  { category: "AI & SEO", date: "Apr 14, 2026", title: "How AI Search Is Changing SEO for Local Service Businesses", excerpt: "Google AI Overviews and ChatGPT are reshaping how people find local businesses. Learn how to optimize so your business gets recommended when people ask AI tools for local services.", readTime: "7 min", featured: false },
+  { category: "Web Design", date: "Apr 30, 2026", title: "Mobile-First Design: Why 70% of Your Visitors Are on Their Phones", excerpt: "If your website isn't optimized for mobile, you're losing more than half your potential customers. Here's what mobile-first development means and why it matters for your bottom line.", readTime: "4 min", featured: false },
+  { category: "Reputation & Reviews", date: "Jun 5, 2026", title: "How to Get More Google Reviews (And Why They Matter More Than You Think)", excerpt: "For local service businesses, Google reviews are one of the most powerful things you can have. A simple system for getting reviews consistently without it feeling awkward.", readTime: "4 min", featured: false },
+  { category: "Copywriting", date: "May 20, 2026", title: "Your Website Looks Great. But Does It Say the Right Things?", excerpt: "Most small business sites tell visitors what they do but never explain why it matters or why they should call today. How to fix the words on your site without hiring a copywriter.", readTime: "6 min", featured: false },
+  { category: "Digital Strategy", date: "Mar 28, 2026", title: "Building a Digital Presence from Scratch: A Step-by-Step Guide", excerpt: "Whether you're launching a new Hampton Roads business or modernizing an established one, this guide walks through every step of building a strong, lead-generating digital presence.", readTime: "8 min", featured: false },
 ];
 
-const categoryColors: Record<string, string> = {
-  "Local SEO": "bg-green-50 text-green-700",
-  "Field Service Tech": "bg-blue-50 text-blue-700",
-  "Website Development": "bg-indigo-50 text-indigo-700",
-  "Veteran Business": "bg-red-50 text-red-700",
-  "Web Design": "bg-violet-50 text-violet-700",
-  "AI & SEO": "bg-orange-50 text-orange-700",
-  "Digital Strategy": "bg-slate-100 text-slate-700",
-  "Google & Local Search": "bg-yellow-50 text-yellow-700",
-  "Reputation & Reviews": "bg-teal-50 text-teal-700",
-  "Copywriting": "bg-rose-50 text-rose-700",
+const catColors: Record<string, string> = {
+  "Local SEO": "text-green-400 border-green-400/30 bg-green-400/10",
+  "Field Service Tech": "text-amber-400 border-amber-400/30 bg-amber-400/10",
+  "Website Development": "text-blue-400 border-blue-400/30 bg-blue-400/10",
+  "Veteran Business": "text-red-400 border-red-400/30 bg-red-400/10",
+  "AI & SEO": "text-orange-400 border-orange-400/30 bg-orange-400/10",
+  "Web Design": "text-violet-400 border-violet-400/30 bg-violet-400/10",
+  "Reputation & Reviews": "text-teal-400 border-teal-400/30 bg-teal-400/10",
+  "Copywriting": "text-rose-400 border-rose-400/30 bg-rose-400/10",
+  "Digital Strategy": "text-zinc-400 border-zinc-400/30 bg-zinc-400/10",
 };
 
 export default function Blog() {
-  const featured = posts.filter((p) => p.featured);
-  const rest = posts.filter((p) => !p.featured);
+  useEffect(() => {
+    setPageMeta("Blog — Digital Marketing & Field Service Insights | WaveNexus",
+      "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.");
+  }, []);
+
+  const featured = posts.filter(p => p.featured);
+  const rest = posts.filter(p => !p.featured);
 
   return (
     <>
       {/* Hero */}
-      <section className="bg-slate-900 text-white py-20 lg:py-28">
+      <section className="relative bg-zinc-950 py-24 lg:py-32 overflow-hidden border-b border-border">
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: "linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" animate="show" variants={fadeUp} className="max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-wider text-blue-400 mb-4">Insights & Resources</p>
-            <h1 className="text-4xl sm:text-5xl font-black text-white mb-6">
-              Digital Marketing & Field Service Insights
-            </h1>
-            <p className="text-xl text-slate-400 leading-relaxed">
-              Practical tips on website development, local SEO, field service technology, and digital strategy from a veteran-owned perspective.
-            </p>
+          <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-3xl">
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Insights & Resources</span>
+            </motion.div>
+            <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
+              Digital Marketing<br /><span className="text-amber-500">& Field Service</span><br />Insights
+            </motion.h1>
+            <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
+              Practical tips on web design, local SEO, AI search, field service tech, and digital strategy — from a veteran-owned perspective.
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Posts */}
-      <section className="py-16 bg-slate-50">
+      {/* Featured */}
+      <section className="bg-zinc-900 py-16 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Featured</p>
-          <div className="grid md:grid-cols-2 gap-8 mb-20">
-            {featured.map((post, idx) => (
-              <motion.div
-                key={post.title}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <Card className="h-full border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all cursor-pointer group">
-                  <CardContent className="p-8 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-5">
-                      <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${categoryColors[post.category] ?? "bg-slate-100 text-slate-700"}`}>
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-1 text-xs text-slate-400">
-                        <Calendar className="h-3.5 w-3.5" />
-                        <span>{post.date}</span>
-                      </div>
-                    </div>
-                    <h2 className="text-xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition leading-snug">{post.title}</h2>
-                    <p className="text-slate-600 leading-relaxed flex-1 mb-5">{post.excerpt}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                      <span className="text-xs text-slate-400 flex items-center gap-1">
-                        <BookOpen className="h-3.5 w-3.5" />
-                        {post.readTime}
-                      </span>
-                      <span className="text-sm font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Read More <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
+          <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-6">Featured</p>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid md:grid-cols-2 gap-px bg-zinc-800">
+            {featured.map(post => (
+              <motion.div key={post.title} variants={fadeUp}
+                className="bg-zinc-900 p-8 group hover:bg-zinc-950 transition-colors border-b-2 border-transparent hover:border-amber-500 cursor-pointer">
+                <div className="flex items-center justify-between mb-5">
+                  <span className={`font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest px-2 py-1 border ${catColors[post.category] ?? "text-zinc-400 border-zinc-700"}`}>{post.category}</span>
+                  <div className="flex items-center gap-1.5 text-zinc-600">
+                    <Calendar className="h-3 w-3" />
+                    <span className="font-['JetBrains_Mono'] text-[10px]">{post.date}</span>
+                  </div>
+                </div>
+                <h2 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-4 group-hover:text-amber-400 transition-colors leading-tight">{post.title}</h2>
+                <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{post.excerpt}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-zinc-700">
+                    <BookOpen className="h-3 w-3" /><span className="font-['JetBrains_Mono'] text-[10px]">{post.readTime} read</span>
+                  </div>
+                  <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    Read More <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
               </motion.div>
             ))}
-          </div>
-
-          {/* All Posts */}
-          <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">All Posts</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((post, idx) => (
-              <motion.div
-                key={post.title}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-30px" }}
-                variants={fadeUp}
-                transition={{ delay: (idx % 3) * 0.08 }}
-              >
-                <Card className="h-full border-2 border-slate-200 hover:border-blue-400 hover:shadow-md transition-all cursor-pointer group">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${categoryColors[post.category] ?? "bg-slate-100 text-slate-700"}`}>
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-1 text-xs text-slate-400">
-                        <Calendar className="h-3.5 w-3.5" />
-                        <span>{post.date}</span>
-                      </div>
-                    </div>
-                    <h3 className="font-black text-slate-900 mb-3 group-hover:text-blue-600 transition leading-snug">{post.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed flex-1 mb-4">{post.excerpt}</p>
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                      <span className="text-xs text-slate-400 flex items-center gap-1">
-                        <BookOpen className="h-3.5 w-3.5" />
-                        {post.readTime}
-                      </span>
-                      <span className="text-sm font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Read More <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-white border-t border-slate-100">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-slate-600 mb-4 text-lg">Want personalized digital marketing advice for your business?</p>
-            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
-                Get Your Free Audit <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+      {/* All posts */}
+      <section className="bg-zinc-950 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-6">All Posts</p>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800 mb-12">
+            {rest.map(post => (
+              <motion.div key={post.title} variants={fadeUp}
+                className="bg-zinc-950 p-7 group hover:bg-zinc-900 transition-colors border-b-2 border-transparent hover:border-amber-500 cursor-pointer">
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest px-2 py-1 border ${catColors[post.category] ?? "text-zinc-400 border-zinc-700"}`}>{post.category}</span>
+                  <span className="font-['JetBrains_Mono'] text-[9px] text-zinc-700">{post.date}</span>
+                </div>
+                <h3 className="font-['Barlow_Condensed'] font-800 text-lg uppercase text-white mb-3 group-hover:text-amber-400 transition-colors leading-tight">{post.title}</h3>
+                <p className="font-['DM_Sans'] text-xs text-zinc-600 leading-relaxed mb-4">{post.excerpt}</p>
+                <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                  Read More <ArrowRight className="h-3 w-3" />
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center border-t border-border pt-12">
+            <p className="font-['DM_Sans'] text-zinc-500 mb-5">Want personalized digital advice for your business?</p>
+            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+              Get Your Free Audit <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>
         </div>

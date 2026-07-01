@@ -1,165 +1,157 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import {
-  ArrowRight, Award, Globe, Search, Palette, Zap,
-  Package, Camera, ClipboardList, Shield, CheckCircle2,
-} from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
+import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp } from "lucide-react";
 import { portfolio } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
-
-const stagger = {
-  show: { transition: { staggerChildren: 0.1 } },
-};
+const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-60"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-900/70" />
+      {/* ── HERO ── */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-zinc-950">
+        {/* Grid texture */}
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: "linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+        {/* Photo overlay */}
+        <div className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')" }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/40" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
-          <motion.div initial="hidden" animate="show" variants={fadeUp} className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
-              <Award className="h-4 w-4 text-blue-300" />
-              <span className="text-sm font-bold text-blue-100">Proudly Veteran-Owned & Operated — Hampton Roads, VA</span>
-            </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-4xl">
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              Websites, SEO &amp; Field Service Software
-              <span className="block text-blue-400 mt-2">from a Team That Actually Cares</span>
-            </h1>
-
-            <p className="text-xl text-blue-100 leading-relaxed mb-10 max-w-3xl">
-              We're a small, veteran-owned team based in Hampton Roads. We build websites that bring in real leads, help local businesses show up on Google, and make field service software that actually fits the way your team works.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
-              <Link to="/nexus-field">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 w-full sm:w-auto">
-                  Explore Nexus Field <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/services">
-                <Button size="lg" variant="outline" className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold text-lg px-8 w-full sm:w-auto">
-                  Our Services
-                </Button>
-              </Link>
-            </div>
-
-            <motion.div variants={stagger} initial="hidden" animate="show" className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-              {[
-                { value: "8+", label: "Projects Delivered" },
-                { value: "98%", label: "Client Satisfaction" },
-                { value: "24/7", label: "Support Available" },
-                { value: "USMC", label: "Veteran Led" },
-              ].map((s) => (
-                <motion.div key={s.label} variants={fadeUp}>
-                  <div className="text-3xl font-black text-blue-300">{s.value}</div>
-                  <div className="text-sm text-blue-200 mt-1">{s.label}</div>
-                </motion.div>
-              ))}
+            {/* Label */}
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+              <div className="h-[2px] w-12 bg-amber-500" />
+              <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">
+                US Marine Corps Veteran Owned · Hampton Roads, VA
+              </span>
             </motion.div>
+
+            {/* Headline */}
+            <motion.h1 variants={fadeUp}
+              className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-9xl uppercase leading-[0.9] tracking-tight text-white mb-6">
+              Web Design<br />
+              <span className="text-amber-500">& Field Service</span><br />
+              Software
+            </motion.h1>
+
+            <motion.p variants={fadeUp} className="text-zinc-400 text-lg leading-relaxed mb-10 max-w-xl font-['DM_Sans']">
+              We build websites that bring in leads and make field service software that actually fits the way your team works. Small team. Focused work. Hampton Roads, VA.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+              <Link to="/nexus-field"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors">
+                Explore Nexus Field <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link to="/services"
+                className="flex items-center justify-center gap-2 px-8 py-4 border border-zinc-700 text-white font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-lg hover:border-amber-500 hover:text-amber-400 transition-all">
+                Our Services <ChevronRight className="h-5 w-5" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div initial="hidden" animate="show" variants={stagger}
+            className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px bg-zinc-800 border border-zinc-800">
+            {[
+              { val: "8+", label: "Projects" },
+              { val: "USMC", label: "Veteran Led" },
+              { val: "24/7", label: "Support" },
+              { val: "100%", label: "Satisfaction" },
+            ].map(({ val, label }) => (
+              <motion.div key={label} variants={fadeUp} className="bg-zinc-950 px-6 py-5 text-center">
+                <div className="font-['Barlow_Condensed'] font-900 text-3xl text-amber-500 uppercase">{val}</div>
+                <div className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mt-1">{label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Nexus Field Spotlight */}
-      <section className="bg-slate-900 text-white py-20 lg:py-28 overflow-hidden">
+      {/* ── NEXUS FIELD SPOTLIGHT ── */}
+      <section className="bg-zinc-950 py-24 lg:py-32 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+
+          {/* Section label */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="flex items-center gap-4 mb-12">
+            <div className="h-[2px] w-8 bg-amber-500" />
+            <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Software Product</span>
+            <span className="flex items-center gap-1.5 px-3 py-1 border border-amber-500/30 bg-amber-500/10">
+              <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
+              <span className="font-['JetBrains_Mono'] text-[10px] text-amber-400 uppercase tracking-widest">Live Now</span>
+            </span>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left */}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <div className="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
-                <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                <span className="text-sm font-bold text-blue-200">SaaS Product — Now Available</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
-                Meet <span className="text-blue-400">Nexus Field</span>
+              <h2 className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-2">
+                Nexus
               </h2>
-              <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                We built this because we couldn't find a field service app that wasn't overpriced, bloated, or clearly made by people who've never dispatched a tech. Nexus Field keeps jobs organized, photos attached, and parts accounted for — without charging you extra for the basics. Parts inventory is <span className="text-white font-bold">included free.</span>
+              <h2 className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-amber-500 mb-8">
+                Field
+              </h2>
+
+              <div className="w-16 h-[2px] bg-amber-500 mb-8" />
+
+              <p className="text-zinc-300 text-lg leading-relaxed mb-6 font-['DM_Sans']">
+                Field service software built by people who actually talked to field service companies. We got tired of seeing teams duct-tape together spreadsheets, group texts, and apps that never quite fit — so we built one that does.
               </p>
-              <ul className="space-y-3 mb-10">
-                {[
-                  "Parts inventory free — track warehouse stock and what's on each truck",
-                  "See which tech used which parts on which job",
-                  "Job notes and photos stay attached to the job, always",
-                  "Surveys and inspections built right into the workflow",
-                  "We configure it around how you actually work",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-slate-300 text-sm">
-                    <CheckCircle2 className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/nexus-field">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
-                    See All Features <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
+              <p className="text-zinc-500 leading-relaxed mb-10 font-['DM_Sans']">
+                Parts inventory is <span className="text-white font-semibold">free in every plan</span> — warehouse stock, truck-level inventory, and parts-per-job logging. Because it shouldn't cost extra to know where your parts went.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/nexus-field"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+                  See Full Product <ArrowRight className="h-5 w-5" />
                 </Link>
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="border-2 border-white/30 bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold px-8">
-                    Request a Demo
-                  </Button>
+                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+                  Request Demo
                 </a>
               </div>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.15 }}>
-              <div className="grid grid-cols-2 gap-4">
+            {/* Right — feature grid */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="space-y-px">
+              {/* Photo */}
+              <div className="overflow-hidden mb-px">
+                <img src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Field service manager on tablet" className="w-full h-52 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              {/* Features */}
+              <div className="grid grid-cols-2 gap-px bg-zinc-800">
                 {[
-                  { icon: Package, title: "Parts Inventory", desc: "Warehouse & truck-level tracking, free in every plan", highlight: true },
-                  { icon: ClipboardList, title: "Job Tracking", desc: "Full job history, notes, and status in real time", highlight: false },
-                  { icon: Camera, title: "Photo Database", desc: "Before/after photos organized by job automatically", highlight: false },
-                  { icon: Zap, title: "Built to Suit", desc: "Customized to your workflow in real time", highlight: false },
-                ].map(({ icon: Icon, title, desc, highlight }) => (
-                  <Card
-                    key={title}
-                    className={`border-2 transition-all ${
-                      highlight
-                        ? "border-blue-500 bg-blue-600/20"
-                        : "border-white/10 bg-white/5"
-                    }`}
-                  >
-                    <CardContent className="p-5">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${highlight ? "bg-blue-500" : "bg-white/10"}`}>
-                        <Icon className="h-5 w-5 text-white" />
-                      </div>
-                      {highlight && (
-                        <span className="text-xs font-black text-green-400 uppercase tracking-wider block mb-1">Free</span>
-                      )}
-                      <h3 className="font-black text-white text-sm mb-1">{title}</h3>
-                      <p className="text-xs text-slate-400 leading-snug">{desc}</p>
-                    </CardContent>
-                  </Card>
+                  { icon: Package, label: "Parts Inventory", note: "Free · Warehouse + Truck", amber: true },
+                  { icon: ClipboardList, label: "Job Tracking", note: "Full history & notes", amber: false },
+                  { icon: Camera, label: "Photo Database", note: "Attached to every job", amber: false },
+                  { icon: Zap, label: "Built to Suit", note: "Configured for you", amber: false },
+                ].map(({ icon: Icon, label, note, amber }) => (
+                  <motion.div key={label} variants={fadeUp}
+                    className={`p-5 ${amber ? "bg-amber-500/10 border border-amber-500/30" : "bg-zinc-900"}`}>
+                    <Icon className={`h-5 w-5 mb-3 ${amber ? "text-amber-400" : "text-zinc-500"}`} />
+                    {amber && <span className="font-['JetBrains_Mono'] text-[9px] text-amber-400 uppercase tracking-widest block mb-1">Free</span>}
+                    <p className={`font-['Barlow_Condensed'] font-700 uppercase tracking-wider text-sm ${amber ? "text-amber-400" : "text-white"}`}>{label}</p>
+                    <p className="font-['DM_Sans'] text-xs text-zinc-600 mt-0.5">{note}</p>
+                  </motion.div>
                 ))}
               </div>
-
-              <div className="mt-4 rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1640622300362-573446a17973?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                  alt="Field service technician using tablet on the job"
-                  className="w-full h-48 object-cover"
-                />
-              </div>
-              <div className="mt-4 bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Built For</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {["HVAC", "Plumbing", "Electrical", "Landscaping", "Contracting"].map((i) => (
-                    <span key={i} className="text-xs bg-white/10 text-slate-300 px-3 py-1 rounded-full font-semibold">{i}</span>
+              {/* Industries */}
+              <div className="bg-zinc-900 p-4">
+                <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-zinc-600 mb-3">Built For</p>
+                <div className="flex flex-wrap gap-2">
+                  {["HVAC", "Plumbing", "Electrical", "Landscaping", "Contracting", "Appliance Repair"].map(i => (
+                    <span key={i} className="font-['JetBrains_Mono'] text-[10px] text-zinc-500 border border-zinc-800 px-2 py-1 uppercase tracking-wider">{i}</span>
                   ))}
                 </div>
               </div>
@@ -168,128 +160,108 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Agency Services Preview */}
-      <section className="py-20 bg-slate-50">
+      {/* ── AGENCY SERVICES ── */}
+      <section className="bg-zinc-900 py-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-14 items-center mb-16">
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Digital Agency</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">What We Do for Local Businesses</h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                We're not a big agency. We work with a small number of clients so we can actually pay attention to each one.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Most of our clients are local service businesses and small companies in Hampton Roads who needed a real website, better Google visibility, or both — and got tired of being treated like a number.
-              </p>
-            </motion.div>
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.15 }}>
-              <div className="rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                  alt="Team working on web design and digital marketing"
-                  className="w-full h-72 object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Digital Agency</span>
+            </div>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">
+              What We Do for<br /><span className="text-amber-500">Local Businesses</span>
+            </h2>
+          </motion.div>
 
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800">
             {[
-              { icon: Globe, title: "Website Development", desc: "Good-looking sites that work on phones, load fast, and actually bring in inquiries." },
-              { icon: Search, title: "SEO & AI Search", desc: "We help you show up when locals search for what you do — on Google and AI tools like ChatGPT." },
-              { icon: Palette, title: "Branding & Logos", desc: "A logo and visual identity that makes your business look like it belongs at the top." },
-              { icon: Zap, title: "Digital Strategy", desc: "Not sure where to start? We'll figure out what makes the most sense for your situation." },
+              { icon: Globe, title: "Website Development", desc: "Sites that load fast, work on phones, and actually bring in inquiries." },
+              { icon: Search, title: "SEO & AI Search", desc: "Show up on Google and in AI tools like ChatGPT when locals search for you." },
+              { icon: Palette, title: "Branding & Logos", desc: "A visual identity that makes your business look like it belongs at the top." },
+              { icon: TrendingUp, title: "Social Media", desc: "Consistent presence without you having to think about it every week." },
             ].map(({ icon: Icon, title, desc }) => (
-              <motion.div key={title} variants={fadeUp}>
-                <Card className="h-full border-2 border-slate-200 hover:border-blue-400 hover:shadow-md transition-all">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="font-black text-slate-900 mb-2">{title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
-                  </CardContent>
-                </Card>
+              <motion.div key={title} variants={fadeUp}
+                className="bg-zinc-900 p-8 group hover:bg-zinc-950 transition-colors border-b-2 border-transparent hover:border-amber-500">
+                <Icon className="h-6 w-6 text-amber-500 mb-6" />
+                <h3 className="font-['Barlow_Condensed'] font-800 text-xl uppercase tracking-wider text-white mb-3 group-hover:text-amber-400 transition-colors">{title}</h3>
+                <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </motion.div>
 
-          <div className="text-center">
-            <Link to="/services">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
-                View All Services <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-8">
+            <Link to="/services"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+              View All Services <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Portfolio Teaser */}
-      <section className="py-20 bg-white">
+      {/* ── PORTFOLIO TEASER ── */}
+      <section className="bg-zinc-950 py-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <p className="text-sm font-black uppercase tracking-wider text-blue-600 mb-3">Our Work</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Real Projects, Real Results</h2>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-12">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Work</span>
+            </div>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">Real Projects,<br /><span className="text-amber-500">Real Results</span></h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="grid md:grid-cols-2 gap-8 mb-10">
-            {portfolio.filter((p) => p.name !== "Dizon Digital Media").map((item) => (
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid md:grid-cols-2 gap-px bg-zinc-800 mb-8">
+            {portfolio.filter(p => p.name !== "Dizon Digital Media").map((item, idx) => (
               <motion.div key={item.name} variants={fadeUp}>
-                <a
-                  href={item.url || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href={item.url || "#"} target="_blank" rel="noopener noreferrer"
                   onClick={() => trackEvent("click", "Portfolio", item.name)}
-                  className="block group"
-                >
-                  <Card className="border-2 border-slate-200 hover:border-blue-400 shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
-                    <CardContent className="p-8">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center mb-5">
-                        <Globe className="h-6 w-6 text-white" />
-                      </div>
-                      <p className="text-xs font-black uppercase tracking-wider text-blue-600 mb-2">{item.category}</p>
-                      <h3 className="text-xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition">{item.name}</h3>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-5">{item.text}</p>
-                      <span className="text-sm font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                        View Project <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </CardContent>
-                  </Card>
+                  className="block bg-zinc-900 p-8 h-full group hover:bg-zinc-950 transition-colors border-l-2 border-transparent hover:border-amber-500">
+                  <div className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-500 mb-3">{item.category}</div>
+                  <h3 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-3 group-hover:text-amber-400 transition-colors">{item.name}</h3>
+                  <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{item.text}</p>
+                  <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                    View Project <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </a>
               </motion.div>
             ))}
           </motion.div>
 
-          <div className="text-center">
-            <Link to="/portfolio">
-              <Button variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-8">
-                View Full Portfolio
-              </Button>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+            <Link to="/portfolio"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+              View All Work <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 via-slate-900 to-blue-900 text-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-            <Shield className="h-12 w-12 text-blue-400 mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl font-black mb-4">Let's figure out what you actually need.</h2>
-            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-              No pitch calls, no packages you don't need. Start with a free audit and we'll give you an honest look at where you stand and what would actually help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-10">
-                  Get Your Free Audit <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-              <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-slate-900 font-bold px-10">
+      {/* ── BOTTOM CTA ── */}
+      <section className="bg-amber-500 py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-zinc-950/60 mb-4">Ready When You Are</p>
+              <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase leading-[0.9] text-zinc-950">
+                Let's figure out what you actually need.
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="font-['DM_Sans'] text-zinc-950/70 leading-relaxed">
+                No pitch, no packages you don't need. Start with a free audit — we'll give you an honest look at where you stand.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
+                  Free Audit <ArrowRight className="h-5 w-5" />
+                </a>
+                <Link to="/contact"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                   Contact Us
-                </Button>
-              </Link>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

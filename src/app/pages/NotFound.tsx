@@ -1,21 +1,17 @@
 import { Link } from "react-router";
-import { ArrowRight, Shield } from "lucide-react";
-import { Button } from "../components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center bg-slate-50">
+    <div className="min-h-[70vh] bg-zinc-950 flex items-center justify-center">
       <div className="text-center px-4">
-        <Shield className="h-16 w-16 text-blue-600 mx-auto mb-6 opacity-40" />
-        <h1 className="text-6xl font-black text-slate-200 mb-4">404</h1>
-        <h2 className="text-2xl font-black text-slate-900 mb-3">Page Not Found</h2>
-        <p className="text-slate-600 mb-8 max-w-md mx-auto">
-          This page is AWOL. Let's get you back on mission.
-        </p>
-        <Link to="/">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
-            Back to Home <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+        <div className="font-['Barlow_Condensed'] font-900 text-[12rem] leading-none text-zinc-900 select-none mb-2">404</div>
+        <div className="w-16 h-[2px] bg-amber-500 mx-auto mb-8" />
+        <h1 className="font-['Barlow_Condensed'] font-900 text-4xl uppercase text-white mb-3">Page Not Found</h1>
+        <p className="font-['DM_Sans'] text-zinc-500 mb-10 max-w-sm mx-auto">This page is AWOL. Let's get you back on mission.</p>
+        <Link to="/"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+          Back to Home <ArrowRight className="h-5 w-5" />
         </Link>
       </div>
     </div>
