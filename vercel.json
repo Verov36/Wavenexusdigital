@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)",
@@ -8,6 +10,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!api).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|favicon|robots.txt|sitemap).*)", "destination": "/index.html" }
   ]
 }
