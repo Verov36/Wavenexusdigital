@@ -1,7 +1,30 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+
+// Strips noindex from the generated HTML during build — runs inside Vite,
+// cannot be bypassed by Vercel project settings or skipped build steps.
+const removeNoindex: Plugin = {
+  name: 'remove-noindex',
+  transformIndexHtml(html) {
+    // Remove the exact tag found in production: <meta name="robots" content="noindex, nofollow" />
+    html = html.replace(
+      /<meta[^>]*name=["']robots["'][^>]*>/gi,
+      ''
+    );
+    html = html.replace(
+      /<meta[^>]*content=["'][^"']*noindex[^"']*["'][^>]*>/gi,
+      ''
+    );
+    // Inject a clean index, follow tag before </head>
+    html = html.replace(
+      '</head>',
+      '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">\n</head>'
+    );
+    return html;
+  },
+};
 
 
 function figmaAssetResolver() {
@@ -19,18 +42,14 @@ function figmaAssetResolver() {
 export default defineConfig({
   plugins: [
     figmaAssetResolver(),
-    // The React and Tailwind plugins are both required for Make, even if
-    // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    removeNoindex,
   ],
   resolve: {
     alias: {
-      // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
     },
   },
-
-  // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })

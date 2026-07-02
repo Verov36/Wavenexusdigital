@@ -152,7 +152,7 @@ export function setMetadata() {
 
   // Mobile
   setOrCreate('meta[name="format-detection"]', "name", "format-detection", "telephone=yes");
-  setOrCreate('meta[name="apple-mobile-web-app-capable"]', "name", "apple-mobile-web-app-capable", "yes");
+  setOrCreate('meta[name="mobile-web-app-capable"]', "name", "mobile-web-app-capable", "yes");
   setOrCreate('meta[name="apple-mobile-web-app-status-bar-style"]', "name", "apple-mobile-web-app-status-bar-style", "black-translucent");
 
   // Language / locale
