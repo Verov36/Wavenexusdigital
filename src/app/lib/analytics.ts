@@ -1,5 +1,5 @@
 // Analytics configuration and initialization
-const GA_TRACKING_ID = "G-ZRB5WD7MT8";
+const GA_TRACKING_ID = "G-Y6X0LLS4FD";
 
 export function initAnalytics() {
   // Preconnect to Google domains for faster loading

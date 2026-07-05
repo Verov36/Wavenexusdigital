@@ -17,10 +17,13 @@ const removeNoindex: Plugin = {
       /<meta[^>]*content=["'][^"']*noindex[^"']*["'][^>]*>/gi,
       ''
     );
-    // Inject a clean index, follow tag before </head>
+    // Inject clean robots tag + Google Analytics before </head>
     html = html.replace(
       '</head>',
-      '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">\n</head>'
+      `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6X0LLS4FD"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y6X0LLS4FD');</script>
+</head>`
     );
     return html;
   },
