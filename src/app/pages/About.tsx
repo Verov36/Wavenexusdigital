@@ -12,7 +12,8 @@ const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 export default function About() {
   useEffect(() => {
     setPageMeta("About — Veteran-Owned Web Design | Hampton Roads VA",
-      "WaveNexus Digital Invest is a veteran-owned web design and digital marketing company in Hampton Roads, VA. Marine Corps veteran founded, serving Suffolk, Virginia Beach, Chesapeake, and Newport News.");
+      "WaveNexus Digital Invest is a veteran-owned web design and digital marketing company in Hampton Roads, VA. Marine Corps veteran founded, serving Suffolk, Virginia Beach, Chesapeake, and Newport News.",
+      "/about");
   }, []);
 
   return (

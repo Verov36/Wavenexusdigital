@@ -237,6 +237,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SERVICE AREA ── */}
+      <section className="bg-zinc-950 py-20 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Service Area</span>
+            </div>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white">
+              Local Web Design &amp; Marketing<br /><span className="text-amber-500">Across Hampton Roads, VA</span>
+            </h2>
+            <p className="font-['DM_Sans'] text-zinc-500 mt-4 max-w-2xl leading-relaxed">
+              We're a Hampton Roads-based team that works with local businesses throughout Southeast Virginia. Whether you're in Suffolk or Virginia Beach, you get the same focused attention — no outsourced work, no cookie-cutter packages.
+            </p>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-zinc-800 mb-10">
+            {[
+              { city: "Suffolk", note: "Primary base" },
+              { city: "Virginia Beach", note: "Full coverage" },
+              { city: "Chesapeake", note: "Full coverage" },
+              { city: "Newport News", note: "Full coverage" },
+              { city: "Hampton", note: "Full coverage" },
+              { city: "Norfolk", note: "Full coverage" },
+              { city: "Portsmouth", note: "Full coverage" },
+              { city: "Williamsburg", note: "Full coverage" },
+              { city: "York County", note: "Full coverage" },
+              { city: "Isle of Wight", note: "Full coverage" },
+            ].map(({ city, note }) => (
+              <motion.div key={city} variants={fadeUp}
+                className="bg-zinc-950 px-5 py-4 group hover:bg-zinc-900 transition-colors border-b-2 border-transparent hover:border-amber-500">
+                <p className="font-['Barlow_Condensed'] font-700 uppercase text-sm tracking-wider text-white group-hover:text-amber-400 transition-colors">{city}</p>
+                <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-zinc-700 mt-0.5">{note}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="bg-zinc-900 border border-zinc-800 p-8 grid sm:grid-cols-3 gap-8">
+            <div>
+              <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">Web Designer Near Me</p>
+              <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
+                Looking for a local web designer near you in Hampton Roads? We build custom, mobile-first websites for local service businesses that need to show up in search and actually convert visitors into leads.
+              </p>
+            </div>
+            <div>
+              <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">Local SEO Company Near Me</p>
+              <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
+                We run local SEO campaigns for businesses throughout Hampton Roads — Google Business Profile optimization, local keyword targeting, and AI search optimization so you're found on ChatGPT and Perplexity too.
+              </p>
+            </div>
+            <div>
+              <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">Digital Marketing Near Me</p>
+              <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
+                From branding and logo design to social media management and full digital marketing strategies — we're the local marketing team near you in Southeast Virginia. Veteran owned. Focused on results.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── BOTTOM CTA ── */}
       <section className="bg-amber-500 py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">

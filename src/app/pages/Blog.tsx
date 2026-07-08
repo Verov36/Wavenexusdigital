@@ -34,7 +34,8 @@ const catColors: Record<string, string> = {
 export default function Blog() {
   useEffect(() => {
     setPageMeta("Blog — Digital Marketing & Field Service Insights | WaveNexus",
-      "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.");
+      "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.",
+      "/blog");
   }, []);
 
   const featured = posts.filter(p => p.featured);

@@ -69,7 +69,8 @@ const services = [
 export default function Services() {
   useEffect(() => {
     setPageMeta("Services — Web Design, SEO & Digital Marketing Near Me | Hampton Roads VA",
-      "WaveNexus Digital Invest offers website design, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.");
+      "WaveNexus Digital Invest offers website design, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
+      "/services");
   }, []);
 
   return (

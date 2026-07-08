@@ -209,9 +209,40 @@ export function setMetadata() {
   });
 }
 
-// Per-page title/description updater — call in each page's useEffect
-export function setPageMeta(title: string, description: string) {
-  document.title = `${title} | WaveNexus Digital Invest`;
-  const desc = document.querySelector('meta[name="description"]');
-  if (desc) desc.setAttribute("content", description);
+// Per-page title/description/canonical updater — call in each page's useEffect
+export function setPageMeta(title: string, description: string, path = "") {
+  const fullTitle = title.includes("WaveNexus") ? title : `${title} | WaveNexus Digital Invest`;
+  document.title = fullTitle;
+
+  const canonical = `https://wavenexusdigitalinvest.com${path}`;
+
+  const setTag = (selector: string, attr: string, val: string, attrKey?: string, attrVal?: string) => {
+    let el = document.querySelector(selector);
+    if (!el) {
+      el = document.createElement("meta");
+      if (attrKey && attrVal) el.setAttribute(attrKey, attrVal);
+      document.head.appendChild(el);
+    }
+    el.setAttribute(attr, val);
+  };
+
+  setTag('meta[name="description"]', "content", description);
+
+  // OG
+  setTag('meta[property="og:title"]', "content", fullTitle, "property", "og:title");
+  setTag('meta[property="og:description"]', "content", description, "property", "og:description");
+  setTag('meta[property="og:url"]', "content", canonical, "property", "og:url");
+
+  // Twitter
+  setTag('meta[name="twitter:title"]', "content", fullTitle, "name", "twitter:title");
+  setTag('meta[name="twitter:description"]', "content", description, "name", "twitter:description");
+
+  // Canonical
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", canonical);
 }

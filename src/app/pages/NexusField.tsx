@@ -25,7 +25,8 @@ const steps = [
 export default function NexusField() {
   useEffect(() => {
     setPageMeta("Nexus Field — Field Service Management Software",
-      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team.");
+      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team.",
+      "/nexus-field");
   }, []);
 
   return (

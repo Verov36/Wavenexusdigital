@@ -13,7 +13,8 @@ const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 export default function Contact() {
   useEffect(() => {
     setPageMeta("Contact — Local Web Designer Near Me | Hampton Roads VA",
-      "Get in touch with WaveNexus Digital Invest — your local web design and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.");
+      "Get in touch with WaveNexus Digital Invest — your local web design and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.",
+      "/contact");
   }, []);
 
   const [interest, setInterest] = useState<"agency" | "nexusfield" | "">("");
