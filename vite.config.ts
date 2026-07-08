@@ -16,8 +16,19 @@ const removeNoindex: Plugin = {
     html = html.replace(/<meta[^>]*name=["']robots["'][^>]*>/gi, '');
     html = html.replace(/<meta[^>]*content=["'][^"']*noindex[^"']*["'][^>]*>/gi, '');
 
-    // Replace placeholder <title> if present
-    html = html.replace(/<title>[^<]*<\/title>/i, `<title>${SITE_TITLE}</title>`);
+    // Remove any platform-injected <meta name="description"> so we don't end up with duplicates
+    html = html.replace(/<meta[^>]*name=["']description["'][^>]*>/gi, '');
+
+    // Remove any platform-injected OG / Twitter duplicates
+    html = html.replace(/<meta[^>]*property=["']og:[^"']*["'][^>]*>/gi, '');
+    html = html.replace(/<meta[^>]*name=["']twitter:[^"']*["'][^>]*>/gi, '');
+
+    // Replace placeholder <title> with real title
+    if (/<title>[^<]*<\/title>/i.test(html)) {
+      html = html.replace(/<title>[^<]*<\/title>/i, `<title>${SITE_TITLE}</title>`);
+    } else {
+      html = html.replace('<head>', `<head><title>${SITE_TITLE}</title>`);
+    }
 
     // Inject full static head before </head>
     html = html.replace('</head>', `
