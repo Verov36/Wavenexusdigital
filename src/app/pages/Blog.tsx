@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Calendar } from "lucide-react";
 import { setPageMeta } from "../metadata";
@@ -6,12 +7,38 @@ import { setPageMeta } from "../metadata";
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.07 } } };
 
-const posts = [
-  { category: "Local SEO", date: "Jun 18, 2026", title: "Your Google Business Profile Is Free Real Estate — Are You Using It?", excerpt: "Most local businesses set up their Google Business Profile once and forget about it. An optimized profile can put you at the top of local search results without spending a dollar on ads.", readTime: "5 min", featured: true },
-  { category: "Field Service Tech", date: "Jun 2, 2026", title: "Why Your Field Service Team Is Losing Money on Untracked Parts", excerpt: "Most field service businesses have a parts problem they don't fully see. Parts leave trucks without a job record. Warehouse stock disappears. The numbers don't add up and nobody knows why.", readTime: "6 min", featured: true },
+type Post = {
+  category: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  featured: boolean;
+  slug?: string;
+};
+
+const posts: Post[] = [
+  {
+    category: "Field Service Tech",
+    date: "Jul 17, 2026",
+    title: "Field Service Software vs. Spreadsheets: Which One Actually Saves You Money?",
+    excerpt: "Spreadsheets look cheap — no subscription fee. But the average contractor using them loses $44,200 a year in unbilled time and a 15–20% error rate eating their margins. The real math doesn't lie.",
+    readTime: "8 min",
+    featured: true,
+    slug: "/blog/field-service-software-vs-spreadsheets",
+  },
+  {
+    category: "Field Service Tech",
+    date: "Jul 17, 2026",
+    title: "Parts Are Walking Off Your Trucks. Here's How to Track Them Without Adding Admin Work",
+    excerpt: "For HVAC, plumbing, and electrical contractors in Hampton Roads, parts don't just disappear — they walk off one unrecorded copper fitting at a time. If you aren't tracking at the truck level, you're losing 5–10% of your material value every year.",
+    readTime: "7 min",
+    featured: true,
+    slug: "/blog/parts-walking-off-trucks",
+  },
+  { category: "Local SEO", date: "Jun 18, 2026", title: "Your Google Business Profile Is Free Real Estate — Are You Using It?", excerpt: "Most local businesses set up their Google Business Profile once and forget about it. An optimized profile can put you at the top of local search results without spending a dollar on ads.", readTime: "5 min", featured: false },
   { category: "Website Development", date: "May 28, 2026", title: "5 Signs Your Business Website Is Costing You Customers", excerpt: "A slow, outdated, or poorly designed website can silently drain leads. Here are the top warning signs and what modern web design can do to turn things around.", readTime: "4 min", featured: false },
   { category: "Veteran Business", date: "May 15, 2026", title: "Military Discipline and the Digital Marketing Mindset", excerpt: "Mission focus, adaptability, and executing under pressure — the values from the Marine Corps translate directly into building successful digital strategies for small businesses.", readTime: "6 min", featured: false },
-  { category: "Field Service Tech", date: "May 5, 2026", title: "What to Look for in a Field Service App (And What Most Get Wrong)", excerpt: "There are dozens of field service management apps on the market. Most are bloated, overpriced, or built by people who've never dispatched a tech. Here's what actually matters.", readTime: "7 min", featured: false },
   { category: "AI & SEO", date: "Apr 14, 2026", title: "How AI Search Is Changing SEO for Local Service Businesses", excerpt: "Google AI Overviews and ChatGPT are reshaping how people find local businesses. Learn how to optimize so your business gets recommended when people ask AI tools for local services.", readTime: "7 min", featured: false },
   { category: "Web Design", date: "Apr 30, 2026", title: "Mobile-First Design: Why 70% of Your Visitors Are on Their Phones", excerpt: "If your website isn't optimized for mobile, you're losing more than half your potential customers. Here's what mobile-first development means and why it matters for your bottom line.", readTime: "4 min", featured: false },
   { category: "Reputation & Reviews", date: "Jun 5, 2026", title: "How to Get More Google Reviews (And Why They Matter More Than You Think)", excerpt: "For local service businesses, Google reviews are one of the most powerful things you can have. A simple system for getting reviews consistently without it feeling awkward.", readTime: "4 min", featured: false },
@@ -69,28 +96,38 @@ export default function Blog() {
           <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-6">Featured</p>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             className="grid md:grid-cols-2 gap-px bg-zinc-800">
-            {featured.map(post => (
-              <motion.div key={post.title} variants={fadeUp}
-                className="bg-zinc-900 p-8 group hover:bg-zinc-950 transition-colors border-b-2 border-transparent hover:border-amber-500 cursor-pointer">
-                <div className="flex items-center justify-between mb-5">
-                  <span className={`font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest px-2 py-1 border ${catColors[post.category] ?? "text-zinc-400 border-zinc-700"}`}>{post.category}</span>
-                  <div className="flex items-center gap-1.5 text-zinc-600">
-                    <Calendar className="h-3 w-3" />
-                    <span className="font-['JetBrains_Mono'] text-[10px]">{post.date}</span>
+            {featured.map(post => {
+              const inner = (
+                <>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className={`font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest px-2 py-1 border ${catColors[post.category] ?? "text-zinc-400 border-zinc-700"}`}>{post.category}</span>
+                    <div className="flex items-center gap-1.5 text-zinc-600">
+                      <Calendar className="h-3 w-3" />
+                      <span className="font-['JetBrains_Mono'] text-[10px]">{post.date}</span>
+                    </div>
                   </div>
-                </div>
-                <h2 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-4 group-hover:text-amber-400 transition-colors leading-tight">{post.title}</h2>
-                <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{post.excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-zinc-700">
-                    <BookOpen className="h-3 w-3" /><span className="font-['JetBrains_Mono'] text-[10px]">{post.readTime} read</span>
+                  <h2 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-4 group-hover:text-amber-400 transition-colors leading-tight">{post.title}</h2>
+                  <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{post.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-zinc-700">
+                      <BookOpen className="h-3 w-3" /><span className="font-['JetBrains_Mono'] text-[10px]">{post.readTime} read</span>
+                    </div>
+                    <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                      Read Article <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
                   </div>
-                  <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                    Read More <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+                </>
+              );
+              const cls = "bg-zinc-900 p-8 group hover:bg-zinc-950 transition-colors border-b-2 border-transparent hover:border-amber-500 cursor-pointer block h-full";
+              return (
+                <motion.div key={post.title} variants={fadeUp}>
+                  {post.slug
+                    ? <Link to={post.slug} className={cls}>{inner}</Link>
+                    : <div className={cls}>{inner}</div>
+                  }
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

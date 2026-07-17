@@ -6,6 +6,8 @@ import NexusField from "./pages/NexusField";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
+import BlogPostSpreadsheets from "./pages/BlogPostSpreadsheets";
+import BlogPostPartsTracking from "./pages/BlogPostPartsTracking";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -20,6 +22,8 @@ export const router = createBrowserRouter([
       { path: "services", Component: Services },
       { path: "portfolio", Component: Portfolio },
       { path: "blog", Component: Blog },
+      { path: "blog/field-service-software-vs-spreadsheets", Component: BlogPostSpreadsheets },
+      { path: "blog/parts-walking-off-trucks", Component: BlogPostPartsTracking },
       { path: "contact", Component: Contact },
       { path: "*", Component: NotFound },
     ],
