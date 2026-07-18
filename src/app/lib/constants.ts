@@ -8,7 +8,7 @@ import {
 export const COMPANY_INFO = {
   name: "WaveNexus Digital Invest",
   tagline: "Where Digital Meets Momentum",
-  phone: "(910) 915-2221",
+  phone: "(757) 601-8058",
   email: "chris.repstein@wavenexusdigitalinvest.com",
   location: "Hampton Roads, Virginia",
   calendarLink: "https://calendar.app.google/95MNpjJrbGjj6qco6",
