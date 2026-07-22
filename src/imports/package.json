@@ -19,11 +19,16 @@ export default function Layout() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Send a page_view to GA4 on every client-side route change.
-  // Skip the first render — the gtag snippet in index.html already fires that one.
+  // ── Google Analytics: send a page_view on every client-side route change ──
+  // The initial page load already fires a page_view from the gtag snippet in
+  // index.html, so we skip the first render to avoid double-counting, then
+  // report every subsequent SPA navigation to GA4.
   const firstLoad = useRef(true);
   useEffect(() => {
-    if (firstLoad.current) { firstLoad.current = false; return; }
+    if (firstLoad.current) {
+      firstLoad.current = false;
+      return;
+    }
     trackPageView(location.pathname + location.search);
   }, [location.pathname, location.search]);
 
