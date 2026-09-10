@@ -64,10 +64,16 @@ import { injectStructuredData } from "./lib/seo/structuredData";
   }
 })();
 
+// ── Step 3: Write the site-wide defaults BEFORE React mounts ────────────────
+// This used to live in App's useEffect. React runs child effects before parent
+// effects, so each page's setPageMeta() call fired first and was then wiped out
+// by setMetadata() — every route ended up reporting the homepage's title,
+// description and (worst of all) a canonical pointing at "/". Running it at
+// module scope means the defaults land first and each page's own metadata wins.
+setMetadata();
+
 export default function App() {
   useEffect(() => {
-    // Step 3: Write clean index,follow tag after React mounts
-    setMetadata();
     injectStructuredData();
     document.body.setAttribute("itemscope", "");
     document.body.setAttribute("itemtype", "https://schema.org/WebPage");
