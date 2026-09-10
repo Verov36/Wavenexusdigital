@@ -12,9 +12,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#09090b" />
 
-    <!-- Only style the <noscript> fallback. Do NOT target "#root > div" here: React's
-         own root element is also a direct div child of #root, so such a rule outranks
-         the Tailwind text-* utilities and repaints every link in the live app. -->
+    <!--
+      Two rules for whoever edits this file next:
+
+      1. Never write a tag name in angle brackets anywhere in this file, even inside
+         a comment. scripts/prerender.mjs rewrites this file with plain regexes at
+         build time; a tag name in a comment matches those regexes and the replacement
+         eats everything up to the real closing tag.
+
+      2. Do not scope styles to the first div inside #root. React's root element is
+         also a direct div child of #root, so such a rule outranks the Tailwind
+         text utilities and repaints every link in the live app.
+    -->
     <style>html, body { height: 100%; margin: 0; background: #09090b; } #root { height: 100%; } noscript > div { color: #d4d4d8; } noscript > div a { color: #f59e0b; }</style>
 
   </head>
