@@ -12,7 +12,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#09090b" />
 
-    <style>html, body { height: 100%; margin: 0; background: #09090b; } #root { height: 100%; }</style>
+    <!-- #root/noscript colours style the prerendered crawler block (scripts/prerender.mjs),
+         which React replaces on mount. Without them it would be black on black. -->
+    <style>html, body { height: 100%; margin: 0; background: #09090b; } #root { height: 100%; } #root > div, noscript > div { color: #d4d4d8; } #root > div a, noscript > div a { color: #f59e0b; }</style>
 
   </head>
   <body>
