@@ -38,7 +38,12 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
 
-      {/* ── Header ── */}
+      {/* ── Header ──
+          The desktop row must survive the moment before the web fonts arrive: the
+          system fallback is wider than Barlow Condensed, and at the lg breakpoint it
+          overflowed the container, so the logo text spilled into the nav and the CTA
+          wrapped. Hence shrink-0 on the logo and CTA, whitespace-nowrap on every nav
+          item, and px-3 (not px-4) on nav items until xl. */}
       <header className={`sticky top-0 z-50 transition-all duration-200 ${scrolled ? "border-b border-border bg-background/95 backdrop-blur-md" : "bg-background"}`}>
         {/* Amber top line */}
         <div className="h-[2px] bg-amber-500 w-full" />
@@ -47,7 +52,7 @@ export default function Layout() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group shrink-0">
               <img src={logoImage} alt={COMPANY_INFO.name} className="h-9 w-9 object-contain" />
               <div>
                 <p className="font-['Barlow_Condensed'] font-800 text-base uppercase tracking-widest text-white leading-none">WaveNexus</p>
@@ -59,7 +64,7 @@ export default function Layout() {
             <nav className="hidden lg:flex items-center gap-1">
               {/* Nexus Field — amber pill */}
               <NavLink to="/nexus-field" className={({ isActive }) =>
-                `flex items-center gap-1.5 px-4 py-1.5 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest transition-all ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-zinc-950 border border-amber-500/40"}`
+                `flex items-center gap-1.5 px-3 xl:px-4 py-1.5 whitespace-nowrap text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest transition-all ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-zinc-950 border border-amber-500/40"}`
               }>
                 <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
                 Nexus Field
@@ -67,7 +72,7 @@ export default function Layout() {
 
               {NAV.map(({ label, to }) => (
                 <NavLink key={to} to={to} className={({ isActive }) =>
-                  `px-4 py-1.5 text-sm font-['DM_Sans'] font-medium uppercase tracking-wider transition-all ${isActive ? "text-amber-400" : "text-zinc-400 hover:text-white"}`
+                  `px-3 xl:px-4 py-1.5 whitespace-nowrap text-sm font-['DM_Sans'] font-medium uppercase tracking-wider transition-all ${isActive ? "text-amber-400" : "text-zinc-400 hover:text-white"}`
                 }>
                   {label}
                 </NavLink>
@@ -75,9 +80,9 @@ export default function Layout() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block shrink-0">
               <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2 bg-amber-500 text-zinc-950 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+                className="flex items-center gap-2 px-5 py-2 whitespace-nowrap bg-amber-500 text-zinc-950 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                 Free Audit <ChevronRight className="h-4 w-4" />
               </a>
             </div>
