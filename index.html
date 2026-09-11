@@ -12,6 +12,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#09090b" />
 
+    <!-- Fonts are requested here, from the HTML, so the browser discovers them at once
+         instead of after it has downloaded and parsed the CSS bundle (whose own import
+         of this same URL then hits cache). Shortens the window in which the header
+         renders in the wider system fallback font. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+
     <!--
       Two rules for whoever edits this file next:
 
