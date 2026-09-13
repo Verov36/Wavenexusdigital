@@ -98,6 +98,21 @@ const ROUTES = [
     ],
   },
   {
+    path: "/nexus-field/vs/servicetitan",
+    title: "Nexus Field vs ServiceTitan — Pricing, Contract & Setup Fees Compared (2026) | WaveNexus Digital Invest",
+    description:
+      "An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at $75 per tech, no contract, and a setup fee scoped to your migration.",
+    h1: "Nexus Field vs ServiceTitan",
+    body: [
+      "ServiceTitan is the biggest name in field service software, and for a large multi-location operation it can be the right call. But the shops that call us have usually just opened a renewal notice. This page puts the two side by side with real numbers, including the ones ServiceTitan doesn't publish. Checked September 2026.",
+      "The short version. Per tech per month: ServiceTitan approximately $245 to $500 (public estimate; ServiceTitan does not publish pricing), Nexus Field $75. Contract: ServiceTitan 12-month minimum, Nexus Field none, month to month. Setup: ServiceTitan implementation reported at $5,000 to $50,000, Nexus Field a minimal fee scoped to the size of your data migration and quoted on the discovery call.",
+      "Line by line. ServiceTitan sells three plans (Starter, Essentials, The Works) with per-technician pricing shown only as Request Pricing, plus paid add-on modules: Marketing Pro, Pricebook Pro, Dispatch Pro, Fleet Pro, Scheduling Pro, Field Pro, and Contact Center Pro. Nexus Field has one plan with everything in it, office and dispatch users free, mobile and desktop included, parts inventory included in every plan, and your price held for two years, then renegotiated together.",
+      "Year one for an 8-tech shop, using ServiceTitan's lowest reported per-tech price and lowest reported implementation fee: $245 × 8 × 12 = $23,520 plus $5,000 implementation = $28,520, before any add-on modules. Nexus Field: $75 × 8 × 12 = $7,200 plus a setup fee scoped to your migration. Same price in year two.",
+      "To be fair, ServiceTitan is the better choice if you run a large multi-location operation, want marketing, call center, and financing inside one vendor, or need a deep third-party integration marketplace. Nexus Field is the better fit if you have between 2 and 40 techs and the renewal quote made you wince, you'd rather pay $75 a tech than budget $5,000+ before the app has done anything for you, you want the software configured around how your shop already works, parts walking off trucks is a bigger problem for you than marketing automation, and you want to be able to leave.",
+      "Sources: ServiceTitan's pricing page for plan names, per-technician structure, and Pro add-ons; FSM Advisor and Projul for aggregated public price estimates. ServiceTitan does not publish prices; estimated figures are from user reports and review sites, not an official quote. ServiceTitan is a trademark of its owner; WaveNexus Digital Invest is not affiliated with ServiceTitan.",
+    ],
+  },
+  {
     path: "/custom-apps",
     title: "Custom App Developer Near Me | Business Software & Mobile Apps | Hampton Roads VA | WaveNexus Digital Invest",
     description:

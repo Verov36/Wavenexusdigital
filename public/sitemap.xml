@@ -14,9 +14,17 @@
   <!-- Nexus Field Product Page — highest priority after home -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/nexus-field</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+
+  <!-- Nexus Field comparison pages — one per big-name platform -->
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/nexus-field/vs/servicetitan</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Custom Apps — the app development service page -->

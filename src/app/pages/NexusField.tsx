@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, TrendingUp, Lock, DollarSign, Unlock, Receipt, CalendarCheck } from "lucide-react";
 import { setPageMeta } from "../metadata";
+import { NEXUS_FIELD } from "../lib/comparisons";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
@@ -211,6 +212,15 @@ export default function NexusField() {
               <div className="bg-zinc-900 px-6 py-3 border-b border-amber-500/20">
                 <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-400">Here's what we do instead</span>
               </div>
+              <motion.div variants={fadeUp} className="bg-zinc-950 border border-amber-500/40 p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                  <p className="font-['Barlow_Condensed'] font-900 text-6xl text-white leading-none">{NEXUS_FIELD.perTechLabel}<span className="text-2xl text-zinc-500 font-700"> / tech / month</span></p>
+                  <p className="font-['DM_Sans'] text-sm text-zinc-400 mt-3">That's the whole price. Mobile and desktop. Office and dispatch users are free.</p>
+                </div>
+                <Link to="/nexus-field/vs/servicetitan" className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 hover:gap-3 transition-all whitespace-nowrap">
+                  Compare to ServiceTitan <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </motion.div>
               {promises.map(({ icon: Icon, title, body }) => (
                 <motion.div key={title} variants={fadeUp}
                   className="flex gap-6 bg-zinc-950 border border-zinc-800 p-8 hover:border-amber-500/40 transition-colors group">
