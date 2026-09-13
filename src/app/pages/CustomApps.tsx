@@ -40,7 +40,7 @@ const whatWeBuild = [
     icon: Layers,
     label: "Nexus Field, configured to you",
     body: "If what you need is field service management, our own platform set up around your terminology, job types, and parts is usually the fastest route.",
-    examples: ["Your job types & terminology", "Your parts catalog", "Your trucks & techs", "Live in days, not months"],
+    examples: ["Your job types & terminology", "Your parts catalog", "Your trucks & techs", "No contract · price held for 2 years"],
     link: { to: "/nexus-field", label: "Explore Nexus Field" },
   },
 ];

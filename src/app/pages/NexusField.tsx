@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, ChevronRight } from "lucide-react";
+import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, TrendingUp, Lock, DollarSign, Unlock, Receipt, CalendarCheck } from "lucide-react";
 import { setPageMeta } from "../metadata";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
@@ -16,6 +16,21 @@ const features = [
   { icon: Users, title: "Customer-First Records", body: "Before you even say hello, pull up a customer's full history — past jobs, photos, parts used, notes. Every call goes smoother." },
 ];
 
+// What businesses on the big-name platforms tell us, and what we do instead.
+// These three promises are real commitments — keep the copy exactly as strong
+// as what we can actually deliver, no stronger.
+const bigPlatformComplaints = [
+  { icon: TrendingUp, text: "The price went up again this year." },
+  { icon: Lock, text: "We're locked into a contract we can't leave." },
+  { icon: DollarSign, text: "The setup and onboarding fees were brutal." },
+];
+
+const promises = [
+  { icon: Unlock, title: "No contract", body: "Stay because it works, not because you signed something." },
+  { icon: Receipt, title: "Minimal setup fee", body: "Just enough to configure it around your business. Not an onboarding invoice that arrives before the app does." },
+  { icon: CalendarCheck, title: "Your price is your price for two years", body: "Then we sit down together, go through your pain points and what we can improve, and agree on what comes next." },
+];
+
 const steps = [
   { n: "01", title: "Tell us how you work", body: "We ask about your dispatch flow, job types, parts setup, and what's currently frustrating your team." },
   { n: "02", title: "We configure it for you", body: "Your terminology, your job types, your parts catalog. When your team logs in for the first time, it shouldn't feel foreign." },
@@ -25,7 +40,7 @@ const steps = [
 export default function NexusField() {
   useEffect(() => {
     setPageMeta("Nexus Field — Field Service Management Software",
-      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team.",
+      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team. No contract, minimal setup fee, price held for two years.",
       "/nexus-field");
   }, []);
 
@@ -73,7 +88,18 @@ export default function NexusField() {
               </Link>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-12 flex flex-wrap gap-2">
+            {/* The three promises, right under the CTAs — this is the first thing a
+                price-shopper should see. */}
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
+              {["No contract", "Minimal setup fee", "Price held for 2 years"].map(p => (
+                <span key={p} className="inline-flex items-center gap-1.5 font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider text-amber-400 border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
+                  <span className="w-1 h-1 bg-amber-400 rounded-full" />
+                  {p}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-2">
               {["HVAC", "Plumbing", "Electrical", "Landscaping", "General Contracting", "Appliance Repair", "Security Systems", "Pest Control"].map(i => (
                 <span key={i} className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider text-zinc-500 border border-zinc-800 px-3 py-1.5">{i}</span>
               ))}
@@ -154,8 +180,59 @@ export default function NexusField() {
         </div>
       </section>
 
-      {/* ── ALL FEATURES ── */}
+      {/* ── STRAIGHT PRICING ── */}
       <section className="bg-zinc-950 py-24 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
+            {/* What we hear */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="lg:col-span-2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-[2px] w-8 bg-amber-500" />
+                <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Straight Pricing</span>
+              </div>
+              <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white leading-[0.9] mb-6">
+                No contract.<br /><span className="text-amber-500">No surprise invoice.</span>
+              </h2>
+              <p className="font-['DM_Sans'] text-zinc-400 leading-relaxed mb-8">
+                Nearly everyone who comes to us from one of the big-name platforms says the same three things:
+              </p>
+              <ul className="space-y-px">
+                {bigPlatformComplaints.map(({ icon: Icon, text }) => (
+                  <li key={text} className="flex items-center gap-4 bg-zinc-900 p-4 border-l-2 border-zinc-700">
+                    <Icon className="h-4 w-4 text-zinc-500 flex-shrink-0" />
+                    <span className="font-['DM_Sans'] text-sm text-zinc-400 italic">"{text}"</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* What we do instead */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-px">
+              <div className="bg-zinc-900 px-6 py-3 border-b border-amber-500/20">
+                <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-400">Here's what we do instead</span>
+              </div>
+              {promises.map(({ icon: Icon, title, body }) => (
+                <motion.div key={title} variants={fadeUp}
+                  className="flex gap-6 bg-zinc-950 border border-zinc-800 p-8 hover:border-amber-500/40 transition-colors group">
+                  <div className="flex-shrink-0 w-12 h-12 border border-amber-500/30 bg-amber-500/10 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-amber-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase tracking-wider text-white mb-2 group-hover:text-amber-400 transition-colors">{title}</h3>
+                    <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed">{body}</p>
+                  </div>
+                </motion.div>
+              ))}
+              <motion.p variants={fadeUp} className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 pt-4">
+                Parts inventory is free in every plan. That doesn't change either.
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ALL FEATURES ── */}
+      <section className="bg-zinc-900 py-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14">
             <div className="flex items-center gap-4 mb-6">
@@ -171,7 +248,7 @@ export default function NexusField() {
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800">
             {features.map(({ icon: Icon, title, body, badge }) => (
               <motion.div key={title} variants={fadeUp}
-                className="bg-zinc-950 p-8 group hover:bg-zinc-900 transition-colors border-b-2 border-transparent hover:border-amber-500">
+                className="bg-zinc-900 p-8 group hover:bg-zinc-950 transition-colors border-b-2 border-transparent hover:border-amber-500">
                 <div className="flex items-start justify-between mb-6">
                   <div className="w-10 h-10 border border-zinc-800 flex items-center justify-center group-hover:border-amber-500/40 transition-colors">
                     <Icon className="h-5 w-5 text-zinc-500 group-hover:text-amber-500 transition-colors" />
@@ -187,7 +264,7 @@ export default function NexusField() {
       </section>
 
       {/* ── HOW WE ONBOARD ── */}
-      <section className="bg-zinc-900 py-24 border-t border-border">
+      <section className="bg-zinc-950 py-24 border-t border-border">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14">
             <div className="flex items-center gap-4 mb-6">
@@ -200,7 +277,7 @@ export default function NexusField() {
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="space-y-px">
             {steps.map(({ n, title, body }) => (
               <motion.div key={n} variants={fadeUp}
-                className="flex gap-8 items-start bg-zinc-950 p-8 border-l-2 border-transparent hover:border-amber-500 transition-all group">
+                className="flex gap-8 items-start bg-zinc-900 p-8 border-l-2 border-transparent hover:border-amber-500 transition-all group">
                 <div className="flex-shrink-0 font-['Barlow_Condensed'] font-900 text-4xl text-amber-500/30 group-hover:text-amber-500 transition-colors leading-none">{n}</div>
                 <div>
                   <h3 className="font-['Barlow_Condensed'] font-800 text-xl uppercase tracking-wider text-white mb-2 group-hover:text-amber-400 transition-colors">{title}</h3>
@@ -213,7 +290,7 @@ export default function NexusField() {
       </section>
 
       {/* ── VETERAN ANGLE ── */}
-      <section className="bg-zinc-950 py-24 border-t border-border">
+      <section className="bg-zinc-900 py-24 border-t border-border">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
             className="grid md:grid-cols-2 gap-12 items-center">
@@ -238,7 +315,7 @@ export default function NexusField() {
                 { icon: Zap, label: "Works in the Field", sub: "Designed for real working conditions" },
                 { icon: Users, label: "Clear Accountability", sub: "Everyone owns their jobs, parts, outcomes" },
               ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} className="flex items-center gap-5 bg-zinc-900 p-5 border-l-2 border-transparent hover:border-amber-500 transition-all group">
+                <div key={label} className="flex items-center gap-5 bg-zinc-950 p-5 border-l-2 border-transparent hover:border-amber-500 transition-all group">
                   <Icon className="h-5 w-5 text-amber-500 flex-shrink-0" />
                   <div>
                     <p className="font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-white group-hover:text-amber-400 transition-colors">{label}</p>
@@ -260,7 +337,7 @@ export default function NexusField() {
               Want to see how it'd work for your team?
             </h2>
             <p className="font-['DM_Sans'] text-zinc-950/70 mb-10 max-w-xl mx-auto">
-              We'll walk you through it based on how your business actually runs — not a generic demo with fake data.
+              We'll walk you through it based on how your business actually runs — not a generic demo with fake data. No contract if you like what you see.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
