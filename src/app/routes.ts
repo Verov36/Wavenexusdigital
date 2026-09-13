@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NexusField from "./pages/NexusField";
+import CustomApps from "./pages/CustomApps";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "about", Component: About },
       { path: "nexus-field", Component: NexusField },
+      { path: "custom-apps", Component: CustomApps },
       { path: "services", Component: Services },
       { path: "portfolio", Component: Portfolio },
       { path: "blog", Component: Blog },

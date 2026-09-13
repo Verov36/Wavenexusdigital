@@ -1,7 +1,10 @@
 // Hampton Roads, VA geo coordinates (Suffolk area)
 const GEO_LATITUDE = "36.7282";
 const GEO_LONGITUDE = "-76.5836";
-const BASE_URL = typeof window !== "undefined" ? window.location.origin : "https://wavenexusdigitalinvest.com";
+// Always the production origin. Deriving this from window.location made the
+// homepage canonical point at whatever host served the page (previews, the
+// vercel.app alias), which is exactly what a canonical must never do.
+const BASE_URL = "https://wavenexusdigitalinvest.com";
 
 export const metadata = {
   // Lead with "near me" — Google treats this as proximity intent, not a keyword
@@ -28,6 +31,17 @@ export const metadata = {
     "branding company near me",
     "logo designer near me",
     "social media management near me",
+    // Custom apps / software
+    "app developer near me",
+    "mobile app developer near me",
+    "custom software development near me",
+    "custom app development Hampton Roads",
+    "business app developer Hampton Roads VA",
+    "web app developer Virginia Beach",
+    "mobile app developer Virginia Beach",
+    "custom software developer Suffolk VA",
+    "iOS Android app developer Hampton Roads",
+    "internal tools developer small business",
     // Hampton Roads geo
     "web developer Hampton Roads",
     "local website designer Hampton Roads VA",
@@ -76,6 +90,11 @@ export const metadata = {
     "field service management app Virginia",
     "Nexus Field app",
     "technician management software",
+    // Nexus Inventory
+    "parts inventory software",
+    "truck inventory app",
+    "barcode inventory app field service",
+    "Nexus Inventory",
   ].join(", "),
 
   author: "WaveNexus Digital Invest",
@@ -85,7 +104,7 @@ export const metadata = {
 
   openGraph: {
     title: "Web Developer Near Me | Local Website Designer Hampton Roads VA | WaveNexus Digital",
-    description: "Veteran-owned local web design and digital marketing team in Hampton Roads, VA. Custom websites, local SEO, AI SEO optimization, branding — and makers of Nexus Field field service software.",
+    description: "Veteran-owned local web design and digital marketing team in Hampton Roads, VA. Custom websites, custom apps, local SEO, AI SEO optimization, branding — and makers of Nexus Field field service software.",
     type: "website",
     siteName: "WaveNexus Digital Invest",
     locale: "en_US",
@@ -94,7 +113,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Local Web Designer & Digital Marketing | Hampton Roads VA | WaveNexus Digital",
-    description: "Veteran-owned web design, local SEO, AI SEO, and digital marketing serving Hampton Roads VA. Also makers of Nexus Field field service management software.",
+    description: "Veteran-owned web design, custom apps, local SEO, AI SEO, and digital marketing serving Hampton Roads VA. Also makers of Nexus Field field service management software.",
   },
 
   geo: {
@@ -214,7 +233,7 @@ export function setPageMeta(title: string, description: string, path = "") {
   const fullTitle = title.includes("WaveNexus") ? title : `${title} | WaveNexus Digital Invest`;
   document.title = fullTitle;
 
-  const canonical = `https://wavenexusdigitalinvest.com${path}`;
+  const canonical = `${BASE_URL}${path}`;
 
   const setTag = (selector: string, attr: string, val: string, attrKey?: string, attrVal?: string) => {
     let el = document.querySelector(selector);
