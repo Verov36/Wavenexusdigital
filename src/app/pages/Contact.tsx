@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
@@ -10,6 +10,20 @@ import { setPageMeta } from "../metadata";
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
+type Interest = "agency" | "nexusfield" | "customapp" | "";
+
+const INTEREST_LABEL: Record<Exclude<Interest, "">, string> = {
+  agency: "Agency Services",
+  nexusfield: "Nexus Field App",
+  customapp: "Custom App",
+};
+
+const INTEREST_OPTIONS: { key: Exclude<Interest, "">; title: string; sub: string }[] = [
+  { key: "agency", title: "Agency Services", sub: "Website, SEO, Branding" },
+  { key: "customapp", title: "Custom App", sub: "Software built for your business" },
+  { key: "nexusfield", title: "Nexus Field App", sub: "Field Service Software" },
+];
+
 export default function Contact() {
   useEffect(() => {
     setPageMeta("Contact — Local Web Designer Near Me | Hampton Roads VA",
@@ -17,7 +31,14 @@ export default function Contact() {
       "/contact");
   }, []);
 
-  const [interest, setInterest] = useState<"agency" | "nexusfield" | "">("");
+  // Let other pages deep-link into a pre-selected interest, e.g. /contact?interest=customapp
+  const [searchParams] = useSearchParams();
+  const initialInterest = ((): Interest => {
+    const v = searchParams.get("interest");
+    return v === "agency" || v === "nexusfield" || v === "customapp" ? v : "";
+  })();
+
+  const [interest, setInterest] = useState<Interest>(initialInterest);
   const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -27,12 +48,17 @@ export default function Contact() {
     e.preventDefault();
     if (!form.name || !form.email || !form.business || !form.message) { toast.error("Please fill in all fields"); return; }
     trackEvent("submit", "Contact Form", interest || "General");
-    const body = `Name: ${form.name}\nEmail: ${form.email}\nBusiness: ${form.business}\nInterest: ${interest === "nexusfield" ? "Nexus Field App" : interest === "agency" ? "Agency Services" : "General"}\n\nMessage:\n${form.message}`;
+    const interestLabel = interest ? INTEREST_LABEL[interest] : "General";
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nBusiness: ${form.business}\nInterest: ${interestLabel}\n\nMessage:\n${form.message}`;
     window.location.href = `mailto:${COMPANY_INFO.email}?subject=Contact from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(body)}`;
     toast.success("Opening your email client...");
     setForm({ name: "", email: "", business: "", message: "" });
     setInterest("");
   };
+
+  const messagePlaceholder = interest === "customapp"
+    ? "What are you trying to handle, and how does it work today? (spreadsheets, texts, an app that almost fits...)"
+    : "Tell us about your project...";
 
   return (
     <>
@@ -50,7 +76,7 @@ export default function Contact() {
               Let's Talk
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
-              Whether you need a website, want to see Nexus Field, or just aren't sure where to start — reach out. We're easy to get ahold of and we'll give you a straight answer.
+              Whether you need a website, want to see Nexus Field, have an app in mind, or just aren't sure where to start — reach out. We're easy to get ahold of and we'll give you a straight answer.
             </motion.p>
           </motion.div>
         </div>
@@ -118,17 +144,17 @@ export default function Contact() {
                 {/* Interest toggle */}
                 <div className="mb-8">
                   <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-3">I'm interested in:</p>
-                  <div className="grid grid-cols-2 gap-px bg-zinc-800">
-                    <button type="button" onClick={() => setInterest("agency")}
-                      className={`p-5 text-left transition-all ${interest === "agency" ? "bg-amber-500" : "bg-zinc-900 hover:bg-zinc-800"}`}>
-                      <p className={`font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-sm ${interest === "agency" ? "text-zinc-950" : "text-white"}`}>Agency Services</p>
-                      <p className={`font-['DM_Sans'] text-xs mt-0.5 ${interest === "agency" ? "text-zinc-950/60" : "text-zinc-600"}`}>Website, SEO, Branding</p>
-                    </button>
-                    <button type="button" onClick={() => setInterest("nexusfield")}
-                      className={`p-5 text-left transition-all ${interest === "nexusfield" ? "bg-amber-500" : "bg-zinc-900 hover:bg-zinc-800"}`}>
-                      <p className={`font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-sm ${interest === "nexusfield" ? "text-zinc-950" : "text-white"}`}>Nexus Field App</p>
-                      <p className={`font-['DM_Sans'] text-xs mt-0.5 ${interest === "nexusfield" ? "text-zinc-950/60" : "text-zinc-600"}`}>Field Service Software</p>
-                    </button>
+                  <div className="grid sm:grid-cols-3 gap-px bg-zinc-800">
+                    {INTEREST_OPTIONS.map(({ key, title, sub }) => {
+                      const active = interest === key;
+                      return (
+                        <button key={key} type="button" onClick={() => setInterest(key)}
+                          className={`p-5 text-left transition-all ${active ? "bg-amber-500" : "bg-zinc-900 hover:bg-zinc-800"}`}>
+                          <p className={`font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-sm ${active ? "text-zinc-950" : "text-white"}`}>{title}</p>
+                          <p className={`font-['DM_Sans'] text-xs mt-0.5 ${active ? "text-zinc-950/60" : "text-zinc-600"}`}>{sub}</p>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -146,7 +172,7 @@ export default function Contact() {
                   ))}
                   <div className="bg-zinc-900">
                     <label className="block font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 px-5 pt-4 pb-1">Message</label>
-                    <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell us about your project..." rows={5}
+                    <textarea name="message" value={form.message} onChange={handleChange} placeholder={messagePlaceholder} rows={5}
                       className="w-full bg-transparent px-5 pb-4 text-white placeholder:text-zinc-700 font-['DM_Sans'] text-sm outline-none resize-none focus:bg-zinc-800 transition-colors" />
                   </div>
                   <button type="submit"
