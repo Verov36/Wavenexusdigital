@@ -211,7 +211,8 @@ export default function NexusField() {
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-px">
               <div className="bg-zinc-900 px-6 py-3 border-b border-amber-500/20">
                 <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-400">Here's what we do instead</span>
-                      <motion.div variants={fadeUp} className="bg-zinc-950 border border-amber-500/40 p-8">
+              </div>
+              <motion.div variants={fadeUp} className="bg-zinc-950 border border-amber-500/40 p-8">
                 <p className="font-['Barlow_Condensed'] font-900 text-6xl text-white leading-none">{NEXUS_FIELD.perTechLabel}<span className="text-2xl text-zinc-500 font-700"> / tech / month</span></p>
                 <p className="font-['DM_Sans'] text-sm text-zinc-400 mt-3">That's the whole price. Mobile and desktop. Office and dispatch users are free.</p>
                 <div className="mt-5 pt-4 border-t border-zinc-800 flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -223,7 +224,6 @@ export default function NexusField() {
                   ))}
                 </div>
               </motion.div>
-/motion.div>
               {promises.map(({ icon: Icon, title, body }) => (
                 <motion.div key={title} variants={fadeUp}
                   className="flex gap-6 bg-zinc-950 border border-zinc-800 p-8 hover:border-amber-500/40 transition-colors group">
