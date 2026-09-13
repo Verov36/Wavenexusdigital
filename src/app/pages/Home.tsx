@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp, Code2, Smartphone, ScanLine } from "lucide-react";
 import { portfolio } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
 
@@ -160,6 +160,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── CUSTOM APPS BRIDGE ── */}
+      <section className="bg-zinc-950 pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="grid lg:grid-cols-5 gap-px bg-zinc-800 border border-amber-500/20">
+            <div className="lg:col-span-3 bg-zinc-950 p-8 lg:p-10">
+              <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-400 block mb-4">Need something Nexus Field doesn't do?</span>
+              <h3 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase leading-[0.95] text-white mb-4">
+                We build custom apps<br /><span className="text-amber-500">for businesses with a process</span>
+              </h3>
+              <p className="font-['DM_Sans'] text-zinc-500 leading-relaxed mb-8 max-w-xl">
+                If you can describe what you need handled and how, we can build the tool that runs it — in the browser, on the phone, or both. The same team that built Nexus Field builds yours.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/custom-apps" onClick={() => trackEvent("click", "Home", "Custom Apps")}
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+                  See How We Build Apps <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact?interest=customapp"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+                  Scope My App — Free
+                </Link>
+              </div>
+            </div>
+            <div className="lg:col-span-2 grid grid-rows-3 gap-px bg-zinc-800">
+              {[
+                { icon: Code2, label: "Custom web apps & internal tools", note: "Job tracking, inventory, scheduling, portals" },
+                { icon: Smartphone, label: "Mobile apps", note: "iOS & Android for the truck and the job site" },
+                { icon: ScanLine, label: "Built and proven on our own", note: "Nexus Field · Nexus Inventory" },
+              ].map(({ icon: Icon, label, note }) => (
+                <div key={label} className="bg-zinc-900 p-5 flex items-start gap-4">
+                  <Icon className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-['Barlow_Condensed'] font-700 uppercase tracking-wider text-sm text-white">{label}</p>
+                    <p className="font-['DM_Sans'] text-xs text-zinc-600 mt-0.5">{note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── AGENCY SERVICES ── */}
       <section className="bg-zinc-900 py-24 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -276,7 +319,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-            className="bg-zinc-900 border border-zinc-800 p-8 grid sm:grid-cols-3 gap-8">
+            className="bg-zinc-900 border border-zinc-800 p-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">Web Designer Near Me</p>
               <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
@@ -293,6 +336,12 @@ export default function Home() {
               <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">Digital Marketing Near Me</p>
               <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
                 From branding and logo design to social media management and full digital marketing strategies — we're the local marketing team near you in Southeast Virginia. Veteran owned. Focused on results.
+              </p>
+            </div>
+            <div>
+              <p className="font-['JetBrains_Mono'] text-[9px] uppercase tracking-widest text-amber-500 mb-2">App Developer Near Me</p>
+              <p className="font-['DM_Sans'] text-sm text-zinc-400 leading-relaxed">
+                Need a custom app or business software built in Hampton Roads? We build web and mobile apps around how your business actually works — and we've built our own, Nexus Field and Nexus Inventory.
               </p>
             </div>
           </motion.div>

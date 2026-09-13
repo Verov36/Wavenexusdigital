@@ -1,13 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, type ComponentType } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { Globe, Search, Palette, TrendingUp, ArrowRight, CheckCircle2, MessageSquare, Users, BarChart3 } from "lucide-react";
+import { Globe, Search, Palette, TrendingUp, Code2, ArrowRight, CheckCircle2, MessageSquare, Users, BarChart3 } from "lucide-react";
 import { setPageMeta } from "../metadata";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
-const services = [
+type Service = {
+  icon: ComponentType<{ className?: string }>;
+  label: string;
+  outcome: string;
+  forWho: string;
+  results: { heading: string; body: string }[];
+  photo: string;
+  photoAlt: string;
+  cta?: { to: string; label: string };
+};
+
+const services: Service[] = [
   {
     icon: Globe,
     label: "Website Development",
@@ -21,6 +32,21 @@ const services = [
     ],
     photo: "https://images.unsplash.com/photo-1603195827187-459ab02554a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     photoAlt: "Web designer working with client",
+  },
+  {
+    icon: Code2,
+    label: "Custom Apps & Business Software",
+    outcome: "You get a tool built around how your business actually runs — not a spreadsheet you fight with or an app that almost fits.",
+    forWho: "If you know exactly what you need handled and how, but nothing on the market does it your way, this is the service for that.",
+    results: [
+      { heading: "It runs your process, not a generic one", body: "Job tracking, inventory, scheduling, customer portals — designed from how your team works today." },
+      { heading: "Web, mobile, or both", body: "In the browser with nothing to install, or an iOS and Android app for the truck and the job site." },
+      { heading: "You see it working early", body: "We build in stages and you steer as we go. No six-month silence, no surprise at the end." },
+      { heading: "We've built our own", body: "Nexus Field and Nexus Inventory are ours — the same team builds yours." },
+    ],
+    photo: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    photoAlt: "Developer building a custom business application",
+    cta: { to: "/custom-apps", label: "See How We Build Apps" },
   },
   {
     icon: Search,
@@ -68,8 +94,8 @@ const services = [
 
 export default function Services() {
   useEffect(() => {
-    setPageMeta("Services — Web Design, SEO & Digital Marketing Near Me | Hampton Roads VA",
-      "WaveNexus Digital Invest offers website design, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
+    setPageMeta("Services — Web Design, Custom Apps, SEO & Digital Marketing Near Me | Hampton Roads VA",
+      "WaveNexus Digital Invest offers website design, custom business apps, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
       "/services");
   }, []);
 
@@ -111,9 +137,9 @@ export default function Services() {
                   <div className="border-l-2 border-amber-500 pl-5 mb-8">
                     <p className="font-['DM_Sans'] text-zinc-500 leading-relaxed italic">{service.forWho}</p>
                   </div>
-                  <Link to="/contact"
+                  <Link to={service.cta ? service.cta.to : "/contact"}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
-                    Get in Touch <ArrowRight className="h-4 w-4" />
+                    {service.cta ? service.cta.label : "Get in Touch"} <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
 
