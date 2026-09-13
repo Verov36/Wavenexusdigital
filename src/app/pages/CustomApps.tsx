@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import {
   ArrowRight, ChevronRight, CheckCircle2,
   Code2, Smartphone, Layers,
-  Table2, Camera, AlertTriangle, Users,
+  TrendingUp, Lock, DollarSign, AlertTriangle, Camera, Users,
   MessageSquare, FileText, Hammer, GraduationCap, LifeBuoy,
   ClipboardList, Package, ScanLine, Printer, Truck, ShieldCheck, BarChart3,
 } from "lucide-react";
@@ -14,11 +14,13 @@ import { trackEvent } from "../lib/analytics";
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
+// The three things we hear most about the big-name platforms, plus the one that
+// sends people looking for something custom in the first place.
 const painPoints = [
-  { icon: Table2, heading: "It lives in a spreadsheet", body: "And one wrong sort breaks it." },
-  { icon: Camera, heading: "Your techs text photos to the office", body: "Then nobody can find them." },
-  { icon: AlertTriangle, heading: "The app you pay for almost fits", body: "So your team works around it." },
-  { icon: Users, heading: "One person knows how it all works", body: "And they're on vacation." },
+  { icon: TrendingUp, heading: "The price went up again", body: "Same software as last year. Bigger invoice." },
+  { icon: Lock, heading: "You're locked in", body: "A contract you can't leave and data you can't take with you." },
+  { icon: DollarSign, heading: "The up-front cost is brutal", body: "Setup fees and onboarding charges before it's done anything for you." },
+  { icon: AlertTriangle, heading: "And it still almost fits", body: "So your team works around it every day." },
 ];
 
 const whatWeBuild = [
@@ -113,10 +115,13 @@ export default function CustomApps() {
       <section className="bg-zinc-900 py-20 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-10">
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-6">
               <div className="h-[2px] w-8 bg-amber-500" />
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Sound Familiar?</span>
             </div>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white">
+              What we hear from businesses<br /><span className="text-amber-500">on the big-name platforms</span>
+            </h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800">
