@@ -17,6 +17,9 @@
  *
  * It is pure Node with no dependencies, so it runs anywhere `npm run build` runs
  * (locally, Vercel, CI). It is wired into package.json after the vite build.
+ *
+ * CAUTION: the helpers below are plain regexes over index.html. Never put a tag
+ * name in angle brackets inside a comment in index.html — it will match here.
  * ---------------------------------------------------------------------------
  */
 
@@ -39,6 +42,7 @@ const NAV_LINKS = [
   ["/", "Home"],
   ["/services", "Services"],
   ["/nexus-field", "Nexus Field"],
+  ["/custom-apps", "Custom Apps"],
   ["/portfolio", "Portfolio"],
   ["/about", "About"],
   ["/blog", "Blog"],
@@ -46,11 +50,11 @@ const NAV_LINKS = [
 ];
 
 // ── Per-route SEO config ────────────────────────────────────────────────────
-// path:        route (used for canonical + output file location)
-// title:       full <title>
+// path: route (used for canonical + output file location)
+// title: full <title>
 // description: meta description
-// h1:          crawler-visible H1
-// body:        array of paragraph strings (crawler-readable content)
+// h1: crawler-visible H1
+// body: array of paragraph strings (crawler-readable content)
 const ROUTES = [
   {
     path: "/",
@@ -60,19 +64,20 @@ const ROUTES = [
     h1: "Web Design & Field Service Software — Hampton Roads, VA",
     body: [
       "WaveNexus Digital Invest is a US Marine Corps veteran-owned web design agency and software company based in Hampton Roads, Virginia. We build websites that bring in leads and make field service software that fits the way your team actually works.",
-      "Our services include custom website design and development, local SEO and AI search optimization, branding and logo design, and social media management for local service businesses in Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth, and surrounding Southeast Virginia communities.",
-      "We are also the makers of Nexus Field — field service management software for HVAC, plumbing, electrical, landscaping, and contracting companies, with free parts inventory tracking across warehouses and trucks.",
+      "Our services include custom website design and development, custom web and mobile app development for businesses, local SEO and AI search optimization, branding and logo design, and social media management for local service businesses in Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth, and surrounding Southeast Virginia communities.",
+      "We are also the makers of Nexus Field — field service management software for HVAC, plumbing, electrical, landscaping, and contracting companies, with free parts inventory tracking across warehouses and trucks — and Nexus Inventory, a barcode-driven parts inventory system for warehouses and trucks.",
     ],
   },
   {
     path: "/services",
-    title: "Services — Web Design, SEO & Digital Marketing Near Me | Hampton Roads VA | WaveNexus Digital Invest",
+    title: "Services — Web Design, Custom Apps, SEO & Digital Marketing Near Me | Hampton Roads VA | WaveNexus Digital Invest",
     description:
-      "WaveNexus Digital Invest offers website design, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
+      "WaveNexus Digital Invest offers website design, custom business apps, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
     h1: "Services That Actually Work",
     body: [
-      "WaveNexus Digital Invest provides web design, local SEO, AI search optimization, branding, and social media management for local businesses across Hampton Roads, VA.",
+      "WaveNexus Digital Invest provides web design, custom app development, local SEO, AI search optimization, branding, and social media management for local businesses across Hampton Roads, VA.",
       "Website Development: modern, mobile-first websites built with local SEO from the first line of code, clear calls to action, and forms that convert visitors into inquiries.",
+      "Custom Apps & Business Software: web apps, internal tools, and iOS and Android mobile apps built around how your business actually runs — job tracking, inventory, scheduling, customer portals. We built our own: Nexus Field and Nexus Inventory.",
       "SEO & AI Search Optimization: rank on Google and get cited by AI tools like ChatGPT and Perplexity, with local keyword targeting, Google Business Profile optimization, and monthly reporting.",
       "Branding & Logo Design: clean visual identity systems that make your business look established and trustworthy across your website, social media, and print.",
       "Social Media Management: consistent posting, content that sounds like you, and audience growth without the time drain.",
@@ -89,6 +94,21 @@ const ROUTES = [
       "Free parts inventory in every plan: warehouse stock, truck-level inventory, technician accountability, and parts-used-per-job logging so you always know where your parts went.",
       "Also includes job tracking with full activity timelines, an automatic photo database attached to every job, surveys and inspections built into the workflow, technician management, and customer-first records.",
       "Built by a Marine Corps veteran-owned team for people who work in the field — no bloat, no charging extra for the basics.",
+    ],
+  },
+  {
+    path: "/custom-apps",
+    title: "Custom App Developer Near Me | Business Software & Mobile Apps | Hampton Roads VA | WaveNexus Digital Invest",
+    description:
+      "WaveNexus builds custom web and mobile apps for local businesses in Hampton Roads, VA — job tracking, inventory, scheduling, customer portals. You describe the process; we build the tool that fits it. Veteran-owned. Free scoping call.",
+    h1: "Custom App Development for Businesses — Hampton Roads, VA",
+    body: [
+      "You know what you need handled. We build the tool. Most businesses run on a mix of spreadsheets, group texts, and an off-the-shelf app that does about 60% of the job. If you can describe the process, WaveNexus Digital Invest can build the app that runs it — in the browser, on the phone, or both. Veteran-owned, based in Hampton Roads, Virginia.",
+      "What we build: custom web apps and internal tools — job trackers, inventory, scheduling, dispatch boards, customer portals that run in a browser and work on a phone with nothing to install. Mobile apps for iOS and Android for the work that happens on the truck or on site: barcode scanning, photos tied to jobs, checklists and inspections, signatures and sign-off. And Nexus Field configured to you — if what you need is field service management, our own platform set up around your terminology, job types, and parts is usually the fastest route.",
+      "How it works: 1. Tell us what you're handling — a free 30-minute call walking through the process as it actually happens. 2. We write the scope — a plain-English document covering every screen, who uses it, what it does, and what it costs; you approve it before anything gets built. 3. We build it in stages, so you see it working early and steer as we go. 4. We train your team before go-live. 5. We keep it running — hosting, updates, and changes as your business changes.",
+      "What we've built — Nexus Field: field service management for HVAC, plumbing, electrical and contracting companies, with jobs and full history, photos attached to every job, surveys and inspections in the workflow, technician and truck management, and parts inventory in every plan.",
+      "What we've built — Nexus Inventory: a standalone parts-inventory system built mobile-first for the warehouse and the truck. Techs scan parts in and out with a phone camera or handheld barcode scanner; labels print straight to a Zebra printer. Every truck has its own stock caps, checkouts are tagged to a job or to restock, and going over cap triggers a justification the manager approves or rejects. Six user roles, scheduled audit reports, CSV import and export.",
+      "Both built and run by WaveNexus — the same team you'd be working with. Custom app developer near you in Hampton Roads, serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, and Norfolk. Start with a free scoping call.",
     ],
   },
   {
@@ -154,10 +174,10 @@ const ROUTES = [
     path: "/contact",
     title: "Contact — Local Web Designer Near Me | Hampton Roads VA | WaveNexus Digital Invest",
     description:
-      "Get in touch with WaveNexus Digital Invest — your local web design and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.",
+      "Get in touch with WaveNexus Digital Invest — your local web design, custom app, and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.",
     h1: "Let's Talk",
     body: [
-      "WaveNexus Digital Invest — veteran-owned web design and digital marketing in Hampton Roads, VA. Get in touch for a free website audit or to discuss your project.",
+      "WaveNexus Digital Invest — veteran-owned web design, custom apps, and digital marketing in Hampton Roads, VA. Get in touch for a free website audit, a free app scoping call, or to discuss your project.",
       `Phone: ${PHONE} | Email: ${EMAIL}`,
       "Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, and all of Southeast Virginia.",
     ],
@@ -221,25 +241,25 @@ function renderContent(route) {
   const nav = NAV_LINKS.map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ");
   const paras = route.body.map((p) => `<p>${esc(p)}</p>`).join("\n");
   return `
-  <div style="font-family:sans-serif;max-width:820px;margin:0 auto;padding:32px 20px">
-    <nav aria-label="Primary">${nav}</nav>
-    <main>
-      <h1>${esc(route.h1)}</h1>
-      ${paras}
-    </main>
-    <footer>
-      <p><strong>${esc(SITE_NAME)}</strong> — Veteran-owned web design &amp; digital marketing, Hampton Roads, VA.</p>
-      <p>Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth VA.</p>
-      <p>Phone: ${esc(PHONE)} · Email: ${esc(EMAIL)}</p>
-      <p><a href="${canonical}">${esc(canonical)}</a></p>
-    </footer>
-  </div>`.trim();
+<div style="font-family:sans-serif;max-width:820px;margin:0 auto;padding:32px 20px">
+<nav aria-label="Primary">${nav}</nav>
+<main>
+<h1>${esc(route.h1)}</h1>
+${paras}
+</main>
+<footer>
+<p><strong>${esc(SITE_NAME)}</strong> — Veteran-owned web design, custom apps &amp; digital marketing, Hampton Roads, VA.</p>
+<p>Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth VA.</p>
+<p>Phone: ${esc(PHONE)} · Email: ${esc(EMAIL)}</p>
+<p><a href="${canonical}">${esc(canonical)}</a></p>
+</footer>
+</div>`.trim();
 }
 
 // ── Main ────────────────────────────────────────────────────────────────────
 function main() {
   if (!existsSync(templatePath)) {
-    console.log("⚠  dist/index.html not found — skipping prerender (run `vite build` first)");
+    console.log("⚠ dist/index.html not found — skipping prerender (run `vite build` first)");
     process.exit(0);
   }
 
