@@ -83,7 +83,7 @@ export default function Portfolio() {
               </div>
 
               <div className="mt-8">
-                <a href="https://redvine-mechanical.figma.site" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.redvinemechanical.com/" target="_blank" rel="noopener noreferrer"
                   onClick={() => trackEvent("click", "Portfolio", "Red Vine Mechanical — Case Study CTA")}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                   View Live Site <ExternalLink className="h-4 w-4" />
