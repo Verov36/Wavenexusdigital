@@ -40,10 +40,11 @@ export default function Layout() {
 
       {/* ── Header ──
           The desktop row must survive the moment before the web fonts arrive: the
-          system fallback is wider than Barlow Condensed, and at the lg breakpoint it
-          overflowed the container, so the logo text spilled into the nav and the CTA
-          wrapped. Hence shrink-0 on the logo and CTA, whitespace-nowrap on every nav
-          item, and px-3 (not px-4) on nav items until xl. */}
+          system fallback is wider than Barlow Condensed and used to overflow the
+          container, so the logo text spilled into the nav and the CTA wrapped. Hence
+          shrink-0 on the logo and CTA, whitespace-nowrap on every nav item, and the
+          full nav only from xl (1280px) — with seven items it no longer fits a 1024px
+          viewport in the fallback font, so lg gets the hamburger. */}
       <header className={`sticky top-0 z-50 transition-all duration-200 ${scrolled ? "border-b border-border bg-background/95 backdrop-blur-md" : "bg-background"}`}>
         {/* Amber top line */}
         <div className="h-[2px] bg-amber-500 w-full" />
@@ -61,18 +62,25 @@ export default function Layout() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden xl:flex items-center gap-1">
               {/* Nexus Field — amber pill */}
               <NavLink to="/nexus-field" className={({ isActive }) =>
-                `flex items-center gap-1.5 px-3 xl:px-4 py-1.5 whitespace-nowrap text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest transition-all ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-zinc-950 border border-amber-500/40"}`
+                `flex items-center gap-1.5 px-4 py-1.5 whitespace-nowrap text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest transition-all ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-zinc-950 border border-amber-500/40"}`
               }>
                 <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
                 Nexus Field
               </NavLink>
 
+              {/* Custom Apps — sits with the product, not the agency links */}
+              <NavLink to="/custom-apps" className={({ isActive }) =>
+                `px-4 py-1.5 whitespace-nowrap text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest transition-all ${isActive ? "text-amber-400" : "text-zinc-300 hover:text-amber-400"}`
+              }>
+                Custom Apps
+              </NavLink>
+
               {NAV.map(({ label, to }) => (
                 <NavLink key={to} to={to} className={({ isActive }) =>
-                  `px-3 xl:px-4 py-1.5 whitespace-nowrap text-sm font-['DM_Sans'] font-medium uppercase tracking-wider transition-all ${isActive ? "text-amber-400" : "text-zinc-400 hover:text-white"}`
+                  `px-4 py-1.5 whitespace-nowrap text-sm font-['DM_Sans'] font-medium uppercase tracking-wider transition-all ${isActive ? "text-amber-400" : "text-zinc-400 hover:text-white"}`
                 }>
                   {label}
                 </NavLink>
@@ -80,7 +88,7 @@ export default function Layout() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:block shrink-0">
+            <div className="hidden xl:block shrink-0">
               <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2 whitespace-nowrap bg-amber-500 text-zinc-950 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                 Free Audit <ChevronRight className="h-4 w-4" />
@@ -88,7 +96,7 @@ export default function Layout() {
             </div>
 
             {/* Mobile toggle */}
-            <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-zinc-400 hover:text-white transition-colors">
+            <button onClick={() => setOpen(!open)} className="xl:hidden p-2 text-zinc-400 hover:text-white transition-colors">
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -98,13 +106,18 @@ export default function Layout() {
         <AnimatePresence>
           {open && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.18 }}
-              className="lg:hidden overflow-hidden border-t border-border bg-zinc-950">
+              className="xl:hidden overflow-hidden border-t border-border bg-zinc-950">
               <nav className="px-4 py-4 flex flex-col gap-1">
                 <NavLink to="/nexus-field" className={({ isActive }) =>
                   `flex items-center gap-2 px-4 py-3 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 border border-amber-500/30"}`
                 }>
                   <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
                   Nexus Field — Field Service Software
+                </NavLink>
+                <NavLink to="/custom-apps" className={({ isActive }) =>
+                  `px-4 py-3 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest ${isActive ? "text-amber-400 bg-zinc-900" : "text-zinc-300"}`
+                }>
+                  Custom Apps — Software Built for Your Business
                 </NavLink>
                 {NAV.map(({ label, to }) => (
                   <NavLink key={to} to={to} className={({ isActive }) =>
@@ -167,6 +180,7 @@ export default function Layout() {
               <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-4">Product</p>
               <ul className="space-y-2 mb-6">
                 <li><Link to="/nexus-field" className="text-sm text-amber-500 hover:text-amber-400 font-['Barlow_Condensed'] font-700 uppercase tracking-wider transition-colors">Nexus Field App</Link></li>
+                <li><Link to="/custom-apps" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Custom Apps</Link></li>
                 <li><a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Request a Demo</a></li>
               </ul>
               <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-3">Contact</p>
