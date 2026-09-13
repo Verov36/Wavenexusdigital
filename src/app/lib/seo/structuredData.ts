@@ -150,12 +150,12 @@ export const graphSchema = {
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Field Service Management Software",
       "operatingSystem": "Web, iOS, Android",
-      "description": "Nexus Field is a field service management app built for HVAC, plumbing, electrical, landscaping, and contracting companies. Features include free parts inventory tracking across warehouses and trucks, technician assignment, job tracking, built-in photo database, and survey and inspection tools. Configured around how your team actually works.",
+      "description": "Nexus Field is a field service management app built for HVAC, plumbing, electrical, landscaping, and contracting companies. Features include free parts inventory tracking across warehouses and trucks, technician assignment, job tracking, built-in photo database, and survey and inspection tools. Configured around how your team actually works. No contract, a minimal setup fee, and your price held for two years.",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "description": "Parts inventory management included free with every plan",
+        "description": "Parts inventory management included free with every plan. No contract, minimal setup fee, pricing held for two years.",
       },
       "provider": { "@id": ORG_ID },
       "creator": { "@id": ORG_ID },
@@ -242,6 +242,14 @@ export const faqSchema = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Nexus Field is a field service management app built for HVAC, plumbing, electrical, landscaping, and contracting companies. It includes free parts inventory tracking across your warehouse and trucks, job tracking, a built-in photo database, technician management, and survey tools. It is configured around how your team actually works, not a generic template.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Does Nexus Field require a contract, and will the price go up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No contract. Nexus Field is offered without a long-term contract, with a minimal setup fee to configure it around your business, and your price is held for two years. At the end of that period we sit down together, review your pain points and what we can improve, and agree on what comes next. Parts inventory is included free in every plan and that does not change.",
       },
     },
     {
