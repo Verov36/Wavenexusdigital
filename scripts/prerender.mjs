@@ -113,6 +113,34 @@ const ROUTES = [
     ],
   },
   {
+    path: "/nexus-field/vs/housecall-pro",
+    title: "Nexus Field vs Housecall Pro — Pricing, Add-Ons & Per-User Fees Compared (2026) | WaveNexus Digital Invest",
+    description:
+      "An honest Housecall Pro alternative comparison: Basic $79, Essentials $189, Max $329 a month plus $35 per extra user and a long list of paid add-ons, vs. Nexus Field at $75 per tech with office users free, parts inventory included, no contract, and your price held for two years.",
+    h1: "Nexus Field vs Housecall Pro",
+    body: [
+      "Housecall Pro is a solid self-serve platform, and for a one- or two-person shop it's cheaper than we are. This page is for the shops that grew into the Max plan, watched the per-user fees and add-ons stack up, and still can't get it to match how they actually work. Checked September 2026.",
+      "The short version. Housecall Pro: Basic $79 a month for 1 user, Essentials $189 for 5 users, Max $329 for 8 users, then $35 per additional user, month to month, with lower prices ($59 / $149 / $299) if you pay a year up front. Paid add-ons include the Sales Proposal Tool, CSR AI, Pipeline, Payroll, Accounting, Business Coaching, Voice, Campaigns, Vehicle GPS and dashcams, and Websites. Parts inventory is not on the pricing page or the plan feature lists. Nexus Field: $75 per tech per month, one plan with every feature, office and dispatch users free, warehouse and per-truck parts inventory included, no contract, a minimal setup fee scoped on the discovery call, and your price held for two years.",
+      "Year one for an 8-tech shop with 2 office users, at Housecall Pro's published month-to-month rates: Max plan $329 × 12 = $3,948 plus $35 × 2 extra users × 12 = $840, total $4,788, before any add-ons. Nexus Field: $75 × 8 × 12 = $7,200 plus a minimal setup fee. Straight answer: at that size Housecall Pro is about $2,400 a year cheaper on seat price. What that number doesn't include: every paid add-on, a parts inventory system, custom fields or configuration to your workflow, and any change to the price list at renewal. That's what the $75 buys.",
+      "To be fair, Housecall Pro is the better choice if you're a one- or two-person shop, if you want consumer financing, campaigns, and a phone system from one vendor, or if you want to sign up this afternoon with a 14-day free trial and no call. Nexus Field is the better fit if you have 4 to 40 techs and your Max bill keeps growing by $35 a head, you carry parts on trucks and need to know where they went, you're tired of the add-on invoice, your office and dispatch staff shouldn't cost the same as a tech, and you want the software set up around how your shop already works by someone who'll pick up the phone.",
+      "Sources: Housecall Pro's pricing page for plan prices, included users, per-user pricing, add-ons, and contract terms, as of September 2026; Tooled Up Pro and Projul for third-party analysis of add-on costs and customization complaints. Housecall Pro is a trademark of its owner; WaveNexus Digital Invest is not affiliated with Housecall Pro.",
+    ],
+  },
+  {
+    path: "/nexus-field/vs/jobber",
+    title: "Nexus Field vs Jobber — Pricing, Per-User Fees & Parts Inventory Compared (2026) | WaveNexus Digital Invest",
+    description:
+      "An honest Jobber alternative comparison: Core $49, Connect $139, Grow $199, Plus $499 a month plus $29 per extra user, with the advertised discounts requiring a year's commitment, vs. Nexus Field at $75 per tech with office users free, parts inventory included, no contract, and your price held for two years.",
+    h1: "Nexus Field vs Jobber",
+    body: [
+      "Jobber is a good product. If you run lawn care, cleaning, or a small crew with no parts on the truck, it may be the right pick, and it's the cheaper one. This page is for HVAC, plumbing, and electrical shops that carry inventory, have grown past five users, and are tired of climbing the tier ladder. Checked September 2026.",
+      "The short version. Jobber, month to month with no commitment: Core $49 for 1 user, Connect $139 for 5 users, Grow $199 for 10 users, Plus $499 for 15 users, then $29 per additional user. The advertised lower prices require a 1-year commitment ($39 / $119 / $169 / $439) or a year prepaid ($29 / $99 / $149 / $399). Job costing, GPS, and QuickBooks sync start at Connect; two-way SMS starts at Grow. Paid add-ons: Marketing Suite $99 a month, AI Receptionist $29, Pipeline $49. Parts inventory is not on the plan feature list. Nexus Field: $75 per tech per month, one plan with every feature, office and dispatch users free, warehouse and per-truck parts inventory included, no contract, a minimal setup fee scoped on the discovery call, and your price held for two years.",
+      "Year one for an 8-tech shop with 2 office users, at Jobber's published month-to-month rate: Grow plan $199 × 12 = $2,388, before add-ons. Nexus Field: $75 × 8 × 12 = $7,200 plus a minimal setup fee. Straight answer: at that size Jobber is about $4,800 a year cheaper on seat price. What that number doesn't include: the Marketing Suite, AI Receptionist, and Pipeline add-ons, a parts inventory system, features gated to a higher tier, and any change to the price list at renewal. That's what the $75 buys.",
+      "To be fair, Jobber is the better choice if you don't carry parts, if you're solo or a crew of five, or if you want the marketing and receptionist bolt-ons. Nexus Field is the better fit if you're HVAC, plumbing, or electrical and parts on trucks are money you can't account for, you're past five users and every new hire is another $29 a month plus the next tier, you'd rather pay one flat month-to-month price than commit to a year to get the advertised number, your office and dispatch staff shouldn't cost the same as a tech, and you want the software set up around how your shop already works by someone who'll pick up the phone.",
+      "Sources: Jobber's pricing page for plan prices, included users, per-user pricing, tier features, add-on prices, and commitment terms, as of September 2026; TradePicked and Capterra for third-party breakdowns. Jobber is a trademark of its owner; WaveNexus Digital Invest is not affiliated with Jobber.",
+    ],
+  },
+  {
     path: "/custom-apps",
     title: "Custom App Developer Near Me | Business Software & Mobile Apps | Hampton Roads VA | WaveNexus Digital Invest",
     description:
