@@ -87,12 +87,13 @@ const ROUTES = [
     path: "/nexus-field",
     title: "Nexus Field — Field Service Management Software | WaveNexus Digital Invest",
     description:
-      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team.",
+      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team. No contract, minimal setup fee, price held for two years.",
     h1: "Nexus Field — Field Service Management Software",
     body: [
       "Nexus Field is field service management software built for HVAC, plumbing, electrical, landscaping, and contracting companies. It works the way your team does.",
       "Free parts inventory in every plan: warehouse stock, truck-level inventory, technician accountability, and parts-used-per-job logging so you always know where your parts went.",
       "Also includes job tracking with full activity timelines, an automatic photo database attached to every job, surveys and inspections built into the workflow, technician management, and customer-first records.",
+      "Straight pricing: no contract, a minimal setup fee to configure it around your business, and your price held for two years — then we sit down together, go through your pain points and what we can improve, and agree on what comes next. Businesses on the big-name platforms tell us the same three things: the price went up again, they're locked into a contract, and the setup fees were brutal. Nexus Field is built to be the opposite.",
       "Built by a Marine Corps veteran-owned team for people who work in the field — no bloat, no charging extra for the basics.",
     ],
   },
