@@ -126,7 +126,7 @@ export const portfolio = [
     name: "Red Vine Mechanical HVAC",
     category: "Local Service Business",
     text: "Lead-driven redesign with service pages, quote form, and local SEO structure.",
-    url: "https://redvine-mechanical.figma.site",
+    url: "https://www.redvinemechanical.com/",
   },
   {
     name: "Dizon Digital Media",
