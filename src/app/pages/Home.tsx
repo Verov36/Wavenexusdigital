@@ -115,10 +115,10 @@ export default function Home() {
                   className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                   See Full Product <ArrowRight className="h-5 w-5" />
                 </Link>
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                <Link to="/audit?type=demo"
                   className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
                   Request Demo
-                </a>
+                </Link>
               </div>
             </motion.div>
 
@@ -364,10 +364,10 @@ export default function Home() {
                 No pitch, no packages you don't need. Start with a free audit — we'll give you an honest look at where you stand.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                <Link to="/audit"
                   className="flex items-center justify-center gap-2 px-7 py-3.5 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                   Free Audit <ArrowRight className="h-5 w-5" />
-                </a>
+                </Link>
                 <Link to="/contact"
                   className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                   Contact Us

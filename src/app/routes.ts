@@ -11,6 +11,7 @@ import Blog from "./pages/Blog";
 import BlogPostSpreadsheets from "./pages/BlogPostSpreadsheets";
 import BlogPostPartsTracking from "./pages/BlogPostPartsTracking";
 import Contact from "./pages/Contact";
+import Audit from "./pages/Audit";
 import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter([
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "blog/field-service-software-vs-spreadsheets", Component: BlogPostSpreadsheets },
       { path: "blog/parts-walking-off-trucks", Component: BlogPostPartsTracking },
       { path: "contact", Component: Contact },
+      { path: "audit", Component: Audit },
       { path: "*", Component: NotFound },
     ],
   },

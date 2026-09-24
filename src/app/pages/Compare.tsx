@@ -253,10 +253,10 @@ export default function Compare() {
                 {NEXUS_FIELD.perTechLabel} per tech. Office users free. No contract. Setup scoped to what you're bringing over. If it's not a fit, we'll tell you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href={NEXUS_FIELD.demoUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("click", "Compare", `${c.name} — Demo`)}
+                <Link to={NEXUS_FIELD.demoUrl} onClick={() => trackEvent("click", "Compare", `${c.name} — Demo`)}
                   className="flex items-center justify-center gap-2 px-7 py-3.5 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                   Request a Demo <ArrowRight className="h-5 w-5" />
-                </a>
+                </Link>
                 <Link to={NEXUS_FIELD.contactUrl}
                   className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                   Talk to Us First

@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { COMPANY_INFO } from "../lib/constants";
+import { COMPANY_INFO, submitToCrm } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
 import { setPageMeta } from "../metadata";
 
@@ -16,6 +16,14 @@ const INTEREST_LABEL: Record<Exclude<Interest, "">, string> = {
   agency: "Agency Services",
   nexusfield: "Nexus Field App",
   customapp: "Custom App",
+};
+
+// How each choice is labelled in the CRM (which also picks its pipeline).
+const CRM_INTEREST: Record<Exclude<Interest, ""> | "general", string> = {
+  agency: "new website",
+  nexusfield: "nexus field demo",
+  customapp: "custom app",
+  general: "general contact",
 };
 
 const INTEREST_OPTIONS: { key: Exclude<Interest, "">; title: string; sub: string }[] = [
@@ -44,16 +52,27 @@ export default function Contact() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.business || !form.message) { toast.error("Please fill in all fields"); return; }
     trackEvent("submit", "Contact Form", interest || "General");
     const interestLabel = interest ? INTEREST_LABEL[interest] : "General";
-    const body = `Name: ${form.name}\nEmail: ${form.email}\nBusiness: ${form.business}\nInterest: ${interestLabel}\n\nMessage:\n${form.message}`;
-    window.location.href = `mailto:${COMPANY_INFO.email}?subject=Contact from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email client...");
-    setForm({ name: "", email: "", business: "", message: "" });
-    setInterest("");
+    setSending(true);
+    try {
+      await submitToCrm({ ...form, interest: CRM_INTEREST[interest || "general"] });
+      toast.success("Message sent. We'll get back to you shortly.");
+      setForm({ name: "", email: "", business: "", message: "" });
+      setInterest("");
+    } catch {
+      // Couldn't reach the CRM: fall back to the visitor's email app so the message isn't lost.
+      const body = `Name: ${form.name}\nEmail: ${form.email}\nBusiness: ${form.business}\nInterest: ${interestLabel}\n\nMessage:\n${form.message}`;
+      window.location.href = `mailto:${COMPANY_INFO.email}?subject=Contact from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(body)}`;
+      toast.message("Opening your email app to send this instead...");
+    } finally {
+      setSending(false);
+    }
   };
 
   const messagePlaceholder = interest === "customapp"
@@ -114,10 +133,10 @@ export default function Contact() {
                 <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-950/60 mb-3">No obligation</p>
                 <h3 className="font-['Barlow_Condensed'] font-900 text-2xl uppercase text-zinc-950 mb-3">Free Website Audit</h3>
                 <p className="font-['DM_Sans'] text-sm text-zinc-950/70 mb-5">A personalized look at your current online presence and what would actually help.</p>
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                <Link to="/audit"
                   className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                   Start Now <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </motion.div>
 
               {/* Nexus Field */}
@@ -175,9 +194,9 @@ export default function Contact() {
                     <textarea name="message" value={form.message} onChange={handleChange} placeholder={messagePlaceholder} rows={5}
                       className="w-full bg-transparent px-5 pb-4 text-white placeholder:text-zinc-700 font-['DM_Sans'] text-sm outline-none resize-none focus:bg-zinc-800 transition-colors" />
                   </div>
-                  <button type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors">
-                    Send Message <ArrowRight className="h-5 w-5" />
+                  <button type="submit" disabled={sending}
+                    className="w-full flex items-center justify-center gap-2 py-5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors disabled:opacity-60">
+                    {sending ? "Sending..." : <>Send Message <ArrowRight className="h-5 w-5" /></>}
                   </button>
                 </form>
               </div>

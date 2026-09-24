@@ -14,6 +14,20 @@ export const COMPANY_INFO = {
   calendarLink: "https://calendar.app.google/95MNpjJrbGjj6qco6",
 };
 
+// Audit, demo and contact forms post here; submissions land in WaveNexus CRM.
+export const CRM_INTAKE_URL = "https://wavenexus-crm-production.up.railway.app/api/intake";
+
+/** Sends a form submission to the CRM. Throws with a readable message if it fails. */
+export async function submitToCrm(data: Record<string, string>) {
+  const res = await fetch(CRM_INTAKE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong sending your request.");
+}
+
 export const services = [
   {
     icon: Globe,

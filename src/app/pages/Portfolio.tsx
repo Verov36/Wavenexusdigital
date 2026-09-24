@@ -185,10 +185,10 @@ export default function Portfolio() {
               </h2>
             </div>
             <div className="flex flex-col gap-3">
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              <Link to="/audit"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                 Free Audit <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
               <Link to="/contact"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                 Contact Us

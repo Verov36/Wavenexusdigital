@@ -79,10 +79,10 @@ export default function NexusField() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              <Link to="/audit?type=demo"
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors">
                 Request a Demo <ArrowRight className="h-5 w-5" />
-              </a>
+              </Link>
               <Link to="/contact"
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-zinc-700 text-zinc-300 font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-lg hover:border-amber-500 hover:text-amber-400 transition-all">
                 Talk to Us First
@@ -350,10 +350,10 @@ export default function NexusField() {
               We'll walk you through it based on how your business actually runs — not a generic demo with fake data. No contract if you like what you see.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              <Link to="/audit?type=demo"
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-zinc-900 transition-colors">
                 Request a Demo <ArrowRight className="h-5 w-5" />
-              </a>
+              </Link>
               <Link to="/contact"
                 className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-lg hover:bg-zinc-950 hover:text-amber-500 transition-all">
                 Contact Us First

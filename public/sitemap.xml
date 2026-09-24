@@ -75,6 +75,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Free Audit / Demo Request -->
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/audit</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog Posts -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/blog/field-service-software-vs-spreadsheets</loc>

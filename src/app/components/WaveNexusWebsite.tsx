@@ -139,7 +139,7 @@ ${formData.message}
               <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700 hover:text-blue-600 transition">Contact</a>
             </nav>
 
-            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex">
+            <a href="/audit" className="hidden md:inline-flex">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                 Free Audit
               </Button>
@@ -158,7 +158,7 @@ ${formData.message}
                 <a href="#blog" onClick={(e) => handleScroll(e, "#blog")} className="text-slate-700">Blog</a>
                 <a href="#portfolio" onClick={(e) => handleScroll(e, "#portfolio")} className="text-slate-700">Portfolio</a>
                 <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="text-slate-700">Contact</a>
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+                <a href="/audit">
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                     Free Audit
                   </Button>
@@ -569,7 +569,7 @@ ${formData.message}
                   Get a personalized walkthrough tailored to your business. No canned demos — we show you exactly how Nexus Field fits your operation.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+                  <a href="/audit?type=demo">
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
                       Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
@@ -687,7 +687,7 @@ ${formData.message}
 
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mt-12">
               <p className="text-slate-600 mb-4">Want personalized digital marketing advice for your Hampton Roads business?</p>
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+              <a href="/audit">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8">
                   Get Your Free Audit <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -899,7 +899,7 @@ ${formData.message}
                       <Award className="h-10 w-10 text-blue-600 mx-auto mb-3" />
                       <h3 className="text-xl font-black text-slate-900 mb-2">Get Your Free Audit</h3>
                       <p className="text-sm text-slate-600 mb-4">Complete our intake form to get started</p>
-                      <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer">
+                      <a href="/audit">
                         <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">
                           Start Now
                         </Button>

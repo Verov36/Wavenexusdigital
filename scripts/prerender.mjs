@@ -198,6 +198,19 @@ const ROUTES = [
       "Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, and all of Southeast Virginia.",
     ],
   },
+  {
+    path: "/audit",
+    title: "Free Website Audit | Hampton Roads Web Designer | WaveNexus Digital Invest",
+    description:
+      "Get a free, no-obligation website audit from WaveNexus Digital Invest, a veteran-owned web design team in Hampton Roads, VA. Or request a demo of Nexus Field field service software.",
+    h1: "Get Your Free Audit",
+    body: [
+      "Tell us where you are online and we'll give you an honest look at what's working, what isn't, and what would actually bring in more calls. No pitch, no packages you don't need.",
+      "Every audit covers speed and mobile performance, how you show up on Google and in AI search tools, and plain-English findings with the fixes that matter most.",
+      "Running a field service team? Request a demo of Nexus Field: $75 per tech a month, office users free, parts inventory included, no contract.",
+      `Phone: ${PHONE} | Email: ${EMAIL}`,
+    ],
+  },
 ];
 
 // ── HTML helpers (regex-based, dependency-free) ─────────────────────────────

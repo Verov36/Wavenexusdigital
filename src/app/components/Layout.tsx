@@ -89,10 +89,10 @@ export default function Layout() {
 
             {/* CTA */}
             <div className="hidden xl:block shrink-0">
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              <Link to="/audit"
                 className="flex items-center gap-2 px-5 py-2 whitespace-nowrap bg-amber-500 text-zinc-950 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                 Free Audit <ChevronRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -125,10 +125,10 @@ export default function Layout() {
                   }>{label}</NavLink>
                 ))}
                 <div className="pt-3 mt-1 border-t border-border">
-                  <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                  <Link to="/audit"
                     className="block w-full text-center px-4 py-3 bg-amber-500 text-zinc-950 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest">
                     Get Free Audit
-                  </a>
+                  </Link>
                 </div>
               </nav>
             </motion.div>
@@ -181,7 +181,7 @@ export default function Layout() {
               <ul className="space-y-2 mb-6">
                 <li><Link to="/nexus-field" className="text-sm text-amber-500 hover:text-amber-400 font-['Barlow_Condensed'] font-700 uppercase tracking-wider transition-colors">Nexus Field App</Link></li>
                 <li><Link to="/custom-apps" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Custom Apps</Link></li>
-                <li><a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Request a Demo</a></li>
+                <li><Link to="/audit?type=demo" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Request a Demo</Link></li>
               </ul>
               <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-3">Contact</p>
               <a href={`tel:${COMPANY_INFO.phone}`} className="block text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans'] mb-1">{COMPANY_INFO.phone}</a>

@@ -296,10 +296,10 @@ export default function BlogPostPartsTracking() {
                 We don't do high-pressure sales. If you want to see how Nexus Field can stop the "black hole" of unbilled materials, we'll walk you through it — no obligation, 24/7 support backed by a 100% satisfaction guarantee.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+                <Link to="/audit?type=demo"
                   className="flex items-center justify-center gap-2 px-7 py-3.5 bg-zinc-950 text-amber-500 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                   Talk to Us <ArrowRight className="h-5 w-5" />
-                </a>
+                </Link>
                 <Link to="/nexus-field"
                   className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                   See Nexus Field

@@ -192,10 +192,10 @@ export default function Services() {
             ))}
           </motion.div>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center">
-            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+            <Link to="/audit"
               className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors">
               Start With a Free Audit <ArrowRight className="h-5 w-5" />
-            </a>
+            </Link>
             <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-700 mt-4">No commitment. Just an honest look at where you stand.</p>
           </motion.div>
         </div>
@@ -219,10 +219,10 @@ export default function Services() {
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
                 Learn About Nexus Field <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+              <Link to="/audit?type=demo"
                 className="flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-400 font-['Barlow_Condensed'] font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
                 Request a Demo
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

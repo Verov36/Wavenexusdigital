@@ -15,7 +15,7 @@ export const NEXUS_FIELD = {
   priceHold: "Held for two years, then renegotiated together",
   platforms: "Mobile and desktop included",
   inventory: "Parts inventory included in every plan",
-  demoUrl: "https://wavenexusos.polsia.app/intake",
+  demoUrl: "/audit?type=demo",
   contactUrl: "/contact?interest=nexusfield",
 };
 

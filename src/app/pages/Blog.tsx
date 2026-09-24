@@ -155,10 +155,10 @@ export default function Blog() {
           </motion.div>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center border-t border-border pt-12">
             <p className="font-['DM_Sans'] text-zinc-500 mb-5">Want personalized digital advice for your business?</p>
-            <a href="https://wavenexusos.polsia.app/intake" target="_blank" rel="noopener noreferrer"
+            <Link to="/audit"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-['Barlow_Condensed'] font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
               Get Your Free Audit <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
