@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight } from "lucide-react";
-import logoImage from "../../imports/WaveNexus_digital_branding_emblem.png";
+import logoImage from "../../imports/wavenexus-logo-160.webp";
 import { COMPANY_INFO } from "../lib/constants";
 import { trackPageView } from "../lib/analytics";
 

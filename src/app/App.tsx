@@ -3,7 +3,6 @@ import { RouterProvider } from "react-router";
 import { router } from "./routes";
 import { Toaster } from "./components/ui/sonner";
 import { setMetadata } from "./metadata";
-import { injectStructuredData } from "./lib/seo/structuredData";
 
 // ── Step 1: Nuke any existing noindex tags immediately ──────────────────────
 (function nukeNoindex() {
@@ -74,7 +73,6 @@ setMetadata();
 
 export default function App() {
   useEffect(() => {
-    injectStructuredData();
     document.body.setAttribute("itemscope", "");
     document.body.setAttribute("itemtype", "https://schema.org/WebPage");
   }, []);

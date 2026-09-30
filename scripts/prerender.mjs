@@ -334,6 +334,27 @@ function main() {
     console.log(`✅ prerendered ${route.path.padEnd(42)} → ${outPath.replace(distDir, "dist")}`);
   }
 
+  // ---- 404 page ----
+  // Vercel serves dist/404.html, with a real 404 status, for any path that has no
+  // file of its own. Before this, a catch-all rewrite answered every unknown URL
+  // with the homepage and a 200, which Google reports as "soft 404" and which let
+  // mistyped or stale links compete with the homepage. The React app still boots
+  // here and renders the NotFound page for visitors.
+  let notFound = template;
+  notFound = setTitle(notFound, `Page Not Found | ${SITE_NAME}`);
+  notFound = upsertMeta(notFound, "name", "description", "The page you were looking for could not be found.");
+  notFound = upsertMeta(notFound, "name", "robots", "noindex, follow");
+  notFound = notFound.replace(/<link[^>]*rel=["']canonical["'][^>]*>\s*/i, "");
+  notFound = notFound.replace(/<meta[^>]*property=["']og:url["'][^>]*>\s*/i, "");
+  const notFoundContent = `<div style="font-family:sans-serif;max-width:820px;margin:0 auto;padding:32px 20px">
+<nav aria-label="Primary">${NAV_LINKS.map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ")}</nav>
+<main><h1>Page not found</h1><p>That page doesn't exist. Try one of the links above.</p></main>
+</div>`;
+  notFound = injectRootContent(notFound, notFoundContent);
+  notFound = setNoscript(notFound, notFoundContent);
+  writeFileSync(join(distDir, "404.html"), notFound, "utf8");
+  console.log("✅ prerendered 404 page                             → dist/404.html");
+
   console.log(`\n✅ Prerender complete — ${count} route(s) written with unique title, canonical, and content.`);
 }
 

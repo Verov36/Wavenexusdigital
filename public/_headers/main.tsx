@@ -1,4 +1,0 @@
-/*
-  X-Robots-Tag: index, follow
-  X-Frame-Options: SAMEORIGIN
-  X-Content-Type-Options: nosniff

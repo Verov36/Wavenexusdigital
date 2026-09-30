@@ -1,6 +1,9 @@
 import { COMPANY_INFO } from "../constants";
 
-const BASE_URL = typeof window !== "undefined" ? window.location.origin : "https://wavenexusdigitalinvest.com";
+// Always the production origin, never window.location: this data is baked into the
+// static HTML at build time (see vite.config.ts), and entity ids must not change with
+// whichever host served the page.
+const BASE_URL = "https://wavenexusdigitalinvest.com";
 const ORG_ID = `${BASE_URL}/#organization`;
 const WEBSITE_ID = `${BASE_URL}/#website`;
 
@@ -132,14 +135,6 @@ export const graphSchema = {
       "description": "Veteran-owned local web designer, custom app developer, and digital marketing team near you in Hampton Roads VA. Custom websites, custom web and mobile apps, local SEO, AI SEO, branding, and Nexus Field field service software.",
       "publisher": { "@id": ORG_ID },
       "inLanguage": "en-US",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": `${BASE_URL}/?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
 
     // ── 3. Nexus Field SoftwareApplication ──────────────────────────────────
@@ -153,9 +148,9 @@ export const graphSchema = {
       "description": "Nexus Field is a field service management app built for HVAC, plumbing, electrical, landscaping, and contracting companies. Features include free parts inventory tracking across warehouses and trucks, technician assignment, job tracking, built-in photo database, and survey and inspection tools. Configured around how your team actually works. No contract, a minimal setup fee, and your price held for two years.",
       "offers": {
         "@type": "Offer",
-        "price": "0",
+        "price": "75",
         "priceCurrency": "USD",
-        "description": "Parts inventory management included free with every plan. No contract, minimal setup fee, pricing held for two years.",
+        "description": "$75 per technician per month. Parts inventory management included free with every plan. No contract, minimal setup fee, pricing held for two years.",
       },
       "provider": { "@id": ORG_ID },
       "creator": { "@id": ORG_ID },
@@ -384,17 +379,14 @@ export const serviceSchemas = [
   },
 ];
 
-export function injectStructuredData() {
-  const schemas = [
-    graphSchema,
-    faqSchema,
-    ...serviceSchemas,
-  ];
+// The site-wide schemas. vite.config.ts writes these into the static HTML of every
+// page at build time, so crawlers that don't run JavaScript still see them.
+// faqSchema is deliberately left out: Google requires FAQPage markup to match
+// questions visible on the page, and no page currently shows them.
+export const siteSchemas = [graphSchema, ...serviceSchemas];
 
-  schemas.forEach((schema) => {
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(schema);
-    document.head.appendChild(script);
-  });
+export function structuredDataScripts(): string {
+  return siteSchemas
+    .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`)
+    .join("\n");
 }

@@ -3,8 +3,8 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { setPageMeta } from "../metadata";
-import veteranImage1 from "../../imports/1st_vet_image.png";
-import veteranImage2 from "../../imports/2nd_vet_logo.png";
+import veteranImage1 from "../../imports/1st_vet_image-336.webp";
+import veteranImage2 from "../../imports/2nd_vet_logo-336.webp";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.09 } } };
