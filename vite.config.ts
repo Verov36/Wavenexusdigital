@@ -2,6 +2,7 @@ import { defineConfig, type Plugin } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { structuredDataScripts } from './src/app/lib/seo/structuredData'
 
 const SITE_URL = 'https://wavenexusdigitalinvest.com';
 const SITE_TITLE = 'Web Developer Near Me | Local Website Designer Hampton Roads VA | WaveNexus Digital Invest';
@@ -64,6 +65,7 @@ const removeNoindex: Plugin = {
 <meta name="twitter:image" content="${SITE_URL}/og-image.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y6X0LLS4FD"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y6X0LLS4FD');</script>
+${structuredDataScripts()}
 </head>`);
 
       // ── 4. Inject noscript fallback before </body> (block elements valid here) ──
