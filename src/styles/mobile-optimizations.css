@@ -109,19 +109,4 @@ header {
   div {
     max-width: 100vw;
   }
-
-  /* Ensure no negative margins push content off screen */
-  * {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Allow specific negative margins for design */
-  [class*="gap-"],
-  [class*="space-"],
-  .grid,
-  .flex {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
