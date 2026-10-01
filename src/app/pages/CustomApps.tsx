@@ -72,9 +72,7 @@ const nexusInventoryFeatures = [
 
 export default function CustomApps() {
   useEffect(() => {
-    setPageMeta("Custom App Developer Near Me | Business Software & Mobile Apps | Hampton Roads VA",
-      "WaveNexus builds custom web and mobile apps for local businesses in Hampton Roads, VA — job tracking, inventory, scheduling, customer portals. You describe the process; we build the tool that fits it. Veteran-owned. Free scoping call.",
-      "/custom-apps");
+    setPageMeta("/custom-apps");
   }, []);
 
   const scopeCta = "/contact?interest=customapp";
@@ -92,7 +90,7 @@ export default function CustomApps() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Custom Software · Hampton Roads, VA</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
-              You know what you need handled.<br /><span className="text-amber-500">We build the tool.</span>
+              You know what you need handled.{" "}<br /><span className="text-amber-500">We build the tool.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed max-w-3xl mb-10">
               Most businesses run on a mix of spreadsheets, group texts, and an off-the-shelf app that does about 60% of the job. If you can describe the process, we can build the app that runs it — in the browser, on the phone, or both.
@@ -120,7 +118,7 @@ export default function CustomApps() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Sound Familiar?</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white">
-              What we hear from businesses<br /><span className="text-amber-500">on the big-name platforms</span>
+              What we hear from businesses{" "}<br /><span className="text-amber-500">on the big-name platforms</span>
             </h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
@@ -146,7 +144,7 @@ export default function CustomApps() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">What We Build</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">
-              Built around the work,<br /><span className="text-amber-500">not the other way around</span>
+              Built around the work,{" "}<br /><span className="text-amber-500">not the other way around</span>
             </h2>
           </motion.div>
 
@@ -213,7 +211,7 @@ export default function CustomApps() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">What We've Built</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">
-              Real software.<br /><span className="text-amber-500">Running real businesses.</span>
+              Real software.{" "}<br /><span className="text-amber-500">Running real businesses.</span>
             </h2>
             <p className="font-['DM_Sans'] text-zinc-500 mt-4 max-w-2xl leading-relaxed">
               Both built and run by WaveNexus — the same team you'd be working with.

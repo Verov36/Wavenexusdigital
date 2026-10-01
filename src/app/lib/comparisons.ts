@@ -55,7 +55,7 @@ export const competitors: Competitor[] = [
     slug: "servicetitan",
     name: "ServiceTitan",
     checked: "September 2026",
-    metaTitle: "Nexus Field vs ServiceTitan — Pricing, Contract & Setup Fees Compared (2026)",
+    metaTitle: "Nexus Field vs ServiceTitan: Pricing, Contract & Setup Fees (2026) | WaveNexus",
     metaDescription:
       "An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at $75 per tech, no contract, and a setup fee scoped to your migration.",
     headline: "The bill that grows every year, or the one that doesn't.",

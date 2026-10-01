@@ -94,9 +94,7 @@ const services: Service[] = [
 
 export default function Services() {
   useEffect(() => {
-    setPageMeta("Services — Web Design, Custom Apps, SEO & Digital Marketing Near Me | Hampton Roads VA",
-      "WaveNexus Digital Invest offers website design, custom business apps, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
-      "/services");
+    setPageMeta("/services");
   }, []);
 
   return (
@@ -112,7 +110,7 @@ export default function Services() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">What We Offer</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
-              Services That<br /><span className="text-amber-500">Actually Work</span>
+              Services That{" "}<br /><span className="text-amber-500">Actually Work</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
               We keep it to the things we're genuinely good at. Every service below is described by what it changes for your business, not just what it includes.
@@ -146,7 +144,7 @@ export default function Services() {
                 {/* Results + photo */}
                 <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
                   <div className="overflow-hidden mb-px">
-                    <img src={service.photo} alt={service.photoAlt}
+                    <img loading="lazy" decoding="async" src={service.photo} alt={service.photoAlt}
                       className="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-px">

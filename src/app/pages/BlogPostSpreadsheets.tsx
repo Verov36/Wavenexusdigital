@@ -9,11 +9,7 @@ const stagger = { show: { transition: { staggerChildren: 0.07 } } };
 
 export default function BlogPostSpreadsheets() {
   useEffect(() => {
-    setPageMeta(
-      "Field Service Software vs. Spreadsheets: Which One Actually Saves You Money?",
-      "Spreadsheets look free but cost Hampton Roads contractors $44,200/year in lost billable time. See the real ROI of switching to field service management software like Nexus Field.",
-      "/blog/field-service-software-vs-spreadsheets"
-    );
+    setPageMeta("/blog/field-service-software-vs-spreadsheets");
   }, []);
 
   return (
@@ -51,8 +47,8 @@ export default function BlogPostSpreadsheets() {
 
             <motion.h1 variants={fadeUp}
               className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl lg:text-7xl uppercase leading-[0.9] text-white mb-8">
-              Field Service Software<br />vs. Spreadsheets:<br />
-              <span className="text-amber-500">Which One Actually<br />Saves You Money?</span>
+              Field Service Software{" "}<br />vs. Spreadsheets:{" "}<br />
+              <span className="text-amber-500">Which One Actually{" "}<br />Saves You Money?</span>
             </motion.h1>
 
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed border-l-4 border-amber-500 pl-5">
@@ -164,6 +160,7 @@ export default function BlogPostSpreadsheets() {
           {/* Divider image */}
           <div className="my-12">
             <img
+              loading="lazy" decoding="async"
               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
               alt="Messy paper-based office system"
               className="w-full h-52 object-cover grayscale"

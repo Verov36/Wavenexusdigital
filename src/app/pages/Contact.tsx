@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { COMPANY_INFO, submitToCrm } from "../lib/constants";
+import { COMPANY_INFO, CrmError, TEL_HREF, submitToCrm } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
 import { setPageMeta } from "../metadata";
 
@@ -34,9 +34,7 @@ const INTEREST_OPTIONS: { key: Exclude<Interest, "">; title: string; sub: string
 
 export default function Contact() {
   useEffect(() => {
-    setPageMeta("Contact — Local Web Designer Near Me | Hampton Roads VA",
-      "Get in touch with WaveNexus Digital Invest — your local web design and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.",
-      "/contact");
+    setPageMeta("/contact");
   }, []);
 
   // Let other pages deep-link into a pre-selected interest, e.g. /contact?interest=customapp
@@ -47,7 +45,8 @@ export default function Contact() {
   })();
 
   const [interest, setInterest] = useState<Interest>(initialInterest);
-  const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
+  const empty = { name: "", email: "", business: "", message: "", company_site: "" };
+  const [form, setForm] = useState(empty);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -57,18 +56,23 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.business || !form.message) { toast.error("Please fill in all fields"); return; }
-    trackEvent("submit", "Contact Form", interest || "General");
     const interestLabel = interest ? INTEREST_LABEL[interest] : "General";
     setSending(true);
     try {
       await submitToCrm({ ...form, interest: CRM_INTEREST[interest || "general"] });
+      trackEvent("submit", "Contact Form", interest || "General");
       toast.success("Message sent. We'll get back to you shortly.");
-      setForm({ name: "", email: "", business: "", message: "" });
+      setForm(empty);
       setInterest("");
-    } catch {
+    } catch (err) {
+      if (err instanceof CrmError && err.kind === "client") {
+        // The CRM rejected something the visitor can fix (e.g. a mistyped email).
+        toast.error(err.message);
+        return;
+      }
       // Couldn't reach the CRM: fall back to the visitor's email app so the message isn't lost.
       const body = `Name: ${form.name}\nEmail: ${form.email}\nBusiness: ${form.business}\nInterest: ${interestLabel}\n\nMessage:\n${form.message}`;
-      window.location.href = `mailto:${COMPANY_INFO.email}?subject=Contact from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(`Contact from ${form.name}`)}&body=${encodeURIComponent(body)}`;
       toast.message("Opening your email app to send this instead...");
     } finally {
       setSending(false);
@@ -108,7 +112,7 @@ export default function Contact() {
             {/* Sidebar */}
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-2 space-y-px">
               {[
-                { icon: Phone, label: "Call or Text", value: COMPANY_INFO.phone, href: `tel:${COMPANY_INFO.phone.replace(/\D/g, "")}` },
+                { icon: Phone, label: "Call or Text", value: COMPANY_INFO.phone, href: TEL_HREF },
                 { icon: Mail, label: "Email", value: COMPANY_INFO.email, href: `mailto:${COMPANY_INFO.email}` },
                 { icon: MapPin, label: "Serving", value: "Hampton Roads, VA", href: null },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -167,7 +171,7 @@ export default function Contact() {
                     {INTEREST_OPTIONS.map(({ key, title, sub }) => {
                       const active = interest === key;
                       return (
-                        <button key={key} type="button" onClick={() => setInterest(key)}
+                        <button key={key} type="button" aria-pressed={active} onClick={() => setInterest(key)}
                           className={`p-5 text-left transition-all ${active ? "bg-amber-500" : "bg-zinc-900 hover:bg-zinc-800"}`}>
                           <p className={`font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-sm ${active ? "text-zinc-950" : "text-white"}`}>{title}</p>
                           <p className={`font-['DM_Sans'] text-xs mt-0.5 ${active ? "text-zinc-950/60" : "text-zinc-600"}`}>{sub}</p>
@@ -178,20 +182,25 @@ export default function Contact() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-px bg-zinc-800">
-                  {[
-                    { label: "Name", name: "name", type: "text", placeholder: "John Doe" },
-                    { label: "Email", name: "email", type: "email", placeholder: "john@example.com" },
-                    { label: "Business Name", name: "business", type: "text", placeholder: "Your Business" },
-                  ].map(({ label, name, type, placeholder }) => (
+                  {/* Spam trap: hidden from people, bots fill it in */}
+                  <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                    <label>Company site<input name="company_site" tabIndex={-1} autoComplete="off" value={form.company_site} onChange={handleChange} /></label>
+                  </div>
+                  {([
+                    { label: "Name", name: "name", type: "text", placeholder: "John Doe", autoComplete: "name" },
+                    { label: "Email", name: "email", type: "email", placeholder: "john@example.com", autoComplete: "email" },
+                    { label: "Business Name", name: "business", type: "text", placeholder: "Your Business", autoComplete: "organization" },
+                  ] as const).map(({ label, name, type, placeholder, autoComplete }) => (
                     <div key={name} className="bg-zinc-900">
-                      <label className="block font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 px-5 pt-4 pb-1">{label}</label>
-                      <input name={name} type={type} value={(form as any)[name]} onChange={handleChange} placeholder={placeholder}
+                      <label htmlFor={`contact-${name}`} className="block font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 px-5 pt-4 pb-1">{label}</label>
+                      <input id={`contact-${name}`} name={name} type={type} value={form[name]} onChange={handleChange} placeholder={placeholder}
+                        autoComplete={autoComplete} required
                         className="w-full bg-transparent px-5 pb-4 text-white placeholder:text-zinc-700 font-['DM_Sans'] text-sm outline-none focus:bg-zinc-800 transition-colors" />
                     </div>
                   ))}
                   <div className="bg-zinc-900">
-                    <label className="block font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 px-5 pt-4 pb-1">Message</label>
-                    <textarea name="message" value={form.message} onChange={handleChange} placeholder={messagePlaceholder} rows={5}
+                    <label htmlFor="contact-message" className="block font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 px-5 pt-4 pb-1">Message</label>
+                    <textarea id="contact-message" name="message" value={form.message} onChange={handleChange} placeholder={messagePlaceholder} rows={5} required
                       className="w-full bg-transparent px-5 pb-4 text-white placeholder:text-zinc-700 font-['DM_Sans'] text-sm outline-none resize-none focus:bg-zinc-800 transition-colors" />
                   </div>
                   <button type="submit" disabled={sending}

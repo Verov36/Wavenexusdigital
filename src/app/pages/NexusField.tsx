@@ -40,9 +40,7 @@ const steps = [
 
 export default function NexusField() {
   useEffect(() => {
-    setPageMeta("Nexus Field — Field Service Management Software",
-      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team. No contract, minimal setup fee, price held for two years.",
-      "/nexus-field");
+    setPageMeta("/nexus-field");
   }, []);
 
   return (
@@ -64,10 +62,8 @@ export default function NexusField() {
 
             <motion.div variants={fadeUp}>
               <h1 className="font-['Barlow_Condensed'] font-900 text-7xl sm:text-8xl lg:text-[9rem] uppercase leading-[0.85] text-white">
-                Nexus
-              </h1>
-              <h1 className="font-['Barlow_Condensed'] font-900 text-7xl sm:text-8xl lg:text-[9rem] uppercase leading-[0.85] text-amber-500">
-                Field
+                <span className="block">Nexus</span>{" "}
+                <span className="block text-amber-500">Field</span>
               </h1>
             </motion.div>
 
@@ -121,7 +117,7 @@ export default function NexusField() {
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-16">
             <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl lg:text-7xl uppercase text-white leading-[0.9]">
-              Parts Inventory<br /><span className="text-amber-500">Management</span>
+              Parts Inventory{" "}<br /><span className="text-amber-500">Management</span>
             </h2>
             <div className="w-16 h-[2px] bg-amber-500 mt-6" />
           </motion.div>
@@ -173,7 +169,7 @@ export default function NexusField() {
               </div>
 
               <div className="overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1676210133055-eab6ef033ce3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1676210133055-eab6ef033ce3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Field service technician on the job" className="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
               </div>
             </motion.div>
@@ -192,7 +188,7 @@ export default function NexusField() {
                 <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Straight Pricing</span>
               </div>
               <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white leading-[0.9] mb-6">
-                No contract.<br /><span className="text-amber-500">No surprise invoice.</span>
+                No contract.{" "}<br /><span className="text-amber-500">No surprise invoice.</span>
               </h2>
               <p className="font-['DM_Sans'] text-zinc-400 leading-relaxed mb-8">
                 Nearly everyone who comes to us from one of the big-name platforms says the same three things:
@@ -250,7 +246,7 @@ export default function NexusField() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">What's Included</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">
-              Everything in one place.<br /><span className="text-amber-500">Nothing you don't need.</span>
+              Everything in one place.{" "}<br /><span className="text-amber-500">Nothing you don't need.</span>
             </h2>
           </motion.div>
 
@@ -310,7 +306,7 @@ export default function NexusField() {
                 <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Built By</span>
               </div>
               <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white mb-6">
-                Made by someone<br /><span className="text-amber-500">who gets it</span>
+                Made by someone{" "}<br /><span className="text-amber-500">who gets it</span>
               </h2>
               <p className="font-['DM_Sans'] text-zinc-400 leading-relaxed mb-4">
                 WaveNexus is Marine Corps veteran-owned. We didn't build Nexus Field to check a box — we built it because field service businesses kept telling us the same thing: the existing apps don't fit how we work.

@@ -60,9 +60,7 @@ const catColors: Record<string, string> = {
 
 export default function Blog() {
   useEffect(() => {
-    setPageMeta("Blog — Digital Marketing & Field Service Insights | WaveNexus",
-      "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.",
-      "/blog");
+    setPageMeta("/blog");
   }, []);
 
   const featured = posts.filter(p => p.featured);
@@ -81,7 +79,7 @@ export default function Blog() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Insights & Resources</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
-              Digital Marketing<br /><span className="text-amber-500">& Field Service</span><br />Insights
+              Digital Marketing{" "}<br /><span className="text-amber-500">& Field Service</span>{" "}<br />Insights
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
               Practical tips on web design, local SEO, AI search, field service tech, and digital strategy — from a veteran-owned perspective.

@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp, Code2, Smartphone, ScanLine } from "lucide-react";
 import { portfolio } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
+import { useEffect } from "react";
+import { setPageMeta } from "../metadata";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -11,6 +13,10 @@ const fadeUp = {
 const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 
 export default function Home() {
+  useEffect(() => {
+    setPageMeta("/");
+  }, []);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -20,7 +26,7 @@ export default function Home() {
           style={{ backgroundImage: "linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         {/* Photo overlay */}
         <div className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920')" }} />
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=70&w=1280')" }} />
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/40" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
@@ -37,8 +43,8 @@ export default function Home() {
             {/* Headline */}
             <motion.h1 variants={fadeUp}
               className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-9xl uppercase leading-[0.9] tracking-tight text-white mb-6">
-              Web Design<br />
-              <span className="text-amber-500">& Field Service</span><br />
+              Web Design{" "}<br />
+              <span className="text-amber-500">& Field Service</span>{" "}<br />
               Software
             </motion.h1>
 
@@ -126,7 +132,7 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="space-y-px">
               {/* Photo */}
               <div className="overflow-hidden mb-px">
-                <img src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Field service manager on tablet" className="w-full h-52 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
               </div>
               {/* Features */}
@@ -168,7 +174,7 @@ export default function Home() {
             <div className="lg:col-span-3 bg-zinc-950 p-8 lg:p-10">
               <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-400 block mb-4">Need something Nexus Field doesn't do?</span>
               <h3 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase leading-[0.95] text-white mb-4">
-                We build custom apps<br /><span className="text-amber-500">for businesses with a process</span>
+                We build custom apps{" "}<br /><span className="text-amber-500">for businesses with a process</span>
               </h3>
               <p className="font-['DM_Sans'] text-zinc-500 leading-relaxed mb-8 max-w-xl">
                 If you can describe what you need handled and how, we can build the tool that runs it — in the browser, on the phone, or both. The same team that built Nexus Field builds yours.
@@ -212,7 +218,7 @@ export default function Home() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Digital Agency</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">
-              What We Do for<br /><span className="text-amber-500">Local Businesses</span>
+              What We Do for{" "}<br /><span className="text-amber-500">Local Businesses</span>
             </h2>
           </motion.div>
 
@@ -250,23 +256,31 @@ export default function Home() {
               <div className="h-[2px] w-8 bg-amber-500" />
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Work</span>
             </div>
-            <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">Real Projects,<br /><span className="text-amber-500">Real Results</span></h2>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl uppercase text-white">Real Projects,{" "}<br /><span className="text-amber-500">Real Results</span></h2>
           </motion.div>
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             className="grid md:grid-cols-2 gap-px bg-zinc-800 mb-8">
             {portfolio.filter(p => p.name !== "Dizon Digital Media").map((item, idx) => (
               <motion.div key={item.name} variants={fadeUp}>
-                <a href={item.url || "#"} target="_blank" rel="noopener noreferrer"
-                  onClick={() => trackEvent("click", "Portfolio", item.name)}
-                  className="block bg-zinc-900 p-8 h-full group hover:bg-zinc-950 transition-colors border-l-2 border-transparent hover:border-amber-500">
-                  <div className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-500 mb-3">{item.category}</div>
-                  <h3 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-3 group-hover:text-amber-400 transition-colors">{item.name}</h3>
-                  <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{item.text}</p>
-                  <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 group-hover:gap-3 transition-all">
-                    View Project <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </a>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackEvent("click", "Portfolio", item.name)}
+                    className="block bg-zinc-900 p-8 h-full group hover:bg-zinc-950 transition-colors border-l-2 border-transparent hover:border-amber-500">
+                    <div className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-500 mb-3">{item.category}</div>
+                    <h3 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-3 group-hover:text-amber-400 transition-colors">{item.name}</h3>
+                    <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed mb-6">{item.text}</p>
+                    <span className="font-['Barlow_Condensed'] font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 group-hover:gap-3 transition-all">
+                      View Project <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </a>
+                ) : (
+                  <div className="bg-zinc-900 p-8 h-full border-l-2 border-transparent">
+                    <div className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-amber-500 mb-3">{item.category}</div>
+                    <h3 className="font-['Barlow_Condensed'] font-800 text-2xl uppercase text-white mb-3">{item.name}</h3>
+                    <p className="font-['DM_Sans'] text-sm text-zinc-500 leading-relaxed">{item.text}</p>
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -289,7 +303,7 @@ export default function Home() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Service Area</span>
             </div>
             <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white">
-              Local Web Design &amp; Marketing<br /><span className="text-amber-500">Across Hampton Roads, VA</span>
+              Local Web Design &amp; Marketing{" "}<br /><span className="text-amber-500">Across Hampton Roads, VA</span>
             </h2>
             <p className="font-['DM_Sans'] text-zinc-500 mt-4 max-w-2xl leading-relaxed">
               We're a Hampton Roads-based team that works with local businesses throughout Southeast Virginia. Whether you're in Suffolk or Virginia Beach, you get the same focused attention — no outsourced work, no cookie-cutter packages.

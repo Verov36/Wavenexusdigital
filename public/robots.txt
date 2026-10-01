@@ -7,7 +7,6 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://wavenexusdigitalinvest.com/sitemap.xml
-Sitemap: https://wavenexusdigitalinvest.com/sitemap-index.xml
 
 # Allow Google crawlers explicitly
 User-agent: Googlebot

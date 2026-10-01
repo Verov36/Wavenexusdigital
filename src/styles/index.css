@@ -1,5 +1,3 @@
-@import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
 @import './mobile-optimizations.css';
-@import './carousel-fix.css';

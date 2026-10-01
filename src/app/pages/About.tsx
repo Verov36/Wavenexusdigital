@@ -3,17 +3,15 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { setPageMeta } from "../metadata";
-import veteranImage1 from "../../imports/1st_vet_image.png";
-import veteranImage2 from "../../imports/2nd_vet_logo.png";
+import veteranImage1 from "../../assets/veteran-image.webp";
+import veteranImage2 from "../../assets/veteran-logo.webp";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } };
 const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 
 export default function About() {
   useEffect(() => {
-    setPageMeta("About — Veteran-Owned Web Design | Hampton Roads VA",
-      "WaveNexus Digital Invest is a veteran-owned web design and digital marketing company in Hampton Roads, VA. Marine Corps veteran founded, serving Suffolk, Virginia Beach, Chesapeake, and Newport News.",
-      "/about");
+    setPageMeta("/about");
   }, []);
 
   return (
@@ -29,7 +27,7 @@ export default function About() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Story</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
-              Small Team.<br /><span className="text-amber-500">Serious Work.</span>
+              Small Team.{" "}<br /><span className="text-amber-500">Serious Work.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
               Marine Corps veteran-owned digital agency and SaaS company based in Hampton Roads, VA. We'd rather do great work for a few clients than mediocre work for many.
@@ -43,8 +41,8 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
             className="flex flex-col sm:flex-row items-center justify-center gap-px bg-zinc-800 max-w-xl mx-auto">
-            <div className="bg-zinc-900 p-8 flex items-center justify-center w-full"><img src={veteranImage1} alt="Veteran Owned Business" className="max-h-28 w-auto" /></div>
-            <div className="bg-zinc-900 p-8 flex items-center justify-center w-full"><img src={veteranImage2} alt="Marine Corps Veteran" className="max-h-28 w-auto" /></div>
+            <div className="bg-zinc-900 p-8 flex items-center justify-center w-full"><img src={veteranImage1} alt="Veteran Owned Business" width={112} height={112} className="max-h-28 w-auto" /></div>
+            <div className="bg-zinc-900 p-8 flex items-center justify-center w-full"><img src={veteranImage2} alt="Marine Corps Veteran" width={168} height={112} className="max-h-28 w-auto" /></div>
           </motion.div>
         </div>
       </section>
@@ -55,7 +53,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
               <div className="overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1773434013413-b2c56e94c5d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1773434013413-b2c56e94c5d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Iwo Jima Memorial" className="w-full h-[480px] object-cover grayscale" />
               </div>
             </motion.div>
@@ -65,7 +63,7 @@ export default function About() {
                 <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Mission</span>
               </div>
               <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white mb-8 leading-[0.9]">
-                Why We<br /><span className="text-amber-500">Started This</span>
+                Why We{" "}<br /><span className="text-amber-500">Started This</span>
               </h2>
               <div className="space-y-5 font-['DM_Sans'] text-zinc-400 leading-relaxed">
                 <p>Chris founded WaveNexus after leaving the <span className="text-white font-semibold">Marine Corps</span> and seeing how many good local businesses were getting left behind online — paying too much for agencies that didn't care, or just not knowing where to start.</p>
@@ -116,7 +114,7 @@ export default function About() {
                 <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Process</span>
               </div>
               <h2 className="font-['Barlow_Condensed'] font-900 text-5xl uppercase text-white mb-8 leading-[0.9]">
-                How We<br /><span className="text-amber-500">Work</span>
+                How We{" "}<br /><span className="text-amber-500">Work</span>
               </h2>
               <div className="space-y-px">
                 {[
@@ -137,7 +135,7 @@ export default function About() {
             </motion.div>
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.15 }}>
               <div className="overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Team collaboration" className="w-full h-[440px] object-cover grayscale hover:grayscale-0 transition-all duration-500" />
               </div>
             </motion.div>
@@ -153,7 +151,7 @@ export default function About() {
             <div>
               <p className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-zinc-950/50 mb-4">Service Area</p>
               <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-zinc-950 leading-[0.9]">
-                Proudly Serving<br />Hampton Roads
+                Proudly Serving{" "}<br />Hampton Roads
               </h2>
             </div>
             <div>

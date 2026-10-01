@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Check, Phone, Mail } from "lucide-react";
 import { toast } from "sonner";
-import { COMPANY_INFO, submitToCrm } from "../lib/constants";
+import { COMPANY_INFO, TEL_HREF, submitToCrm } from "../lib/constants";
 import { trackEvent } from "../lib/analytics";
 import { setPageMeta } from "../metadata";
 
@@ -50,11 +50,14 @@ export default function Audit() {
 
   useEffect(() => {
     setPageMeta(
-      kind === "demo" ? "Request a Nexus Field Demo | WaveNexus Digital Invest" : "Free Website Audit | Hampton Roads Web Designer | WaveNexus Digital Invest",
-      kind === "demo"
-        ? "Request a demo of Nexus Field field service software, configured around how your HVAC, plumbing, or electrical team works. $75 per tech a month, no contract."
-        : "Get a free, no-obligation website audit from WaveNexus Digital Invest, a veteran-owned web design team in Hampton Roads, VA.",
       "/audit",
+      kind === "demo"
+        ? {
+            title: "Request a Nexus Field Demo | WaveNexus Digital Invest",
+            description:
+              "Request a demo of Nexus Field field service software, configured around how your HVAC, plumbing, or electrical team works. $75 per tech a month, no contract.",
+          }
+        : undefined,
     );
   }, [kind]);
 
@@ -128,7 +131,7 @@ export default function Audit() {
               {/* Audit / demo toggle */}
               <motion.div variants={fadeUp} className="grid grid-cols-2 gap-px bg-zinc-800 mb-px">
                 {(["audit", "demo"] as Kind[]).map((k) => (
-                  <button key={k} type="button" onClick={() => { setSent(false); setSearchParams(k === "demo" ? { type: "demo" } : {}); }}
+                  <button key={k} type="button" aria-pressed={kind === k} onClick={() => { setSent(false); setSearchParams(k === "demo" ? { type: "demo" } : {}); }}
                     className={`p-5 text-left transition-all ${kind === k ? "bg-amber-500" : "bg-zinc-900 hover:bg-zinc-800"}`}>
                     <p className={`font-['Barlow_Condensed'] font-800 uppercase tracking-wider text-sm ${kind === k ? "text-zinc-950" : "text-white"}`}>
                       {k === "demo" ? "Nexus Field Demo" : "Website Audit"}
@@ -152,7 +155,7 @@ export default function Audit() {
               </motion.div>
 
               {[
-                { icon: Phone, label: "Rather talk?", value: COMPANY_INFO.phone, href: `tel:${COMPANY_INFO.phone.replace(/\D/g, "")}` },
+                { icon: Phone, label: "Rather talk?", value: COMPANY_INFO.phone, href: TEL_HREF },
                 { icon: Mail, label: "Email", value: COMPANY_INFO.email, href: `mailto:${COMPANY_INFO.email}` },
               ].map(({ icon: Icon, label, value, href }) => (
                 <motion.div key={label} variants={fadeUp}
@@ -181,7 +184,7 @@ export default function Audit() {
                       {kind === "demo"
                         ? "We'll reach out to set up a time that works for you and your team."
                         : "We're looking at your online presence now and will reach out with what we find."}{" "}
-                      If it's urgent, call or text <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g, "")}`} className="text-amber-400 hover:text-amber-300">{COMPANY_INFO.phone}</a>.
+                      If it's urgent, call or text <a href={TEL_HREF} className="text-amber-400 hover:text-amber-300">{COMPANY_INFO.phone}</a>.
                     </p>
                     <button type="button" onClick={() => { setSent(false); setForm(empty); }}
                       className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">

@@ -1,0 +1,12 @@
+{
+  "name": "WaveNexus Digital Invest",
+  "short_name": "WaveNexus",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

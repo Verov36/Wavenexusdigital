@@ -9,11 +9,7 @@ const stagger = { show: { transition: { staggerChildren: 0.07 } } };
 
 export default function BlogPostPartsTracking() {
   useEffect(() => {
-    setPageMeta(
-      "Parts Are Walking Off Your Trucks. Here's How to Track Them Without Adding Admin Work",
-      "HVAC, plumbing, and electrical contractors in Hampton Roads lose 5–10% of material value every year to untracked parts. Here's how Nexus Field solves the truck-level inventory problem.",
-      "/blog/parts-walking-off-trucks"
-    );
+    setPageMeta("/blog/parts-walking-off-trucks");
   }, []);
 
   return (
@@ -51,8 +47,8 @@ export default function BlogPostPartsTracking() {
 
             <motion.h1 variants={fadeUp}
               className="font-['Barlow_Condensed'] font-900 text-5xl sm:text-6xl lg:text-7xl uppercase leading-[0.9] text-white mb-8">
-              Parts Are Walking<br />Off Your Trucks.<br />
-              <span className="text-amber-500">Here's How to<br />Track Them</span>
+              Parts Are Walking{" "}<br />Off Your Trucks.{" "}<br />
+              <span className="text-amber-500">Here's How to{" "}<br />Track Them</span>
             </motion.h1>
 
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed border-l-4 border-amber-500 pl-5">
@@ -219,6 +215,7 @@ export default function BlogPostPartsTracking() {
           {/* Divider image */}
           <div className="my-12">
             <img
+              loading="lazy" decoding="async"
               src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
               alt="HVAC technician on job with parts"
               className="w-full h-52 object-cover grayscale"

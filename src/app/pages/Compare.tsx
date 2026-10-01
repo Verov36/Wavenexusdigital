@@ -18,7 +18,7 @@ export default function Compare() {
   const [techs, setTechs] = useState(8);
 
   useEffect(() => {
-    if (c) setPageMeta(c.metaTitle, c.metaDescription, `/nexus-field/vs/${c.slug}`);
+    if (c) setPageMeta(`/nexus-field/vs/${c.slug}`, { title: c.metaTitle, description: c.metaDescription });
   }, [c]);
 
   if (!c) return <NotFound />;
@@ -39,7 +39,7 @@ export default function Compare() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Honest comparison · Checked {c.checked}</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-6">
-              Nexus Field<br /><span className="text-zinc-600">vs</span> <span className="text-amber-500">{c.name}</span>
+              Nexus Field{" "}<br /><span className="text-zinc-600">vs</span> <span className="text-amber-500">{c.name}</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['Barlow_Condensed'] font-700 text-2xl sm:text-3xl uppercase tracking-wide text-zinc-300 mb-6">
               {c.headline}
@@ -142,7 +142,7 @@ export default function Compare() {
                 <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Year One</span>
               </div>
               <h2 className="font-['Barlow_Condensed'] font-900 text-4xl sm:text-5xl uppercase text-white leading-[0.9] mb-6">
-                What your shop<br /><span className="text-amber-500">actually pays</span>
+                What your shop{" "}<br /><span className="text-amber-500">actually pays</span>
               </h2>
               <p className="font-['DM_Sans'] text-zinc-400 leading-relaxed mb-6">
                 Slide to your tech count. For {c.name} we use the <em>lowest</em> publicly reported per-tech price and the <em>lowest</em> reported implementation fee, so this is their best case, not their worst.
@@ -190,7 +190,7 @@ export default function Compare() {
               <div className="h-[2px] w-8 bg-zinc-600" />
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-zinc-500">To Be Fair</span>
             </div>
-            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl uppercase text-white mb-8">Where {c.name} is<br />the better choice</h2>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl uppercase text-white mb-8">Where {c.name} is{" "}<br />the better choice</h2>
             <div className="space-y-px">
               {c.theyWin.map(({ title, body }) => (
                 <div key={title} className="bg-zinc-900 p-6 border-l-2 border-zinc-700">
@@ -205,7 +205,7 @@ export default function Compare() {
               <div className="h-[2px] w-8 bg-amber-500" />
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">And Where We Are</span>
             </div>
-            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl uppercase text-white mb-8">Nexus Field is<br /><span className="text-amber-500">the better fit if</span></h2>
+            <h2 className="font-['Barlow_Condensed'] font-900 text-4xl uppercase text-white mb-8">Nexus Field is{" "}<br /><span className="text-amber-500">the better fit if</span></h2>
             <ul className="space-y-px">
               {c.weWin.map((line) => (
                 <li key={line} className="flex gap-4 items-start bg-zinc-900 p-5 border-l-2 border-amber-500">

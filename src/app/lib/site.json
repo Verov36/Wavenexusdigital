@@ -1,0 +1,65 @@
+{
+  "name": "WaveNexus Digital Invest",
+  "url": "https://wavenexusdigitalinvest.com",
+  "phone": "(757) 601-8058",
+  "phoneE164": "+17576018058",
+  "email": "chris.repstein@wavenexusdigitalinvest.com",
+  "gaId": "G-Y6X0LLS4FD",
+  "pages": {
+    "/": {
+      "title": "Web Developer Near Me | Hampton Roads VA Web Design | WaveNexus Digital Invest",
+      "description": "Veteran-owned local web designer and digital marketing team in Hampton Roads, VA. Websites that bring in leads, local SEO, and AI search optimization for Suffolk, Virginia Beach, Chesapeake, and Newport News. Makers of Nexus Field."
+    },
+    "/services": {
+      "title": "Web Design, Custom Apps & SEO Services | Hampton Roads VA | WaveNexus",
+      "description": "WaveNexus Digital Invest offers website design, custom business apps, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA."
+    },
+    "/nexus-field": {
+      "title": "Nexus Field — Field Service Management Software | WaveNexus Digital Invest",
+      "description": "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team. No contract, minimal setup fee, price held for two years."
+    },
+    "/nexus-field/vs/servicetitan": {
+      "title": "Nexus Field vs ServiceTitan: Pricing, Contract & Setup Fees (2026) | WaveNexus",
+      "description": "An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at $75 per tech, no contract, and a setup fee scoped to your migration.",
+      "headline": "Nexus Field vs ServiceTitan"
+    },
+    "/custom-apps": {
+      "title": "Custom App Developer Near Me | Hampton Roads VA | WaveNexus Digital Invest",
+      "description": "WaveNexus builds custom web and mobile apps for local businesses in Hampton Roads, VA — job tracking, inventory, scheduling, customer portals. You describe the process; we build the tool that fits it. Veteran-owned. Free scoping call."
+    },
+    "/portfolio": {
+      "title": "Portfolio — Web Design Work | Hampton Roads VA | WaveNexus Digital Invest",
+      "description": "Real projects from WaveNexus Digital Invest — a veteran-owned web design company in Hampton Roads, VA. See our work for local businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News."
+    },
+    "/about": {
+      "title": "About — Veteran-Owned Web Design | Hampton Roads VA | WaveNexus Digital Invest",
+      "description": "WaveNexus Digital Invest is a veteran-owned web design and digital marketing company in Hampton Roads, VA. Marine Corps veteran founded, serving Suffolk, Virginia Beach, Chesapeake, and Newport News."
+    },
+    "/blog": {
+      "title": "Blog — Digital Marketing & Field Service Insights | WaveNexus Digital Invest",
+      "description": "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA."
+    },
+    "/blog/field-service-software-vs-spreadsheets": {
+      "title": "Field Service Software vs. Spreadsheets: Which Saves You Money? | WaveNexus",
+      "description": "Spreadsheets look free but cost Hampton Roads contractors $44,200/year in lost billable time. See the real ROI of switching to field service management software like Nexus Field.",
+      "headline": "Field Service Software vs. Spreadsheets: Which One Actually Saves You Money?",
+      "datePublished": "2026-07-17",
+      "image": "https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+    },
+    "/blog/parts-walking-off-trucks": {
+      "title": "Parts Are Walking Off Your Trucks — How to Track Them | WaveNexus",
+      "description": "HVAC, plumbing, and electrical contractors in Hampton Roads lose 5–10% of material value every year to untracked parts. Here's how Nexus Field solves the truck-level inventory problem.",
+      "headline": "Parts Are Walking Off Your Trucks. Here's How to Track Them Without Adding Admin Work",
+      "datePublished": "2026-07-17",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+    },
+    "/contact": {
+      "title": "Contact — Local Web Designer Near Me | Hampton Roads VA | WaveNexus Digital Invest",
+      "description": "Get in touch with WaveNexus Digital Invest — your local web design, custom app, and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit."
+    },
+    "/audit": {
+      "title": "Free Website Audit | Hampton Roads Web Designer | WaveNexus Digital Invest",
+      "description": "Get a free, no-obligation website audit from WaveNexus Digital Invest, a veteran-owned web design team in Hampton Roads, VA. Or request a demo of Nexus Field field service software."
+    }
+  }
+}

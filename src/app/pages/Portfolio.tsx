@@ -11,9 +11,7 @@ const stagger = { show: { transition: { staggerChildren: 0.09 } } };
 
 export default function Portfolio() {
   useEffect(() => {
-    setPageMeta("Portfolio — Web Design Work | Hampton Roads VA",
-      "Real projects from WaveNexus Digital Invest — a veteran-owned web design company in Hampton Roads, VA. See our work for local businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News.",
-      "/portfolio");
+    setPageMeta("/portfolio");
   }, []);
 
   const projects = portfolio.filter(p => p.name !== "Dizon Digital Media");
@@ -31,7 +29,7 @@ export default function Portfolio() {
               <span className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Work</span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="font-['Barlow_Condensed'] font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-8">
-              Real Projects.<br /><span className="text-amber-500">Real Results.</span>
+              Real Projects.{" "}<br /><span className="text-amber-500">Real Results.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="font-['DM_Sans'] text-xl text-zinc-400 leading-relaxed">
               Local service businesses and companies we've helped establish a stronger digital presence.
@@ -61,6 +59,7 @@ export default function Portfolio() {
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
               <div className="overflow-hidden mb-6">
                 <img
+                  loading="lazy" decoding="async"
                   src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="HVAC technician working on unit"
                   className="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-500"

@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight } from "lucide-react";
-import logoImage from "../../imports/WaveNexus_digital_branding_emblem.png";
-import { COMPANY_INFO } from "../lib/constants";
+import logoImage from "../../assets/logo-emblem.webp";
+import { COMPANY_INFO, TEL_HREF } from "../lib/constants";
 import { trackPageView } from "../lib/analytics";
 
 const NAV = [
@@ -54,7 +54,7 @@ export default function Layout() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group shrink-0">
-              <img src={logoImage} alt={COMPANY_INFO.name} className="h-9 w-9 object-contain" />
+              <img src={logoImage} alt={COMPANY_INFO.name} width={36} height={36} className="h-9 w-9 object-contain" />
               <div>
                 <p className="font-['Barlow_Condensed'] font-800 text-base uppercase tracking-widest text-white leading-none">WaveNexus</p>
                 <p className="font-['JetBrains_Mono'] text-[10px] text-amber-500 uppercase tracking-widest leading-none mt-0.5">Digital Invest</p>
@@ -96,7 +96,8 @@ export default function Layout() {
             </div>
 
             {/* Mobile toggle */}
-            <button onClick={() => setOpen(!open)} className="xl:hidden p-2 text-zinc-400 hover:text-white transition-colors">
+            <button type="button" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open} aria-controls="mobile-menu" className="xl:hidden p-2 text-zinc-400 hover:text-white transition-colors">
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -106,7 +107,7 @@ export default function Layout() {
         <AnimatePresence>
           {open && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.18 }}
-              className="xl:hidden overflow-hidden border-t border-border bg-zinc-950">
+              id="mobile-menu" className="xl:hidden overflow-hidden border-t border-border bg-zinc-950">
               <nav className="px-4 py-4 flex flex-col gap-1">
                 <NavLink to="/nexus-field" className={({ isActive }) =>
                   `flex items-center gap-2 px-4 py-3 text-sm font-['Barlow_Condensed'] font-700 uppercase tracking-widest ${isActive ? "bg-amber-500 text-zinc-950" : "bg-amber-500/10 text-amber-400 border border-amber-500/30"}`
@@ -148,7 +149,7 @@ export default function Layout() {
             {/* Brand */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <img src={logoImage} alt={COMPANY_INFO.name} className="h-10 w-10 object-contain" />
+                <img src={logoImage} alt="" width={40} height={40} loading="lazy" className="h-10 w-10 object-contain" />
                 <div>
                   <p className="font-['Barlow_Condensed'] font-800 text-xl uppercase tracking-widest text-white">WaveNexus Digital Invest</p>
                   <p className="font-['JetBrains_Mono'] text-[11px] text-amber-500 uppercase tracking-widest mt-0.5">Veteran Owned · Hampton Roads, VA</p>
@@ -184,13 +185,13 @@ export default function Layout() {
                 <li><Link to="/audit?type=demo" className="text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans']">Request a Demo</Link></li>
               </ul>
               <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-3">Contact</p>
-              <a href={`tel:${COMPANY_INFO.phone}`} className="block text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans'] mb-1">{COMPANY_INFO.phone}</a>
+              <a href={TEL_HREF} className="block text-sm text-zinc-500 hover:text-white transition-colors font-['DM_Sans'] mb-1">{COMPANY_INFO.phone}</a>
               <a href={`mailto:${COMPANY_INFO.email}`} className="block text-xs text-zinc-500 hover:text-white transition-colors break-all font-['DM_Sans']">{COMPANY_INFO.email}</a>
             </div>
           </div>
 
           <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">© 2026 {COMPANY_INFO.name}. All rights reserved.</p>
+            <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">© {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.</p>
             <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">Hampton Roads, VA · USMC Veteran Owned</p>
           </div>
         </div>

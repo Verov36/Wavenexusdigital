@@ -26,16 +26,20 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { schemasFor } from "../src/app/lib/seo/schemas.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist");
 const templatePath = join(distDir, "index.html");
 
-const SITE_URL = "https://wavenexusdigitalinvest.com";
-const SITE_NAME = "WaveNexus Digital Invest";
+// Titles, descriptions and contact details live in src/app/lib/site.json, shared
+// with the React app so the static HTML and the live page never disagree.
+const site = JSON.parse(readFileSync(join(__dirname, "..", "src", "app", "lib", "site.json"), "utf8"));
+const SITE_URL = site.url;
+const SITE_NAME = site.name;
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
-const PHONE = "(757) 601-8058";
-const EMAIL = "chris.repstein@wavenexusdigitalinvest.com";
+const PHONE = site.phone;
+const EMAIL = site.email;
 
 // Shared internal-link nav — gives crawlers a real link graph on every page
 const NAV_LINKS = [
@@ -50,17 +54,13 @@ const NAV_LINKS = [
 ];
 
 // ── Per-route SEO config ────────────────────────────────────────────────────
-// path: route (used for canonical + output file location)
-// title: full <title>
-// description: meta description
+// path: route (used for canonical + output file location; title and
+//       description come from site.json)
 // h1: crawler-visible H1
 // body: array of paragraph strings (crawler-readable content)
 const ROUTES = [
   {
     path: "/",
-    title: "Web Developer Near Me | Local Website Designer Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "WaveNexus Digital Invest is a veteran-owned local web designer and digital marketing team near you in Hampton Roads, VA. We build websites that bring in leads, run local SEO, and offer AI search optimization for Suffolk, Virginia Beach, Chesapeake, and Newport News businesses. Also makers of Nexus Field field service software.",
     h1: "Web Design & Field Service Software — Hampton Roads, VA",
     body: [
       "WaveNexus Digital Invest is a US Marine Corps veteran-owned web design agency and software company based in Hampton Roads, Virginia. We build websites that bring in leads and make field service software that fits the way your team actually works.",
@@ -70,9 +70,6 @@ const ROUTES = [
   },
   {
     path: "/services",
-    title: "Services — Web Design, Custom Apps, SEO & Digital Marketing Near Me | Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "WaveNexus Digital Invest offers website design, custom business apps, local SEO, AI SEO, branding, and social media management for businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News, VA.",
     h1: "Services That Actually Work",
     body: [
       "WaveNexus Digital Invest provides web design, custom app development, local SEO, AI search optimization, branding, and social media management for local businesses across Hampton Roads, VA.",
@@ -85,9 +82,6 @@ const ROUTES = [
   },
   {
     path: "/nexus-field",
-    title: "Nexus Field — Field Service Management Software | WaveNexus Digital Invest",
-    description:
-      "Nexus Field is field service management software for HVAC, plumbing, electrical, and contracting companies. Free parts inventory, job tracking, photo database, and survey tools — configured around your team. No contract, minimal setup fee, price held for two years.",
     h1: "Nexus Field — Field Service Management Software",
     body: [
       "Nexus Field is field service management software built for HVAC, plumbing, electrical, landscaping, and contracting companies. It works the way your team does.",
@@ -99,9 +93,6 @@ const ROUTES = [
   },
   {
     path: "/nexus-field/vs/servicetitan",
-    title: "Nexus Field vs ServiceTitan — Pricing, Contract & Setup Fees Compared (2026) | WaveNexus Digital Invest",
-    description:
-      "An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at $75 per tech, no contract, and a setup fee scoped to your migration.",
     h1: "Nexus Field vs ServiceTitan",
     body: [
       "ServiceTitan is the biggest name in field service software, and for a large multi-location operation it can be the right call. But the shops that call us have usually just opened a renewal notice. This page puts the two side by side with real numbers, including the ones ServiceTitan doesn't publish. Checked September 2026.",
@@ -114,9 +105,6 @@ const ROUTES = [
   },
   {
     path: "/custom-apps",
-    title: "Custom App Developer Near Me | Business Software & Mobile Apps | Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "WaveNexus builds custom web and mobile apps for local businesses in Hampton Roads, VA — job tracking, inventory, scheduling, customer portals. You describe the process; we build the tool that fits it. Veteran-owned. Free scoping call.",
     h1: "Custom App Development for Businesses — Hampton Roads, VA",
     body: [
       "You know what you need handled. We build the tool. Most businesses run on a mix of spreadsheets, group texts, and an off-the-shelf app that does about 60% of the job. If you can describe the process, WaveNexus Digital Invest can build the app that runs it — in the browser, on the phone, or both. Veteran-owned, based in Hampton Roads, Virginia.",
@@ -129,9 +117,6 @@ const ROUTES = [
   },
   {
     path: "/portfolio",
-    title: "Portfolio — Web Design Work | Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "Real projects from WaveNexus Digital Invest — a veteran-owned web design company in Hampton Roads, VA. See our work for local businesses in Suffolk, Virginia Beach, Chesapeake, and Newport News.",
     h1: "Real Projects. Real Results.",
     body: [
       "Web design and local SEO projects from WaveNexus Digital Invest for local service businesses across Hampton Roads, Virginia.",
@@ -141,9 +126,6 @@ const ROUTES = [
   },
   {
     path: "/about",
-    title: "About — Veteran-Owned Web Design | Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "WaveNexus Digital Invest is a veteran-owned web design and digital marketing company in Hampton Roads, VA. Marine Corps veteran founded, serving Suffolk, Virginia Beach, Chesapeake, and Newport News.",
     h1: "Small Team. Serious Work.",
     body: [
       "WaveNexus Digital Invest is a Marine Corps veteran-owned digital agency and SaaS company based in Hampton Roads, VA. We'd rather do great work for a few clients than mediocre work for many.",
@@ -153,9 +135,6 @@ const ROUTES = [
   },
   {
     path: "/blog",
-    title: "Blog — Digital Marketing & Field Service Insights | WaveNexus Digital Invest",
-    description:
-      "Practical tips on website development, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.",
     h1: "Digital Marketing & Field Service Insights",
     body: [
       "Practical tips on web design, local SEO, AI search, field service technology, and digital strategy from a veteran-owned perspective in Hampton Roads, VA.",
@@ -164,9 +143,6 @@ const ROUTES = [
   },
   {
     path: "/blog/field-service-software-vs-spreadsheets",
-    title: "Field Service Software vs. Spreadsheets: Which One Actually Saves You Money? | WaveNexus Digital Invest",
-    description:
-      "Spreadsheets look free but cost Hampton Roads contractors $44,200/year in lost billable time. See the real ROI of switching to field service management software like Nexus Field.",
     h1: "Field Service Software vs. Spreadsheets: Which One Actually Saves You Money?",
     body: [
       "Most contractors in Hampton Roads start with spreadsheets because they look free. But the true cost is buried in payroll: roughly 10 hours per week of admin overhead, which at $85/hour is about $44,200 in lost billable time every year.",
@@ -176,9 +152,6 @@ const ROUTES = [
   },
   {
     path: "/blog/parts-walking-off-trucks",
-    title: "Parts Are Walking Off Your Trucks. Here's How to Track Them Without Adding Admin Work | WaveNexus Digital Invest",
-    description:
-      "HVAC, plumbing, and electrical contractors in Hampton Roads lose 5–10% of material value every year to untracked parts. Here's how Nexus Field solves the truck-level inventory problem.",
     h1: "Parts Are Walking Off Your Trucks. Here's How to Track Them.",
     body: [
       "For HVAC, plumbing, and electrical contractors in Hampton Roads, parts walk off the truck one unrecorded fitting at a time. If you aren't tracking inventory at the truck level, you're losing 5–10% of your material value every year.",
@@ -188,9 +161,6 @@ const ROUTES = [
   },
   {
     path: "/contact",
-    title: "Contact — Local Web Designer Near Me | Hampton Roads VA | WaveNexus Digital Invest",
-    description:
-      "Get in touch with WaveNexus Digital Invest — your local web design, custom app, and digital marketing team in Hampton Roads, VA. Serving Suffolk, Virginia Beach, Chesapeake, and Newport News. Free website audit.",
     h1: "Let's Talk",
     body: [
       "WaveNexus Digital Invest — veteran-owned web design, custom apps, and digital marketing in Hampton Roads, VA. Get in touch for a free website audit, a free app scoping call, or to discuss your project.",
@@ -200,9 +170,6 @@ const ROUTES = [
   },
   {
     path: "/audit",
-    title: "Free Website Audit | Hampton Roads Web Designer | WaveNexus Digital Invest",
-    description:
-      "Get a free, no-obligation website audit from WaveNexus Digital Invest, a veteran-owned web design team in Hampton Roads, VA. Or request a demo of Nexus Field field service software.",
     h1: "Get Your Free Audit",
     body: [
       "Tell us where you are online and we'll give you an honest look at what's working, what isn't, and what would actually bring in more calls. No pitch, no packages you don't need.",
@@ -238,7 +205,9 @@ function upsertCanonical(html, href) {
 }
 
 // Inject crawler-readable content inside the (empty) #root div.
-// React's createRoot(...).render() clears #root on mount, so users never see this.
+// React's createRoot(...).render() replaces it on mount. Until then it is kept
+// invisible (index.html hides .prerender unless JavaScript is off), so visitors
+// don't see an unstyled flash; crawlers read the HTML either way.
 function injectRootContent(html, contentHtml) {
   const re = /(<div id=["']root["'][^>]*>)([\s\S]*?)(<\/div>)/i;
   if (re.test(html)) {
@@ -248,13 +217,10 @@ function injectRootContent(html, contentHtml) {
   return html.replace(/<body[^>]*>/i, (m) => `${m}\n<div id="root">${contentHtml}</div>`);
 }
 
-// Replace (or add) the <noscript> fallback with route-specific content
-function setNoscript(html, contentHtml) {
-  const block = `<noscript>${contentHtml}</noscript>`;
-  if (/<noscript>[\s\S]*?<\/noscript>/i.test(html)) {
-    return html.replace(/<noscript>[\s\S]*?<\/noscript>/i, block);
-  }
-  return html.replace("</body>", `${block}\n</body>`);
+// Add the page's JSON-LD structured data to <head>
+function injectJsonLd(html, data) {
+  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  return html.replace("</head>", `<script type="application/ld+json">${json}</script>\n</head>`);
 }
 
 function esc(s) {
@@ -270,7 +236,7 @@ function renderContent(route) {
   const nav = NAV_LINKS.map(([href, label]) => `<a href="${href}">${label}</a>`).join(" · ");
   const paras = route.body.map((p) => `<p>${esc(p)}</p>`).join("\n");
   return `
-<div style="font-family:sans-serif;max-width:820px;margin:0 auto;padding:32px 20px">
+<div class="prerender">
 <nav aria-label="Primary">${nav}</nav>
 <main>
 <h1>${esc(route.h1)}</h1>
@@ -279,7 +245,7 @@ ${paras}
 <footer>
 <p><strong>${esc(SITE_NAME)}</strong> — Veteran-owned web design, custom apps &amp; digital marketing, Hampton Roads, VA.</p>
 <p>Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth VA.</p>
-<p>Phone: ${esc(PHONE)} · Email: ${esc(EMAIL)}</p>
+<p>Phone: <a href="tel:${site.phoneE164}">${esc(PHONE)}</a> · Email: <a href="mailto:${esc(EMAIL)}">${esc(EMAIL)}</a></p>
 <p><a href="${canonical}">${esc(canonical)}</a></p>
 </footer>
 </div>`.trim();
@@ -296,22 +262,24 @@ function main() {
   let count = 0;
 
   for (const route of ROUTES) {
+    const meta = site.pages[route.path];
+    if (!meta) throw new Error(`No title/description for ${route.path} in src/app/lib/site.json`);
     const canonical = route.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${route.path}`;
     let html = template;
 
     // ---- <head> ----
-    html = setTitle(html, route.title);
-    html = upsertMeta(html, "name", "description", route.description);
+    html = setTitle(html, meta.title);
+    html = upsertMeta(html, "name", "description", meta.description);
     html = upsertCanonical(html, canonical);
-    html = upsertMeta(html, "property", "og:title", route.title);
-    html = upsertMeta(html, "property", "og:description", route.description);
+    html = upsertMeta(html, "property", "og:title", meta.title);
+    html = upsertMeta(html, "property", "og:description", meta.description);
     html = upsertMeta(html, "property", "og:url", canonical);
     html = upsertMeta(html, "property", "og:type", route.path.startsWith("/blog/") ? "article" : "website");
     html = upsertMeta(html, "property", "og:site_name", SITE_NAME);
     html = upsertMeta(html, "property", "og:image", OG_IMAGE);
     html = upsertMeta(html, "name", "twitter:card", "summary_large_image");
-    html = upsertMeta(html, "name", "twitter:title", route.title);
-    html = upsertMeta(html, "name", "twitter:description", route.description);
+    html = upsertMeta(html, "name", "twitter:title", meta.title);
+    html = upsertMeta(html, "name", "twitter:description", meta.description);
     html = upsertMeta(html, "name", "twitter:image", OG_IMAGE);
     html = upsertMeta(
       html,
@@ -319,11 +287,10 @@ function main() {
       "robots",
       "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     );
+    html = injectJsonLd(html, schemasFor(route.path, site));
 
     // ---- body: crawler-readable content ----
-    const content = renderContent(route);
-    html = injectRootContent(html, content);
-    html = setNoscript(html, content);
+    html = injectRootContent(html, renderContent(route));
 
     // ---- write ----
     const outPath =
@@ -334,7 +301,17 @@ function main() {
     console.log(`✅ prerendered ${route.path.padEnd(42)} → ${outPath.replace(distDir, "dist")}`);
   }
 
-  console.log(`\n✅ Prerender complete — ${count} route(s) written with unique title, canonical, and content.`);
+  // ---- 404.html: Vercel serves this, with a real 404 status, for any URL that
+  // has no file. The React app still boots and renders the NotFound page.
+  let notFound = template;
+  notFound = setTitle(notFound, `Page Not Found | ${SITE_NAME}`);
+  notFound = upsertMeta(notFound, "name", "robots", "noindex, follow");
+  notFound = notFound.replace(/<link[^>]*rel=["']canonical["'][^>]*>\n?/i, "");
+  notFound = notFound.replace(/<meta[^>]*property=["']og:url["'][^>]*>\n?/i, "");
+  writeFileSync(join(distDir, "404.html"), notFound, "utf8");
+  console.log(`✅ wrote 404 page                                → dist/404.html`);
+
+  console.log(`\n✅ Prerender complete — ${count} route(s) written with unique title, canonical, structured data, and content.`);
 }
 
 main();

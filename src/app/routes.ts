@@ -1,18 +1,13 @@
+import type { ComponentType } from "react";
 import { createBrowserRouter } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import NexusField from "./pages/NexusField";
-import CustomApps from "./pages/CustomApps";
-import Compare from "./pages/Compare";
-import Services from "./pages/Services";
-import Portfolio from "./pages/Portfolio";
-import Blog from "./pages/Blog";
-import BlogPostSpreadsheets from "./pages/BlogPostSpreadsheets";
-import BlogPostPartsTracking from "./pages/BlogPostPartsTracking";
-import Contact from "./pages/Contact";
-import Audit from "./pages/Audit";
 import NotFound from "./pages/NotFound";
+
+// Every page except Home and NotFound is split into its own chunk and loaded on
+// first visit, so the homepage doesn't download the code for all thirteen pages.
+const page = (load: () => Promise<{ default: ComponentType }>) => () =>
+  load().then((m) => ({ Component: m.default }));
 
 export const router = createBrowserRouter([
   {
@@ -20,17 +15,17 @@ export const router = createBrowserRouter([
     Component: Layout,
     children: [
       { index: true, Component: Home },
-      { path: "about", Component: About },
-      { path: "nexus-field", Component: NexusField },
-      { path: "nexus-field/vs/:slug", Component: Compare },
-      { path: "custom-apps", Component: CustomApps },
-      { path: "services", Component: Services },
-      { path: "portfolio", Component: Portfolio },
-      { path: "blog", Component: Blog },
-      { path: "blog/field-service-software-vs-spreadsheets", Component: BlogPostSpreadsheets },
-      { path: "blog/parts-walking-off-trucks", Component: BlogPostPartsTracking },
-      { path: "contact", Component: Contact },
-      { path: "audit", Component: Audit },
+      { path: "about", lazy: page(() => import("./pages/About")) },
+      { path: "nexus-field", lazy: page(() => import("./pages/NexusField")) },
+      { path: "nexus-field/vs/:slug", lazy: page(() => import("./pages/Compare")) },
+      { path: "custom-apps", lazy: page(() => import("./pages/CustomApps")) },
+      { path: "services", lazy: page(() => import("./pages/Services")) },
+      { path: "portfolio", lazy: page(() => import("./pages/Portfolio")) },
+      { path: "blog", lazy: page(() => import("./pages/Blog")) },
+      { path: "blog/field-service-software-vs-spreadsheets", lazy: page(() => import("./pages/BlogPostSpreadsheets")) },
+      { path: "blog/parts-walking-off-trucks", lazy: page(() => import("./pages/BlogPostPartsTracking")) },
+      { path: "contact", lazy: page(() => import("./pages/Contact")) },
+      { path: "audit", lazy: page(() => import("./pages/Audit")) },
       { path: "*", Component: NotFound },
     ],
   },
