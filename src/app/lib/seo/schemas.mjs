@@ -8,8 +8,8 @@
  */
 
 const CITIES = [
-  "Suffolk", "Virginia Beach", "Chesapeake", "Newport News", "Hampton",
-  "Norfolk", "Portsmouth", "Williamsburg", "York County", "Isle of Wight County",
+  "Virginia Beach", "Chesapeake", "Norfolk", "Suffolk", "Portsmouth", "Hampton", "Newport News",
+  "Williamsburg", "York County", "Isle of Wight County",
 ];
 const areaServed = (names = CITIES) =>
   names.map((name) => ({ "@type": "City", name, containedInPlace: { "@type": "State", name: "Virginia" } }));
@@ -34,11 +34,11 @@ export function schemasFor(path, site) {
     image: `${BASE}/og-image.jpg`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Suffolk",
+      addressLocality: "Virginia Beach",
       addressRegion: "VA",
       addressCountry: "US",
     },
-    geo: { "@type": "GeoCoordinates", latitude: 36.7282, longitude: -76.5836 },
+    geo: { "@type": "GeoCoordinates", latitude: 36.8529, longitude: -75.978 },
     priceRange: "$$",
     openingHoursSpecification: [
       {

@@ -46,9 +46,9 @@ const removeNoindex: Plugin = {
 <meta name="language" content="English">
 <meta http-equiv="content-language" content="en-us">
 <meta name="geo.region" content="US-VA">
-<meta name="geo.placename" content="Hampton Roads, Virginia">
-<meta name="geo.position" content="36.7282;-76.5836">
-<meta name="ICBM" content="36.7282, -76.5836">
+<meta name="geo.placename" content="Virginia Beach, Virginia">
+<meta name="geo.position" content="36.8529;-75.978">
+<meta name="ICBM" content="36.8529, -75.978">
 <link rel="canonical" href="${SITE_URL}/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WaveNexus Digital Invest">
