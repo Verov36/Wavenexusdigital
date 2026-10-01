@@ -13,6 +13,8 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: Layout,
+    // Shown while a page's code loads on first visit; the prerendered HTML is already there underneath.
+    HydrateFallback: () => null,
     children: [
       { index: true, Component: Home },
       { path: "about", lazy: page(() => import("./pages/About")) },
