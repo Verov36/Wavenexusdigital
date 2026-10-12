@@ -8,11 +8,18 @@
  */
 
 const CITIES = [
-  "Virginia Beach", "Chesapeake", "Norfolk", "Suffolk", "Portsmouth", "Hampton", "Newport News",
+  "Norfolk", "Virginia Beach", "Chesapeake", "Suffolk", "Portsmouth", "Hampton", "Newport News",
   "Williamsburg", "York County", "Isle of Wight County",
 ];
-const areaServed = (names = CITIES) =>
-  names.map((name) => ({ "@type": "City", name, containedInPlace: { "@type": "State", name: "Virginia" } }));
+
+// TODO(Chris): add the full URLs of your Google Business Profile and social
+// accounts here (e.g. Facebook, Instagram, LinkedIn). Leave out anything you
+// don't have — an empty list is simply omitted from the schema.
+const SAME_AS = [];
+const areaServed = (names = CITIES) => [
+  ...names.map((name) => ({ "@type": "City", name, containedInPlace: { "@type": "State", name: "Virginia" } })),
+  ...(names.length > 1 ? [{ "@type": "Place", name: "Hampton Roads, Virginia" }] : []),
+];
 
 export function schemasFor(path, site) {
   const BASE = site.url;
@@ -34,11 +41,11 @@ export function schemasFor(path, site) {
     image: `${BASE}/og-image.jpg`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Virginia Beach",
+      addressLocality: "Norfolk",
       addressRegion: "VA",
       addressCountry: "US",
     },
-    geo: { "@type": "GeoCoordinates", latitude: 36.8529, longitude: -75.978 },
+    geo: { "@type": "GeoCoordinates", latitude: 36.8508, longitude: -76.2859 },
     priceRange: "$$",
     openingHoursSpecification: [
       {
@@ -49,6 +56,13 @@ export function schemasFor(path, site) {
       },
     ],
     areaServed: areaServed(),
+    founder: {
+      "@type": "Person",
+      name: "Chris Repstein",
+      jobTitle: "Founder",
+      description: "US Marine Corps veteran and founder of WaveNexus Digital Invest.",
+    },
+    ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
     knowsAbout: [
       "Website Design", "Web Development", "Custom Software Development", "Mobile App Development",
       "Local SEO", "AI Search Optimization", "Branding and Logo Design", "Social Media Marketing",
@@ -85,7 +99,7 @@ export function schemasFor(path, site) {
     let acc = "";
     for (const part of parts) {
       acc += `/${part}`;
-      if (part === "vs") continue; // /nexus-field/vs is not a page
+      if (part === "vs" || acc === "/web-design") continue; // not pages on their own
       const p = site.pages[acc];
       const name = p ? (p.headline || p.title.split(/ [|—] /)[0]) : part.replace(/-/g, " ");
       items.push({ name, item: `${BASE}${acc}` });
@@ -170,6 +184,32 @@ export function schemasFor(path, site) {
       service("social", "Social Media Management", "Social Media Management",
         "Consistent posting, branded content, and audience growth for local businesses.", "/services"),
     );
+  }
+
+  // Service-area pages: the services offered in that city, plus the FAQ shown on the page
+  if (path.startsWith("/web-design/") && page.area) {
+    const where = page.area === "Hampton Roads" ? CITIES : [page.area];
+    graph.push({
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: `Web Design & Local SEO in ${page.area}, VA`,
+      serviceType: "Website Design, Local SEO & AI Search Optimization",
+      description: page.description,
+      provider: { "@id": ORG_ID },
+      areaServed: areaServed(where),
+      url,
+    });
+    if (page.faq?.length) {
+      graph.push({
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: page.faq.map(([q, a]) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
+      });
+    }
   }
 
   if (path.startsWith("/blog/") && page.headline) {

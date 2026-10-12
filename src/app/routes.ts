@@ -27,6 +27,7 @@ export const router = createBrowserRouter([
       { path: "blog/field-service-software-vs-spreadsheets", lazy: page(() => import("./pages/BlogPostSpreadsheets")) },
       { path: "blog/parts-walking-off-trucks", lazy: page(() => import("./pages/BlogPostPartsTracking")) },
       { path: "contact", lazy: page(() => import("./pages/Contact")) },
+      { path: "web-design/:area", lazy: page(() => import("./pages/ServiceArea")) },
       { path: "audit", lazy: page(() => import("./pages/Audit")) },
       { path: "*", Component: NotFound },
     ],

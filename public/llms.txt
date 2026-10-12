@@ -1,13 +1,21 @@
 # WaveNexus Digital Invest
 
-> Marine Corps veteran-owned web design agency and software company in Hampton Roads, Virginia. We build websites that bring in leads, custom web and mobile apps, local SEO and AI search optimization, and make Nexus Field, field service management software for HVAC, plumbing, electrical, and contracting companies.
+> Marine Corps veteran-owned web design agency and software company based in Norfolk, Virginia, serving all of Hampton Roads. We build websites that bring in leads, custom web and mobile apps, local SEO and AI search optimization, and make Nexus Field, field service management software for HVAC, plumbing, electrical, and contracting companies.
 
-Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth, Williamsburg, York County, and Isle of Wight County, VA.
+Based in Norfolk, VA. Serving Norfolk, Virginia Beach, Chesapeake, Suffolk, Portsmouth, Hampton, Newport News, Williamsburg, York County, and Isle of Wight County, VA.
 Phone: (757) 601-8058 · Email: chris.repstein@wavenexusdigitalinvest.com
 
 ## Services
 - [Services](https://wavenexusdigitalinvest.com/services): Website design and development, local SEO and AI search optimization, branding and logo design, social media management
 - [Custom Apps](https://wavenexusdigitalinvest.com/custom-apps): Custom web apps, internal tools, and iOS/Android apps built around how a business runs; free scoping call
+
+## Service Areas
+- [Hampton Roads](https://wavenexusdigitalinvest.com/web-design/hampton-roads-va): Web design, local SEO, and AI search optimization across Hampton Roads
+- [Norfolk, VA](https://wavenexusdigitalinvest.com/web-design/norfolk-va): Our home base — web design and local SEO for Norfolk businesses
+- [Virginia Beach, VA](https://wavenexusdigitalinvest.com/web-design/virginia-beach-va): Web design and local SEO for Virginia Beach businesses
+- [Chesapeake, VA](https://wavenexusdigitalinvest.com/web-design/chesapeake-va): Web design and local SEO for Chesapeake contractors and home-service businesses
+- [Suffolk, VA](https://wavenexusdigitalinvest.com/web-design/suffolk-va): Web design and local SEO for Suffolk businesses
+- [Portsmouth, VA](https://wavenexusdigitalinvest.com/web-design/portsmouth-va): Web design and local SEO for Portsmouth businesses
 
 ## Nexus Field
 - [Nexus Field](https://wavenexusdigitalinvest.com/nexus-field): Field service management software — jobs, photos, surveys, technician management, parts inventory in every plan. $75 per tech per month, office users free, no contract, price held for two years

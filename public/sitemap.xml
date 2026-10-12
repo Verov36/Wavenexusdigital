@@ -6,7 +6,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -38,7 +38,7 @@
   <!-- Services -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/services</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -46,7 +46,7 @@
   <!-- About -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/about</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -54,7 +54,7 @@
   <!-- Portfolio -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/portfolio</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,7 +70,7 @@
   <!-- Contact -->
   <url>
     <loc>https://wavenexusdigitalinvest.com/contact</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -94,6 +94,45 @@
   <url>
     <loc>https://wavenexusdigitalinvest.com/blog/parts-walking-off-trucks</loc>
     <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  <!-- Service-area pages -->
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/hampton-roads-va</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/norfolk-va</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/virginia-beach-va</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/chesapeake-va</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/suffolk-va</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wavenexusdigitalinvest.com/web-design/portsmouth-va</loc>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

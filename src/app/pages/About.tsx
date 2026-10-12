@@ -156,7 +156,11 @@ export default function About() {
             </div>
             <div>
               <p className="font-['DM_Sans'] text-zinc-950/70 mb-6 leading-relaxed">
-                Suffolk · Virginia Beach · Chesapeake · Newport News · Hampton · Norfolk · Portsmouth · Williamsburg · York County · Isle of Wight
+                Based in Norfolk. Serving{" "}
+                {[["norfolk-va", "Norfolk"], ["virginia-beach-va", "Virginia Beach"], ["chesapeake-va", "Chesapeake"], ["suffolk-va", "Suffolk"], ["portsmouth-va", "Portsmouth"]].map(([slug, name]) => (
+                  <span key={slug}><Link to={`/web-design/${slug}`} className="underline underline-offset-4 hover:text-zinc-950">{name}</Link> · </span>
+                ))}
+                Hampton · Newport News · Williamsburg · York County · Isle of Wight
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/audit"
