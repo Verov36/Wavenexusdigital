@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import areasData from "../lib/areas.json";
 import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -13,6 +14,8 @@ const NAV = [
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
+
+const SERVICE_AREAS = areasData.areas;
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
@@ -190,9 +193,18 @@ export default function Layout() {
             </div>
           </div>
 
+          <div className="border-t border-border pt-6 pb-6">
+            <p className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-zinc-600 mb-3">Service Areas</p>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {SERVICE_AREAS.map(({ slug, short }) => (
+                <li key={slug}><Link to={`/web-design/${slug}`} className="text-sm text-zinc-500 hover:text-amber-400 transition-colors font-['DM_Sans']">Web Design {short}</Link></li>
+              ))}
+            </ul>
+          </div>
+
           <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">© {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.</p>
-            <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">Hampton Roads, VA · USMC Veteran Owned</p>
+            <p className="font-['JetBrains_Mono'] text-[10px] text-zinc-700 uppercase tracking-widest">Norfolk, VA · Serving Hampton Roads · USMC Veteran Owned</p>
           </div>
         </div>
       </footer>

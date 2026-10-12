@@ -1,4 +1,5 @@
 import site from "./lib/site.json";
+import areas from "./lib/areas.json";
 
 // Every page's <head> tags are written into its static HTML at build time
 // (vite.config.ts + scripts/prerender.mjs), using the titles and descriptions in
@@ -6,7 +7,9 @@ import site from "./lib/site.json";
 // client-side from one page to another.
 
 type PageMeta = { title: string; description: string };
-const pages = site.pages as Record<string, PageMeta>;
+const pages: Record<string, PageMeta> = { ...(site.pages as Record<string, PageMeta>) };
+// Service-area pages keep their titles/descriptions in lib/areas.json.
+for (const a of areas.areas) pages[`/web-design/${a.slug}`] = { title: a.title, description: a.description };
 
 function setTag(selector: string, attrKey: string, attrVal: string, content: string) {
   let el = document.head.querySelector(selector);

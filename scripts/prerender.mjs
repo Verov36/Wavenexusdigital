@@ -35,6 +35,11 @@ const templatePath = join(distDir, "index.html");
 // Titles, descriptions and contact details live in src/app/lib/site.json, shared
 // with the React app so the static HTML and the live page never disagree.
 const site = JSON.parse(readFileSync(join(__dirname, "..", "src", "app", "lib", "site.json"), "utf8"));
+// Service-area (city) pages live in src/app/lib/areas.json
+const areas = JSON.parse(readFileSync(join(__dirname, "..", "src", "app", "lib", "areas.json"), "utf8")).areas;
+for (const a of areas) {
+  site.pages[`/web-design/${a.slug}`] = { title: a.title, description: a.description, area: a.name, faq: a.faq };
+}
 const SITE_URL = site.url;
 const SITE_NAME = site.name;
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -52,6 +57,7 @@ const NAV_LINKS = [
   ["/blog", "Blog"],
   ["/contact", "Contact"],
 ];
+const AREA_LINKS = areas.map((a) => [`/web-design/${a.slug}`, `Web design in ${a.short}`]);
 
 // ── Per-route SEO config ────────────────────────────────────────────────────
 // path: route (used for canonical + output file location; title and
@@ -180,6 +186,19 @@ const ROUTES = [
   },
 ];
 
+for (const a of areas) {
+  ROUTES.push({
+    path: `/web-design/${a.slug}`,
+    h1: a.h1,
+    body: [
+      a.intro,
+      ...a.local,
+      ...a.focus.map(([t, b]) => `${t}: ${b}`),
+      ...a.faq.map(([q, ans]) => `${q} ${ans}`),
+    ],
+  });
+}
+
 // ── HTML helpers (regex-based, dependency-free) ─────────────────────────────
 function setTitle(html, title) {
   if (/<title>[\s\S]*?<\/title>/i.test(html)) {
@@ -243,8 +262,8 @@ function renderContent(route) {
 ${paras}
 </main>
 <footer>
-<p><strong>${esc(SITE_NAME)}</strong> — Veteran-owned web design, custom apps &amp; digital marketing, Hampton Roads, VA.</p>
-<p>Serving Suffolk, Virginia Beach, Chesapeake, Newport News, Hampton, Norfolk, Portsmouth VA.</p>
+<p><strong>${esc(SITE_NAME)}</strong> — Veteran-owned web design, custom apps &amp; digital marketing. Norfolk, VA, serving all of Hampton Roads.</p>
+<p>Service areas: ${AREA_LINKS.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join(" · ")}</p>
 <p>Phone: <a href="tel:${site.phoneE164}">${esc(PHONE)}</a> · Email: <a href="mailto:${esc(EMAIL)}">${esc(EMAIL)}</a></p>
 <p><a href="${canonical}">${esc(canonical)}</a></p>
 </footer>

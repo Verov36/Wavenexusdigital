@@ -1,0 +1,138 @@
+{
+  "hub": "hampton-roads-va",
+  "areas": [
+    {
+      "slug": "hampton-roads-va",
+      "name": "Hampton Roads",
+      "short": "Hampton Roads",
+      "title": "Web Design & Local SEO in Hampton Roads, VA | WaveNexus Digital Invest",
+      "description": "Veteran-owned web design, local SEO, and AI search optimization for businesses across Hampton Roads — Norfolk, Virginia Beach, Chesapeake, Suffolk, and Portsmouth, VA.",
+      "h1": "Web Design & Local SEO Across Hampton Roads",
+      "intro": "WaveNexus Digital Invest is a Marine Corps veteran-owned web design and local SEO company based in Norfolk, serving businesses across Hampton Roads. We build websites that bring in calls, get you into Google's map results, and make sure AI tools like ChatGPT and Perplexity can find and recommend you.",
+      "local": [
+        "Hampton Roads isn't one market — it's a handful of cities that customers cross every day, each with its own search results. A plumber in Chesapeake and a plumber in Virginia Beach can be fifteen minutes apart and still compete in completely different map packs.",
+        "That's why we build your site with a clear service-area structure: one strong page for each city you actually serve, consistent business details everywhere, and structured data that tells Google and AI tools exactly where you work."
+      ],
+      "focus": [
+        ["Websites that convert", "Mobile-first sites with clear calls to action and quote forms, built for local service businesses."],
+        ["Local SEO", "Google Business Profile optimization, city service pages, consistent listings, and review strategy."],
+        ["AI search visibility", "Content and structured data written so ChatGPT, Perplexity, Claude, and Google's AI answers can cite you."]
+      ],
+      "faq": [
+        ["Which Hampton Roads cities do you serve?", "All of them. We're based in Norfolk and work with businesses in Norfolk, Virginia Beach, Chesapeake, Suffolk, and Portsmouth, as well as Hampton, Newport News, and the surrounding area."],
+        ["Do I need a separate page for each city I serve?", "Usually, yes. Google ranks pages, not businesses, so a page written specifically for Chesapeake has a much better chance of showing up for Chesapeake searches than a single page that lists ten cities. Each page needs genuinely different content, not the same text with the city name swapped."],
+        ["Can you guarantee a top ranking?", "No, and you should be wary of anyone who does. Map rankings depend on your Google Business Profile, your reviews, your distance from the searcher, and your website. We fix the parts that are in your control and report on what changes."]
+      ]
+    },
+    {
+      "slug": "norfolk-va",
+      "name": "Norfolk",
+      "short": "Norfolk",
+      "title": "Web Design & Local SEO in Norfolk, VA | WaveNexus Digital Invest",
+      "description": "Norfolk, VA web designer and local SEO team. Veteran-owned and based in Norfolk — websites, Google Business Profile optimization, and AI search visibility for Norfolk businesses.",
+      "h1": "Web Design & Local SEO in Norfolk, VA",
+      "intro": "WaveNexus Digital Invest is based in Norfolk. We build websites and run local SEO for Norfolk businesses that want more calls from the people searching nearby — from Downtown and Ghent to Ocean View and the neighborhoods around the base.",
+      "local": [
+        "Norfolk is home to Naval Station Norfolk, Old Dominion University, and Norfolk State University, so a lot of your customers are new to the area and searching from their phones to find someone they can trust. Your Google Business Profile and your mobile site are often the first — and only — impression you get.",
+        "As a Marine Corps veteran-owned business, we know the military community well. If you serve service members and their families, we'll make sure your site speaks to them clearly and that you show up when they search after a PCS move."
+      ],
+      "focus": [
+        ["Map pack visibility", "Google Business Profile cleanup, categories, photos, and posts so you show up in Norfolk map results."],
+        ["Mobile-first sites", "Fast pages with tap-to-call and short quote forms for customers searching on the go."],
+        ["Reviews that count", "A simple, repeatable way to ask happy customers for Google reviews."]
+      ],
+      "faq": [
+        ["Are you actually located in Norfolk?", "Yes. WaveNexus Digital Invest is based in Norfolk, VA, and works with businesses across Hampton Roads."],
+        ["My business is in Norfolk but I serve the whole region. What should my site look like?", "Keep Norfolk as your main location and add a dedicated page for each other city you serve, with content specific to that area. That gives Google a clear picture of where you work without pretending to have offices you don't."]
+      ]
+    },
+    {
+      "slug": "virginia-beach-va",
+      "name": "Virginia Beach",
+      "short": "Virginia Beach",
+      "title": "Web Design & Local SEO in Virginia Beach, VA | WaveNexus Digital Invest",
+      "description": "Virginia Beach web design and local SEO for service businesses, restaurants, and contractors. Veteran-owned Hampton Roads team — websites, Google Business Profile, and AI search optimization.",
+      "h1": "Web Design & Local SEO in Virginia Beach, VA",
+      "intro": "Virginia Beach is the most populous city in Virginia, which means more customers searching — and more competitors in every search. We help Virginia Beach businesses build websites and local SEO that hold their own in a crowded market.",
+      "local": [
+        "Virginia Beach stretches from the Oceanfront and Town Center to Kempsville, Great Neck, and Pungo, and Google's map results change a lot depending on where the searcher is standing. A good Virginia Beach strategy makes it clear which parts of the city you serve.",
+        "Many businesses here also deal with seasonal swings — tourism and hospitality at the Oceanfront, plus military families moving in and out around NAS Oceana and Joint Expeditionary Base Little Creek–Fort Story. Your site should be easy to update so your offers and hours stay current through the year."
+      ],
+      "focus": [
+        ["Stand out in a crowded market", "Specific service pages and clear differentiators so you're not just another listing."],
+        ["Easy seasonal updates", "Offers, hours, and announcements you can change without calling a developer."],
+        ["AI search answers", "Structured data and plain-English content so AI tools recommend you for Virginia Beach searches."]
+      ],
+      "faq": [
+        ["Why don't I show up in Virginia Beach map results even though my business is here?", "The most common reasons are an incomplete or unverified Google Business Profile, inconsistent business details across listings, too few recent reviews, and a website that doesn't clearly say what you do and where. A free audit will show which of these apply to you."],
+        ["My business is seasonal. Is SEO still worth it?", "Yes, as long as you plan ahead. Search rankings take time to build, so the work you do in the off-season is what puts you in front of customers when the busy season arrives."]
+      ]
+    },
+    {
+      "slug": "chesapeake-va",
+      "name": "Chesapeake",
+      "short": "Chesapeake",
+      "title": "Web Design & Local SEO in Chesapeake, VA | WaveNexus Digital Invest",
+      "description": "Chesapeake, VA web design and local SEO for contractors and home-service businesses. Veteran-owned Hampton Roads team serving Greenbrier, Great Bridge, Western Branch, and beyond.",
+      "h1": "Web Design & Local SEO in Chesapeake, VA",
+      "intro": "Chesapeake is one of the largest cities in Virginia by land area, with established neighborhoods like Greenbrier, Great Bridge, and Western Branch alongside open farmland to the south. We build websites and local SEO for Chesapeake businesses — especially contractors and home-service companies that cover a lot of ground.",
+      "local": [
+        "Because Chesapeake covers so much area, customers often search by neighborhood rather than by city. Your website should mention the parts of Chesapeake you actually serve so you match those searches.",
+        "Home services are a big part of Chesapeake's local economy — HVAC, plumbing, electrical, landscaping, roofing. These businesses win on fast response and trust, so we focus on tap-to-call, clear service lists, real photos of your work, and reviews."
+      ],
+      "focus": [
+        ["Built for contractors", "Service pages for each job type, quote forms, and emergency-call buttons that work on mobile."],
+        ["Neighborhood coverage", "Content that reflects the Chesapeake neighborhoods you serve, not a generic city list."],
+        ["Field service software", "If you run crews, our Nexus Field app handles jobs, photos, and parts inventory too."]
+      ],
+      "faq": [
+        ["My office isn't in Chesapeake but I do a lot of work there. Can I still rank?", "Yes. You can set up your Google Business Profile as a service-area business that lists Chesapeake, and add a Chesapeake page to your website with content about the work you do there. Proximity still matters for the map pack, but a strong page helps you show up in regular search results."],
+        ["What do contractors in Chesapeake most often get wrong on their websites?", "Listing every service on one page, hiding the phone number, and using stock photos instead of real job photos. Each of those makes it harder for customers to choose you and for Google to understand what you do."]
+      ]
+    },
+    {
+      "slug": "suffolk-va",
+      "name": "Suffolk",
+      "short": "Suffolk",
+      "title": "Web Design & Local SEO in Suffolk, VA | WaveNexus Digital Invest",
+      "description": "Suffolk, VA web design and local SEO. Veteran-owned Hampton Roads team helping Suffolk businesses reach customers from Harbour View and North Suffolk to Downtown and beyond.",
+      "h1": "Web Design & Local SEO in Suffolk, VA",
+      "intro": "Suffolk is the largest city in Virginia by land area — from fast-growing Harbour View and North Suffolk to historic Downtown and the rural areas toward the Great Dismal Swamp. We help Suffolk businesses build websites and local SEO that reach customers across all of it.",
+      "local": [
+        "With that much ground to cover, a customer in North Suffolk and a customer near Holland may see very different search results. Being specific about where you work — and where you don't — helps you show up for the right people and avoid calls you can't take.",
+        "Suffolk's growth has brought new homes, new businesses, and new competition. If you've been relying on word of mouth, a clear website and a well-kept Google Business Profile are how newer residents find you."
+      ],
+      "focus": [
+        ["Reach new residents", "A clear, modern site and Google profile for people who just moved to Suffolk and don't know you yet."],
+        ["Service-area clarity", "Pages and listings that say exactly which parts of Suffolk you cover."],
+        ["Simple upkeep", "Sites that are easy to keep current, so your hours and services never go stale."]
+      ],
+      "faq": [
+        ["Suffolk is so spread out. Will I show up across the whole city?", "Google's map results favor businesses close to the searcher, so you'll naturally rank strongest near your location. A dedicated Suffolk page, a complete service-area profile, and steady reviews help you show up further out, especially in regular search results."],
+        ["I mostly get business by word of mouth. Do I really need a website?", "Even referrals usually look you up before they call. A simple, professional site with your services, photos, and reviews makes it easy for a referral to turn into a customer."]
+      ]
+    },
+    {
+      "slug": "portsmouth-va",
+      "name": "Portsmouth",
+      "short": "Portsmouth",
+      "title": "Web Design & Local SEO in Portsmouth, VA | WaveNexus Digital Invest",
+      "description": "Portsmouth, VA web design and local SEO for small businesses. Veteran-owned Hampton Roads team helping Olde Towne, Midtown, and Churchland businesses get found on Google and AI search.",
+      "h1": "Web Design & Local SEO in Portsmouth, VA",
+      "intro": "Portsmouth sits right across the Elizabeth River from Norfolk — home to the Olde Towne historic district, the Norfolk Naval Shipyard, and neighborhoods like Midtown, Churchland, and Port Norfolk. We help Portsmouth businesses build websites and local SEO so local customers find them first.",
+      "local": [
+        "Being next door to Norfolk is both an opportunity and a challenge: Portsmouth searches often pull in Norfolk businesses. A Portsmouth-specific website page, a correctly set up Google Business Profile, and local reviews are how you keep those customers on your side of the river.",
+        "For shops, restaurants, and services in Olde Towne, foot traffic and search go together. We make sure your hours, location, and menu or service list are accurate everywhere people look — Google, Apple Maps, and AI assistants."
+      ],
+      "focus": [
+        ["Win your own backyard", "Portsmouth-focused content and listings so local searches find you, not a business across the river."],
+        ["Accurate everywhere", "Consistent name, address, phone, and hours across Google, Apple Maps, Yelp, and directories."],
+        ["Small-business friendly", "Straightforward sites that are affordable to run and easy to update."]
+      ],
+      "faq": [
+        ["Why do Norfolk businesses show up when people search in Portsmouth?", "Google treats the two cities as one closely connected area, and larger Norfolk businesses often have more reviews and stronger websites. Clear Portsmouth content, an accurate Google Business Profile, and a steady flow of local reviews are the best way to compete."],
+        ["Do you work with small shops and restaurants, or only contractors?", "Both. Contractors and home-service companies are a big part of our work, but the same local SEO basics help any Portsmouth business that depends on nearby customers."]
+      ]
+    }
+  ]
+}
