@@ -239,7 +239,8 @@ function injectRootContent(html, contentHtml) {
 // Add the page's JSON-LD structured data to <head>
 function injectJsonLd(html, data) {
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
-  return html.replace("</head>", `<script type="application/ld+json">${json}</script>\n</head>`);
+  // Function replacement: a "$$" in the JSON (e.g. priceRange) must not be read as a replace pattern
+  return html.replace("</head>", () => `<script type="application/ld+json">${json}</script>\n</head>`);
 }
 
 function esc(s) {
