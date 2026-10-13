@@ -202,7 +202,9 @@ async function main() {
     const row = { path };
     row.status = record(path, "status", b.status, c.status);
     for (const f of ["title", "description", "canonical", "robots", "og", "twitter", "geo", "h1", "jsonLd"]) row[f] = record(path, f, be[f], ce[f]);
-    if (renderedH1) row.h1Rendered = record(path, "h1-vs-rendered-baseline", renderedH1[path] ?? null, ce.h1);
+    // innerText applies CSS text-transform (the headings are uppercase), so compare case-insensitively.
+    const norm = (h) => (h == null ? null : [].concat(h).join(" | ").replace(/\s+/g, " ").trim().toLowerCase());
+    if (renderedH1) row.h1Rendered = record(path, "h1-vs-rendered-baseline", norm(renderedH1[path]), norm(ce.h1));
     // Visitors without JavaScript (and crawlers) must get the page's real content.
     const text = visibleText(c.body);
     const h1s = [].concat(ce.h1 ?? []);
