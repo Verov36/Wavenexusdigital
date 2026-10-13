@@ -1,0 +1,327 @@
+"use client";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { ArrowRight, ArrowLeft, Calendar, BookOpen, DollarSign, AlertTriangle, TrendingUp, Clock } from "lucide-react";
+
+const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } } };
+const stagger = { show: { transition: { staggerChildren: 0.07 } } };
+
+export default function BlogPostSpreadsheets() {
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative bg-zinc-950 pt-24 pb-16 overflow-hidden border-b border-border">
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: "linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)", backgroundSize: "60px 60px" }}
+        />
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" animate="show" variants={stagger}>
+            {/* Back */}
+            <motion.div variants={fadeUp} className="mb-10">
+              <Link href="/blog"
+                className="inline-flex items-center gap-2 font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 hover:text-amber-500 transition-colors">
+                <ArrowLeft className="h-3 w-3" /> Back to Blog
+              </Link>
+            </motion.div>
+
+            {/* Meta */}
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 mb-8">
+              <span className="font-jetbrains text-[10px] uppercase tracking-widest px-2 py-1 border text-amber-400 border-amber-400/30 bg-amber-400/10">
+                Field Service Tech
+              </span>
+              <div className="flex items-center gap-1.5 text-zinc-600">
+                <Calendar className="h-3 w-3" />
+                <span className="font-jetbrains text-[10px]">Jul 17, 2026</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-zinc-600">
+                <BookOpen className="h-3 w-3" />
+                <span className="font-jetbrains text-[10px]">8 min read</span>
+              </div>
+            </motion.div>
+
+            <motion.h1 variants={fadeUp}
+              className="font-barlow font-900 text-5xl sm:text-6xl lg:text-7xl uppercase leading-[0.9] text-white mb-8">
+              Field Service Software{" "}<br />vs. Spreadsheets:{" "}<br />
+              <span className="text-amber-500">Which One Actually{" "}<br />Saves You Money?</span>
+            </motion.h1>
+
+            <motion.p variants={fadeUp} className="font-dmsans text-xl text-zinc-400 leading-relaxed border-l-4 border-amber-500 pl-5">
+              "Free" is the most expensive word in your business.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Hero image */}
+      <div className="bg-zinc-900 border-b border-border">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+          <img
+            src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+            alt="Field service contractor using tablet on job site"
+            className="w-full h-72 object-cover grayscale"
+          />
+        </div>
+      </div>
+
+      {/* Article body */}
+      <article className="bg-zinc-950 py-16 border-b border-border">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+
+            <p>
+              Most contractors in Hampton Roads start with spreadsheets. It makes sense at first. Excel is already on your computer, and Google Sheets doesn't cost a dime. You think you're being lean. You think you're saving money.
+            </p>
+            <p className="font-semibold text-white text-xl">You're wrong.</p>
+            <p>
+              Spreadsheets aren't a management tool — they're a leaky bucket. Every hour you spend "massaging" data into a cell is an hour you aren't billing a client. Every time a technician forgets to log a part used on a job in Virginia Beach, that's cash walking right off your truck.
+            </p>
+            <p>
+              If you're serious about scaling your trade business, you need to stop acting like a data entry clerk and start acting like a commander.
+            </p>
+          </div>
+
+          {/* Section: Hidden Tax */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-14 mb-10">
+            <div className="flex items-center gap-3 mb-6">
+              <DollarSign className="h-5 w-5 text-amber-500 flex-shrink-0" />
+              <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
+                The Hidden Tax of Manual Entry
+              </h2>
+            </div>
+          </motion.div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+            <p>
+              Spreadsheets look cheap because there's no monthly subscription. But the true cost is buried in your payroll.
+            </p>
+            <p>
+              Run the numbers on a conservative example. If your team spends just <strong className="text-white">5 hours a week</strong> on spreadsheet admin — scheduling, updating customer info, and fixing errors — and that time is worth $75 an hour, that's <strong className="text-amber-400">$19,500 in lost billable time every year.</strong> Plug in your own hours and rate; for most shops the real number is higher.
+            </p>
+            <p>That isn't "free." That is a massive operational tax.</p>
+          </div>
+
+          {/* Stat callout */}
+          <div className="my-10 grid sm:grid-cols-3 gap-px bg-zinc-800">
+            {[
+              { val: "5hrs", label: "Admin time per week (example)", sub: "Scheduling, data entry, fixing errors" },
+              { val: "$75", label: "Billable rate (example)", sub: "Per hour of technician time" },
+              { val: "$19,500", label: "Lost billable time per year", sub: "The real cost of 'free' tools" },
+            ].map(({ val, label, sub }) => (
+              <div key={label} className="bg-zinc-900 p-6 text-center">
+                <div className="font-barlow font-900 text-4xl text-amber-500 mb-2">{val}</div>
+                <div className="font-dmsans text-sm text-white font-semibold mb-1">{label}</div>
+                <div className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600">{sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Section: Error rates */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-14 mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <AlertTriangle className="h-5 w-5 text-amber-500 flex-shrink-0" />
+              <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
+                Even a 5% Error Rate Eats Your Margins
+              </h2>
+            </div>
+          </motion.div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+            <p>
+              Manual data entry is prone to human failure. Even if only <strong className="text-white">1 entry in 20 (about 5%)</strong> has a mistake, that adds up fast across a month of jobs. In the field, this looks like:
+            </p>
+          </div>
+
+          <div className="my-8 space-y-px">
+            {[
+              "Double-booked appointments in Chesapeake.",
+              "Wrong addresses sent to your landscaping crew.",
+              "Invoices with missing SKUs or miscalculated labor hours.",
+              "Inventory counts that don't match the shelf.",
+            ].map(item => (
+              <div key={item} className="flex items-start gap-4 bg-zinc-900 px-6 py-4 border-l-2 border-transparent hover:border-amber-500 transition-all">
+                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mt-2 flex-shrink-0" />
+                <p className="font-dmsans text-zinc-300">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+            <p>
+              When you use field service management software, you replace human error with structured workflows. You don't "type" job details — you select them. The system validates the data. The leaks stop.
+            </p>
+          </div>
+
+          {/* Divider image */}
+          <div className="my-12">
+            <img
+              loading="lazy" decoding="async"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+              alt="Messy paper-based office system"
+              className="w-full h-52 object-cover grayscale"
+            />
+          </div>
+
+          {/* Section: Information Silos */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-14 mb-6">
+            <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
+              Spreadsheets Are Information Silos
+            </h2>
+          </motion.div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+            <p>
+              In a mission-critical environment, communication is everything. Spreadsheets fail because they are static.
+            </p>
+            <p>
+              Your office manager has one version. Your lead electrician has another on his phone. You have a third on your laptop. None of them match. This lack of a "single source of truth" creates bottlenecks that slow down your entire dispatch flow.
+            </p>
+          </div>
+
+          <div className="my-8 bg-zinc-900 border border-zinc-800 p-8">
+            <h3 className="font-barlow font-800 text-xl uppercase text-white mb-4">The "Where's My Tech?" Problem</h3>
+            <p className="font-dmsans text-zinc-400 leading-relaxed mb-4">
+              When a customer in Norfolk calls asking for an ETA, can you answer them in five seconds?
+            </p>
+            <p className="font-dmsans text-zinc-400 leading-relaxed">
+              If you're using spreadsheets, you're calling the tech, waiting for a callback, and then calling the customer back. That's three points of failure for one simple question. Proper field service software gives you real-time job status. You see the tech. You answer the customer immediately. That is how you build a reputation for reliability.
+            </p>
+          </div>
+
+          {/* Section: ROI */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-14 mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <TrendingUp className="h-5 w-5 text-amber-500 flex-shrink-0" />
+              <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
+                The Real ROI of Moving to Software
+              </h2>
+            </div>
+          </motion.div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px] mb-10">
+            <p>
+              Switching to a platform like Nexus Field isn't just about "organizing." It's about revenue generation.
+            </p>
+          </div>
+
+          <div className="space-y-px bg-zinc-800 mb-10">
+            {[
+              {
+                icon: TrendingUp,
+                stat: "Up to 15% More Jobs Per Day",
+                body: "Better routing and automated dispatch cut the 'dead time' between jobs. Even a modest gain — 10–15% more jobs per technician per day — adds up to meaningful extra monthly revenue for a mid-sized electrical or landscaping team.",
+              },
+              {
+                icon: Clock,
+                stat: "Get Paid Up to 2x Faster",
+                body: "Cash flow is the lifeblood of your business. If it takes three days to get a service ticket back to the office and another two to mail an invoice, your money is sitting in someone else's pocket for a week longer than it should. Field service software allows for same-day digital invoicing. Many shops can cut the time to get paid roughly in half — from around 30 days to around 15.",
+              },
+            ].map(({ icon: Icon, stat, body }) => (
+              <div key={stat} className="bg-zinc-900 p-8 flex gap-6 items-start">
+                <div className="flex-shrink-0 w-12 h-12 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                  <Icon className="h-5 w-5 text-amber-500" />
+                </div>
+                <div>
+                  <h3 className="font-barlow font-800 text-xl uppercase text-white mb-3">{stat}</h3>
+                  <p className="font-dmsans text-sm text-zinc-500 leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Section: Why Local */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mt-14 mb-6">
+            <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
+              Mission Readiness for Hampton Roads Contractors
+            </h2>
+          </motion.div>
+
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
+            <p>
+              We don't build software for tech companies. We build it for people who get their hands dirty. Whether you need landscaping management software to track recurring maintenance contracts in Suffolk or electrical contractor software to manage complex job histories in Newport News, the objective remains the same: <strong className="text-white">eliminate the bloat.</strong>
+            </p>
+            <p>
+              Most "big-box" software companies sell you a package filled with features you'll never use. They want you to change your business to fit their code. At WaveNexus Digital Invest, we take the opposite approach. We're a US Marine Corps Veteran-owned agency. We understand discipline, execution, and the specific needs of local trade businesses in Southeast Virginia.
+            </p>
+          </div>
+
+          <div className="my-10 space-y-px">
+            {[
+              { n: "01", heading: "Job Tracking", body: "Know exactly what's happening, when, and where — in real time." },
+              { n: "02", heading: "Inventory Management", body: "Stop parts from 'walking off trucks' without a record." },
+              { n: "03", heading: "Photo Databases", body: "Document every job for quality control and dispute resolution." },
+              { n: "04", heading: "No Outsourcing", body: "You work with us, 24/7, right here in the US." },
+            ].map(({ n, heading, body }) => (
+              <div key={n} className="bg-zinc-900 p-6 flex gap-6 items-start group hover:bg-zinc-950 transition-colors border-l-2 border-transparent hover:border-amber-500">
+                <div className="font-barlow font-900 text-3xl text-amber-500/30 group-hover:text-amber-500/60 transition-colors flex-shrink-0 w-10">{n}</div>
+                <div>
+                  <h4 className="font-barlow font-800 text-lg uppercase text-white mb-1 group-hover:text-amber-400 transition-colors">{heading}</h4>
+                  <p className="font-dmsans text-sm text-zinc-500">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Closing */}
+          <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px] mt-10">
+            <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">Stop Guessing. Start Executing.</h2>
+            <p>
+              The numbers don't lie. Spreadsheets are costing you tens of thousands of dollars in hidden inefficiencies every year. Software is an investment that pays for itself by reclaiming billable hours and accelerating your cash flow.
+            </p>
+            <p>
+              If your current system involves spreadsheets, sticky notes, and text message chains, you're leaving money on the table. Sticking with spreadsheets is a choice to stay small. It's a choice to accept avoidable errors. It's a choice to pay for "free" tools with your most valuable asset: your time.
+            </p>
+            <p>
+              <strong className="text-white">Nexus Field was built to solve the "leaky bucket" problem.</strong> It is lean, fast, and designed for the field.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      {/* CTA */}
+      <section className="bg-amber-500 py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-zinc-950/60 mb-4">Ready to Stop the Leak?</p>
+              <h2 className="font-barlow font-900 text-4xl sm:text-5xl uppercase leading-[0.9] text-zinc-950">
+                Let's look at your workflow and find the leaks.
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="font-dmsans text-zinc-950/70 leading-relaxed">
+                No high-pressure sales. We'll look at your current process, identify what's costing you, and show you exactly how Nexus Field can tighten your operation.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/audit?type=demo"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-zinc-950 text-amber-500 font-barlow font-800 uppercase tracking-widest hover:bg-zinc-900 transition-colors">
+                  Talk to Us <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link href="/nexus-field"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-barlow font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
+                  See Nexus Field
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Back to blog */}
+      <div className="bg-zinc-950 py-10 border-t border-border">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <Link href="/blog"
+            className="inline-flex items-center gap-2 font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 hover:text-amber-500 transition-colors">
+            <ArrowLeft className="h-3 w-3" /> All Posts
+          </Link>
+          <Link href="/blog/parts-walking-off-trucks"
+            className="inline-flex items-center gap-2 font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 hover:text-amber-500 transition-colors">
+            Next Post <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+}
