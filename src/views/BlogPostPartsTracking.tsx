@@ -77,7 +77,7 @@ export default function BlogPostPartsTracking() {
               The numbers don't add up, and nobody knows why.
             </p>
             <p>
-              You stock the warehouse. You load the vans. But by the end of the month, your "recorded inventory" and "actual inventory" are two different stories. If you aren't tracking inventory at the truck level, you're losing between <strong className="text-amber-400">5% and 10% of your material value every year.</strong>
+              You stock the warehouse. You load the vans. But by the end of the month, your "recorded inventory" and "actual inventory" are two different stories. If you aren't tracking inventory at the truck level, you could be losing <strong className="text-amber-400">2–3% of your material value every year.</strong>
             </p>
             <p className="font-semibold text-white">That is pure profit, gone.</p>
           </div>
@@ -133,10 +133,10 @@ export default function BlogPostPartsTracking() {
           <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
             <p>Let's talk brass tacks.</p>
             <p>
-              If you carry $50,000 in inventory across your warehouse and three trucks, a 5% shrinkage rate is <strong className="text-amber-400">$2,500 down the drain.</strong>
+              If you carry $50,000 in inventory across your warehouse and three trucks, even a 2% shrinkage rate is <strong className="text-amber-400">$1,000 down the drain.</strong>
             </p>
             <p>
-              In the high-stakes world of HVAC and plumbing, where margins are tightened by fuel costs and labor, that $2,500 is your marketing budget. It's your new equipment fund. It's your profit.
+              In the high-stakes world of HVAC and plumbing, where margins are tightened by fuel costs and labor, that $1,000 is part of your marketing budget. It's your new equipment fund. It's your profit.
             </p>
           </div>
 

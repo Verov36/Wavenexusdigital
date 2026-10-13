@@ -97,7 +97,7 @@ export default function BlogPostSpreadsheets() {
               Spreadsheets look cheap because there's no monthly subscription. But the true cost is buried in your payroll.
             </p>
             <p>
-              Research shows that the average contractor using spreadsheets spends roughly <strong className="text-white">10 hours per week</strong> on administrative overhead: scheduling, updating customer info, and fixing errors. At a standard billable rate of $85/hour, that's <strong className="text-amber-400">$44,200 in lost billable time every single year.</strong>
+              Run the numbers on a conservative example. If your team spends just <strong className="text-white">5 hours a week</strong> on spreadsheet admin — scheduling, updating customer info, and fixing errors — and that time is worth $75 an hour, that's <strong className="text-amber-400">$19,500 in lost billable time every year.</strong> Plug in your own hours and rate; for most shops the real number is higher.
             </p>
             <p>That isn't "free." That is a massive operational tax.</p>
           </div>
@@ -105,9 +105,9 @@ export default function BlogPostSpreadsheets() {
           {/* Stat callout */}
           <div className="my-10 grid sm:grid-cols-3 gap-px bg-zinc-800">
             {[
-              { val: "10hrs", label: "Admin overhead per week (avg)", sub: "Scheduling, data entry, fixing errors" },
-              { val: "$85", label: "Standard billable rate", sub: "Per hour of technician time" },
-              { val: "$44,200", label: "Lost billable time per year", sub: "The real cost of 'free' tools" },
+              { val: "5hrs", label: "Admin time per week (example)", sub: "Scheduling, data entry, fixing errors" },
+              { val: "$75", label: "Billable rate (example)", sub: "Per hour of technician time" },
+              { val: "$19,500", label: "Lost billable time per year", sub: "The real cost of 'free' tools" },
             ].map(({ val, label, sub }) => (
               <div key={label} className="bg-zinc-900 p-6 text-center">
                 <div className="font-barlow font-900 text-4xl text-amber-500 mb-2">{val}</div>
@@ -122,14 +122,14 @@ export default function BlogPostSpreadsheets() {
             <div className="flex items-center gap-3 mb-6">
               <AlertTriangle className="h-5 w-5 text-amber-500 flex-shrink-0" />
               <h2 className="font-barlow font-900 text-3xl sm:text-4xl uppercase text-white">
-                15% Error Rates Are Killing Your Margins
+                Even a 5% Error Rate Eats Your Margins
               </h2>
             </div>
           </motion.div>
 
           <div className="font-dmsans text-zinc-300 leading-relaxed space-y-6 text-[17px]">
             <p>
-              Manual data entry is prone to human failure. Industry data confirms that spreadsheets carry a <strong className="text-white">15–20% error rate</strong>. In the field, this looks like:
+              Manual data entry is prone to human failure. Even if only <strong className="text-white">1 entry in 20 (about 5%)</strong> has a mistake, that adds up fast across a month of jobs. In the field, this looks like:
             </p>
           </div>
 
@@ -209,13 +209,13 @@ export default function BlogPostSpreadsheets() {
             {[
               {
                 icon: TrendingUp,
-                stat: "35% More Jobs Per Day",
-                body: "Data from top-performing trades shows that contractors using dedicated software complete 30–40% more jobs per technician per day. By optimizing routes and automating dispatch, you eliminate the 'dead time' between jobs. For a mid-sized electrical or landscaping team, this throughput increase can translate to thousands of additional monthly revenue per technician.",
+                stat: "Up to 15% More Jobs Per Day",
+                body: "Better routing and automated dispatch cut the 'dead time' between jobs. Even a modest gain — 10–15% more jobs per technician per day — adds up to meaningful extra monthly revenue for a mid-sized electrical or landscaping team.",
               },
               {
                 icon: Clock,
-                stat: "60% Faster Payment Cycles",
-                body: "Cash flow is the lifeblood of your business. If it takes three days to get a service ticket back to the office and another two to mail an invoice, your money is sitting in someone else's pocket for a week longer than it should. Field service software allows for same-day digital invoicing. Payment cycles can drop from 38 days down to just 7 days.",
+                stat: "Get Paid Up to 2x Faster",
+                body: "Cash flow is the lifeblood of your business. If it takes three days to get a service ticket back to the office and another two to mail an invoice, your money is sitting in someone else's pocket for a week longer than it should. Field service software allows for same-day digital invoicing. Many shops can cut the time to get paid roughly in half — from around 30 days to around 15.",
               },
             ].map(({ icon: Icon, stat, body }) => (
               <div key={stat} className="bg-zinc-900 p-8 flex gap-6 items-start">
@@ -270,7 +270,7 @@ export default function BlogPostSpreadsheets() {
               The numbers don't lie. Spreadsheets are costing you tens of thousands of dollars in hidden inefficiencies every year. Software is an investment that pays for itself by reclaiming billable hours and accelerating your cash flow.
             </p>
             <p>
-              If your current system involves spreadsheets, sticky notes, and text message chains, you're leaving money on the table. Sticking with spreadsheets is a choice to stay small. It's a choice to accept a 20% error rate. It's a choice to pay for "free" tools with your most valuable asset: your time.
+              If your current system involves spreadsheets, sticky notes, and text message chains, you're leaving money on the table. Sticking with spreadsheets is a choice to stay small. It's a choice to accept avoidable errors. It's a choice to pay for "free" tools with your most valuable asset: your time.
             </p>
             <p>
               <strong className="text-white">Nexus Field was built to solve the "leaky bucket" problem.</strong> It is lean, fast, and designed for the field.

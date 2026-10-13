@@ -42,6 +42,7 @@ export default function Home() {
               Web Design{" "}<br />
               <span className="text-amber-500">& Field Service</span>{" "}<br />
               Software
+              <span className="block mt-4 text-2xl sm:text-3xl lg:text-4xl tracking-widest text-zinc-400">Hampton Roads, VA</span>
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-zinc-400 text-lg leading-relaxed mb-10 max-w-xl font-dmsans">
