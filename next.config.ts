@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const SITE = "https://wavenexusdigitalinvest.com";
 
@@ -47,6 +48,9 @@ const REDIRECT_HOSTS = [
 ];
 
 const nextConfig: NextConfig = {
+  // On Vercel, wrap Vercel's build adapter so the CSP hashes are added before it
+  // packages the pages (see scripts/csp-adapter.mjs). Unset locally.
+  ...(process.env.NEXT_ADAPTER_PATH ? { adapterPath: path.resolve("scripts/csp-adapter.mjs") } : {}),
   trailingSlash: false,
   poweredByHeader: false,
   reactStrictMode: true,
