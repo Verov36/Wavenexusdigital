@@ -5,7 +5,9 @@
  *   node scripts/seo-parity.mjs [--baseline URL] [--candidate URL] [--host-check] [--json FILE]
  *
  *   --baseline   the site as it is now        (default https://wavenexusdigitalinvest.com)
- *   --candidate  the site you want to ship    (default http://localhost:3000, i.e. `next build && next start`)
+ *   --candidate  the site you want to ship    (default http://localhost:3000, i.e. `next build && next start`).
+ *                A protected Vercel preview works too: pass its share link (…vercel.app/?_vercel_share=…);
+ *                the script follows it once and reuses the access cookie it sets.
  *   --host-check also request the candidate with Host: www.wavenexusdigitalinvest.com and
  *                expect a permanent redirect to the apex domain (only works against `next start`,
  *                since a hosted preview routes by its own hostname)
@@ -37,7 +39,10 @@ const opt = (name, fallback) => {
   return i >= 0 ? args[i + 1] : fallback;
 };
 const BASELINE = opt("baseline", "https://wavenexusdigitalinvest.com").replace(/\/$/, "");
-const CANDIDATE = opt("candidate", "http://localhost:3000").replace(/\/$/, "");
+const CANDIDATE_ARG = new URL(opt("candidate", "http://localhost:3000"));
+const SHARE_TOKEN = CANDIDATE_ARG.searchParams.get("_vercel_share");
+const CANDIDATE = CANDIDATE_ARG.origin + CANDIDATE_ARG.pathname.replace(/\/$/, "");
+let candidateCookie = null;
 const HOST_CHECK = args.includes("--host-check");
 const JSON_OUT = opt("json", null);
 const RENDERED_H1 = opt("rendered-h1", null);
@@ -61,7 +66,8 @@ function get(url, headers = {}) {
   const u = new URL(url);
   const request = u.protocol === "https:" ? httpsRequest : httpRequest;
   return new Promise((resolve, reject) => {
-    const req = request(u, { method: "GET", headers: { "user-agent": "seo-parity/1.0", ...headers } }, (res) => {
+    const cookie = candidateCookie && url.startsWith(CANDIDATE) ? { cookie: candidateCookie } : {};
+    const req = request(u, { method: "GET", headers: { "user-agent": "seo-parity/1.0", ...cookie, ...headers } }, (res) => {
       let body = "";
       res.setEncoding("utf8");
       res.on("data", (c) => (body += c));
@@ -177,6 +183,11 @@ function record(path, field, base, cand) {
 async function main() {
   console.log(`baseline:  ${BASELINE}\ncandidate: ${CANDIDATE}\n`);
 
+  if (SHARE_TOKEN) {
+    const r = await get(`${CANDIDATE}/?_vercel_share=${encodeURIComponent(SHARE_TOKEN)}`);
+    candidateCookie = [].concat(r.headers["set-cookie"] ?? []).map((c) => c.split(";")[0]).join("; ");
+    if (!candidateCookie) throw new Error(`share link did not set an access cookie (HTTP ${r.status})`);
+  }
   const renderedH1 = RENDERED_H1 ? JSON.parse((await import("node:fs")).readFileSync(RENDERED_H1, "utf8")) : null;
 
   // sitemap.xml
