@@ -1,9 +1,12 @@
 /* Mobile-specific optimizations */
 
-/* Prevent horizontal scroll on mobile */
+/* Prevent horizontal scroll on mobile.
+   "clip", not "hidden": overflow-x: hidden on html/body turns body into its own
+   scroll container, so the page scrolled inside body instead of the window —
+   breaking window scrolling, scroll restoration and #anchor links. clip cuts off
+   the overflow without creating a scroll container. */
 html, body {
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: clip;
 }
 
 /* Fix for sticky header covering content when scrolling to anchors */
