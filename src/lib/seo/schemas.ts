@@ -1,3 +1,4 @@
+import { NEXUS_FIELD } from "@/lib/comparisons";
 /**
  * schemas.mjs — JSON-LD structured data, per route.
  *
@@ -123,15 +124,15 @@ export function schemasFor(path: string, site: Site) {
     applicationSubCategory: "Field Service Management Software",
     operatingSystem: "Web, iOS, Android",
     description:
-      "Field service management software for HVAC, plumbing, electrical, landscaping, and contracting companies: parts inventory across warehouses and trucks, job tracking, photo database, technician management, and survey and inspection tools. No contract, minimal setup fee, price held for two years.",
+      "Field service management software for HVAC, refrigeration, plumbing, electrical, and contracting companies: drag-and-drop dispatch board, quotes with e-signature, parts inventory across warehouses and trucks, automatic on-the-way customer texts, website chat routed to technicians by text, job tracking, photo database, and role permissions. No contract, minimal setup fee, price held for two years.",
     url: `${BASE}/nexus-field`,
     offers: {
       "@type": "Offer",
-      price: "75",
+      price: String(NEXUS_FIELD.perTechMonthly),
       priceCurrency: "USD",
       priceSpecification: {
         "@type": "UnitPriceSpecification",
-        price: "75",
+        price: String(NEXUS_FIELD.perTechMonthly),
         priceCurrency: "USD",
         unitText: "per technician per month",
         referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },

@@ -7,8 +7,12 @@
 // so a price change is a one-line edit.
 
 export const NEXUS_FIELD = {
-  perTechMonthly: 75,
-  perTechLabel: "$75",
+  perTechMonthly: 59,
+  perTechLabel: "$59",
+  /** Launch offer: locked-in rate for the first 10 Hampton Roads shops. Remove once the spots are gone. */
+  foundingMonthly: 49,
+  foundingLabel: "$49",
+  foundingSpots: 10,
   officeUsers: "Free — dispatch and office staff aren't techs, so they aren't billed",
   contract: "None. Month to month.",
   setup: "Minimal — scoped to the size of your data migration and quoted on the discovery call",
@@ -57,17 +61,17 @@ export const competitors: Competitor[] = [
     checked: "September 2026",
     metaTitle: "Nexus Field vs ServiceTitan: Pricing, Contract & Setup Fees (2026) | WaveNexus",
     metaDescription:
-      "An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at $75 per tech, no contract, and a setup fee scoped to your migration.",
+      `An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at ${NEXUS_FIELD.perTechLabel} per tech, no contract, and a setup fee scoped to your migration.`,
     headline: "The bill that grows every year, or the one that doesn't.",
     intro:
-      "ServiceTitan is the biggest name in field service software, and for a large multi-location operation it can be the right call. But the shops that call us have usually just opened a renewal notice. This page puts the two side by side with real numbers, including the ones ServiceTitan doesn't publish.",
+      "ServiceTitan is the biggest name in field service software, and for a large multi-location operation it can be the right call. But a lot of smaller shops are paying for far more platform than they use, and they find out at renewal. This page puts the two side by side with real numbers, including the ones ServiceTitan doesn't publish.",
     glance: [
-      { label: "Per tech, per month", them: "~$245–$500", us: "$75", estimate: true },
+      { label: "Per tech, per month", them: "~$245–$500", us: `${NEXUS_FIELD.perTechLabel}`, estimate: true },
       { label: "Contract", them: "12 months", us: "None", estimate: true },
       { label: "Setup / implementation", them: "~$5,000–$50,000", us: "Minimal, scoped to your migration", estimate: true },
     ],
     rows: [
-      { label: "Published pricing", them: "No — \"Request Pricing\" on all three plans", us: "Yes — $75 per tech per month" },
+      { label: "Published pricing", them: "No — \"Request Pricing\" on all three plans", us: `Yes — ${NEXUS_FIELD.perTechLabel} per tech per month` },
       { label: "Plans", them: "Starter, Essentials, The Works", us: "One plan. Everything's in it." },
       { label: "Office & dispatch users", them: "Priced per technician; office seats vary by quote", us: "Free", estimate: true },
       { label: "Contract length", them: "12-month minimum", us: "None — month to month", estimate: true },
@@ -88,7 +92,7 @@ export const competitors: Competitor[] = [
     ],
     weWin: [
       "You have somewhere between 2 and 40 techs and the renewal quote made you wince",
-      "You'd rather pay $75 a tech than budget $5,000+ before the app has done anything for you",
+      `You'd rather pay ${NEXUS_FIELD.perTechLabel} a tech than budget $5,000+ before the app has done anything for you`,
       "You want the software configured around how your shop already works, not a six-week implementation to learn theirs",
       "Parts walking off trucks is a bigger problem for you than marketing automation",
       "You want to be able to leave. Not because you plan to — because it keeps your vendor honest",

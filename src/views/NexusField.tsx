@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, TrendingUp, Lock, DollarSign, Unlock, Receipt, CalendarCheck } from "lucide-react";
+import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, TrendingUp, Lock, DollarSign, Unlock, Receipt, CalendarCheck, PenLine, MessageSquare, Smartphone, KeyRound, Building2, Phone } from "lucide-react";
+import { TEL_HREF, COMPANY_INFO } from "@/lib/constants";
 import { NEXUS_FIELD } from "@/lib/comparisons";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } } };
@@ -14,6 +15,23 @@ const features = [
   { icon: SlidersHorizontal, title: "Built to Suit", body: "We configure the app around how your business actually operates. When your team logs in, it shouldn't feel foreign.", badge: "Custom" },
   { icon: Wrench, title: "Technician Management", body: "See who's on what, track job progress, manage trucks. Less time chasing updates, more time running the business." },
   { icon: Users, title: "Customer-First Records", body: "Before you even say hello, pull up a customer's full history — past jobs, photos, parts used, notes. Every call goes smoother." },
+  { icon: PenLine, title: "Quotes With E-Signature", body: "Build a quote from your parts catalog and get it signed on site, so approved work doesn't wait on paperwork." },
+  { icon: Building2, title: "Multi-Location Customers", body: "Property managers, restaurant groups and chains keep every site under one customer account." },
+  { icon: KeyRound, title: "Role Permissions", body: "Toggle exactly what each person can see and do, from owner to newest hire. Your apprentice doesn't need to see your pricing." },
+];
+
+// The dispatch + customer-communication features: the reason most shops switch.
+const dispatchPoints = [
+  { icon: SlidersHorizontal, title: "Drag-and-drop dispatch board", body: "Every tech's day on one screen. Drag a job to a new tech or time slot and the schedule updates for everyone." },
+  { icon: Smartphone, title: "\u201cTech is on the way\u201d texts", body: "Customers get a heads-up text when their tech heads over, so your office takes fewer \u201cwhere are they?\u201d calls." },
+  { icon: MessageSquare, title: "Website chat that texts your tech", body: "A question on your website lands as a text to whoever's on. A tech with open time picks it up and replies from their phone." },
+];
+
+// Mock rows for the dispatch board illustration. Fictional names, not customer data.
+const boardRows = [
+  { tech: "Marcus · Truck 2", jobs: [{ col: "2 / span 2", label: "No-cool · Res", hot: true }, { col: "5 / span 3", label: "RTU maintenance", hot: false }] },
+  { tech: "Dana · Truck 4", jobs: [{ col: "3 / span 3", label: "Walk-in cooler PM", hot: false }, { col: "7 / span 2", label: "Quote visit", hot: false, muted: true }] },
+  { tech: "Luis · Truck 1", jobs: [{ col: "2 / span 1", label: "Panel", hot: false, muted: true }, { col: "4 / span 4", label: "200A service upgrade", hot: true }] },
 ];
 
 // What businesses on the big-name platforms tell us, and what we do instead.
@@ -64,10 +82,10 @@ export default function NexusField() {
             </motion.div>
 
             <motion.p variants={fadeUp} className="font-dmsans text-xl text-zinc-300 mt-8 mb-4 leading-relaxed max-w-xl">
-              Field service software that works the way your team does.
+              Run the whole shop from one board.
             </motion.p>
-            <motion.p variants={fadeUp} className="font-dmsans text-zinc-500 leading-relaxed mb-10 max-w-xl">
-              We built this because the apps out there were either too expensive, too complicated, or made by people who've never dispatched a tech. Parts, jobs, photos, surveys — all in one place, set up around how you already work.
+            <motion.p variants={fadeUp} className="font-dmsans text-zinc-400 leading-relaxed mb-10 max-w-xl">
+              Drag-and-drop dispatch, quotes with e-signature, truck-level parts inventory and automatic customer texts, for {NEXUS_FIELD.perTechLabel} a tech. Built in Norfolk by a Marine veteran who managed an HVAC distribution branch, because the apps out there were too expensive, too complicated, or made by people who've never dispatched a tech.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
@@ -84,7 +102,7 @@ export default function NexusField() {
             {/* The three promises, right under the CTAs — this is the first thing a
                 price-shopper should see. */}
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
-              {["No contract", "Minimal setup fee", "Price held for 2 years"].map(p => (
+              {[`${NEXUS_FIELD.perTechLabel} / tech / month`, "No contract", "Minimal setup fee", "Price held for 2 years"].map(p => (
                 <span key={p} className="inline-flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-wider text-amber-400 border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
                   <span className="w-1 h-1 bg-amber-400 rounded-full" />
                   {p}
@@ -93,11 +111,75 @@ export default function NexusField() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-2">
-              {["HVAC", "Plumbing", "Electrical", "Landscaping", "General Contracting", "Appliance Repair", "Security Systems", "Pest Control"].map(i => (
+              {["HVAC", "Refrigeration", "Plumbing", "Electrical", "Landscaping", "General Contracting", "Appliance Repair", "Security Systems", "Pest Control"].map(i => (
                 <span key={i} className="font-jetbrains text-[10px] uppercase tracking-wider text-zinc-500 border border-zinc-800 px-3 py-1.5">{i}</span>
               ))}
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── DISPATCH + CUSTOMER TEXTS ── */}
+      <section className="bg-zinc-950 py-24 lg:py-32 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-6">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-amber-500">Dispatch</span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="font-barlow font-900 text-5xl sm:text-6xl uppercase text-white leading-[0.9] mb-10">
+              One board.{" "}<br /><span className="text-amber-500">Every tech. Every truck.</span>
+            </motion.h2>
+            <div className="space-y-px">
+              {dispatchPoints.map(({ icon: Icon, title, body }) => (
+                <motion.div key={title} variants={fadeUp} className="flex gap-5 bg-zinc-900 p-6 border-l-2 border-transparent hover:border-amber-500 transition-all group">
+                  <div className="flex-shrink-0 w-10 h-10 border border-amber-500/30 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-amber-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-barlow font-800 uppercase tracking-wider text-white mb-1 group-hover:text-amber-400 transition-colors">{title}</h3>
+                    <p className="font-dmsans text-sm text-zinc-400 leading-relaxed">{body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.figure initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="bg-zinc-900 border border-zinc-800 p-5 sm:p-6 min-w-0" aria-label="Example dispatch board with three technicians">
+            <figcaption className="flex justify-between items-center mb-4 gap-3">
+              <span className="font-barlow font-800 uppercase tracking-wider text-white">Dispatch board · Today</span>
+              <span className="font-jetbrains text-[11px] text-zinc-500">8 AM – 4 PM</span>
+            </figcaption>
+            <div className="overflow-x-auto">
+              <div className="min-w-[480px] space-y-2">
+                <div className="grid gap-1 font-jetbrains text-[11px] text-zinc-500" style={{ gridTemplateColumns: "110px repeat(8, minmax(0, 1fr))" }}>
+                  <span />{["8", "9", "10", "11", "12", "1", "2", "3"].map(h => <span key={h}>{h}</span>)}
+                </div>
+                {boardRows.map(row => (
+                  <div key={row.tech} className="grid gap-1 items-center" style={{ gridTemplateColumns: "110px repeat(8, minmax(0, 1fr))" }}>
+                    <span className="font-dmsans text-xs text-zinc-300">{row.tech}</span>
+                    {row.jobs.map(job => (
+                      <span key={job.label} style={{ gridColumn: job.col }}
+                        className={`font-dmsans text-xs font-semibold px-2 py-2 truncate ${job.hot ? "bg-amber-500 text-zinc-950" : job.muted ? "bg-zinc-200 text-zinc-900" : "bg-blue-500 text-white"}`}>
+                        {job.label}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-2 mt-5">
+              <div className="bg-zinc-950 border border-zinc-800 p-3 flex gap-3">
+                <MessageSquare className="h-4 w-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                <p className="font-dmsans text-xs text-zinc-400 leading-relaxed"><span className="text-white font-semibold">Website chat → Dana</span><br />&ldquo;AC making a grinding noise, can someone come today?&rdquo;</p>
+              </div>
+              <div className="bg-zinc-950 border border-zinc-800 p-3 flex gap-3">
+                <Smartphone className="h-4 w-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                <p className="font-dmsans text-xs text-zinc-400 leading-relaxed"><span className="text-white font-semibold">Text sent</span><br />&ldquo;Marcus is on the way, arriving about 10:40.&rdquo;</p>
+              </div>
+            </div>
+          </motion.figure>
         </div>
       </section>
 
@@ -187,7 +269,7 @@ export default function NexusField() {
                 No contract.{" "}<br /><span className="text-amber-500">No surprise invoice.</span>
               </h2>
               <p className="font-dmsans text-zinc-400 leading-relaxed mb-8">
-                Nearly everyone who comes to us from one of the big-name platforms says the same three things:
+                Contractors on the big-name platforms tend to say the same three things:
               </p>
               <ul className="space-y-px">
                 {bigPlatformComplaints.map(({ icon: Icon, text }) => (
@@ -211,6 +293,15 @@ export default function NexusField() {
                 </div>
                 <Link href="/nexus-field/vs/servicetitan" className="font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 hover:gap-3 transition-all whitespace-nowrap">
                   Compare to ServiceTitan <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </motion.div>
+              <motion.div variants={fadeUp} className="bg-amber-500/10 border border-dashed border-amber-500/60 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p className="font-barlow font-800 text-2xl uppercase tracking-wider text-amber-400">Founding Shop rate: {NEXUS_FIELD.foundingLabel} / tech, locked in</p>
+                  <p className="font-dmsans text-sm text-zinc-300 mt-1">For the first {NEXUS_FIELD.foundingSpots} Hampton Roads contractors who sign on. Your rate stays at {NEXUS_FIELD.foundingLabel} for as long as you stay.</p>
+                </div>
+                <Link href={NEXUS_FIELD.demoUrl} className="font-barlow font-800 uppercase tracking-widest text-sm text-zinc-950 bg-amber-500 hover:bg-amber-400 px-5 py-3 whitespace-nowrap text-center transition-colors">
+                  Claim a spot
                 </Link>
               </motion.div>
               {promises.map(({ icon: Icon, title, body }) => (
@@ -351,6 +442,9 @@ export default function NexusField() {
                 Contact Us First
               </Link>
             </div>
+            <a href={TEL_HREF} className="inline-flex items-center gap-2 mt-8 font-barlow font-700 uppercase tracking-widest text-zinc-950 hover:underline">
+              <Phone className="h-4 w-4" /> Rather talk now? {COMPANY_INFO.phone}
+            </a>
           </motion.div>
         </div>
       </section>

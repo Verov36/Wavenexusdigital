@@ -1,4 +1,5 @@
 "use client";
+import { NEXUS_FIELD } from "@/lib/comparisons";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import SearchParam from "@/components/SearchParam";
@@ -33,7 +34,7 @@ const COPY: Record<Kind, { eyebrow: string; title: string; intro: string; formTi
     formTitle: "Request a Demo",
     button: "Request My Demo",
     points: [
-      "$75 per tech a month, office and dispatch users free",
+      `${NEXUS_FIELD.perTechLabel} per tech a month, office and dispatch users free`,
       "Parts inventory (warehouse and truck) included in every plan",
       "No contract, and your price is held for two years",
     ],
