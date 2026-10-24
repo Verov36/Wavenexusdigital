@@ -13,10 +13,12 @@ const CITIES = [
   "Williamsburg", "York County", "Isle of Wight County",
 ];
 
-// TODO(Chris): add the full URLs of your Google Business Profile and social
-// accounts here (e.g. Facebook, Instagram, LinkedIn). Leave out anything you
-// don't have — an empty list is simply omitted from the schema.
-const SAME_AS: string[] = [];
+// Official profiles for this business. Add new ones (Facebook, Instagram,
+// a company LinkedIn page) as they're created.
+const SAME_AS: string[] = [
+  "https://maps.google.com/?cid=534186652109073620", // Google Business Profile
+  "https://www.linkedin.com/in/chrisrepstein/", // Founder, Chris Repstein
+];
 const areaServed = (names: string[] = CITIES) => [
   ...names.map((name) => ({ "@type": "City", name, containedInPlace: { "@type": "State", name: "Virginia" } })),
   ...(names.length > 1 ? [{ "@type": "Place", name: "Hampton Roads, Virginia" }] : []),
