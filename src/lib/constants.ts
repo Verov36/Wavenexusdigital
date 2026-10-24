@@ -60,9 +60,9 @@ export const portfolio = [
     url: "https://dizondigitalmarketing.com/",
   },
   {
-    name: "Blue Anchor Consulting",
-    category: "Professional Services",
-    text: "Authority-focused brand presentation with a premium booking experience.",
-    url: null,
+    name: "Dr. Evelyn Luma, DDS",
+    category: "Dental Practice",
+    text: "Patient-friendly website for a Virginia Beach dental practice, with online appointment requests and local SEO structure.",
+    url: "https://www.drluma.com/",
   },
 ];
