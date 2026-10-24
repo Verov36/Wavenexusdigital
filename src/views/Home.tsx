@@ -65,10 +65,10 @@ export default function Home() {
           <motion.div initial="hidden" animate="show" variants={stagger}
             className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px bg-zinc-800 border border-zinc-800">
             {[
-              { val: "8+", label: "Projects" },
               { val: "USMC", label: "Veteran Led" },
-              { val: "24/7", label: "Support" },
-              { val: "100%", label: "Satisfaction" },
+              { val: "Norfolk", label: "Home Base" },
+              { val: "$59", label: "Per Tech / Month" },
+              { val: "0", label: "Contracts" },
             ].map(({ val, label }) => (
               <motion.div key={label} variants={fadeUp} className="bg-zinc-950 px-6 py-5 text-center">
                 <div className="font-barlow font-900 text-3xl text-amber-500 uppercase">{val}</div>

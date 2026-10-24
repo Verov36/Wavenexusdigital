@@ -286,7 +286,7 @@ export default function BlogPostPartsTracking() {
             </div>
             <div className="flex flex-col gap-4">
               <p className="font-dmsans text-zinc-950/70 leading-relaxed">
-                We don't do high-pressure sales. If you want to see how Nexus Field can stop the "black hole" of unbilled materials, we'll walk you through it — no obligation, 24/7 support backed by a 100% satisfaction guarantee.
+                We don't do high-pressure sales. If you want to see how Nexus Field can stop the "black hole" of unbilled materials, we'll walk you through it. No obligation, no contract, and we set it up and train your team in person.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/audit?type=demo"

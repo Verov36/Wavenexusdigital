@@ -251,7 +251,7 @@ export default function BlogPostSpreadsheets() {
               { n: "01", heading: "Job Tracking", body: "Know exactly what's happening, when, and where — in real time." },
               { n: "02", heading: "Inventory Management", body: "Stop parts from 'walking off trucks' without a record." },
               { n: "03", heading: "Photo Databases", body: "Document every job for quality control and dispute resolution." },
-              { n: "04", heading: "No Outsourcing", body: "You work with us, 24/7, right here in the US." },
+              { n: "04", heading: "No Outsourcing", body: "You work directly with the people who build it, right here in Norfolk." },
             ].map(({ n, heading, body }) => (
               <div key={n} className="bg-zinc-900 p-6 flex gap-6 items-start group hover:bg-zinc-950 transition-colors border-l-2 border-transparent hover:border-amber-500">
                 <div className="font-barlow font-900 text-3xl text-amber-500/30 group-hover:text-amber-500/60 transition-colors flex-shrink-0 w-10">{n}</div>
