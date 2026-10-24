@@ -153,10 +153,12 @@ export default function Home() {
               <div className="bg-zinc-900 p-4">
                 <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mb-3">Built For</p>
                 <div className="flex flex-wrap gap-2">
-                  {["HVAC", "Plumbing", "Electrical", "Landscaping", "Contracting", "Appliance Repair"].map(i => (
-                    <span key={i} className="font-jetbrains text-[10px] text-zinc-500 border border-zinc-800 px-2 py-1 uppercase tracking-wider">{i}</span>
+                  {["HVAC", "Refrigeration", "Electrical"].map(i => (
+                    <span key={i} className="font-jetbrains text-[10px] text-amber-500 border border-amber-500/40 px-2 py-1 uppercase tracking-wider">{i}</span>
                   ))}
                 </div>
+                <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mt-4 mb-2">Also works for</p>
+                <p className="font-dmsans text-xs text-zinc-500">Plumbing, landscaping, general contracting, appliance repair, security systems, pest control</p>
               </div>
             </motion.div>
           </div>
@@ -303,20 +305,20 @@ export default function Home() {
               Local Web Design &amp; Marketing{" "}<br /><span className="text-amber-500">Across Hampton Roads, VA</span>
             </h2>
             <p className="font-dmsans text-zinc-500 mt-4 max-w-2xl leading-relaxed">
-              We're a Hampton Roads-based team that works with local businesses throughout Southeast Virginia. Whether you're in Suffolk or Virginia Beach, you get the same focused attention — no outsourced work, no cookie-cutter packages.
+              We're a Norfolk-based team that works with local businesses throughout Hampton Roads. Whether you're in Suffolk or Virginia Beach, you get the same focused attention — no outsourced work, no cookie-cutter packages.
             </p>
           </motion.div>
 
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-zinc-800 mb-10">
             {[
-              { city: "Suffolk", note: "Primary base" },
+              { city: "Norfolk", note: "Home base" },
               { city: "Virginia Beach", note: "Full coverage" },
               { city: "Chesapeake", note: "Full coverage" },
-              { city: "Newport News", note: "Full coverage" },
-              { city: "Hampton", note: "Full coverage" },
-              { city: "Norfolk", note: "Full coverage" },
+              { city: "Suffolk", note: "Full coverage" },
               { city: "Portsmouth", note: "Full coverage" },
+              { city: "Hampton", note: "Full coverage" },
+              { city: "Newport News", note: "Full coverage" },
               { city: "Williamsburg", note: "Full coverage" },
               { city: "York County", note: "Full coverage" },
               { city: "Isle of Wight", note: "Full coverage" },

@@ -110,10 +110,16 @@ export default function NexusField() {
               ))}
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-2">
-              {["HVAC", "Refrigeration", "Plumbing", "Electrical", "Landscaping", "General Contracting", "Appliance Repair", "Security Systems", "Pest Control"].map(i => (
-                <span key={i} className="font-jetbrains text-[10px] uppercase tracking-wider text-zinc-500 border border-zinc-800 px-3 py-1.5">{i}</span>
-              ))}
+            <motion.div variants={fadeUp} className="mt-6">
+              <div className="flex flex-wrap gap-2">
+                {["HVAC", "Refrigeration", "Electrical"].map(i => (
+                  <span key={i} className="font-jetbrains text-[10px] uppercase tracking-wider text-amber-500 border border-amber-500/40 px-3 py-1.5">{i}</span>
+                ))}
+              </div>
+              <p className="font-dmsans text-sm text-zinc-500 mt-3">
+                <span className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mr-2">Also works for</span>
+                Plumbing, landscaping, general contracting, appliance repair, security systems, pest control
+              </p>
             </motion.div>
           </motion.div>
         </div>
