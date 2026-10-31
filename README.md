@@ -34,9 +34,13 @@ Node 24 (see `engines` in package.json).
 
 ### Adding a page
 
-1. Add its title and description to `src/lib/site.json`.
+1. Add its title (30-60 characters, used exactly as written), description (110-160 characters) and `dateModified` (YYYY-MM-DD) to `src/lib/site.json`.
 2. Create `src/app/<path>/page.tsx` like the existing ones (`pageMetadata("/<path>")` + `<JsonLd path="/<path>" />` + the component).
 3. Add it to `src/app/sitemap.ts`.
+
+When you change a page's content, set its `dateModified` to that day: it becomes the sitemap's `lastmod`. `npm run build` runs `scripts/check-seo.mjs` first and stops if a title, description or date is out of range.
+
+After each production deploy, `.github/workflows/indexnow.yml` runs `scripts/indexnow.mjs`, which sends the pages whose `lastmod` is in the last 3 days to IndexNow (Bing and others). Keep `public/aa20561ec20ba1fdf663bc0649b66bd5.txt` deployed; it is the IndexNow key. To send by hand: `node scripts/indexnow.mjs --all`.
 
 ### Content-Security-Policy
 

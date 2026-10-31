@@ -26,6 +26,7 @@ export type Area = {
   short: string;
   title: string;
   description: string;
+  dateModified: string;
   h1: string;
   intro: string;
   local: string[];
@@ -46,7 +47,7 @@ export const site: Site = {
     ...Object.fromEntries(
       AREAS.map((a) => [
         `/web-design/${a.slug}`,
-        { title: a.title, description: a.description, area: a.name, faq: a.faq },
+        { title: a.title, description: a.description, dateModified: a.dateModified, area: a.name, faq: a.faq },
       ]),
     ),
   },

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "next build && node scripts/csp-hashes.mjs",
+    "build": "node scripts/check-seo.mjs && next build && node scripts/csp-hashes.mjs",
     "dev": "next dev",
     "start": "next start",
     "typecheck": "tsc --noEmit"
