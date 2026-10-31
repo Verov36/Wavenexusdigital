@@ -36,8 +36,6 @@ export type Competitor = {
   name: string;
   /** e.g. "September 2026" — shown on the page so readers know how fresh it is */
   checked: string;
-  metaTitle: string;
-  metaDescription: string;
   headline: string;
   intro: string;
   /** Three at-a-glance tiles: per-tech price, contract, setup */
@@ -59,9 +57,6 @@ export const competitors: Competitor[] = [
     slug: "servicetitan",
     name: "ServiceTitan",
     checked: "September 2026",
-    metaTitle: "Nexus Field vs ServiceTitan: Pricing, Contract & Setup Fees (2026) | WaveNexus",
-    metaDescription:
-      `An honest ServiceTitan alternative comparison: reported ServiceTitan pricing of ~$245–$500 per tech per month, a 12-month contract, and $5K–$50K implementation vs. Nexus Field at ${NEXUS_FIELD.perTechLabel} per tech, no contract, and a setup fee scoped to your migration.`,
     headline: "The bill that grows every year, or the one that doesn't.",
     intro:
       "ServiceTitan is the biggest name in field service software, and for a large multi-location operation it can be the right call. But a lot of smaller shops are paying for far more platform than they use, and they find out at renewal. This page puts the two side by side with real numbers, including the ones ServiceTitan doesn't publish.",
