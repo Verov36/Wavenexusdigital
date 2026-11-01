@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Package, Truck, Users, ClipboardList, Camera, SlidersHorizontal, Wrench, Shield, Zap, TrendingUp, Lock, DollarSign, Unlock, Receipt, CalendarCheck, PenLine, MessageSquare, Smartphone, KeyRound, Building2, Phone } from "lucide-react";
 import { TEL_HREF, COMPANY_INFO } from "@/lib/constants";
-import { NEXUS_FIELD } from "@/lib/comparisons";
+import { NEXUS_FIELD, competitors } from "@/lib/comparisons";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
@@ -102,7 +102,7 @@ export default function NexusField() {
             {/* The three promises, right under the CTAs — this is the first thing a
                 price-shopper should see. */}
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
-              {[`${NEXUS_FIELD.perTechLabel} / tech / month`, "No contract", "Minimal setup fee", "Price held for 2 years"].map(p => (
+              {[`${NEXUS_FIELD.perTechLabel} / tech / month`, "No contract", `Capped at ${NEXUS_FIELD.capLabel} / mo`, "Minimal setup fee", "Price held for 2 years"].map(p => (
                 <span key={p} className="inline-flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-wider text-amber-400 border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
                   <span className="w-1 h-1 bg-amber-400 rounded-full" />
                   {p}
@@ -296,15 +296,21 @@ export default function NexusField() {
                 <div>
                   <p className="font-barlow font-900 text-6xl text-white leading-none">{NEXUS_FIELD.perTechLabel}<span className="text-2xl text-zinc-500 font-700"> / tech / month</span></p>
                   <p className="font-dmsans text-sm text-zinc-400 mt-3">That's the whole price. Mobile and desktop. Office and dispatch users are free.</p>
+                  <p className="font-dmsans text-sm text-amber-400/90 mt-2">And it stops there: never more than {NEXUS_FIELD.capLabel} a month, however many techs you run.</p>
                 </div>
-                <Link href="/nexus-field/vs/servicetitan" className="font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 hover:gap-3 transition-all whitespace-nowrap">
-                  Compare to ServiceTitan <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                  <span className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600">Compare to</span>
+                  {competitors.map((o) => (
+                    <Link key={o.slug} href={"/nexus-field/vs/" + o.slug} className="font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-1.5 hover:gap-2.5 transition-all whitespace-nowrap">
+                      {o.name} <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  ))}
+                </div>
               </motion.div>
               <motion.div variants={fadeUp} className="bg-amber-500/10 border border-dashed border-amber-500/60 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <p className="font-barlow font-800 text-2xl uppercase tracking-wider text-amber-400">Founding Shop rate: {NEXUS_FIELD.foundingLabel} / tech, locked in</p>
-                  <p className="font-dmsans text-sm text-zinc-300 mt-1">For the first {NEXUS_FIELD.foundingSpots} Hampton Roads contractors who sign on. Your rate stays at {NEXUS_FIELD.foundingLabel} for as long as you stay.</p>
+                  <p className="font-barlow font-800 text-2xl uppercase tracking-wider text-amber-400">Founding Shop rate: {NEXUS_FIELD.foundingLabel} / tech, held for {NEXUS_FIELD.foundingHold}</p>
+                  <p className="font-dmsans text-sm text-zinc-300 mt-1">For the first {NEXUS_FIELD.foundingSpots} Hampton Roads contractors who sign on. Your rate stays at {NEXUS_FIELD.foundingLabel} for {NEXUS_FIELD.foundingHold}, then we sit down together and agree on what comes next. Same {NEXUS_FIELD.capLabel} monthly ceiling.</p>
                 </div>
                 <Link href={NEXUS_FIELD.demoUrl} className="font-barlow font-800 uppercase tracking-widest text-sm text-zinc-950 bg-amber-500 hover:bg-amber-400 px-5 py-3 whitespace-nowrap text-center transition-colors">
                   Claim a spot

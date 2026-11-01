@@ -4,18 +4,33 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Check, Minus, ExternalLink, Calculator } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { NEXUS_FIELD, type Competitor } from "@/lib/comparisons";
+import { NEXUS_FIELD, CAP_BINDS_AT, competitors, nexusMonthly, computeCost, type Competitor } from "@/lib/comparisons";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
 const usd = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 
+const CAP_LINES = [
+  "Every feature. No tiers, no add-ons.",
+  "Warehouse and per-truck parts inventory",
+  "Configured to your job types, terminology and parts",
+  "Training for your team before go-live",
+  "Mobile and desktop",
+  "A ceiling: never more than " + NEXUS_FIELD.capLabel + " a month, from " + CAP_BINDS_AT + " techs up",
+];
+
 export default function Compare({ competitor: c }: { competitor: Competitor }) {
   const [techs, setTechs] = useState(8);
+  const [office, setOffice] = useState(2);
 
-  const theirYearOne = c.theirLowPerTech * techs * 12 + c.theirLowSetup;
-  const ourYearOne = NEXUS_FIELD.perTechMonthly * techs * 12;
+  const theirs = computeCost(c.pricing, techs, office);
+  const theirYearOne = theirs.monthly * 12 + theirs.oneTime;
+  const ourMonthly = nexusMonthly(techs);
+  const ourYearOne = ourMonthly * 12;
+  const capped = ourMonthly < NEXUS_FIELD.perTechMonthly * techs;
+  const diff = theirYearOne - ourYearOne;
+  const others = competitors.filter((o) => o.slug !== c.slug);
 
   return (
     <>
@@ -136,37 +151,71 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
                 What your shop{" "}<br /><span className="text-amber-500">actually pays</span>
               </h2>
               <p className="font-dmsans text-zinc-400 leading-relaxed mb-6">
-                Slide to your tech count. For {c.name} we use the <em>lowest</em> publicly reported per-tech price and the <em>lowest</em> reported implementation fee, so this is their best case, not their worst.
+                Set your crew. For {c.name} we take the cheapest plan they publish that covers your seat count, at their month-to-month rate, so this is their best case and not their worst.
               </p>
-              <label className="block">
+              <label className="block mb-5">
                 <span className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 flex items-center gap-2 mb-3"><Calculator className="h-3.5 w-3.5" /> Technicians: <span className="text-white text-sm">{techs}</span></span>
                 <input type="range" min={1} max={40} value={techs} onChange={(e) => setTechs(Number(e.target.value))}
                   className="w-full accent-amber-500" aria-label="Number of technicians" />
               </label>
+              <label className="block">
+                <span className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 flex items-center gap-2 mb-3">Office &amp; dispatch users: <span className="text-white text-sm">{office}</span></span>
+                <input type="range" min={0} max={10} value={office} onChange={(e) => setOffice(Number(e.target.value))}
+                  className="w-full accent-amber-500" aria-label="Number of office and dispatch users" />
+              </label>
+              <p className={"font-dmsans text-sm leading-relaxed mt-8 p-4 border-l-2 " + (diff >= 0 ? "border-amber-500 text-zinc-300" : "border-zinc-600 text-zinc-400")}>
+                {diff >= 0 ? (
+                  <>At this size Nexus Field comes out <span className="text-white">{usd(diff)}</span> lower in year one, before anything on {c.name}&rsquo;s &ldquo;not in that number&rdquo; list.</>
+                ) : (
+                  <>Straight answer: at this size {c.name} is <span className="text-white">{usd(-diff)}</span> a year cheaper on seat price. What that number doesn&rsquo;t include is listed under their total. That&rsquo;s what you&rsquo;re buying with the difference.</>
+                )}
+              </p>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 grid sm:grid-cols-2 gap-px bg-zinc-800">
               <motion.div variants={fadeUp} className="bg-zinc-900 p-8">
                 <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 mb-6">{c.name} <sup className="text-amber-500">*</sup></p>
                 <dl className="space-y-3 font-dmsans text-sm">
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">{usd(c.theirLowPerTech)} × {techs} techs × 12</dt><dd className="text-zinc-300">{usd(c.theirLowPerTech * techs * 12)}</dd></div>
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Implementation (low end)</dt><dd className="text-zinc-300">{usd(c.theirLowSetup)}</dd></div>
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Add-on modules</dt><dd className="text-zinc-600">not included</dd></div>
+                  {theirs.lines.map((l) => (
+                    <div key={l.label} className="flex justify-between gap-4">
+                      <dt className="text-zinc-500">{l.label}{l.note && <span className="block text-[11px] text-zinc-600">{l.note}</span>}</dt>
+                      <dd className="text-zinc-300 whitespace-nowrap">{l.amount === null ? "—" : usd(l.amount)}</dd>
+                    </div>
+                  ))}
                 </dl>
                 <div className="h-px bg-zinc-800 my-5" />
                 <p className="font-barlow font-900 text-4xl text-zinc-300">{usd(theirYearOne)}</p>
-                <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mt-1">Year one, best case</p>
+                <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mt-1">{theirs.caption}</p>
+                <div className="mt-6 pt-5 border-t border-zinc-800">
+                  <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Not in that number</p>
+                  <ul className="space-y-1.5">
+                    {theirs.notIncluded.map((x) => (
+                      <li key={x} className="flex gap-2 font-dmsans text-xs text-zinc-500"><Minus className="h-3.5 w-3.5 text-zinc-700 flex-shrink-0 mt-0.5" />{x}</li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
               <motion.div variants={fadeUp} className="bg-zinc-950 p-8 border-2 border-amber-500/40">
                 <p className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-500 mb-6">Nexus Field</p>
                 <dl className="space-y-3 font-dmsans text-sm">
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">{NEXUS_FIELD.perTechLabel} × {techs} techs × 12</dt><dd className="text-zinc-200">{usd(ourYearOne)}</dd></div>
+                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">{NEXUS_FIELD.perTechLabel} × {techs} techs × 12</dt><dd className={capped ? "text-zinc-600 line-through whitespace-nowrap" : "text-zinc-200 whitespace-nowrap"}>{usd(NEXUS_FIELD.perTechMonthly * techs * 12)}</dd></div>
+                  {capped && (
+                    <div className="flex justify-between gap-4"><dt className="text-amber-400">Capped at {NEXUS_FIELD.capLabel} a month</dt><dd className="text-zinc-200 whitespace-nowrap">{usd(ourYearOne)}</dd></div>
+                  )}
                   <div className="flex justify-between gap-4"><dt className="text-zinc-500">Office & dispatch users</dt><dd className="text-zinc-200">$0</dd></div>
                   <div className="flex justify-between gap-4"><dt className="text-zinc-500">Setup</dt><dd className="text-zinc-400 text-right">scoped to your migration</dd></div>
                 </dl>
                 <div className="h-px bg-zinc-800 my-5" />
                 <p className="font-barlow font-900 text-4xl text-white">{usd(ourYearOne)} <span className="font-dmsans font-normal text-sm text-zinc-500">+ setup</span></p>
                 <p className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-500 mt-1">Same price in year two</p>
+                <div className="mt-6 pt-5 border-t border-zinc-800">
+                  <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 mb-3">In that number</p>
+                  <ul className="space-y-1.5">
+                    {CAP_LINES.map((x) => (
+                      <li key={x} className="flex gap-2 font-dmsans text-xs text-zinc-300"><Check className="h-3.5 w-3.5 text-amber-500 flex-shrink-0 mt-0.5" />{x}</li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -225,6 +274,20 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
             ))}
           </ul>
           <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mt-6">{c.name} is a trademark of its owner. WaveNexus Digital Invest is not affiliated with {c.name}.</p>
+
+          {others.length > 0 && (
+            <div className="mt-10 pt-8 border-t border-zinc-800">
+              <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Also compared</p>
+              <div className="flex flex-wrap gap-2">
+                {others.map((o) => (
+                  <Link key={o.slug} href={"/nexus-field/vs/" + o.slug}
+                    className="inline-flex items-center gap-2 font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 border border-zinc-800 hover:border-amber-500/40 px-4 py-2 transition-colors">
+                    Nexus Field vs {o.name} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
