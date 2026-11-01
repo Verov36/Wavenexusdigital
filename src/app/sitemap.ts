@@ -11,6 +11,8 @@ const PAGES: Entry[] = [
   ["/", "weekly", 1.0],
   ["/nexus-field", "weekly", 0.95],
   ["/nexus-field/vs/servicetitan", "monthly", 0.9],
+  ["/nexus-field/vs/housecall-pro", "monthly", 0.9],
+  ["/nexus-field/vs/jobber", "monthly", 0.9],
   ["/custom-apps", "monthly", 0.9],
   ["/services", "monthly", 0.9],
   ["/about", "monthly", 0.85],

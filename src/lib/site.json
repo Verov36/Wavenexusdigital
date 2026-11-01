@@ -18,14 +18,14 @@
     },
     "/nexus-field": {
       "title": "Nexus Field: Field Service Software for HVAC & Electrical",
-      "description": "Field service software for HVAC, refrigeration and electrical shops: dispatch board, e-sign quotes, truck inventory, customer texts. $59/tech, no contract.",
-      "dateModified": "2026-10-31"
+      "description": "Field service software for HVAC, refrigeration and electrical shops: dispatch board, e-sign quotes, truck inventory, texts. $59/tech, capped at $800/mo.",
+      "dateModified": "2026-11-01"
     },
     "/nexus-field/vs/servicetitan": {
       "title": "Nexus Field vs ServiceTitan: Pricing & Contracts (2026)",
       "description": "ServiceTitan's reported ~$245–$500 per tech per month, 12-month contract and setup fees, side by side with Nexus Field at $59 per tech and no contract.",
       "headline": "Nexus Field vs ServiceTitan",
-      "dateModified": "2026-10-31"
+      "dateModified": "2026-11-01"
     },
     "/custom-apps": {
       "title": "Custom App Developer in Hampton Roads, VA | WaveNexus",
@@ -72,6 +72,18 @@
       "title": "Free Website Audit for Hampton Roads Businesses | WaveNexus",
       "description": "Request a free website audit for your Hampton Roads business, or book a demo of Nexus Field field service software. No obligation.",
       "dateModified": "2026-10-31"
+    },
+    "/nexus-field/vs/housecall-pro": {
+      "title": "Nexus Field vs Housecall Pro: Pricing Compared",
+      "description": "Housecall Pro's published $79-$329 plans plus $35 per extra user, side by side with Nexus Field at $59 a tech, office seats free and capped at $800 a month.",
+      "headline": "Nexus Field vs Housecall Pro",
+      "dateModified": "2026-11-01"
+    },
+    "/nexus-field/vs/jobber": {
+      "title": "Nexus Field vs Jobber: Pricing and Seat Tiers",
+      "description": "Jobber published seat tiers from $49 to $699 plus $29 per extra user, side by side with Nexus Field at $59 a tech, office seats free and capped at $800 a month.",
+      "headline": "Nexus Field vs Jobber",
+      "dateModified": "2026-11-01"
     }
   }
 }
