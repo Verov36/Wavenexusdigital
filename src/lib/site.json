@@ -19,7 +19,14 @@
     "/nexus-field": {
       "title": "Nexus Field: Field Service Software for HVAC & Electrical",
       "description": "Field service software for HVAC, refrigeration and electrical shops: dispatch board, e-sign quotes, truck inventory, texts. $59/tech, capped at $800/mo.",
+      "headline": "Nexus Field",
       "dateModified": "2026-11-01"
+    },
+    "/nexus-field/vs": {
+      "title": "Nexus Field vs ServiceTitan, Housecall Pro & Jobber",
+      "description": "Year-one pricing for Nexus Field next to ServiceTitan, Housecall Pro and Jobber, from each vendor's own published rates. Dated and sourced.",
+      "headline": "Comparisons",
+      "dateModified": "2026-11-02"
     },
     "/nexus-field/vs/servicetitan": {
       "title": "Nexus Field vs ServiceTitan: Pricing & Contracts (2026)",

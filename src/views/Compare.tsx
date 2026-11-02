@@ -285,6 +285,10 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
                     Nexus Field vs {o.name} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 ))}
+                <Link href="/nexus-field/vs"
+                  className="inline-flex items-center gap-2 font-barlow font-700 uppercase tracking-widest text-xs text-zinc-400 border border-zinc-800 hover:border-amber-500/40 hover:text-amber-400 px-4 py-2 transition-colors">
+                  All comparisons <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
           )}

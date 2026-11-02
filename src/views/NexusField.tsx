@@ -305,6 +305,9 @@ export default function NexusField() {
                       {o.name} <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   ))}
+                  <Link href="/nexus-field/vs" className="font-barlow font-700 uppercase tracking-widest text-xs text-zinc-500 flex items-center gap-1.5 hover:text-amber-400 transition-colors whitespace-nowrap">
+                    All <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
               </motion.div>
               <motion.div variants={fadeUp} className="bg-amber-500/10 border border-dashed border-amber-500/60 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
