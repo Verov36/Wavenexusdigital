@@ -297,6 +297,10 @@ export default function BlogPostPartsTracking() {
                   className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-zinc-950 text-zinc-950 font-barlow font-700 uppercase tracking-widest hover:bg-zinc-950 hover:text-amber-500 transition-all">
                   See Nexus Field
                 </Link>
+                <Link href="/nexus-field/vs"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-950/40 text-zinc-950 font-barlow font-700 uppercase tracking-widest hover:border-zinc-950 transition-all">
+                  Compare the Options
+                </Link>
               </div>
             </div>
           </motion.div>

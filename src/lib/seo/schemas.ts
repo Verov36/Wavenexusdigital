@@ -105,7 +105,7 @@ export function schemasFor(path: string, site: Site) {
     let acc = "";
     for (const part of parts) {
       acc += `/${part}`;
-      if (part === "vs" || acc === "/web-design") continue; // not pages on their own
+      if (acc === "/web-design") continue; // a path segment, not a page of its own
       const p = site.pages[acc];
       const name = p ? (p.headline || p.title.split(/ [|—] /)[0]) : part.replace(/-/g, " ");
       items.push({ name, item: `${BASE}${acc}` });
@@ -168,7 +168,7 @@ export function schemasFor(path: string, site: Site) {
     url: `${BASE}${pagePath}`,
   });
 
-  if (path === "/nexus-field" || path.startsWith("/nexus-field/vs/")) graph.push(nexusField);
+  if (path.startsWith("/nexus-field")) graph.push(nexusField);
 
   if (path === "/custom-apps") {
     graph.push(
