@@ -57,6 +57,11 @@ export default function Footer() {
               <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mb-3">Contact</p>
               <a href={TEL_HREF} className="block text-sm text-zinc-500 hover:text-white transition-colors font-dmsans mb-1">{COMPANY_INFO.phone}</a>
               <a href={`mailto:${COMPANY_INFO.email}`} className="block text-xs text-zinc-500 hover:text-white transition-colors break-all font-dmsans">{COMPANY_INFO.email}</a>
+              <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mt-6 mb-3">Follow</p>
+              <ul className="flex flex-wrap gap-x-4 gap-y-1">
+                <li><a href="https://www.instagram.com/wavenexusdigitalinvest/" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-white transition-colors font-dmsans">Instagram</a></li>
+                <li><a href="https://www.youtube.com/@WaveNexusDigitalInvest" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-white transition-colors font-dmsans">YouTube</a></li>
+              </ul>
             </div>
           </div>
 
