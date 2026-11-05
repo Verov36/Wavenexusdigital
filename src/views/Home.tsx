@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp, Code2, Smartphone, ScanLine } from "lucide-react";
 import { portfolio } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import WaveSculpture from "@/components/WaveSculpture";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -20,12 +21,11 @@ export default function Home() {
         {/* Grid texture */}
         <div className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: "linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-        {/* Photo overlay */}
-        <div className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1760192465389-f0b1f9b6abd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=70&w=1280')" }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/40" />
+        {/* Wave art: above the headline on phones, behind its right side on desktop */}
+        <WaveSculpture className="absolute top-2 left-0 w-full aspect-video lg:top-[8%] lg:left-auto lg:-right-[7%] lg:w-[62%]" />
+        <div className="hidden lg:block absolute inset-y-0 left-0 w-[66%] bg-gradient-to-r from-zinc-950 via-zinc-950/85 to-transparent pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 w-full">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[56vw] pb-16 lg:py-24 w-full">
           <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-4xl">
 
             {/* Label */}
