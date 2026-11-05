@@ -67,7 +67,7 @@ export default function Home() {
             {[
               { val: "USMC", label: "Veteran Led" },
               { val: "Norfolk", label: "Home Base" },
-              { val: "$59", label: "Per Tech / Month" },
+              { val: "Free", label: "Office & Dispatch Seats" },
               { val: "0", label: "Contracts" },
             ].map(({ val, label }) => (
               <motion.div key={label} variants={fadeUp} className="bg-zinc-950 px-6 py-5 text-center">

@@ -85,7 +85,7 @@ export default function NexusField() {
               Run the whole shop from one board.
             </motion.p>
             <motion.p variants={fadeUp} className="font-dmsans text-zinc-400 leading-relaxed mb-10 max-w-xl">
-              Drag-and-drop dispatch, quotes with e-signature, truck-level parts inventory and automatic customer texts, for {NEXUS_FIELD.perTechLabel} a tech. Built in Norfolk by a Marine veteran who managed an HVAC distribution branch, because the apps out there were too expensive, too complicated, or made by people who've never dispatched a tech.
+              Drag-and-drop dispatch, quotes with e-signature, truck-level parts inventory and automatic customer texts. Built in Norfolk by a Marine veteran who managed an HVAC distribution branch, because the apps out there were too expensive, too complicated, or made by people who've never dispatched a tech.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
@@ -102,7 +102,7 @@ export default function NexusField() {
             {/* The three promises, right under the CTAs — this is the first thing a
                 price-shopper should see. */}
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
-              {[`${NEXUS_FIELD.perTechLabel} / tech / month`, "No contract", "Minimal setup fee", "Price held for 2 years"].map(p => (
+              {["No contract", "Office & dispatch users free", "Minimal setup fee", "Price held for 2 years"].map(p => (
                 <span key={p} className="inline-flex items-center gap-1.5 font-jetbrains text-[10px] uppercase tracking-wider text-amber-400 border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
                   <span className="w-1 h-1 bg-amber-400 rounded-full" />
                   {p}
@@ -233,7 +233,7 @@ export default function NexusField() {
                   { label: "Warehouse SKUs", val: "Unlimited" },
                   { label: "Fleet Vehicles", val: "All Trucks" },
                   { label: "Tech Assignment", val: "Built-In" },
-                  { label: "Inventory Cost", val: "$0" },
+                  { label: "Inventory", val: "Included" },
                 ].map(({ label, val }) => (
                   <div key={label} className="bg-zinc-900 p-6 text-center">
                     <p className="font-jetbrains text-[10px] uppercase tracking-widest text-zinc-600 mb-2">{label}</p>
@@ -294,8 +294,12 @@ export default function NexusField() {
               </div>
               <motion.div variants={fadeUp} className="bg-zinc-950 border border-amber-500/40 p-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                 <div>
-                  <p className="font-barlow font-900 text-6xl text-white leading-none">{NEXUS_FIELD.perTechLabel}<span className="text-2xl text-zinc-500 font-700"> / tech / month</span></p>
-                  <p className="font-dmsans text-sm text-zinc-400 mt-3">That's the whole price. Mobile and desktop. Office and dispatch users are free.</p>
+                  <p className="font-barlow font-900 text-4xl sm:text-5xl text-white leading-[0.95]">One plan.<br />Everything&apos;s in it.</p>
+                  <p className="font-dmsans text-sm text-zinc-400 mt-3">
+                    No contract, month to month. Office and dispatch users are free. Parts inventory, mobile and
+                    desktop are in every plan. Setup is scoped to your migration, and your price is held for two years.
+                  </p>
+                  <p className="font-dmsans text-sm text-amber-400/90 mt-2">We quote it on the discovery call, once we know your size and what you&apos;re moving over.</p>
                 </div>
                 <Link href="/nexus-field/vs/servicetitan" className="font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 hover:gap-3 transition-all whitespace-nowrap">
                   Compare to ServiceTitan <ArrowRight className="h-3.5 w-3.5" />
@@ -303,8 +307,8 @@ export default function NexusField() {
               </motion.div>
               <motion.div variants={fadeUp} className="bg-amber-500/10 border border-dashed border-amber-500/60 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <p className="font-barlow font-800 text-2xl uppercase tracking-wider text-amber-400">Founding Shop rate: {NEXUS_FIELD.foundingLabel} / tech, locked in</p>
-                  <p className="font-dmsans text-sm text-zinc-300 mt-1">For the first {NEXUS_FIELD.foundingSpots} Hampton Roads contractors who sign on. Your rate stays at {NEXUS_FIELD.foundingLabel} for as long as you stay.</p>
+                  <p className="font-barlow font-800 text-2xl uppercase tracking-wider text-amber-400">Founding Shop rate</p>
+                  <p className="font-dmsans text-sm text-zinc-300 mt-1">Our lowest rate, held for two years, for the first {NEXUS_FIELD.foundingSpots} Hampton Roads contractors who sign on. Ask for it on the call.</p>
                 </div>
                 <Link href={NEXUS_FIELD.demoUrl} className="font-barlow font-800 uppercase tracking-widest text-sm text-zinc-950 bg-amber-500 hover:bg-amber-400 px-5 py-3 whitespace-nowrap text-center transition-colors">
                   Claim a spot
