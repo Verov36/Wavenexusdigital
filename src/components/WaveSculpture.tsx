@@ -14,17 +14,18 @@ import pieceSmall from "@/assets/hero/piece-960.webp";
 // from loose parts into a wave, a whirlpool, and finally the missing puzzle piece,
 // and the cursor stirs it like water.
 //
-// A real (small) fluid simulation runs on the GPU. Its velocity field drags a map
-// of texture coordinates around, so the artwork itself is carried by the flow; a
-// gentle pull back to the undistorted image lets the form settle again. Shape
-// changes are a burst of swirl: the current form is washed away and the next one
-// resolves out of the same current. Visitors who prefer reduced motion, or whose
-// device can't run it, get the still puzzle piece instead.
+// A small fluid simulation runs on the GPU, tuned thick like molten metal rather
+// than water: its velocity field drags a map of texture coordinates around, and a
+// firm pull back to the undistorted image makes the form set again quickly. Shape
+// changes are a soft glowing front that grows out from the centre, melting the old
+// form away as the new one spreads, so only one shape shows at any point. Visitors
+// who prefer reduced motion, or whose device can't run it, get the still puzzle
+// piece instead.
 
 /** How long each shape rests before the water takes it to the next one (seconds). */
 const HOLD = [1.2, 7, 7, 11];
 /** How long the flow between two shapes lasts (seconds). */
-const POUR = 3.4;
+const POUR = 2.8;
 
 const SIM_SIZE = 192;
 const PRESSURE_STEPS = 16;
@@ -66,24 +67,6 @@ void main() {
   vec2 d = vUv - uPoint;
   d.x *= uAspect;
   vec2 v = texture(uTarget, vUv).xy + uForce * exp(-dot(d, d) / uRadius);
-  outColor = vec4(v, 0.0, 1.0);
-}`;
-
-// Slow, large eddies so the surface is never perfectly still
-const SWIRL = `${HEAD}
-uniform sampler2D uTarget;
-uniform float uTime;
-uniform float uEddy;
-uniform float uSpin;
-uniform float uDt;
-void main() {
-  vec2 p = vUv * 3.0;
-  vec2 eddy = vec2(sin(p.y * 2.1 + uTime * 0.31) + 0.6 * sin(p.y * 4.3 - uTime * 0.23 + p.x),
-                   sin(p.x * 1.9 - uTime * 0.27) + 0.6 * sin(p.x * 3.7 + uTime * 0.19 + p.y));
-  // Plus one big rotation around the centre during a pour
-  vec2 c = vUv - 0.5;
-  vec2 spin = vec2(-c.y, c.x) * 2.0;
-  vec2 v = texture(uTarget, vUv).xy + (eddy * uEddy + spin * uSpin) * uDt * 60.0;
   outColor = vec4(v, 0.0, 1.0);
 }`;
 
@@ -139,34 +122,45 @@ void main() {
 
 const DISPLAY = `${HEAD}
 uniform sampler2D uMap;
-uniform sampler2D uVelocity;
 uniform sampler2D uFrom;
 uniform sampler2D uTo;
 uniform float uMix;
-uniform vec2 uTexel;
+uniform float uSeed;
+uniform float uAspect;
 uniform float uFade;
 uniform float uGlow;
 
 float luma(vec3 c) { return max(c.r, max(c.g, c.b)); }
+float hash(vec2 p) {
+  p = fract(p * vec2(123.34, 456.21));
+  p += dot(p, p + 45.32);
+  return fract(p.x * p.y);
+}
+float noise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  f = f * f * (3.0 - 2.0 * f);
+  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
+             mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+}
 
 void main() {
-  vec2 offset = texture(uMap, vUv).xy;
-  vec2 uv = vUv + offset;
+  vec2 uv = vUv + texture(uMap, vUv).xy;
 
-  // The two shapes blend smoothly, with the incoming one arriving where the
-  // flow has moved furthest, so it appears to be carried in by the current
-  float moved = clamp(length(offset) * 5.0, 0.0, 1.0);
-  float m = smoothstep(0.0, 1.0, clamp(uMix * 1.5 - 0.25 + (moved - 0.5) * 0.5 * sin(uMix * 3.14159), 0.0, 1.0));
-  vec3 col = mix(texture(uFrom, uv).rgb, texture(uTo, uv).rgb, m);
+  // The melt front: a soft, slightly uneven circle growing out from the centre
+  vec2 c = (vUv - 0.5) * vec2(uAspect, 1.0);
+  vec2 q = c * 2.6 + uSeed;
+  float wobble = 0.65 * noise(q) + 0.35 * noise(q * 2.3 + 4.1) - 0.5;
+  float r = length(c) + wobble * 0.3;
+  const float width = 0.09;
+  float front = mix(-0.2 - width, 1.2 + width, uMix);
+  float k = 1.0 - smoothstep(front - width, front + width, r);
+  float band = 4.0 * k * (1.0 - k);
 
-  // Light rolling across a moving liquid surface: slope comes from the flow map
-  vec2 dx = texture(uMap, vUv + vec2(uTexel.x, 0.0)).xy - texture(uMap, vUv - vec2(uTexel.x, 0.0)).xy;
-  vec2 dy = texture(uMap, vUv + vec2(0.0, uTexel.y)).xy - texture(uMap, vUv - vec2(0.0, uTexel.y)).xy;
-  float slope = dx.x + dy.y;
-  float strain = length(dx) + length(dy);
+  // Only the metal right at the front moves: it slumps towards the new shape
+  vec2 pull = c / max(length(c), 0.001) * band * 0.022;
+  vec3 col = mix(texture(uFrom, uv + pull).rgb, texture(uTo, uv - pull).rgb, k);
   float l = luma(col);
-  col += vec3(1.0, 0.78, 0.48) * clamp(slope * 7.0, 0.0, 0.5) * l;
-  col += vec3(0.96, 0.6, 0.16) * clamp(strain * 2.2, 0.0, 0.35) * smoothstep(0.03, 0.3, l);
+  col += vec3(0.96, 0.58, 0.14) * band * (0.04 + l * 0.55);
 
   // The puzzle piece locking in: a warm pulse through the metal
   col *= 1.0 + uGlow * vec3(0.9, 0.6, 0.25);
@@ -255,7 +249,6 @@ export default function WaveSculpture({ className = "" }: { className?: string }
 
         const advect = makeProgram(gl, ADVECT);
         const splat = makeProgram(gl, SPLAT);
-        const swirl = makeProgram(gl, SWIRL);
         const divergence = makeProgram(gl, DIVERGENCE);
         const pressure = makeProgram(gl, PRESSURE);
         const gradient = makeProgram(gl, GRADIENT);
@@ -353,9 +346,8 @@ export default function WaveSculpture({ className = "" }: { className?: string }
         // Cursor: each movement pushes the water in that direction
         let px = -1;
         let py = -1;
-        let lastPointer = -1e9;
         const onPointer = (e: PointerEvent) => {
-          if (e.pointerType === "touch") return; // on touch, the current moves on its own
+          if (e.pointerType === "touch") return; // on touch, it just moves through its shapes
           const r = canvas.getBoundingClientRect();
           const u = (e.clientX - r.left) / r.width;
           const v = 1 - (e.clientY - r.top) / r.height;
@@ -366,11 +358,10 @@ export default function WaveSculpture({ className = "" }: { className?: string }
           if (px >= 0) {
             const dx = (u - px) * simW;
             const dy = (v - py) * simH;
-            addForce(u, v, dx * 22, dy * 22, 0.012);
+            addForce(u, v, dx * 7, dy * 7, 0.01);
           }
           px = u;
           py = v;
-          lastPointer = performance.now();
         };
         window.addEventListener("pointermove", onPointer, { passive: true });
 
@@ -435,9 +426,6 @@ export default function WaveSculpture({ className = "" }: { className?: string }
             phaseStart = t;
           }
           const progress = pouring ? Math.min((t - phaseStart) / POUR, 1) : 0;
-          // A swell that rises and falls over the pour
-          const swell = pouring ? Math.sin(progress * Math.PI) : 0;
-
           // ---- velocity ----
           gl.disable(gl.BLEND);
           gl.useProgram(advect.program);
@@ -445,25 +433,9 @@ export default function WaveSculpture({ className = "" }: { className?: string }
           gl.uniform1i(advect.uniforms.uSource, 0);
           gl.uniform2f(advect.uniforms.uTexel, texel[0], texel[1]);
           gl.uniform1f(advect.uniforms.uDt, dt);
-          gl.uniform1f(advect.uniforms.uDissipation, 0.992);
+          gl.uniform1f(advect.uniforms.uDissipation, 0.955);
           drawTo(velocity.write, simW, simH);
           velocity.swap();
-
-          gl.useProgram(swirl.program);
-          gl.uniform1i(swirl.uniforms.uTarget, bind(0, velocity.read.tex));
-          gl.uniform1f(swirl.uniforms.uTime, t);
-          gl.uniform1f(swirl.uniforms.uDt, dt);
-          gl.uniform1f(swirl.uniforms.uEddy, 0.012 + swell * 0.28);
-          gl.uniform1f(swirl.uniforms.uSpin, swell * 0.9);
-          drawTo(velocity.write, simW, simH);
-          velocity.swap();
-
-          // Nobody at the mouse: a slow current wanders through on its own
-          if (now - lastPointer > 2500) {
-            const a = t * 0.5;
-            addForce(0.5 + 0.32 * Math.sin(a), 0.5 + 0.26 * Math.sin(a * 1.7 + 1.0),
-              Math.cos(a) * 0.9, Math.cos(a * 1.7 + 1.0) * 0.9, 0.02);
-          }
 
           // ---- keep it incompressible, which is what makes it swirl like water ----
           gl.useProgram(divergence.program);
@@ -493,8 +465,7 @@ export default function WaveSculpture({ className = "" }: { className?: string }
           gl.uniform1i(flowMap.uniforms.uMap, bind(1, map.read.tex));
           gl.uniform2f(flowMap.uniforms.uTexel, texel[0], texel[1]);
           gl.uniform1f(flowMap.uniforms.uDt, dt);
-          // Settle slowly while it's pouring, firmly once a shape has formed
-          gl.uniform1f(flowMap.uniforms.uSettle, pouring ? 0.35 + (1 - swell) * 0.9 : 1.6);
+          gl.uniform1f(flowMap.uniforms.uSettle, 2.6);
           drawTo(map.write, simW * 2, simH * 2);
           map.swap();
 
@@ -503,8 +474,9 @@ export default function WaveSculpture({ className = "" }: { className?: string }
           gl.uniform1i(display.uniforms.uMap, bind(0, map.read.tex));
           gl.uniform1i(display.uniforms.uFrom, bind(1, art[from]));
           gl.uniform1i(display.uniforms.uTo, bind(2, art[to]));
-          gl.uniform1f(display.uniforms.uMix, progress);
-          gl.uniform2f(display.uniforms.uTexel, 1 / (simW * 2), 1 / (simH * 2));
+          gl.uniform1f(display.uniforms.uMix, progress * progress * (3 - 2 * progress));
+          gl.uniform1f(display.uniforms.uSeed, to * 7.3);
+          gl.uniform1f(display.uniforms.uAspect, aspect);
           gl.uniform1f(display.uniforms.uFade, Math.min(t / 0.8, 1));
           // Rises as the pour into the piece finishes, then fades over a couple of seconds
           const arriving = pouring && to === 3 ? Math.max((progress - 0.75) / 0.25, 0) : 0;
