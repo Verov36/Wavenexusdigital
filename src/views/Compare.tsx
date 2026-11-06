@@ -15,7 +15,6 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
   const [techs, setTechs] = useState(8);
 
   const theirYearOne = c.theirLowPerTech * techs * 12 + c.theirLowSetup;
-  const ourYearOne = NEXUS_FIELD.perTechMonthly * techs * 12;
 
   return (
     <>
@@ -160,13 +159,14 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
               <motion.div variants={fadeUp} className="bg-zinc-950 p-8 border-2 border-amber-500/40">
                 <p className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-500 mb-6">Nexus Field</p>
                 <dl className="space-y-3 font-dmsans text-sm">
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">{NEXUS_FIELD.perTechLabel} × {techs} techs × 12</dt><dd className="text-zinc-200">{usd(ourYearOne)}</dd></div>
-                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Office & dispatch users</dt><dd className="text-zinc-200">$0</dd></div>
+                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Technicians</dt><dd className="text-zinc-200 text-right">Quoted on the call</dd></div>
+                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Office &amp; dispatch users</dt><dd className="text-zinc-200">Free</dd></div>
+                  <div className="flex justify-between gap-4"><dt className="text-zinc-500">Contract</dt><dd className="text-zinc-200">None</dd></div>
                   <div className="flex justify-between gap-4"><dt className="text-zinc-500">Setup</dt><dd className="text-zinc-400 text-right">scoped to your migration</dd></div>
                 </dl>
                 <div className="h-px bg-zinc-800 my-5" />
-                <p className="font-barlow font-900 text-4xl text-white">{usd(ourYearOne)} <span className="font-dmsans font-normal text-sm text-zinc-500">+ setup</span></p>
-                <p className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-500 mt-1">Same price in year two</p>
+                <p className="font-barlow font-900 text-3xl text-white leading-tight">One plan.<br />Everything in it.</p>
+                <p className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-500 mt-2">Held for two years</p>
               </motion.div>
             </motion.div>
           </div>
@@ -241,7 +241,7 @@ export default function Compare({ competitor: c }: { competitor: Competitor }) {
             </div>
             <div className="flex flex-col gap-4">
               <p className="font-dmsans text-zinc-950/70 leading-relaxed">
-                {NEXUS_FIELD.perTechLabel} per tech. Office users free. No contract. Setup scoped to what you're bringing over. If it's not a fit, we'll tell you.
+                Office and dispatch users free. No contract. Setup scoped to what you're bringing over. We'll price it on the call, and if it's not a fit we'll tell you.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href={NEXUS_FIELD.demoUrl} onClick={() => trackEvent("click", "Compare", `${c.name} — Demo`)}
