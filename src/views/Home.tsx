@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp, Code2, Smartphone, ScanLine } from "lucide-react";
+import { ArrowRight, ChevronRight, Package, ClipboardList, Camera, Zap, Globe, Search, Palette, TrendingUp, Code2, Smartphone, ScanLine, PhoneCall } from "lucide-react";
 import { portfolio } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 
@@ -40,23 +40,27 @@ export default function Home() {
             <motion.h1 variants={fadeUp}
               className="font-barlow font-900 text-6xl sm:text-7xl lg:text-9xl uppercase leading-[0.9] tracking-tight text-white mb-6">
               Web Design{" "}<br />
-              <span className="text-amber-500">& Field Service</span>{" "}<br />
-              Software
+              <span className="text-amber-500">& Local SEO</span>{" "}<br />
+              That Books Jobs
               <span className="block mt-4 text-2xl sm:text-3xl lg:text-4xl tracking-widest text-zinc-400">Hampton Roads, VA</span>
             </motion.h1>
 
+            <motion.p variants={fadeUp} className="font-jetbrains text-sm sm:text-base uppercase tracking-[0.2em] text-white mb-6">
+              Get Found<span className="text-amber-500"> · </span>Get Booked<span className="text-amber-500"> · </span>Keep Growing
+            </motion.p>
+
             <motion.p variants={fadeUp} className="text-zinc-400 text-lg leading-relaxed mb-10 max-w-xl font-dmsans">
-              We build websites that bring in leads and make field service software that actually fits the way your team works. Small team. Focused work. Hampton Roads, VA.
+              We build fast websites, get you showing up on Google and in AI search, and make sure every call and text gets answered, so no lead slips through. Veteran-owned, local, and priced for small business. No fee traps.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/nexus-field"
+              <Link href="/audit" onClick={() => trackEvent("click", "Home Hero", "Free Website Audit")}
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-amber-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest text-lg hover:bg-amber-400 transition-colors">
-                Explore Nexus Field <ArrowRight className="h-5 w-5" />
+                Get a Free Website Audit <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link href="/services"
+              <Link href="/portfolio"
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-zinc-700 text-white font-barlow font-700 uppercase tracking-widest text-lg hover:border-amber-500 hover:text-amber-400 transition-all">
-                Our Services <ChevronRight className="h-5 w-5" />
+                See Our Work <ChevronRight className="h-5 w-5" />
               </Link>
             </motion.div>
           </motion.div>
@@ -67,8 +71,8 @@ export default function Home() {
             {[
               { val: "USMC", label: "Veteran Led" },
               { val: "Norfolk", label: "Home Base" },
-              { val: "$59", label: "Per Tech / Month" },
-              { val: "0", label: "Contracts" },
+              { val: "Free", label: "Website Audit" },
+              { val: "$0", label: "Hidden Fees" },
             ].map(({ val, label }) => (
               <motion.div key={label} variants={fadeUp} className="bg-zinc-950 px-6 py-5 text-center">
                 <div className="font-barlow font-900 text-3xl text-amber-500 uppercase">{val}</div>
@@ -79,131 +83,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── NEXUS FIELD SPOTLIGHT ── */}
-      <section className="bg-zinc-950 py-24 lg:py-32 border-t border-border">
+      {/* ── HOW IT WORKS: GET FOUND · GET BOOKED · KEEP GROWING ── */}
+      <section className="bg-zinc-950 py-24 lg:py-28 border-t border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          {/* Section label */}
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-            className="flex items-center gap-4 mb-12">
-            <div className="h-[2px] w-8 bg-amber-500" />
-            <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-amber-500">Our Software Product</span>
-            <span className="flex items-center gap-1.5 px-3 py-1 border border-amber-500/30 bg-amber-500/10">
-              <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-              <span className="font-jetbrains text-[10px] text-amber-400 uppercase tracking-widest">Live Now</span>
-            </span>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[2px] w-8 bg-amber-500" />
+              <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-amber-500">How We Turn Websites Into Revenue</span>
+            </div>
+            <h2 className="font-barlow font-900 text-5xl sm:text-6xl uppercase leading-[0.95] text-white">
+              Get Found.{" "}<span className="text-amber-500">Get Booked.</span>{" "}<br className="hidden sm:block" />Keep Growing.
+            </h2>
+            <p className="font-dmsans text-zinc-500 mt-6 max-w-2xl leading-relaxed">
+              Most local businesses are great at the work but hard to find online, and they lose calls they never knew they missed. We fix both, then keep improving month after month.
+            </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="font-barlow font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-2">
-                Nexus
-              </h2>
-              <h2 className="font-barlow font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-amber-500 mb-8">
-                Field
-              </h2>
-
-              <div className="w-16 h-[2px] bg-amber-500 mb-8" />
-
-              <p className="text-zinc-300 text-lg leading-relaxed mb-6 font-dmsans">
-                Field service software built by people who actually talked to field service companies. We got tired of seeing teams duct-tape together spreadsheets, group texts, and apps that never quite fit — so we built one that does.
-              </p>
-              <p className="text-zinc-500 leading-relaxed mb-10 font-dmsans">
-                Parts inventory is <span className="text-white font-semibold">free in every plan</span> — warehouse stock, truck-level inventory, and parts-per-job logging. Because it shouldn't cost extra to know where your parts went.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/nexus-field"
-                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
-                  See Full Product <ArrowRight className="h-5 w-5" />
-                </Link>
-                <Link href="/audit?type=demo"
-                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-barlow font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
-                  Request Demo
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Right — feature grid */}
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="space-y-px">
-              {/* Photo */}
-              <div className="overflow-hidden mb-px">
-                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                  alt="Field service manager on tablet" className="w-full h-52 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-              </div>
-              {/* Features */}
-              <div className="grid grid-cols-2 gap-px bg-zinc-800">
-                {[
-                  { icon: Package, label: "Parts Inventory", note: "Free · Warehouse + Truck", amber: true },
-                  { icon: ClipboardList, label: "Job Tracking", note: "Full history & notes", amber: false },
-                  { icon: Camera, label: "Photo Database", note: "Attached to every job", amber: false },
-                  { icon: Zap, label: "Built to Suit", note: "Configured for you", amber: false },
-                ].map(({ icon: Icon, label, note, amber }) => (
-                  <motion.div key={label} variants={fadeUp}
-                    className={`p-5 ${amber ? "bg-amber-500/10 border border-amber-500/30" : "bg-zinc-900"}`}>
-                    <Icon className={`h-5 w-5 mb-3 ${amber ? "text-amber-400" : "text-zinc-500"}`} />
-                    {amber && <span className="font-jetbrains text-[9px] text-amber-400 uppercase tracking-widest block mb-1">Free</span>}
-                    <p className={`font-barlow font-700 uppercase tracking-wider text-sm ${amber ? "text-amber-400" : "text-white"}`}>{label}</p>
-                    <p className="font-dmsans text-xs text-zinc-600 mt-0.5">{note}</p>
-                  </motion.div>
-                ))}
-              </div>
-              {/* Industries */}
-              <div className="bg-zinc-900 p-4">
-                <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mb-3">Built For</p>
-                <div className="flex flex-wrap gap-2">
-                  {["HVAC", "Refrigeration", "Electrical"].map(i => (
-                    <span key={i} className="font-jetbrains text-[10px] text-amber-500 border border-amber-500/40 px-2 py-1 uppercase tracking-wider">{i}</span>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+            className="grid md:grid-cols-3 gap-px bg-zinc-800">
+            {[
+              {
+                step: "01", icon: Search, title: "Get Found",
+                desc: "A fast, mobile-first website plus local SEO and AI search setup, so you show up on Google, in Maps, and in tools like ChatGPT when locals search for what you do.",
+                points: ["Custom website built to convert", "Google Business Profile & local SEO", "AI search visibility"],
+                href: "/services", cta: "Websites & SEO",
+              },
+              {
+                step: "02", icon: PhoneCall, title: "Get Booked",
+                desc: "An AI call and text receptionist that answers every call and message, asks the right questions, and sends the lead straight to your phone, even after hours.",
+                points: ["Every call and text answered", "Leads qualified and sent to you", "Hand off to a real person anytime"],
+                href: "/services#ai-receptionist", cta: "AI Receptionist",
+              },
+              {
+                step: "03", icon: TrendingUp, title: "Keep Growing",
+                desc: "Plain-English monthly reports, a steady stream of reviews, and ongoing updates. When you're ready to run the whole shop, Nexus Field is built to grow with you.",
+                points: ["Monthly results report", "More Google reviews", "Software that scales with your team"],
+                href: "/audit", cta: "Start With a Free Audit",
+              },
+            ].map(({ step, icon: Icon, title, desc, points, href, cta }) => (
+              <motion.div key={title} variants={fadeUp}
+                className="bg-zinc-950 p-8 lg:p-10 flex flex-col group border-t-2 border-transparent hover:border-amber-500 transition-colors">
+                <div className="flex items-center justify-between mb-8">
+                  <Icon className="h-7 w-7 text-amber-500" />
+                  <span className="font-jetbrains text-[11px] uppercase tracking-widest text-zinc-600">Step {step}</span>
+                </div>
+                <h3 className="font-barlow font-900 text-3xl uppercase tracking-wide text-white mb-4 group-hover:text-amber-400 transition-colors">{title}</h3>
+                <p className="font-dmsans text-sm text-zinc-400 leading-relaxed mb-6">{desc}</p>
+                <ul className="space-y-2 mb-8">
+                  {points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-2 font-dmsans text-sm text-zinc-300">
+                      <span className="mt-2 h-1 w-3 bg-amber-500 flex-shrink-0" />{pt}
+                    </li>
                   ))}
-                </div>
-                <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mt-4 mb-2">Also works for</p>
-                <p className="font-dmsans text-xs text-zinc-500">Plumbing, landscaping, general contracting, appliance repair, security systems, pest control</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CUSTOM APPS BRIDGE ── */}
-      <section className="bg-zinc-950 pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-            className="grid lg:grid-cols-5 gap-px bg-zinc-800 border border-amber-500/20">
-            <div className="lg:col-span-3 bg-zinc-950 p-8 lg:p-10">
-              <span className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-400 block mb-4">Need something Nexus Field doesn't do?</span>
-              <h3 className="font-barlow font-900 text-4xl sm:text-5xl uppercase leading-[0.95] text-white mb-4">
-                We build custom apps{" "}<br /><span className="text-amber-500">for businesses with a process</span>
-              </h3>
-              <p className="font-dmsans text-zinc-500 leading-relaxed mb-8 max-w-xl">
-                If you can describe what you need handled and how, we can build the tool that runs it — in the browser, on the phone, or both. The same team that built Nexus Field builds yours.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/custom-apps" onClick={() => trackEvent("click", "Home", "Custom Apps")}
-                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
-                  See How We Build Apps <ArrowRight className="h-4 w-4" />
+                </ul>
+                <Link href={href} onClick={() => trackEvent("click", "Home Steps", title)}
+                  className="mt-auto font-barlow font-700 uppercase tracking-widest text-xs text-amber-500 flex items-center gap-2 hover:gap-3 transition-all">
+                  {cta} <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-                <Link href="/contact?interest=customapp"
-                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-barlow font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
-                  Scope My App — Free
-                </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-2 grid grid-rows-3 gap-px bg-zinc-800">
-              {[
-                { icon: Code2, label: "Custom web apps & internal tools", note: "Job tracking, inventory, scheduling, portals" },
-                { icon: Smartphone, label: "Mobile apps", note: "iOS & Android for the truck and the job site" },
-                { icon: ScanLine, label: "Built and proven on our own", note: "Nexus Field · Nexus Inventory" },
-              ].map(({ icon: Icon, label, note }) => (
-                <div key={label} className="bg-zinc-900 p-5 flex items-start gap-4">
-                  <Icon className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-barlow font-700 uppercase tracking-wider text-sm text-white">{label}</p>
-                    <p className="font-dmsans text-xs text-zinc-600 mt-0.5">{note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -289,6 +227,135 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-barlow font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
               View All Work <ArrowRight className="h-4 w-4" />
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── NEXUS FIELD SPOTLIGHT (sub-brand: Wave Blue leads) ── */}
+      <section className="bg-zinc-950 py-24 lg:py-32 border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          {/* Section label */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="flex items-center gap-4 mb-12">
+            <div className="h-[2px] w-8 bg-blue-500" />
+            <span className="font-jetbrains text-[11px] uppercase tracking-[0.2em] text-blue-500">Nexus Field by WaveNexus</span>
+            <span className="flex items-center gap-1.5 px-3 py-1 border border-blue-500/30 bg-blue-500/10">
+              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+              <span className="font-jetbrains text-[10px] text-blue-400 uppercase tracking-widest">Live Now</span>
+            </span>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+              <h2 className="font-barlow font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-white mb-2">
+                Nexus
+              </h2>
+              <h2 className="font-barlow font-900 text-6xl sm:text-7xl lg:text-8xl uppercase leading-[0.9] text-blue-500 mb-8">
+                Field
+              </h2>
+
+              <div className="w-16 h-[2px] bg-blue-500 mb-8" />
+
+              <p className="text-zinc-300 text-lg leading-relaxed mb-6 font-dmsans">
+                Our field service software, built by people who actually talked to field service companies. We got tired of seeing teams duct-tape together spreadsheets, group texts, and apps that never quite fit — so we built one that does.
+              </p>
+              <p className="text-zinc-500 leading-relaxed mb-10 font-dmsans">
+                Parts inventory is <span className="text-white font-semibold">free in every plan</span> — warehouse stock, truck-level inventory, and parts-per-job logging. Because it shouldn't cost extra to know where your parts went.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/nexus-field"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-blue-400 transition-colors">
+                  See Full Product <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link href="/audit?type=demo"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-barlow font-700 uppercase tracking-widest hover:border-blue-500 hover:text-blue-400 transition-all">
+                  Request Demo
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right — feature grid */}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="space-y-px">
+              {/* Photo */}
+              <div className="overflow-hidden mb-px">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                  alt="Field service manager on tablet" className="w-full h-52 object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              </div>
+              {/* Features */}
+              <div className="grid grid-cols-2 gap-px bg-zinc-800">
+                {[
+                  { icon: Package, label: "Parts Inventory", note: "Free · Warehouse + Truck", hl: true },
+                  { icon: ClipboardList, label: "Job Tracking", note: "Full history & notes", hl: false },
+                  { icon: Camera, label: "Photo Database", note: "Attached to every job", hl: false },
+                  { icon: Zap, label: "Built to Suit", note: "Configured for you", hl: false },
+                ].map(({ icon: Icon, label, note, hl }) => (
+                  <motion.div key={label} variants={fadeUp}
+                    className={`p-5 ${hl ? "bg-blue-500/10 border border-blue-500/30" : "bg-zinc-900"}`}>
+                    <Icon className={`h-5 w-5 mb-3 ${hl ? "text-blue-400" : "text-zinc-500"}`} />
+                    {hl && <span className="font-jetbrains text-[9px] text-blue-400 uppercase tracking-widest block mb-1">Free</span>}
+                    <p className={`font-barlow font-700 uppercase tracking-wider text-sm ${hl ? "text-blue-400" : "text-white"}`}>{label}</p>
+                    <p className="font-dmsans text-xs text-zinc-600 mt-0.5">{note}</p>
+                  </motion.div>
+                ))}
+              </div>
+              {/* Industries */}
+              <div className="bg-zinc-900 p-4">
+                <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mb-3">Built For</p>
+                <div className="flex flex-wrap gap-2">
+                  {["HVAC", "Refrigeration", "Electrical"].map(i => (
+                    <span key={i} className="font-jetbrains text-[10px] text-blue-400 border border-blue-500/40 px-2 py-1 uppercase tracking-wider">{i}</span>
+                  ))}
+                </div>
+                <p className="font-jetbrains text-[9px] uppercase tracking-widest text-zinc-600 mt-4 mb-2">Also works for</p>
+                <p className="font-dmsans text-xs text-zinc-500">Plumbing, landscaping, general contracting, appliance repair, security systems, pest control</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CUSTOM APPS BRIDGE ── */}
+      <section className="bg-zinc-950 pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+            className="grid lg:grid-cols-5 gap-px bg-zinc-800 border border-amber-500/20">
+            <div className="lg:col-span-3 bg-zinc-950 p-8 lg:p-10">
+              <span className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-400 block mb-4">Need something Nexus Field doesn't do?</span>
+              <h3 className="font-barlow font-900 text-4xl sm:text-5xl uppercase leading-[0.95] text-white mb-4">
+                We build custom apps{" "}<br /><span className="text-amber-500">for businesses with a process</span>
+              </h3>
+              <p className="font-dmsans text-zinc-500 leading-relaxed mb-8 max-w-xl">
+                If you can describe what you need handled and how, we can build the tool that runs it — in the browser, on the phone, or both. The same team that built Nexus Field builds yours.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/custom-apps" onClick={() => trackEvent("click", "Home", "Custom Apps")}
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 bg-amber-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+                  See How We Build Apps <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/contact?interest=customapp"
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 border border-zinc-700 text-zinc-300 font-barlow font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+                  Scope My App — Free
+                </Link>
+              </div>
+            </div>
+            <div className="lg:col-span-2 grid grid-rows-3 gap-px bg-zinc-800">
+              {[
+                { icon: Code2, label: "Custom web apps & internal tools", note: "Job tracking, inventory, scheduling, portals" },
+                { icon: Smartphone, label: "Mobile apps", note: "iOS & Android for the truck and the job site" },
+                { icon: ScanLine, label: "Built and proven on our own", note: "Nexus Field · Nexus Inventory" },
+              ].map(({ icon: Icon, label, note }) => (
+                <div key={label} className="bg-zinc-900 p-5 flex items-start gap-4">
+                  <Icon className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-barlow font-700 uppercase tracking-wider text-sm text-white">{label}</p>
+                    <p className="font-dmsans text-xs text-zinc-600 mt-0.5">{note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
