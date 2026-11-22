@@ -2,12 +2,13 @@
 import type { ComponentType } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Globe, Search, Palette, TrendingUp, Code2, ArrowRight, CheckCircle2, MessageSquare, Users, BarChart3 } from "lucide-react";
+import { Globe, Search, Palette, TrendingUp, Code2, ArrowRight, CheckCircle2, MessageSquare, Users, BarChart3, PhoneCall } from "lucide-react";
 
 const fadeUp = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } } };
 const stagger = { show: { transition: { staggerChildren: 0.08 } } };
 
 type Service = {
+  id?: string;
   icon: ComponentType<{ className?: string }>;
   label: string;
   outcome: string;
@@ -34,6 +35,36 @@ const services: Service[] = [
     photoAlt: "Web designer working with client",
   },
   {
+    icon: Search,
+    label: "SEO & AI Search Optimization",
+    outcome: "You show up when people in Hampton Roads search for what you do — on Google and AI tools like ChatGPT.",
+    forWho: "If your competitors consistently appear above you in search, or you've never really thought about SEO at all, this is the long game that pays off.",
+    results: [
+      { heading: "More calls from people actively looking", body: "SEO brings in people who are already searching — not people you have to interrupt." },
+      { heading: "You show up in AI answers too", body: "More people ask ChatGPT and Perplexity for local recommendations. We optimize for those." },
+      { heading: "Monthly reports that make sense", body: "What's improving, where traffic is coming from, what we're focused on next." },
+      { heading: "You stop losing ground to competitors", body: "If you're not investing in SEO, someone else is. We help you catch up." },
+    ],
+    photo: "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    photoAlt: "Business owner reviewing analytics on tablet",
+  },
+  {
+    id: "ai-receptionist",
+    icon: PhoneCall,
+    label: "AI Call & Text Receptionist",
+    outcome: "Every call and text gets answered, so you stop losing jobs to the voicemail you never had time to return.",
+    forWho: "If you're on a job, under a house, or closed for the night when the phone rings, those callers go to the next business on Google. This makes sure they don't.",
+    results: [
+      { heading: "No more missed leads", body: "Calls and texts are answered right away, day or night, even when you can't pick up." },
+      { heading: "Leads arrive ready to act on", body: "It asks what they need, where they are, and whether it's urgent, then sends it straight to your phone." },
+      { heading: "A real person is one tap away", body: "You choose who takes over, and switching who responds is easy. It never pretends to be human." },
+      { heading: "Sounds like your business", body: "Set up with your services, service area, and the way you talk to customers." },
+    ],
+    photo: "https://images.unsplash.com/photo-1507297230445-ff678f10b524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    photoAlt: "Service business owner checking new leads on a tablet",
+    cta: { to: "/contact", label: "Ask About the AI Receptionist" },
+  },
+  {
     icon: Code2,
     label: "Custom Apps & Business Software",
     outcome: "You get a tool built around how your business actually runs — not a spreadsheet you fight with or an app that almost fits.",
@@ -47,20 +78,6 @@ const services: Service[] = [
     photo: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
     photoAlt: "Developer building a custom business application",
     cta: { to: "/custom-apps", label: "See How We Build Apps" },
-  },
-  {
-    icon: Search,
-    label: "SEO & AI Search Optimization",
-    outcome: "You show up when people in Hampton Roads search for what you do — on Google and AI tools like ChatGPT.",
-    forWho: "If your competitors consistently appear above you in search, or you've never really thought about SEO at all, this is the long game that pays off.",
-    results: [
-      { heading: "More calls from people actively looking", body: "SEO brings in people who are already searching — not people you have to interrupt." },
-      { heading: "You show up in AI answers too", body: "More people ask ChatGPT and Perplexity for local recommendations. We optimize for those." },
-      { heading: "Monthly reports that make sense", body: "What's improving, where traffic is coming from, what we're focused on next." },
-      { heading: "You stop losing ground to competitors", body: "If you're not investing in SEO, someone else is. We help you catch up." },
-    ],
-    photo: "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    photoAlt: "Business owner reviewing analytics on tablet",
   },
   {
     icon: Palette,
@@ -118,7 +135,7 @@ export default function Services() {
 
       {/* Service sections */}
       {services.map((service, idx) => (
-        <section key={service.label} className={`py-24 border-b border-border ${idx % 2 === 0 ? "bg-zinc-950" : "bg-zinc-900"}`}>
+        <section key={service.label} id={service.id} className={`scroll-mt-20 py-24 border-b border-border ${idx % 2 === 0 ? "bg-zinc-950" : "bg-zinc-900"}`}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} variants={fadeUp}>
               <div className={`grid lg:grid-cols-2 gap-16 items-start`}>
@@ -200,22 +217,22 @@ export default function Services() {
       <section className="bg-zinc-900 py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-            className="grid sm:grid-cols-2 gap-10 items-center border border-amber-500/20 bg-zinc-950 p-10">
+            className="grid sm:grid-cols-2 gap-10 items-center border border-blue-500/20 bg-zinc-950 p-10">
             <div>
               <span className="inline-flex items-center gap-2 mb-4">
-                <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-                <span className="font-jetbrains text-[10px] uppercase tracking-widest text-amber-400">We Also Build Software</span>
+                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                <span className="font-jetbrains text-[10px] uppercase tracking-widest text-blue-400">Nexus Field by WaveNexus</span>
               </span>
               <h3 className="font-barlow font-900 text-3xl uppercase text-white mb-3">Running a field service company?</h3>
               <p className="font-dmsans text-zinc-500 leading-relaxed">Nexus Field is our field service management app — job tracking, photo documentation, and free parts inventory built for teams that actually work in the field.</p>
             </div>
             <div className="flex flex-col gap-3">
               <Link href="/nexus-field"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-amber-400 transition-colors">
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 text-zinc-950 font-barlow font-800 uppercase tracking-widest hover:bg-blue-400 transition-colors">
                 Learn About Nexus Field <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/audit?type=demo"
-                className="flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-400 font-barlow font-700 uppercase tracking-widest hover:border-amber-500 hover:text-amber-400 transition-all">
+                className="flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-400 font-barlow font-700 uppercase tracking-widest hover:border-blue-500 hover:text-blue-400 transition-all">
                 Request a Demo
               </Link>
             </div>
